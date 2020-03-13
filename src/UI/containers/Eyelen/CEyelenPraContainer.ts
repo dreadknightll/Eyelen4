@@ -138,7 +138,7 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
 
         var picXMLTask:gdeint.CPreloadTask = new gdeint.CPreloadTask();//创建任务对象。
         var resListPicXML:Array<gdeint.ResStruct> = new Array<gdeint.ResStruct>();
-        this.m_seledPicTagArr = gdeint.randomNums_ts(10,4);
+        this.m_seledPicTagArr = gdeint.randomNums_ts(10,4); //从10张图片中随机选4张。
 
         var i:number;
         for(i=0;i<this.m_seledPicTagArr.length;++i) {

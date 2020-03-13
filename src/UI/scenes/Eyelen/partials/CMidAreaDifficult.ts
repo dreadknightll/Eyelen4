@@ -65,7 +65,10 @@ namespace eyelen3E {
             this.imgGrp.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchBegin,this);
             this.imgGrp.addEventListener(egret.TouchEvent.TOUCH_MOVE,this.touchMove,this);
             this.imgGrp.addEventListener(egret.TouchEvent.TOUCH_END,this.touchEnd,this);*/
-            if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+
+
+//            if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+            if(S_NO_IMG_MODE) {
                 this.m_randomGraphShape.touchEnabled = true;
                 this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchBegin,this);
                 this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_MOVE,this.touchMove,this);

@@ -1,43 +1,42 @@
 {
-	"engineVersion": "5.2.33",
-	"compilerVersion": "5.2.33",
-	"template": {},
-	"target": {
-		"current": "web"
-	},
-	"modules": [
-		{
-			"name": "egret"
-		},
-		{
-			"name": "eui"
-		},
-		{
-			"name": "assetsmanager"
-		},
-		{
-			"name": "game"
-		},
-		{
-			"name": "tween"
-		},
-		{
-			"name": "promise"
-		},
-		{
-			"name": "libGdeint",
-			"path": "/Users/Shared/src/gdeint/libGdeint/libGdeint"
-		}
-	],
-	"targets": {
-		"android": {
-			"appname": "宜英尺眼通4",
-			"packagename": "org.gdeint.Eyelen"
-		},
-		"ios": {
-			"appname": "eyelentest",
-			"packagename": "com.companyname",
-			"hybrid": false
-		}
-	}
+  "engineVersion": "5.2.33",
+  "compilerVersion": "5.2.33",
+  "template": {},
+  "target": {
+    "current": "web"
+  },
+  "modules": [
+    {
+      "name": "egret"
+    },
+    {
+      "name": "eui"
+    },
+    {
+      "name": "assetsmanager"
+    },
+    {
+      "name": "game"
+    },
+    {
+      "name": "tween"
+    },
+    {
+      "name": "promise"
+    },
+    {
+      "name": "libGdeint",
+      "path": "/Users/Shared/src/gdeint/libGdeint/libGdeint"
+    }
+  ],
+  "targets": {
+    "android": {
+      "appname": "宜英尺眼通4",
+      "packagename": "org.gdeint.Eyelen"
+    },
+    "ios": {
+      "appname": "长度目测训练4",
+      "packagename": "Eyelen3"
+    }
+  }
 }

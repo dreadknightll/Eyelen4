@@ -64,7 +64,8 @@ var eyelen3E;
             this.mask = rect;
             this.midBgGrp.addChild(this.m_bg);
             //	    this.midCanvasGrp.addChild(this.m_midCanvas);
-            if (!(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE)) {
+            //            if(!(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE)) {
+            if (!(S_NO_IMG_MODE)) {
                 this.imgFromFile.touchEnabled = true;
                 this.imgFromFile.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
                 this.imgFromFile.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMove, this);

@@ -53,7 +53,8 @@ const S_WECHAT:number = 5; // 发布成微信小游戏。另须移除项目里�
 
 const S_BUILD_FOR:number = S_NATIVE_ANDROID;
 
-const S_NO_IMG_MODE:boolean = true; // 无图模式开关。只在S_WECHAT模式有效。开启后Pic从本地读取，且不使用img。
+const S_NO_IMG_MODE:boolean = false; // 无图模式开关。开启后Pic从本地读取，且不使用img。
+//const S_NO_IMG_MODE:boolean = true; // 无图模式开关。只在S_WECHAT模式有效。开启后Pic从本地读取，且不使用img。
 
 var S_CHECK_UPDATE_ANDROID: boolean = false; // 是否检查更新。
 
@@ -195,8 +196,14 @@ class Main extends eui.UILayer {
                 }
             }
             else {
-                await RES.loadConfig("resource/picRes_WebGL.res.json", "resource/");
-                g_resLoader = new CEgretDefaultResLoader();
+                if(S_NO_IMG_MODE) {
+                    await RES.loadConfig("resource/picRes_NoImg.res.json", "resource/");
+                    g_resLoader = new CEgretDefaultResLoader();
+                }
+                else {
+                    await RES.loadConfig("resource/picRes_WebGL.res.json", "resource/");
+                    g_resLoader = new CEgretDefaultResLoader();
+                }
             }
 
             await this.loadTheme(); // Theme里定义了exml皮肤和typescript类的对应关系。
@@ -204,17 +211,18 @@ class Main extends eui.UILayer {
             loadingView1.visible = false;
             this.stage.removeChild(loadingView1);
 
-            var loadingView2: LoadingUI_Eint_V2; // 启动时的资源加载画面。
+            const loadingView2: LoadingUI_Eint_V2 = new LoadingUI_Eint_V2(); // 启动时的资源加载画面。该画面为自定义界面。
 
-            loadingView2 = new LoadingUI_Eint_V2(); //起始画面的资源加载界面。已自定义。
-            loadingView2.setWinSize(g_winWidth,g_winHeight);
+//            loadingView2.setWinSize(g_winWidth,g_winHeight);
+            loadingView2.setWinSize(200,300);
             loadingView2.create();
 
             this.stage.addChild(loadingView2);
             loadingView2.visible = true;
 
-            await RES.loadGroup("eint", 0, loadingView2); //eint资源组有宜英通用的图片音乐等资源。
+            await RES.loadGroup("eint", 0, loadingView1); //eint资源组有宜英通用的图片音乐等资源。
             await RES.loadGroup("preload", 0, loadingView2); //preload资源组为系统默认资源组。未人工分类的资源都在这里。资源较多。
+            this.stage.removeChild(loadingView2);
         }
         catch (e) {
             console.error(e);
@@ -238,22 +246,41 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createScene(): void {
+
+/*        var aLabel:eui.Label = new eui.Label();
+        aLabel.text="abcdabcdabcdabcdabcdabcdabcd";
+        this.addChild(aLabel);
+        return;*/
+
+
+
         g_praEasyScene = new eyelen3E.CPraEasyScene();
-        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+/*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+            g_praEasyScene.m_NoImgMode = true;
+        }*/
+        if(S_NO_IMG_MODE) {
             g_praEasyScene.m_NoImgMode = true;
         }
+
         g_dlgLayerContainer.addChild(g_praEasyScene.getDlgLayer().toEgretDispObjContainer());
         g_notiLayerContainer.addChild(g_praEasyScene.getNotiLayer().toEgretDispObjContainer());
 
         g_praDifficultScene = new eyelen3E.CPraDifficultScene();
-        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+/*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+            g_praDifficultScene.m_NoImgMode = true;
+        }*/
+        if(S_NO_IMG_MODE) {
             g_praDifficultScene.m_NoImgMode = true;
         }
+
         g_dlgLayerContainer.addChild(g_praDifficultScene.getDlgLayer().toEgretDispObjContainer());
         g_notiLayerContainer.addChild(g_praDifficultScene.getNotiLayer().toEgretDispObjContainer());
 
         g_praEasyContainer = new CEyelenPraContainer();
-        if (S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+/*        if (S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+            g_praEasyContainer.m_NoImgMode = true;
+        }*/
+        if (S_NO_IMG_MODE) {
             g_praEasyContainer.m_NoImgMode = true;
         }
         g_praEasyContainer.setResLoader(g_resLoader); // 显示容器里包含一个资源加载器，随时加载资源。
