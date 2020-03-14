@@ -1,4 +1,4 @@
-module eyelen3E {
+module eyelen4 {
 	export class CShutDownClock extends eui.Component{
 
 		private timeLabel:eui.Label;

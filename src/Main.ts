@@ -89,7 +89,8 @@ var g_praEasyContainer:CEyelenPraContainer;
 
 var g_praDifficultContainer:CEyelenPraContainer; //困难难度显示容器。
 
-var g_welcomeScene:eyelen3E.CWelcomeScene_Eyelen3E; // 欢迎屏幕画面。
+//var g_welcomeScene:eyelen3E.CWelcomeScene_Eyelen3E; // 欢迎屏幕画面。
+var g_welcomeScene:eyelen4.CWelcomeScene_Eyelen4; // 欢迎屏幕画面。
 var g_mainMenu:eyelen3E.CMainMenu; // 主菜单画面
 
 //画面采用分层设计。不同类型的元素应显示在不同的层上，以维持合理的前后顺序。
@@ -347,7 +348,7 @@ class Main extends eui.UILayer {
         cd2.hide();
         g_praDifficultContainer.setCaliDlg(cd2);
 
-        g_welcomeScene = new eyelen3E.CWelcomeScene_Eyelen3E();
+        g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
         g_mainMenu = new eyelen3E.CMainMenu();
         g_mainMenu.setTrueWidth(this.stage.stageWidth);
         g_mainMenu.setTrueHeight(this.stage.stageHeight);

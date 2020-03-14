@@ -27,7 +27,7 @@ namespace eyelen3E {
         public latestVer: eui.Label;
         public m_rippleCircle:egret.Bitmap;
 
-        public shutdownClock:CShutDownClock;
+        public shutdownClock:eyelen4.CShutDownClock;
 
         public m_squareTag:number=1;
         public m_squareChCntTotal:number=1; // 表示换图所需敲击次数。敲击多了该值会逐渐增大，换图逐渐变慢。

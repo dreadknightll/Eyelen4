@@ -114,6 +114,7 @@ var g_resLoader; //资源读取器。用于通过资源名读取已加载到缓�
 //简单难度显示容器。该容器除了包含练习场景，还可注入各式各样的提示框、功能对话框等插件。此设计便于代码测试和重用。
 var g_praEasyContainer;
 var g_praDifficultContainer; //困难难度显示容器。
+//var g_welcomeScene:eyelen3E.CWelcomeScene_Eyelen3E; // 欢迎屏幕画面。
 var g_welcomeScene; // 欢迎屏幕画面。
 var g_mainMenu; // 主菜单画面
 //画面采用分层设计。不同类型的元素应显示在不同的层上，以维持合理的前后顺序。
@@ -359,7 +360,7 @@ var Main = (function (_super) {
         cd2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         cd2.hide();
         g_praDifficultContainer.setCaliDlg(cd2);
-        g_welcomeScene = new eyelen3E.CWelcomeScene_Eyelen3E();
+        g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
         g_mainMenu = new eyelen3E.CMainMenu();
         g_mainMenu.setTrueWidth(this.stage.stageWidth);
         g_mainMenu.setTrueHeight(this.stage.stageHeight);

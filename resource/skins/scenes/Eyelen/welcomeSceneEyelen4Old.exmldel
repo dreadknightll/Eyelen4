@@ -25,9 +25,15 @@
 
 	<e:Label text="　　如有偏差，请校准(开始练习后进行)。每台设备通常只需检查一次。" textColor="0x000000" width="398" height="75" x="35" y="692" size="24" />
 	<e:Image id="showCRBtn" source="copyright_png" x="394" y="724" anchorOffsetX="0" width="60" anchorOffsetY="0" height="60"/>
-	<eyelen3E:CShutDownClock id="shutdownClock" width="69" height="57" x="332.5" y="49.5" anchorOffsetX="0" anchorOffsetY="0"/>
+	<eyelen4:CShutDownClock id="shutdownClock" width="69" height="57" x="332.5" y="49.5" anchorOffsetX="0" anchorOffsetY="0"/>
 	<eyelen3E:CCopyrightPanel id="crPanel" width="400" height="640" x="38.36" y="65.42" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
 	<eyelen3E:CPrivacyPanel id="priPanel" width="400" height="640" x="38.36" y="65.42" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
 	<e:Button id="showPriBtn" label="查看用户政策及隐私协议" x="107" y="750" anchorOffsetY="0" height="41"/>
+
+	<eyelen4:CCopyrightPanel_V2 id="crPanel" width="400" height="640" x="38.36" y="65.42" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
+	<eyelen4:CUserProPanel id="userProPanel" width="400" height="640" x="38.36" y="65.42" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
+	<eyelen4:CHelpPanel id="helpPanel" width="400" height="640" x="38.36" y="65.42" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
+	<eyelen4:CPrivacyPolicyPanel id="priPoliPanel" width="400" height="640" x="38.36" y="65.42" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
+	<eyelen4:CHorverCheckPanel id="horverCheckPanel" y="100" horizontalCenter="0" visible="false"/>
 
 </e:Skin>
