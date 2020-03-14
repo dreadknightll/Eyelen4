@@ -11,4 +11,3 @@ var CLenPtsRects = (function () {
     return CLenPtsRects;
 }());
 __reflect(CLenPtsRects.prototype, "CLenPtsRects");
-//# sourceMappingURL=CLenPtsRects.js.map

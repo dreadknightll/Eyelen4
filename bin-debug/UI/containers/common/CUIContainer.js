@@ -147,4 +147,3 @@ var CUIContainer = (function () {
     return CUIContainer;
 }());
 __reflect(CUIContainer.prototype, "CUIContainer", ["IUIContainer", "INotiParent", "gdeint.IHidable"]);
-//# sourceMappingURL=CUIContainer.js.map

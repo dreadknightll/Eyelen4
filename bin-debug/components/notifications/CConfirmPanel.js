@@ -109,4 +109,3 @@ var gdeint;
     gdeint.CConfirmPanel = CConfirmPanel;
     __reflect(CConfirmPanel.prototype, "gdeint.CConfirmPanel", ["IConfirmDlg", "INotification", "IContainerPlugin", "gdeint.IHidable"]);
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CConfirmPanel.js.map

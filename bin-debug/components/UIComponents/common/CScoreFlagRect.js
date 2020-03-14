@@ -107,4 +107,3 @@ var CScoreFlagRect = (function () {
     return CScoreFlagRect;
 }());
 __reflect(CScoreFlagRect.prototype, "CScoreFlagRect", ["IScoreFlagRect"]);
-//# sourceMappingURL=CScoreFlagRect.js.map

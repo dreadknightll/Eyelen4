@@ -57,4 +57,3 @@ var eyelen4;
     eyelen4.CBottomAreaEasy = CBottomAreaEasy;
     __reflect(CBottomAreaEasy.prototype, "eyelen4.CBottomAreaEasy");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CBottomAreaEasy.js.map

@@ -25,4 +25,3 @@ var eyelen4;
     eyelen4.CCloseBtn = CCloseBtn;
     __reflect(CCloseBtn.prototype, "eyelen4.CCloseBtn");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CCloseBtn.js.map

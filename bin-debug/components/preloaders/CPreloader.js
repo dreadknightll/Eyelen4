@@ -170,4 +170,3 @@ var CPreloader = (function () {
     return CPreloader;
 }());
 __reflect(CPreloader.prototype, "CPreloader", ["IPreloader"]);
-//# sourceMappingURL=CPreloader.js.map

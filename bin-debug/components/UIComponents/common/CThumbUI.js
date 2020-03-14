@@ -119,4 +119,3 @@ var eyelen4;
     eyelen4.CThumbUI = CThumbUI;
     __reflect(CThumbUI.prototype, "eyelen4.CThumbUI");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CThumbUI.js.map

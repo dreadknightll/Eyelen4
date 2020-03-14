@@ -103,4 +103,3 @@ var gdeint;
     gdeint.CRandomGraph = CRandomGraph;
     __reflect(CRandomGraph.prototype, "gdeint.CRandomGraph");
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CRandomGraph.js.map

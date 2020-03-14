@@ -706,4 +706,3 @@ var eyelen4;
     eyelen4.CPraEasyScene = CPraEasyScene;
     __reflect(CPraEasyScene.prototype, "eyelen4.CPraEasyScene");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CPraEasyScene.js.map

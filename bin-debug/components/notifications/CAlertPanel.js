@@ -97,4 +97,3 @@ var gdeint;
     gdeint.CAlertPanel = CAlertPanel;
     __reflect(CAlertPanel.prototype, "gdeint.CAlertPanel", ["IAlertDlg", "INotification", "IContainerPlugin", "gdeint.IHidable"]);
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CAlertPanel.js.map

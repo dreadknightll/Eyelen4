@@ -15,6 +15,7 @@ r.prototype = e.prototype, t.prototype = new r();
  * 使用方法：设置width —> 设置height —> setColor() —> draw() 。
  *
  */
+// 对于刘海屏问题，IOS Native无需使用TopSpace，把data-scale-mode设为“showAll”即可解决。微信小游戏此问题尚未解决。
 var CTopSpace_Eyelen = (function (_super) {
     __extends(CTopSpace_Eyelen, _super);
     function CTopSpace_Eyelen() {
@@ -40,4 +41,3 @@ var CTopSpace_Eyelen = (function (_super) {
     return CTopSpace_Eyelen;
 }(egret.DisplayObjectContainer));
 __reflect(CTopSpace_Eyelen.prototype, "CTopSpace_Eyelen");
-//# sourceMappingURL=CTopSpace_Eyelen.js.map

@@ -66,4 +66,3 @@ var CLenCheckerEasy = (function () {
     return CLenCheckerEasy;
 }());
 __reflect(CLenCheckerEasy.prototype, "CLenCheckerEasy", ["ILenCheckerEasy", "IGridLenChecker", "ILenChecker", "ILenCheckerWithCa"]);
-//# sourceMappingURL=CLenCheckerEasy.js.map
