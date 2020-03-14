@@ -165,7 +165,36 @@ var CEyelenPraContainer = (function (_super) {
                 tmpLens.push(tmpLen);
             }
         }
-        this.m_praScene.setLenArr(tmpLens);
+        if (this.m_NoImgMode) {
+            var tmpLens2;
+            tmpLens2 = new Array();
+            var i;
+            for (i = 0; i < tmpLens.length; ++i) {
+                var fixedLen;
+                fixedLen = tmpLens[i];
+                if (fixedLen.m_isHor) {
+                    while (fixedLen.m_x + fixedLen.m_length > 1024) {
+                        fixedLen.m_x -= 200;
+                    }
+                    while (fixedLen.m_y > 720) {
+                        fixedLen.m_y -= 200;
+                    }
+                }
+                else {
+                    while (fixedLen.m_x > 1024) {
+                        fixedLen.m_x -= 200;
+                    }
+                    while (fixedLen.m_y + fixedLen.m_length > 720) {
+                        fixedLen.m_y -= 200;
+                    }
+                }
+                tmpLens2.push(fixedLen);
+            }
+            this.m_praScene.setLenArr(tmpLens2);
+        }
+        else {
+            this.m_praScene.setLenArr(tmpLens);
+        }
         if (this.m_NoImgMode) {
             this.onPicImgLoadComplete();
         }

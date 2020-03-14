@@ -6,16 +6,42 @@ var CEyelen3EHTTPSResUrlFinder = (function () {
     };
     CEyelen3EHTTPSResUrlFinder.prototype.getResult = function () {
         var ret;
-        ret = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getImgCrossDomain.php?tag=";
-        var temp = parseInt(this.m_inpStr.substr(4, 3));
-        if (temp < 10) {
-            ret += ("00" + temp.toString());
-        }
-        else if (temp < 100) {
-            ret += ("0" + temp.toString());
+        var strTmpTag;
+        var temp;
+        if (this.m_inpStr.indexOf(".gif") >= 0 || this.m_inpStr.indexOf("_gif") >= 0 || this.m_inpStr.indexOf("img") >= 0) {
+            temp = parseInt(this.m_inpStr.substr(4, 3));
+            strTmpTag = "";
+            if (temp < 10) {
+                strTmpTag = "00" + temp.toString();
+            }
+            else if (temp < 100) {
+                strTmpTag = "0" + temp.toString();
+            }
+            else {
+                strTmpTag = "" + temp.toString();
+            }
+            ret = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getImgCrossDomain.php?tag=";
+            ret += strTmpTag;
         }
         else {
-            ret += temp.toString();
+            if (this.m_inpStr.indexOf(".json") >= 0) {
+                temp = parseInt(this.m_inpStr.substr(3, 3));
+            }
+            else {
+                temp = parseInt(this.m_inpStr);
+            }
+            strTmpTag = "";
+            if (temp < 10) {
+                strTmpTag = "00" + temp.toString();
+            }
+            else if (temp < 100) {
+                strTmpTag = "0" + temp.toString();
+            }
+            else {
+                strTmpTag = "" + temp.toString();
+            }
+            ret = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getPicCrossDomain.php?tag=";
+            ret += strTmpTag;
         }
         return ret;
     };

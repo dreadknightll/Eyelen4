@@ -56,15 +56,25 @@ declare class caliDlgSkin extends eui.Skin{
 }
 declare class closeBtnSkin extends eui.Skin{
 }
+declare class copyrightPanelSkin_v2 extends eui.Skin{
+}
 declare class copyrightPanelSkin extends eui.Skin{
 }
+declare class cpyTextPanelSkin extends eui.Skin{
+}
 declare class finalScoreDlgSkin extends eui.Skin{
+}
+declare class helpPanelSkin extends eui.Skin{
+}
+declare class horverCheckPanelSkin extends eui.Skin{
 }
 declare class noBtnSkin extends eui.Skin{
 }
 declare class preloaderUISkin extends eui.Skin{
 }
 declare class privacyPanelSkin extends eui.Skin{
+}
+declare class privacyPanelSkin_V2 extends eui.Skin{
 }
 declare class progressViewSkin extends eui.Skin{
 }
@@ -75,6 +85,8 @@ declare class scoreViewSkin extends eui.Skin{
 declare class shutdownClock extends eui.Skin{
 }
 declare class thumbUI extends eui.Skin{
+}
+declare class userProPanelSkin extends eui.Skin{
 }
 declare class yesBtnSkin extends eui.Skin{
 }

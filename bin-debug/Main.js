@@ -241,18 +241,19 @@ var Main = (function (_super) {
                         loadingView1.visible = false;
                         this.stage.removeChild(loadingView1);
                         loadingView2 = new LoadingUI_Eint_V2();
-                        //            loadingView2.setWinSize(g_winWidth,g_winHeight);
-                        loadingView2.setWinSize(200, 300);
+                        loadingView2.setWinSize(g_winWidth, g_winHeight);
+                        //            loadingView2.setWinSize(200,300);
                         loadingView2.create();
                         this.stage.addChild(loadingView2);
                         loadingView2.visible = true;
-                        return [4 /*yield*/, RES.loadGroup("eint", 0, loadingView1)];
+                        return [4 /*yield*/, RES.loadGroup("eint", 0, loadingView2)];
                     case 12:
                         _a.sent(); //eint资源组有宜英通用的图片音乐等资源。
                         return [4 /*yield*/, RES.loadGroup("preload", 0, loadingView2)];
                     case 13:
                         _a.sent(); //preload资源组为系统默认资源组。未人工分类的资源都在这里。资源较多。
-                        this.stage.removeChild(loadingView2);
+                        //            await press anykey to continue
+                        this.stage.removeChild(loadingView2); //加载界面用完必须尽快移除。否则安卓Native下很可能会黑屏。
                         return [3 /*break*/, 15];
                     case 14:
                         e_1 = _a.sent();
