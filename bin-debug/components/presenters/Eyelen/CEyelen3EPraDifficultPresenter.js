@@ -482,7 +482,6 @@ var CEyelen3EPraDifficultPresenter = (function () {
      * 获取经渲染过滤器输出后的缩略图区域。
      */
     CEyelen3EPraDifficultPresenter.prototype.getThumbRect = function () {
-        console.log("Getting thRect,thWidth:" + this.m_itm.getThWidth());
         this.m_itm.setImgWidth(this.m_renderFilter.xOConv(this.m_imgWidth));
         var ret;
         ret = new gdeint.CRect();

@@ -280,23 +280,17 @@ namespace eyelen4 {
             //Affect:thumb
             //Do not affect:thumbSel,thumbQuestioner
 
-            console.log("Readjusting thumb!");
-
             var thRect:gdeint.CRect = this.m_UIPresenter.getThumbRect();
 
             if(this.m_NoImgMode) {
                 this.topArea.thumbUI.setShape(this.midArea.m_randomGraphShape);
-                console.log("Shape set!");
             }
             else {
                 this.topArea.thumbUI.setImgSrc(this.m_curImgResName);
             }
 
-            console.log("Rect height:"+thRect.m_height);
-
             this.topArea.thumbUI.x = thRect.m_left / 480 * this.m_winWidth;
             this.topArea.thumbUI.y = thRect.m_top;
-            console.log("ThumbY:"+thRect.m_top);
 
             this.topArea.thumbUI.setThumbWidth(thRect.m_width);
             this.topArea.thumbUI.setThumbHeight(thRect.m_height);

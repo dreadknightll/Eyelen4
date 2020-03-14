@@ -5,6 +5,7 @@
  * 使用方法：设置width —> 设置height —> setColor() —> draw() 。
  * 
  */
+// 对于刘海屏问题，IOS Native无需使用TopSpace，把data-scale-mode设为“showAll”即可解决。微信小游戏此问题尚未解决。
 class CTopSpace_Eyelen extends egret.DisplayObjectContainer{
 	public constructor() {
     	super();

@@ -27,7 +27,6 @@ var eyelen4;
         }
         CThumbUI.prototype.childrenCreated = function () {
             this.randomGraphThumbGrp.addChild(this.m_randomGraphShape);
-            console.log("Thumb size on cc:" + this.m_randomGraphShape.width + "," + this.m_randomGraphShape.height);
             this.thumbCover.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onThumbTap, this);
             this.m2_cc = true;
             if (this.m_NoImgMode) {

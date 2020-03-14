@@ -598,7 +598,6 @@ class CEyelen3EPraDifficultPresenter implements IEyelen3EPraDifficultPresenter {
      * 获取经渲染过滤器输出后的缩略图区域。
      */ 
     public getThumbRect(): gdeint.CRect {
-        console.log("Getting thRect,thWidth:"+this.m_itm.getThWidth());
         this.m_itm.setImgWidth(this.m_renderFilter.xOConv(this.m_imgWidth));
         var ret:gdeint.CRect;
         ret = new gdeint.CRect();

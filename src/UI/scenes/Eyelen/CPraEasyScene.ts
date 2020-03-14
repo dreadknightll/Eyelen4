@@ -282,9 +282,6 @@ namespace eyelen4 {
             //Do not affect:thumbSel,thumbQuestioner
 
             var thRect:gdeint.CRect = this.m_UIPresenter.getThumbRect();
-
-            console.log("Readjust thumb size to:"+thRect.m_width+","+thRect.m_height);
-
             this.topArea.thumbUI.x = thRect.m_left / 480 * this.m_winWidth;
             this.topArea.thumbUI.y = thRect.m_top;
             this.topArea.thumbUI.setThumbWidth(thRect.m_width);
@@ -330,7 +327,6 @@ namespace eyelen4 {
         */ 
         private showImg(imgResName:string):void
         {
-            console.log("ShowImg!");
             if(this.m_NoImgMode) {
 
             }
@@ -411,7 +407,6 @@ namespace eyelen4 {
             this.m_UIPresenter.inpImgSelPt(selPt);
             this.m_UIPresenter.inpImgSelWidth(this.m_wm.getWinWidth()/this.m_UIPresenter.getRenderFilter()._getCaRat());
             this.m_UIPresenter.inpImgSelHeight(this.m_wm.getMidVisibleHeight());
-            console.log("ThSelWidth:"+this.m_UIPresenter.getThumbRect().m_width);
 
             var imgRect:gdeint.CRect;
             imgRect = this.m_UIPresenter.getImgRect();

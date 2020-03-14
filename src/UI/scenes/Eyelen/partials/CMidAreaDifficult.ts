@@ -109,7 +109,6 @@ namespace eyelen4 {
         }
 
         private touchBegin(evt:egret.TouchEvent):void {
-            console.log("Tch begin difficult mid!");
             this.m2_imgTchStartPoint.m_x = evt.stageX;
             this.m2_imgTchStartPoint.m_y = evt.stageY;
             this.m2_imgStartPoint.m_x = this.midContentGroup.x;
