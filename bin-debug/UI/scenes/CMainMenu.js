@@ -14,8 +14,8 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CMainMenu = (function (_super) {
         __extends(CMainMenu, _super);
         function CMainMenu() {
@@ -104,7 +104,7 @@ var eyelen3E;
         };
         return CMainMenu;
     }(eui.Panel));
-    eyelen3E.CMainMenu = CMainMenu;
-    __reflect(CMainMenu.prototype, "eyelen3E.CMainMenu");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CMainMenu = CMainMenu;
+    __reflect(CMainMenu.prototype, "eyelen4.CMainMenu");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CMainMenu.js.map

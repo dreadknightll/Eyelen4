@@ -14,8 +14,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * 本卷尺控件由尺盒、尺带、拉环三部分组成。用户拉动拉环进行目测结果输入。
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CLenInputerDifficult = (function (_super) {
         __extends(CLenInputerDifficult, _super);
         function CLenInputerDifficult() {
@@ -157,7 +157,7 @@ var eyelen3E;
         };
         return CLenInputerDifficult;
     }(CLenInputerBase));
-    eyelen3E.CLenInputerDifficult = CLenInputerDifficult;
-    __reflect(CLenInputerDifficult.prototype, "eyelen3E.CLenInputerDifficult");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CLenInputerDifficult = CLenInputerDifficult;
+    __reflect(CLenInputerDifficult.prototype, "eyelen4.CLenInputerDifficult");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CLenInputerDifficult.js.map

@@ -5,7 +5,7 @@
 *
 ************************************************************/
 
-namespace eyelen3E {
+namespace gdeint {
     export class CConfirmPanel extends eui.Panel implements IConfirmDlg,IContainerPlugin {
         public constructor() {
             super();

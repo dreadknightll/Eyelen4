@@ -24,13 +24,13 @@ var s_cellWidth = 20;
  *  2、setWinWidth/setWinHeight。
  *  3、startNewPra。
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CPraDifficultScene extends CCommonEyelenPraScene{
         public topAreaGroup:eui.Group;
         private bgUnderTopGrp:eui.Group;
-        public topArea:eyelen3E.CTopArea_Eyelen;
+        public topArea:eyelen4.CTopArea_Eyelen;
         public midAreaGroup:eui.Group;
-        public midArea:eyelen3E.CMidAreaDifficult;
+        public midArea:eyelen4.CMidAreaDifficult;
         public bottomAreaGroup:eui.Group;
         public bottomArea:CBottomAreaDifficult;
 

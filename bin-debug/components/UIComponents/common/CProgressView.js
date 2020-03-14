@@ -13,8 +13,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * 练习进度条。
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CProgressView = (function (_super) {
         __extends(CProgressView, _super);
         function CProgressView() {
@@ -55,7 +55,7 @@ var eyelen3E;
         };
         return CProgressView;
     }(eui.Component));
-    eyelen3E.CProgressView = CProgressView;
-    __reflect(CProgressView.prototype, "eyelen3E.CProgressView");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CProgressView = CProgressView;
+    __reflect(CProgressView.prototype, "eyelen4.CProgressView");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CProgressView.js.map

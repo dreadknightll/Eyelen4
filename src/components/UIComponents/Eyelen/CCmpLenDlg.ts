@@ -8,7 +8,7 @@
 function anyObj() {
 }
 
-namespace eyelen3E {
+namespace eyelen4 {
     export class CCmpLenDlg extends eui.Component {
 
         //以下变量与 exml皮肤里的元素相对应。

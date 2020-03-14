@@ -14,8 +14,8 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CCopyrightPanel = (function (_super) {
         __extends(CCopyrightPanel, _super);
         function CCopyrightPanel() {
@@ -96,7 +96,7 @@ var eyelen3E;
         };
         return CCopyrightPanel;
     }(eui.Component));
-    eyelen3E.CCopyrightPanel = CCopyrightPanel;
-    __reflect(CCopyrightPanel.prototype, "eyelen3E.CCopyrightPanel");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CCopyrightPanel = CCopyrightPanel;
+    __reflect(CCopyrightPanel.prototype, "eyelen4.CCopyrightPanel");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CCopyrightPanel.js.map

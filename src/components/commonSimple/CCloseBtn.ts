@@ -3,7 +3,7 @@
  * @author 
  *
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CCloseBtn extends eui.Button {
         private m_btn: egret.Bitmap;
         public constructor() {

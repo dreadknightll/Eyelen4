@@ -4,7 +4,7 @@
  * 本控件只直接显示用户填入的数据。不进行横竖校准等计算。
  * 
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CGridCmpLenDlg extends eui.Component {
 
         //以下变量与 exml皮肤里的元素对应。////////////////////////////////////////

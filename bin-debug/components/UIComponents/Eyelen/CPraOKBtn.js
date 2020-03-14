@@ -13,8 +13,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * 底部区域的确定按钮。
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CPraOKBtn = (function (_super) {
         __extends(CPraOKBtn, _super);
         function CPraOKBtn() {
@@ -24,7 +24,7 @@ var eyelen3E;
         };
         return CPraOKBtn;
     }(eui.Button));
-    eyelen3E.CPraOKBtn = CPraOKBtn;
-    __reflect(CPraOKBtn.prototype, "eyelen3E.CPraOKBtn");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CPraOKBtn = CPraOKBtn;
+    __reflect(CPraOKBtn.prototype, "eyelen4.CPraOKBtn");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CPraOKBtn.js.map

@@ -8,8 +8,8 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var eyelen3E;
-(function (eyelen3E) {
+var gdeint;
+(function (gdeint) {
     var CRandomGraph = (function (_super) {
         __extends(CRandomGraph, _super);
         function CRandomGraph() {
@@ -100,7 +100,7 @@ var eyelen3E;
         };
         return CRandomGraph;
     }(eui.Component));
-    eyelen3E.CRandomGraph = CRandomGraph;
-    __reflect(CRandomGraph.prototype, "eyelen3E.CRandomGraph");
-})(eyelen3E || (eyelen3E = {}));
+    gdeint.CRandomGraph = CRandomGraph;
+    __reflect(CRandomGraph.prototype, "gdeint.CRandomGraph");
+})(gdeint || (gdeint = {}));
 //# sourceMappingURL=CRandomGraph.js.map

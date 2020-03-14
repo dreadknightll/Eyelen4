@@ -126,7 +126,7 @@
 		"bin-debug/UI/containers/Eyelen/CEyelenPraContainer.js",
 		"bin-debug/UI/containers/Eyelen/IEyelenPraContainer.js",
 		"bin-debug/UI/scenes/CMainMenu.js",
-		"bin-debug/UI/scenes/CWelcomeScene_Eyelen3E.js",
+		"bin-debug/UI/scenes/CWelcomePage_Eyelen4.js",
 		"bin-debug/UI/scenes/CWelcomeScene_Eyelen4.js",
 		"bin-debug/UI/scenes/common/IScene.js",
 		"bin-debug/ThemeAdapter.js",

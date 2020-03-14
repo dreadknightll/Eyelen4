@@ -3,7 +3,7 @@
  * 最终得分显示对话框。 
  *
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CFinalScoreDlg extends eui.Component{
         public constructor() {
             super();

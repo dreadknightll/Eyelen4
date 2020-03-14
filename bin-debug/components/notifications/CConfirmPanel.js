@@ -13,8 +13,8 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var eyelen3E;
-(function (eyelen3E) {
+var gdeint;
+(function (gdeint) {
     var CConfirmPanel = (function (_super) {
         __extends(CConfirmPanel, _super);
         function CConfirmPanel() {
@@ -106,7 +106,7 @@ var eyelen3E;
         };
         return CConfirmPanel;
     }(eui.Panel));
-    eyelen3E.CConfirmPanel = CConfirmPanel;
-    __reflect(CConfirmPanel.prototype, "eyelen3E.CConfirmPanel", ["IConfirmDlg", "INotification", "IContainerPlugin", "gdeint.IHidable"]);
-})(eyelen3E || (eyelen3E = {}));
+    gdeint.CConfirmPanel = CConfirmPanel;
+    __reflect(CConfirmPanel.prototype, "gdeint.CConfirmPanel", ["IConfirmDlg", "INotification", "IContainerPlugin", "gdeint.IHidable"]);
+})(gdeint || (gdeint = {}));
 //# sourceMappingURL=CConfirmPanel.js.map

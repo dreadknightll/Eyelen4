@@ -13,8 +13,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * @author
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CPreloaderUI = (function (_super) {
         __extends(CPreloaderUI, _super);
         function CPreloaderUI() {
@@ -99,7 +99,7 @@ var eyelen3E;
         };
         return CPreloaderUI;
     }(eui.Component));
-    eyelen3E.CPreloaderUI = CPreloaderUI;
-    __reflect(CPreloaderUI.prototype, "eyelen3E.CPreloaderUI", ["IPreloaderUI", "IContainerPlugin", "gdeint.IHidable"]);
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CPreloaderUI = CPreloaderUI;
+    __reflect(CPreloaderUI.prototype, "eyelen4.CPreloaderUI", ["IPreloaderUI", "IContainerPlugin", "gdeint.IHidable"]);
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CPreloaderUI.js.map

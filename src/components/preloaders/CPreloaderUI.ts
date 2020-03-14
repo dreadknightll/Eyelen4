@@ -3,7 +3,7 @@
  * @author 
  *
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CPreloaderUI extends eui.Component implements IPreloaderUI {
         public constructor() {
             super();

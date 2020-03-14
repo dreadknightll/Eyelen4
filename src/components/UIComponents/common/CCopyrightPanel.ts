@@ -5,7 +5,7 @@
  *
 **************************************************/
 
-namespace eyelen3E {
+namespace eyelen4 {
 	export class CCopyrightPanel extends eui.Component {
 		public constructor() {
 			super();

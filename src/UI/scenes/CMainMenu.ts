@@ -5,7 +5,7 @@
  *
 **************************************************/
 
-namespace eyelen3E {
+namespace eyelen4 {
         export class CMainMenu extends eui.Panel {
         //    public scrBg: eui.Image; // 背景色。
         public startDifficultBtn1: eui.Button;

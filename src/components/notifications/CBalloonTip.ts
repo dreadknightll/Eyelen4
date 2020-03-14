@@ -3,7 +3,7 @@
  * 功能类似 window.alert。区别在于提示的是消息气球而不是对话框。
  *
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CBalloonTip extends eui.Panel {
         public constructor() {
             super();

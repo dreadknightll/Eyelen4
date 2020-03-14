@@ -5,7 +5,7 @@
  */
 
 //var g_caRat:number = 1; //To del later
-namespace eyelen3E {
+namespace eyelen4 {
     export class CLenInputerEasy extends CLenInputerBase {
         // 注：横竖校准计算不在本类里进行。
 

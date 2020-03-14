@@ -13,8 +13,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * 最终得分显示对话框。
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CFinalScoreDlg = (function (_super) {
         __extends(CFinalScoreDlg, _super);
         function CFinalScoreDlg() {
@@ -59,7 +59,7 @@ var eyelen3E;
         };
         return CFinalScoreDlg;
     }(eui.Component));
-    eyelen3E.CFinalScoreDlg = CFinalScoreDlg;
-    __reflect(CFinalScoreDlg.prototype, "eyelen3E.CFinalScoreDlg");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CFinalScoreDlg = CFinalScoreDlg;
+    __reflect(CFinalScoreDlg.prototype, "eyelen4.CFinalScoreDlg");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CFinalScoreDlg.js.map

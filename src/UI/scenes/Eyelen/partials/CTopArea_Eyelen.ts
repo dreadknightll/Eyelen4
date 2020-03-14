@@ -6,7 +6,7 @@
  *
  */
 
-namespace eyelen3E {
+namespace eyelen4 {
 
     export class CTopArea_Eyelen extends eui.Component {
         public constructor() {

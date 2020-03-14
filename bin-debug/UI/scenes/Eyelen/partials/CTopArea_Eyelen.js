@@ -15,8 +15,8 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CTopArea_Eyelen = (function (_super) {
         __extends(CTopArea_Eyelen, _super);
         function CTopArea_Eyelen() {
@@ -122,7 +122,7 @@ var eyelen3E;
         };
         return CTopArea_Eyelen;
     }(eui.Component));
-    eyelen3E.CTopArea_Eyelen = CTopArea_Eyelen;
-    __reflect(CTopArea_Eyelen.prototype, "eyelen3E.CTopArea_Eyelen");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CTopArea_Eyelen = CTopArea_Eyelen;
+    __reflect(CTopArea_Eyelen.prototype, "eyelen4.CTopArea_Eyelen");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CTopArea_Eyelen.js.map

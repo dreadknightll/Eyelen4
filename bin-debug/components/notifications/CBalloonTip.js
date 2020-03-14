@@ -13,8 +13,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * 功能类似 window.alert。区别在于提示的是消息气球而不是对话框。
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CBalloonTip = (function (_super) {
         __extends(CBalloonTip, _super);
         function CBalloonTip() {
@@ -44,7 +44,7 @@ var eyelen3E;
         };
         return CBalloonTip;
     }(eui.Panel));
-    eyelen3E.CBalloonTip = CBalloonTip;
-    __reflect(CBalloonTip.prototype, "eyelen3E.CBalloonTip");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CBalloonTip = CBalloonTip;
+    __reflect(CBalloonTip.prototype, "eyelen4.CBalloonTip");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CBalloonTip.js.map

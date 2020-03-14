@@ -285,7 +285,7 @@ var Main = (function (_super) {
                 aLabel.text="abcdabcdabcdabcdabcdabcdabcd";
                 this.addChild(aLabel);
                 return;*/
-        g_praEasyScene = new eyelen3E.CPraEasyScene();
+        g_praEasyScene = new eyelen4.CPraEasyScene();
         /*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
                     g_praEasyScene.m_NoImgMode = true;
                 }*/
@@ -294,7 +294,7 @@ var Main = (function (_super) {
         }
         g_dlgLayerContainer.addChild(g_praEasyScene.getDlgLayer().toEgretDispObjContainer());
         g_notiLayerContainer.addChild(g_praEasyScene.getNotiLayer().toEgretDispObjContainer());
-        g_praDifficultScene = new eyelen3E.CPraDifficultScene();
+        g_praDifficultScene = new eyelen4.CPraDifficultScene();
         /*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
                     g_praDifficultScene.m_NoImgMode = true;
                 }*/
@@ -319,18 +319,18 @@ var Main = (function (_super) {
         else {
         }
         g_praEasyContainer.setPraScene(g_praEasyScene);
-        var cad = new eyelen3E.CAlertPanel();
+        var cad = new gdeint.CAlertPanel();
         cad.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale); // 把主场景的位置和尺寸告诉警告框插件，让其可以自行计算警告框的位置和尺寸。
         g_praEasyContainer.setAlertDlg(cad);
-        var cp = new eyelen3E.CConfirmPanel();
+        var cp = new gdeint.CConfirmPanel();
         cp.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         g_praEasyContainer.setConfirmDlg(cp);
-        var pui = new eyelen3E.CPreloaderUI();
+        var pui = new eyelen4.CPreloaderUI();
         pui.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         g_praEasyContainer.setPreloaderUI(pui);
         g_sceneLayer.addChild(pui);
         g_praEasyContainer.setPreloaderUI(pui);
-        var cd = new eyelen3E.CCaliDlg();
+        var cd = new eyelen4.CCaliDlg();
         cd.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         cd.hide();
         g_praEasyContainer.setCaliDlg(cd);
@@ -345,23 +345,23 @@ var Main = (function (_super) {
             }
         }
         g_praDifficultContainer.setPraScene(g_praDifficultScene);
-        var cad2 = new eyelen3E.CAlertPanel();
+        var cad2 = new gdeint.CAlertPanel();
         cad2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         g_praDifficultContainer.setAlertDlg(cad2);
-        var cp2 = new eyelen3E.CConfirmPanel();
+        var cp2 = new gdeint.CConfirmPanel();
         cp2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         g_praDifficultContainer.setConfirmDlg(cp2);
-        var pui2 = new eyelen3E.CPreloaderUI();
+        var pui2 = new eyelen4.CPreloaderUI();
         pui2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         pui2.hide();
         g_sceneLayer.addChild(pui2);
         g_praDifficultContainer.setPreloaderUI(pui2);
-        var cd2 = new eyelen3E.CCaliDlg();
+        var cd2 = new eyelen4.CCaliDlg();
         cd2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         cd2.hide();
         g_praDifficultContainer.setCaliDlg(cd2);
         g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
-        g_mainMenu = new eyelen3E.CMainMenu();
+        g_mainMenu = new eyelen4.CMainMenu();
         g_mainMenu.setTrueWidth(this.stage.stageWidth);
         g_mainMenu.setTrueHeight(this.stage.stageHeight);
         g_mainMenu.visible = false;
@@ -370,8 +370,10 @@ var Main = (function (_super) {
         g_welcomeScene.scaleY = g_scale; //scaleX、scaleY保持相等，确保横竖检验功能正常。
         g_welcomeScene.x = g_scenePos.m_x;
         g_welcomeScene.y = g_scenePos.m_y;
-        var welcomeSceneAdapter = new CPage2EuiAdapter();
-        welcomeSceneAdapter.m_adaptee = g_welcomeScene;
+        /*        var welcomeSceneAdapter:CPage2EuiAdapter = new CPage2EuiAdapter();
+                welcomeSceneAdapter.m_adaptee = g_welcomeScene;*/
+        var welcomePage = new CWelcomePage_Eyelen4();
+        welcomePage.m_scene = g_welcomeScene;
         var mainMenuSceneAdapter = new CPage2EuiAdapter();
         mainMenuSceneAdapter.m_adaptee = g_mainMenu;
         var praEasyContainerAdapter = new CPage2EyelenPraContainerAdapter();
@@ -379,7 +381,7 @@ var Main = (function (_super) {
         var praDifficultContainerAdapter = new CPage2EyelenPraContainerAdapter();
         praDifficultContainerAdapter.m_adaptee = g_praDifficultContainer;
         // 把以上场景添加到页面跳转器，方便跳转。
-        g_pageJumper.setPage("WelcomeScene", welcomeSceneAdapter);
+        g_pageJumper.setPage("WelcomeScene", welcomePage);
         g_pageJumper.setPage("MainMenu", mainMenuSceneAdapter);
         g_pageJumper.setPage("PraEasyScene", praEasyContainerAdapter);
         g_pageJumper.setPage("PraDifficultScene", praDifficultContainerAdapter);

@@ -182,11 +182,8 @@ namespace eyelen4 {
             this.m2_tmpS2StartBtn = false;
             this.startBtn.visible = false;
 
-            g_praEasyContainer.startNewPra();
-            g_praEasyContainer.saveVisibleStates();
-
-            g_pageJumper.gotoPage("PraScene",null);
-
+            g_pageJumper.gotoPage("MainMenu",null);
+            g_mainMenu.run();
         }
     }
 }

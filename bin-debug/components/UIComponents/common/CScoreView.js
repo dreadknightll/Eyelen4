@@ -14,8 +14,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * 练习得分显示（含数字和图示）。
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CScoreView = (function (_super) {
         __extends(CScoreView, _super);
         function CScoreView() {
@@ -97,7 +97,7 @@ var eyelen3E;
         };
         return CScoreView;
     }(eui.Component));
-    eyelen3E.CScoreView = CScoreView;
-    __reflect(CScoreView.prototype, "eyelen3E.CScoreView");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CScoreView = CScoreView;
+    __reflect(CScoreView.prototype, "eyelen4.CScoreView");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CScoreView.js.map

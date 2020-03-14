@@ -13,8 +13,8 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var eyelen3E;
-(function (eyelen3E) {
+var gdeint;
+(function (gdeint) {
     var CAlertPanel = (function (_super) {
         __extends(CAlertPanel, _super);
         function CAlertPanel() {
@@ -94,7 +94,7 @@ var eyelen3E;
         };
         return CAlertPanel;
     }(eui.Panel));
-    eyelen3E.CAlertPanel = CAlertPanel;
-    __reflect(CAlertPanel.prototype, "eyelen3E.CAlertPanel", ["IAlertDlg", "INotification", "IContainerPlugin", "gdeint.IHidable"]);
-})(eyelen3E || (eyelen3E = {}));
+    gdeint.CAlertPanel = CAlertPanel;
+    __reflect(CAlertPanel.prototype, "gdeint.CAlertPanel", ["IAlertDlg", "INotification", "IContainerPlugin", "gdeint.IHidable"]);
+})(gdeint || (gdeint = {}));
 //# sourceMappingURL=CAlertPanel.js.map

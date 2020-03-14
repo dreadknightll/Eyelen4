@@ -8,7 +8,7 @@
 var g2_pcnt:number = 0;
 var g2_mcnt: number = 0;
 
-namespace eyelen3E {
+namespace eyelen4 {
     export class CCaliDlg extends eui.Component implements ICaliDlgPlugin {
         public constructor() {
             super();

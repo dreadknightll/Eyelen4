@@ -1,13 +1,13 @@
 /*
 	本组件只提供元素。大小和位置操作由外部程序负责。
 */
-namespace eyelen3E {
+namespace eyelen4 {
 	export class CThumbUI extends eui.Component {
 		private thumb:eui.Group;
 		private imgThumb:eui.Image;
 		private randomGraphThumbGrp:eui.Group;
 		private m_NoImgMode:boolean = false;
-		private m_randomGraphShape:CRandomGraph;
+		private m_randomGraphShape:gdeint.CRandomGraph;
 		private thumbSel:eui.Image;
 
 		public midLayerGrp:eui.Group;
@@ -22,7 +22,7 @@ namespace eyelen3E {
 		public constructor() {
 			super();
 			this.m_thumbTapEvt = new CThumbUIEvent(CThumbUIEvent.EVT_THUMB_TAP);
-			this.m_randomGraphShape = new CRandomGraph();
+			this.m_randomGraphShape = new gdeint.CRandomGraph();
 			this.m_randomGraphShape.width = 150;
 			this.m_randomGraphShape.height = 120;
 			this.m_randomGraphShape.visible = false;
@@ -105,7 +105,7 @@ namespace eyelen3E {
 			this.imgThumb.source = s;
 		}
 
-		public setShape(shp:CRandomGraph) {
+		public setShape(shp:gdeint.CRandomGraph) {
 			console.log("Setting shape!");
 			this.setNoImgMode(true);
 			this.m_randomGraphShape.copyFrom(shp , false);

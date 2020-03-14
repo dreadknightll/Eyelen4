@@ -16,8 +16,8 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 function anyObj() {
 }
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CCmpLenDlg = (function (_super) {
         __extends(CCmpLenDlg, _super);
         function CCmpLenDlg() {
@@ -173,7 +173,7 @@ var eyelen3E;
         };
         return CCmpLenDlg;
     }(eui.Component));
-    eyelen3E.CCmpLenDlg = CCmpLenDlg;
-    __reflect(CCmpLenDlg.prototype, "eyelen3E.CCmpLenDlg");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CCmpLenDlg = CCmpLenDlg;
+    __reflect(CCmpLenDlg.prototype, "eyelen4.CCmpLenDlg");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CCmpLenDlg.js.map

@@ -3,7 +3,7 @@
  * 练习场景中部区域。
  *
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CMidAreaDifficult extends eui.Component {
         public constructor() {
             super();
@@ -14,7 +14,7 @@ namespace eyelen3E {
 
             this.m_evtImgDragEnd = new CMidAreaEvent_Eyelen(CMidAreaEvent_Eyelen.EVT_IMG_DRAGEND);
 
-            this.m_randomGraphShape = new CRandomGraph();
+            this.m_randomGraphShape = new gdeint.CRandomGraph();
         }
 
         private midBgGrp:eui.Group;
@@ -22,7 +22,7 @@ namespace eyelen3E {
         public imgGrp:eui.Group;
         public imgFromFile:eui.Image;
         public randomGraph:eui.Group;
-        public m_randomGraphShape:CRandomGraph;
+        public m_randomGraphShape:gdeint.CRandomGraph;
         public midCanvasGrp:eui.Group;
 
         public m_UIPresenter:CEyelen3EPraDifficultPresenter;

@@ -13,8 +13,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * 练习场景中部区域。
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CMidAreaEasy = (function (_super) {
         __extends(CMidAreaEasy, _super);
         function CMidAreaEasy() {
@@ -30,7 +30,7 @@ var eyelen3E;
             _this.m2_imgTchStartPoint = new gdeint.CPoint();
             _this.m2_imgStartPoint = new gdeint.CPoint();
             _this.m_evtImgDragEnd = new CMidAreaEvent_Eyelen(CMidAreaEvent_Eyelen.EVT_IMG_DRAGEND);
-            _this.m_randomGraphShape = new eyelen3E.CRandomGraph();
+            _this.m_randomGraphShape = new gdeint.CRandomGraph();
             _this.m_randomGraphShape.genGraph(1024, 720);
             return _this;
         }
@@ -268,7 +268,7 @@ var eyelen3E;
         };
         return CMidAreaEasy;
     }(eui.Component));
-    eyelen3E.CMidAreaEasy = CMidAreaEasy;
-    __reflect(CMidAreaEasy.prototype, "eyelen3E.CMidAreaEasy");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CMidAreaEasy = CMidAreaEasy;
+    __reflect(CMidAreaEasy.prototype, "eyelen4.CMidAreaEasy");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CMidAreaEasy.js.map

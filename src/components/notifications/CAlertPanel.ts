@@ -4,7 +4,7 @@
 *
 ************************************************************/
 
-namespace eyelen3E {
+namespace gdeint {
     export class CAlertPanel extends eui.Panel implements IAlertDlg,IContainerPlugin {
 
         private m_parent:INotiParent;

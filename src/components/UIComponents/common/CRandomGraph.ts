@@ -1,5 +1,5 @@
 
-namespace eyelen3E {
+namespace gdeint {
     export class CRandomGraph extends eui.Component {
 
 		public constructor() {

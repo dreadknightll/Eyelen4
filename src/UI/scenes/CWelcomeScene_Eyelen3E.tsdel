@@ -8,7 +8,7 @@
 var g_localVer: string; // 本地版本号。
 var g_latestVer: string; // 最新版本号。
 
-namespace eyelen3E {
+namespace eyelen4 {
     export class CWelcomeScene_Eyelen3E extends eui.Component {
         public constructor() {
             super();

@@ -1,4 +1,4 @@
-namespace eyelen3E {
+namespace eyelen4 {
 	export class CBottomAreaDifficult extends eui.Component {
 		public constructor() {
 			super();

@@ -8,8 +8,8 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CBottomAreaDifficult = (function (_super) {
         __extends(CBottomAreaDifficult, _super);
         function CBottomAreaDifficult() {
@@ -54,7 +54,7 @@ var eyelen3E;
         };
         return CBottomAreaDifficult;
     }(eui.Component));
-    eyelen3E.CBottomAreaDifficult = CBottomAreaDifficult;
-    __reflect(CBottomAreaDifficult.prototype, "eyelen3E.CBottomAreaDifficult");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CBottomAreaDifficult = CBottomAreaDifficult;
+    __reflect(CBottomAreaDifficult.prototype, "eyelen4.CBottomAreaDifficult");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CBottomAreaDifficult.js.map

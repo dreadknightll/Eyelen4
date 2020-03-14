@@ -24,7 +24,7 @@ var s_cellWidth = 20;
  *  2、setWinWidth/setWinHeight。
  *  3、startNewPra。
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CPraEasyScene extends CCommonEyelenPraScene{
         public topAreaGroup:eui.Group;
         private bgUnderTopGrp:eui.Group;

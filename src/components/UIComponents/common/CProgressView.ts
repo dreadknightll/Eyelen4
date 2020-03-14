@@ -3,7 +3,7 @@
  * 练习进度条。
  *
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CProgressView extends eui.Component {
 
         public constructor() {

@@ -4,12 +4,12 @@
  * 本卷尺控件由尺盒、尺带、拉环三部分组成。用户拉动拉环进行目测结果输入。
  *
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CLenInputerDifficult extends CLenInputerBase{
         //横竖校准计算不在本类里进行。
         
         //以下变量与 exml皮肤中的元素相对应。//////////////////////////////
-        public okBtn:eyelen3E.CPraOKBtn;
+        public okBtn:eyelen4.CPraOKBtn;
         private drager: egret.DisplayObjectContainer;
         private bg: eui.Image;
         private ruler_head: eui.Group;

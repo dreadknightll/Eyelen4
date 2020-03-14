@@ -13,8 +13,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * @author
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CCloseBtn = (function (_super) {
         __extends(CCloseBtn, _super);
         function CCloseBtn() {
@@ -22,7 +22,7 @@ var eyelen3E;
         }
         return CCloseBtn;
     }(eui.Button));
-    eyelen3E.CCloseBtn = CCloseBtn;
-    __reflect(CCloseBtn.prototype, "eyelen3E.CCloseBtn");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CCloseBtn = CCloseBtn;
+    __reflect(CCloseBtn.prototype, "eyelen4.CCloseBtn");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CCloseBtn.js.map

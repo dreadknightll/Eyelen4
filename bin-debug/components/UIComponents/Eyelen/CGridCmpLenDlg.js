@@ -14,8 +14,8 @@ r.prototype = e.prototype, t.prototype = new r();
  * 本控件只直接显示用户填入的数据。不进行横竖校准等计算。
  *
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CGridCmpLenDlg = (function (_super) {
         __extends(CGridCmpLenDlg, _super);
         function CGridCmpLenDlg() {
@@ -217,7 +217,7 @@ var eyelen3E;
         };
         return CGridCmpLenDlg;
     }(eui.Component));
-    eyelen3E.CGridCmpLenDlg = CGridCmpLenDlg;
-    __reflect(CGridCmpLenDlg.prototype, "eyelen3E.CGridCmpLenDlg");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CGridCmpLenDlg = CGridCmpLenDlg;
+    __reflect(CGridCmpLenDlg.prototype, "eyelen4.CGridCmpLenDlg");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CGridCmpLenDlg.js.map

@@ -74,8 +74,8 @@ if(S_BUILD_FOR == S_NATIVE_IOS) {
 var g_scenePos:gdeint.CPoint; // 此处gdeint为libGdeint使用的命名空间。
 var g_scale:number = 1;
 
-var g_praDifficultScene:eyelen3E.CPraDifficultScene; // 困难难度练习场景。
-var g_praEasyScene:eyelen3E.CPraEasyScene; // 简单难度练习场景。
+var g_praDifficultScene:eyelen4.CPraDifficultScene; // 困难难度练习场景。
+var g_praEasyScene:eyelen4.CPraEasyScene; // 简单难度练习场景。
 
 
 var g_resCache:{[index:string]:CHTTPSResStru} = {};
@@ -91,7 +91,7 @@ var g_praDifficultContainer:CEyelenPraContainer; //困难难度显示容器。
 
 //var g_welcomeScene:eyelen3E.CWelcomeScene_Eyelen3E; // 欢迎屏幕画面。
 var g_welcomeScene:eyelen4.CWelcomeScene_Eyelen4; // 欢迎屏幕画面。
-var g_mainMenu:eyelen3E.CMainMenu; // 主菜单画面
+var g_mainMenu:eyelen4.CMainMenu; // 主菜单画面
 
 //画面采用分层设计。不同类型的元素应显示在不同的层上，以维持合理的前后顺序。
 var g_sceneLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 场景层。
@@ -256,7 +256,7 @@ class Main extends eui.UILayer {
 
 
 
-        g_praEasyScene = new eyelen3E.CPraEasyScene();
+        g_praEasyScene = new eyelen4.CPraEasyScene();
 /*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
             g_praEasyScene.m_NoImgMode = true;
         }*/
@@ -267,7 +267,7 @@ class Main extends eui.UILayer {
         g_dlgLayerContainer.addChild(g_praEasyScene.getDlgLayer().toEgretDispObjContainer());
         g_notiLayerContainer.addChild(g_praEasyScene.getNotiLayer().toEgretDispObjContainer());
 
-        g_praDifficultScene = new eyelen3E.CPraDifficultScene();
+        g_praDifficultScene = new eyelen4.CPraDifficultScene();
 /*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
             g_praDifficultScene.m_NoImgMode = true;
         }*/
@@ -297,21 +297,21 @@ class Main extends eui.UILayer {
 
         g_praEasyContainer.setPraScene(g_praEasyScene);
 
-        var cad:eyelen3E.CAlertPanel = new eyelen3E.CAlertPanel();
+        var cad:gdeint.CAlertPanel = new gdeint.CAlertPanel();
         cad.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale); // 把主场景的位置和尺寸告诉警告框插件，让其可以自行计算警告框的位置和尺寸。
         g_praEasyContainer.setAlertDlg(cad);
 
-        var cp:eyelen3E.CConfirmPanel = new eyelen3E.CConfirmPanel();
+        var cp:gdeint.CConfirmPanel = new gdeint.CConfirmPanel();
         cp.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         g_praEasyContainer.setConfirmDlg(cp);
 
-        var pui:eyelen3E.CPreloaderUI = new eyelen3E.CPreloaderUI();
+        var pui:eyelen4.CPreloaderUI = new eyelen4.CPreloaderUI();
         pui.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         g_praEasyContainer.setPreloaderUI(pui);
         g_sceneLayer.addChild(pui);
         g_praEasyContainer.setPreloaderUI(pui);
 
-        var cd:eyelen3E.CCaliDlg = new eyelen3E.CCaliDlg();
+        var cd:eyelen4.CCaliDlg = new eyelen4.CCaliDlg();
         cd.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         cd.hide();
         g_praEasyContainer.setCaliDlg(cd);
@@ -329,27 +329,27 @@ class Main extends eui.UILayer {
 
         g_praDifficultContainer.setPraScene(g_praDifficultScene);
 
-        var cad2:eyelen3E.CAlertPanel = new eyelen3E.CAlertPanel();
+        var cad2:gdeint.CAlertPanel = new gdeint.CAlertPanel();
         cad2.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         g_praDifficultContainer.setAlertDlg(cad2);
 
-        var cp2:eyelen3E.CConfirmPanel = new eyelen3E.CConfirmPanel();
+        var cp2:gdeint.CConfirmPanel = new gdeint.CConfirmPanel();
         cp2.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         g_praDifficultContainer.setConfirmDlg(cp2);
 
-        var pui2:eyelen3E.CPreloaderUI = new eyelen3E.CPreloaderUI();
+        var pui2:eyelen4.CPreloaderUI = new eyelen4.CPreloaderUI();
         pui2.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         pui2.hide();
         g_sceneLayer.addChild(pui2);
         g_praDifficultContainer.setPreloaderUI(pui2);
 
-        var cd2:eyelen3E.CCaliDlg = new eyelen3E.CCaliDlg();
+        var cd2:eyelen4.CCaliDlg = new eyelen4.CCaliDlg();
         cd2.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         cd2.hide();
         g_praDifficultContainer.setCaliDlg(cd2);
 
         g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
-        g_mainMenu = new eyelen3E.CMainMenu();
+        g_mainMenu = new eyelen4.CMainMenu();
         g_mainMenu.setTrueWidth(this.stage.stageWidth);
         g_mainMenu.setTrueHeight(this.stage.stageHeight);
         g_mainMenu.visible = false;
@@ -360,8 +360,10 @@ class Main extends eui.UILayer {
         g_welcomeScene.x = g_scenePos.m_x;
         g_welcomeScene.y = g_scenePos.m_y;
 
-        var welcomeSceneAdapter:CPage2EuiAdapter = new CPage2EuiAdapter();
-        welcomeSceneAdapter.m_adaptee = g_welcomeScene;
+/*        var welcomeSceneAdapter:CPage2EuiAdapter = new CPage2EuiAdapter();
+        welcomeSceneAdapter.m_adaptee = g_welcomeScene;*/
+        var welcomePage:CWelcomePage_Eyelen4 = new CWelcomePage_Eyelen4();
+        welcomePage.m_scene = g_welcomeScene;
 
         var mainMenuSceneAdapter:CPage2EuiAdapter = new CPage2EuiAdapter();
         mainMenuSceneAdapter.m_adaptee = g_mainMenu;
@@ -373,7 +375,7 @@ class Main extends eui.UILayer {
         praDifficultContainerAdapter.m_adaptee = g_praDifficultContainer;
 
 // 把以上场景添加到页面跳转器，方便跳转。
-        g_pageJumper.setPage("WelcomeScene" , welcomeSceneAdapter);
+        g_pageJumper.setPage("WelcomeScene" , welcomePage);
         g_pageJumper.setPage("MainMenu" , mainMenuSceneAdapter);
         g_pageJumper.setPage("PraEasyScene" , praEasyContainerAdapter);
         g_pageJumper.setPage("PraDifficultScene" , praDifficultContainerAdapter);

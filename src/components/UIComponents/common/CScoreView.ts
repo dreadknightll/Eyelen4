@@ -4,7 +4,7 @@
  * 练习得分显示（含数字和图示）。
  *
  */
-namespace eyelen3E {
+namespace eyelen4 {
     export class CScoreView extends eui.Component {
         public constructor() {
             super();

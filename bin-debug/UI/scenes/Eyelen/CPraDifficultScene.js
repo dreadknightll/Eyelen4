@@ -31,8 +31,8 @@ var s_cellWidth = 20;
  *  2、setWinWidth/setWinHeight。
  *  3、startNewPra。
  */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CPraDifficultScene = (function (_super) {
         __extends(CPraDifficultScene, _super);
         /////////////////////////////////////////////////////////////////////////////
@@ -51,9 +51,9 @@ var eyelen3E;
             _this.m_pm = new CEyelen3EPraMachineDifficult();
             _this.m_UIPresenter = new CEyelen3EPraDifficultPresenter();
             _this.m_UIPresenter.bindPM(_this.m_pm);
-            _this.m_tipBalloon1 = new eyelen3E.CBalloonTip();
+            _this.m_tipBalloon1 = new eyelen4.CBalloonTip();
             _this.m_tipBalloon1.visible = false;
-            _this.m_tipBalloon2 = new eyelen3E.CBalloonTip();
+            _this.m_tipBalloon2 = new eyelen4.CBalloonTip();
             _this.m_tipBalloon2.visible = false;
             _this.m_imgOriWidth = 0;
             _this.m_imgHorSpace = 100;
@@ -93,7 +93,7 @@ var eyelen3E;
         * 初始化长度比较对话框。
         */
         CPraDifficultScene.prototype.initCmpLenDlg = function () {
-            this.m_cmpLenDlg = new eyelen3E.CCmpLenDlg();
+            this.m_cmpLenDlg = new eyelen4.CCmpLenDlg();
             this.m_cmpLenDlg.x = (this.m_winWidth - 400) / 2; //40.0 / 480 * this.m_winWidth;
             this.m_cmpLenDlg.y = 200;
             this.m_cmpLenDlg.visible = false;
@@ -697,7 +697,7 @@ var eyelen3E;
         };
         return CPraDifficultScene;
     }(CCommonEyelenPraScene));
-    eyelen3E.CPraDifficultScene = CPraDifficultScene;
-    __reflect(CPraDifficultScene.prototype, "eyelen3E.CPraDifficultScene");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CPraDifficultScene = CPraDifficultScene;
+    __reflect(CPraDifficultScene.prototype, "eyelen4.CPraDifficultScene");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CPraDifficultScene.js.map

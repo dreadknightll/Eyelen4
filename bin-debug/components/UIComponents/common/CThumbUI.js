@@ -11,15 +11,15 @@ r.prototype = e.prototype, t.prototype = new r();
 /*
     本组件只提供元素。大小和位置操作由外部程序负责。
 */
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CThumbUI = (function (_super) {
         __extends(CThumbUI, _super);
         function CThumbUI() {
             var _this = _super.call(this) || this;
             _this.m_NoImgMode = false;
             _this.m_thumbTapEvt = new CThumbUIEvent(CThumbUIEvent.EVT_THUMB_TAP);
-            _this.m_randomGraphShape = new eyelen3E.CRandomGraph();
+            _this.m_randomGraphShape = new gdeint.CRandomGraph();
             _this.m_randomGraphShape.width = 150;
             _this.m_randomGraphShape.height = 120;
             _this.m_randomGraphShape.visible = false;
@@ -117,7 +117,7 @@ var eyelen3E;
         };
         return CThumbUI;
     }(eui.Component));
-    eyelen3E.CThumbUI = CThumbUI;
-    __reflect(CThumbUI.prototype, "eyelen3E.CThumbUI");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CThumbUI = CThumbUI;
+    __reflect(CThumbUI.prototype, "eyelen4.CThumbUI");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CThumbUI.js.map

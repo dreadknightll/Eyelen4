@@ -14,8 +14,8 @@ for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
 //var g_caRat:number = 1; //To del later
-var eyelen3E;
-(function (eyelen3E) {
+var eyelen4;
+(function (eyelen4) {
     var CLenInputerEasy = (function (_super) {
         __extends(CLenInputerEasy, _super);
         function CLenInputerEasy() {
@@ -163,7 +163,7 @@ var eyelen3E;
         };
         return CLenInputerEasy;
     }(CLenInputerBase));
-    eyelen3E.CLenInputerEasy = CLenInputerEasy;
-    __reflect(CLenInputerEasy.prototype, "eyelen3E.CLenInputerEasy");
-})(eyelen3E || (eyelen3E = {}));
+    eyelen4.CLenInputerEasy = CLenInputerEasy;
+    __reflect(CLenInputerEasy.prototype, "eyelen4.CLenInputerEasy");
+})(eyelen4 || (eyelen4 = {}));
 //# sourceMappingURL=CLenInputerEasy.js.map
