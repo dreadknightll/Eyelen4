@@ -40,3 +40,4 @@ var eyelen4;
     eyelen4.CShutDownClock = CShutDownClock;
     __reflect(CShutDownClock.prototype, "eyelen4.CShutDownClock");
 })(eyelen4 || (eyelen4 = {}));
+//# sourceMappingURL=CShutDownClock.js.map

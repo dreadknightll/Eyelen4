@@ -99,3 +99,4 @@ var eyelen4;
     eyelen4.CCopyrightPanel = CCopyrightPanel;
     __reflect(CCopyrightPanel.prototype, "eyelen4.CCopyrightPanel");
 })(eyelen4 || (eyelen4 = {}));
+//# sourceMappingURL=CCopyrightPanel.js.map

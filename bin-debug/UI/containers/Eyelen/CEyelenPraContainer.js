@@ -20,7 +20,7 @@ var CEyelenPraContainer = (function (_super) {
         var _this = _super.call(this) || this;
         _this.m_NoImgMode = false;
         _this.m_visibilityTempScene = false;
-        _this.m_resNameFinder = new CEyelen3EResNameFinder();
+        _this.m_resNameFinder = new CEyelen4ResNameFinder();
         _this.m_renderFilter = new CEyelen3ERenderFilter();
         _this.m_renderFilter.setCaRat(1);
         return _this;
@@ -326,3 +326,4 @@ var CEyelenPraContainer = (function (_super) {
     return CEyelenPraContainer;
 }(CUIContainer));
 __reflect(CEyelenPraContainer.prototype, "CEyelenPraContainer", ["IEyelenPraContainer"]);
+//# sourceMappingURL=CEyelenPraContainer.js.map

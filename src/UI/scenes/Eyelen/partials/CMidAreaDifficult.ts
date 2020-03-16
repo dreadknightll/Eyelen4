@@ -40,8 +40,8 @@ namespace eyelen4 {
 
         private m2_cc:boolean = false;
 
-        private s_horSpace: number = 80;
-        private s_verSpace: number = 80;
+        public s_horSpace: number = 80;
+        public s_verSpace: number = 80;
 
         public childrenCreated():void {
     //        this.maxWidth = 480; Not work.

@@ -44,7 +44,8 @@ var eyelen4;
             _this.m_wm = new CEyelen3EWinModelV2();
             _this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
             _this.m_wm.setTopHeight1(30);
-            _this.m_wm.setTopHeight2(170);
+            //            this.m_wm.setTopHeight2(170);
+            _this.m_wm.setTopHeight2(190);
             _this.m_wm.showTop();
             _this.m_wm.setBottomHeight(300);
             _this.m_pm = new CEyelen3EPraMachineEasy();
@@ -668,6 +669,7 @@ var eyelen4;
         */
         CPraEasyScene.prototype.syncWithUIPresenter = function () {
             // Img
+            this.midArea.readjustCircler();
             var imgRect;
             imgRect = this.m_UIPresenter.getImgRect();
             if (!this.m_NoImgMode) {
@@ -687,8 +689,18 @@ var eyelen4;
                     //                    this.showRandomGraph();
                 }
             }
-            this.midArea.midContentGroup.x = this.m_UIPresenter.getImgRect().m_left;
-            this.midArea.midContentGroup.y = this.m_UIPresenter.getImgRect().m_top;
+            var inpPos = new gdeint.CPoint();
+            inpPos.m_x = this.m_UIPresenter.getImgRect().m_left;
+            inpPos.m_y = this.m_UIPresenter.getImgRect().m_top;
+            this.midArea.m_imgCircler.setInpPos(inpPos);
+            var inpPosFinal = this.midArea.m_imgCircler.getOutpPos();
+            this.midArea.midContentGroup.x = inpPosFinal.m_x;
+            this.midArea.midContentGroup.y = inpPosFinal.m_y;
+            console.log("inpPosFinal:[" + inpPosFinal.m_x + "," + inpPosFinal.m_y + "]");
+            var newImgSelPt = new gdeint.CPoint();
+            newImgSelPt.m_x = -inpPosFinal.m_x;
+            newImgSelPt.m_y = -inpPosFinal.m_y + this.midArea.m_visibleStartY;
+            this.midArea.m_UIPresenter.inpImgSelPt(newImgSelPt);
             // Len
             this._showLen(tmpLen);
             // Thumb
@@ -706,3 +718,4 @@ var eyelen4;
     eyelen4.CPraEasyScene = CPraEasyScene;
     __reflect(CPraEasyScene.prototype, "eyelen4.CPraEasyScene");
 })(eyelen4 || (eyelen4 = {}));
+//# sourceMappingURL=CPraEasyScene.js.map

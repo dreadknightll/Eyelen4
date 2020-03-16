@@ -313,7 +313,7 @@ var Main = (function (_super) {
         g_praEasyContainer.setResLoader(g_resLoader); // 显示容器里包含一个资源加载器，随时加载资源。
         if (S_BUILD_FOR == S_WECHAT) {
             if (!S_NO_IMG_MODE) {
-                g_praEasyContainer.setResNameFinder(new CEyelen3EHTTPSResUrlFinder());
+                g_praEasyContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
             }
         }
         else {
@@ -341,7 +341,7 @@ var Main = (function (_super) {
         g_praDifficultContainer.setResLoader(g_resLoader);
         if (S_BUILD_FOR == S_WECHAT) {
             if (!S_NO_IMG_MODE) {
-                g_praDifficultContainer.setResNameFinder(new CEyelen3EHTTPSResUrlFinder());
+                g_praDifficultContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
             }
         }
         g_praDifficultContainer.setPraScene(g_praDifficultScene);
@@ -402,3 +402,4 @@ var Main = (function (_super) {
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
+//# sourceMappingURL=Main.js.map

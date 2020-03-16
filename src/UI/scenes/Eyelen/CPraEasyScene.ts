@@ -82,7 +82,9 @@ namespace eyelen4 {
 
             this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
-            this.m_wm.setTopHeight2(170);
+//            this.m_wm.setTopHeight2(170);
+            this.m_wm.setTopHeight2(190);
+
             this.m_wm.showTop();
             this.m_wm.setBottomHeight(300);
 
@@ -375,7 +377,6 @@ namespace eyelen4 {
                 }
             }
 
-
             this.readjustThumb();
             this.readjustThumbSel();
         }
@@ -483,9 +484,7 @@ namespace eyelen4 {
 
             this._showLen(len);
 
-
             this.showThumbQuestioner(len);
-
         }
 
         /*
@@ -888,6 +887,7 @@ namespace eyelen4 {
         public syncWithUIPresenter() : void {
 
             // Img
+            this.midArea.readjustCircler();
             var imgRect: gdeint.CRect;
             imgRect = this.m_UIPresenter.getImgRect();
             if(!this.m_NoImgMode) {
@@ -907,8 +907,20 @@ namespace eyelen4 {
 //                    this.showRandomGraph();
                 }
             }
-            this.midArea.midContentGroup.x = this.m_UIPresenter.getImgRect().m_left;
-            this.midArea.midContentGroup.y = this.m_UIPresenter.getImgRect().m_top;
+
+            var inpPos:gdeint.CPoint = new gdeint.CPoint();
+            inpPos.m_x = this.m_UIPresenter.getImgRect().m_left;
+            inpPos.m_y = this.m_UIPresenter.getImgRect().m_top;
+            this.midArea.m_imgCircler.setInpPos(inpPos);
+            var inpPosFinal:gdeint.CPoint = this.midArea.m_imgCircler.getOutpPos();
+            this.midArea.midContentGroup.x = inpPosFinal.m_x;
+            this.midArea.midContentGroup.y = inpPosFinal.m_y;
+            console.log("inpPosFinal:["+inpPosFinal.m_x+","+inpPosFinal.m_y+"]");
+
+            var newImgSelPt:gdeint.CPoint = new gdeint.CPoint();
+            newImgSelPt.m_x = -inpPosFinal.m_x;
+            newImgSelPt.m_y = -inpPosFinal.m_y + this.midArea.m_visibleStartY;
+            this.midArea.m_UIPresenter.inpImgSelPt(newImgSelPt);
             
             // Len
             this._showLen(tmpLen);

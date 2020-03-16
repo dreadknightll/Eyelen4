@@ -8,7 +8,7 @@
 class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,INotiParent{
 	public constructor() {
         super();
-        this.m_resNameFinder = new CEyelen3EResNameFinder();
+        this.m_resNameFinder = new CEyelen4ResNameFinder();
 
         this.m_renderFilter = new CEyelen3ERenderFilter();
         this.m_renderFilter.setCaRat(1);
@@ -16,11 +16,11 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
 
     public m_NoImgMode:boolean = false;
 
-    private m_resNameFinder:IEyelen3EResNameFinder;
-    public setResNameFinder(rnf:IEyelen3EResNameFinder) {
+    private m_resNameFinder:IEyelen4ResNameFinder;
+    public setResNameFinder(rnf:IEyelen4ResNameFinder) {
         this.m_resNameFinder = rnf;
     }
-    public getResNameFinder():IEyelen3EResNameFinder {
+    public getResNameFinder():IEyelen4ResNameFinder {
         return this.m_resNameFinder;
     }
 

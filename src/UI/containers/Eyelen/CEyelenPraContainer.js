@@ -14,7 +14,7 @@ var CEyelenPraContainer = (function (_super) {
         var _this = _super.call(this) || this;
         _this.m_NoImgMode = false;
         _this.m_visibilityTempScene = false;
-        _this.m_resNameFinder = new CEyelen3EResNameFinder();
+        _this.m_resNameFinder = new CEyelen4ResNameFinder();
         _this.m_renderFilter = new CEyelen3ERenderFilter();
         _this.m_renderFilter.setCaRat(1);
         return _this;
@@ -113,7 +113,7 @@ var CEyelenPraContainer = (function (_super) {
         preloaderUI.setCompleteListener(this.onPicXMLLoadComplete, this);
         var picXMLTask = new gdeint.CPreloadTask();
         var resListPicXML = new Array();
-        this.m_seledPicTagArr = gdeint.randomNums_ts(10, 4);
+        this.m_seledPicTagArr = [2];
         var i;
         for (i = 0; i < this.m_seledPicTagArr.length; ++i) {
             resListPicXML[i] = new gdeint.ResStruct();

@@ -289,7 +289,7 @@ class Main extends eui.UILayer {
 
         if(S_BUILD_FOR == S_WECHAT) {
             if(!S_NO_IMG_MODE) {
-                g_praEasyContainer.setResNameFinder(new CEyelen3EHTTPSResUrlFinder());
+                g_praEasyContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
             }
         }
         else {
@@ -323,7 +323,7 @@ class Main extends eui.UILayer {
         g_praDifficultContainer.setResLoader(g_resLoader);
         if(S_BUILD_FOR == S_WECHAT) {
             if(!S_NO_IMG_MODE) {
-                g_praDifficultContainer.setResNameFinder(new CEyelen3EHTTPSResUrlFinder());
+                g_praDifficultContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
             }
         }
 

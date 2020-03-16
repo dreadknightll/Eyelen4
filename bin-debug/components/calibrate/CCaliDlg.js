@@ -291,3 +291,4 @@ var eyelen4;
     eyelen4.CCaliDlg = CCaliDlg;
     __reflect(CCaliDlg.prototype, "eyelen4.CCaliDlg", ["ICaliDlgPlugin", "ICaliDlg", "gdeint.IHidable", "IContainerPlugin"]);
 })(eyelen4 || (eyelen4 = {}));
+//# sourceMappingURL=CCaliDlg.js.map
