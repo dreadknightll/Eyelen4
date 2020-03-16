@@ -224,9 +224,9 @@ var eyelen4;
             var tmpPoint2 = new gdeint.CPoint();
             tmpPoint.m_x = tmpLen.m_x + tmpLen.m_length / 2;
             tmpPoint.m_y = tmpLen.m_y;
-            var qdp = this.m_UIPresenter.getThumbQuestionerDispPt();
-            this.topArea.thumbUI.thumbQuestioner.x = qdp.m_x;
-            this.topArea.thumbUI.thumbQuestioner.y = qdp.m_y;
+            var qdp = this.m_UIPresenter.getThumbQuestionerDispCenterPt();
+            this.topArea.thumbUI.thumbQuestioner.x = qdp.m_x - 8;
+            this.topArea.thumbUI.thumbQuestioner.y = qdp.m_y - 11;
         };
         /*
         * 在屏幕显示图片。
@@ -685,9 +685,9 @@ var eyelen4;
             this.readjustThumb();
             // ThumbQuestioner
             var questionerPt;
-            questionerPt = this.m_UIPresenter.getThumbQuestionerDispPt();
-            this.topArea.thumbUI.thumbQuestioner.x = questionerPt.m_x;
-            this.topArea.thumbUI.thumbQuestioner.y = questionerPt.m_y;
+            questionerPt = this.m_UIPresenter.getThumbQuestionerDispCenterPt();
+            this.topArea.thumbUI.thumbQuestioner.x = questionerPt.m_x - 8;
+            this.topArea.thumbUI.thumbQuestioner.y = questionerPt.m_y - 11;
             // ThumbSel
             this.readjustThumbSel();
         };

@@ -496,10 +496,13 @@ var CEyelen3EPraEasyPresenter = (function () {
         var ret;
         var lenPt;
         //        lenPt = this.m_itm.ip2Tp(this.m_renderFilter.ptOConv(this.m_lenQuestionerDispPt));
-        lenPt = this.m_itm.ip2Tp(this.m_lenQuestionerDispPt);
+        var QDPCenter = new gdeint.CPoint();
+        QDPCenter.m_x = this.m_lenQuestionerDispPt.m_x + 16;
+        QDPCenter.m_y = this.m_lenQuestionerDispPt.m_y + 24;
+        lenPt = this.m_itm.ip2Tp(QDPCenter);
         ret = new gdeint.CPoint();
-        ret.m_x = lenPt.m_x - 8;
-        ret.m_y = lenPt.m_y - 12;
+        ret.m_x = lenPt.m_x /* - 8*/;
+        ret.m_y = lenPt.m_y /* - 12*/;
         return ret;
     };
     CEyelen3EPraEasyPresenter.prototype.getLenEdge1DispRect = function () {

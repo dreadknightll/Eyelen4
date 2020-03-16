@@ -510,16 +510,19 @@ var CEyelen3EPraDifficultPresenter = (function () {
     /*
      * 获得经渲染过滤器输出的缩略图问号坐标。
      */
-    CEyelen3EPraDifficultPresenter.prototype.getThumbQuestionerDispPt = function () {
+    CEyelen3EPraDifficultPresenter.prototype.getThumbQuestionerDispCenterPt = function () {
         var thRect;
         thRect = this.getThumbRect();
         var ret;
         var lenPt;
         //        lenPt = this.m_itm.ip2Tp(this.m_renderFilter.ptOConv(this.m_lenQuestionerDispPt));
-        lenPt = this.m_itm.ip2Tp(this.m_lenDispPtsRects.m_lenQuestionerDispPt);
+        var QDPCenter = new gdeint.CPoint();
+        QDPCenter.m_x = this.m_lenDispPtsRects.m_lenQuestionerDispPt.m_x + 16;
+        QDPCenter.m_y = this.m_lenDispPtsRects.m_lenQuestionerDispPt.m_y + 24;
+        lenPt = this.m_itm.ip2Tp(QDPCenter);
         ret = new gdeint.CPoint();
-        ret.m_x = lenPt.m_x - 8;
-        ret.m_y = lenPt.m_y - 12;
+        ret.m_x = lenPt.m_x /* - 8*/;
+        ret.m_y = lenPt.m_y /* - 12*/;
         return ret;
     };
     CEyelen3EPraDifficultPresenter.prototype.getLenEdge1DispRect = function () {

@@ -632,7 +632,7 @@ class CEyelen3EPraDifficultPresenter implements IEyelen3EPraDifficultPresenter {
     /*
      * 获得经渲染过滤器输出的缩略图问号坐标。
      */ 
-    public getThumbQuestionerDispPt():gdeint.CPoint {
+    public getThumbQuestionerDispCenterPt():gdeint.CPoint {
 
         var thRect:gdeint.CRect;
         thRect = this.getThumbRect();
@@ -640,11 +640,14 @@ class CEyelen3EPraDifficultPresenter implements IEyelen3EPraDifficultPresenter {
         var ret:gdeint.CPoint;
         var lenPt: gdeint.CPoint;
 //        lenPt = this.m_itm.ip2Tp(this.m_renderFilter.ptOConv(this.m_lenQuestionerDispPt));
-        lenPt = this.m_itm.ip2Tp(this.m_lenDispPtsRects.m_lenQuestionerDispPt);
+        var QDPCenter:gdeint.CPoint = new gdeint.CPoint();
+        QDPCenter.m_x = this.m_lenDispPtsRects.m_lenQuestionerDispPt.m_x+16;
+        QDPCenter.m_y = this.m_lenDispPtsRects.m_lenQuestionerDispPt.m_y+24;
+        lenPt = this.m_itm.ip2Tp(QDPCenter);
 
         ret = new gdeint.CPoint();
-        ret.m_x = /*thRect.m_left + */lenPt.m_x - 8;
-        ret.m_y = /*thRect.m_top + */lenPt.m_y - 12;
+        ret.m_x = /*thRect.m_left + */lenPt.m_x/* - 8*/;
+        ret.m_y = /*thRect.m_top + */lenPt.m_y/* - 12*/;
 
         return ret;
     }

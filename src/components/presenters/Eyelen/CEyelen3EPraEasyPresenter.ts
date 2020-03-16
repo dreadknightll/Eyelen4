@@ -621,11 +621,15 @@ class CEyelen3EPraEasyPresenter implements IEyelen3EPraEasyPresenter {
         var ret:gdeint.CPoint;
         var lenPt: gdeint.CPoint;
 //        lenPt = this.m_itm.ip2Tp(this.m_renderFilter.ptOConv(this.m_lenQuestionerDispPt));
-        lenPt = this.m_itm.ip2Tp(this.m_lenQuestionerDispPt);
+        
+        var QDPCenter:gdeint.CPoint = new gdeint.CPoint();
+        QDPCenter.m_x = this.m_lenQuestionerDispPt.m_x+16;
+        QDPCenter.m_y = this.m_lenQuestionerDispPt.m_y+24;
+        lenPt = this.m_itm.ip2Tp(QDPCenter);
 
         ret = new gdeint.CPoint();
-        ret.m_x = /*thRect.m_left + */lenPt.m_x - 8;
-        ret.m_y = /*thRect.m_top + */lenPt.m_y - 12;
+        ret.m_x = /*thRect.m_left + */lenPt.m_x/* - 8*/;
+        ret.m_y = /*thRect.m_top + */lenPt.m_y/* - 12*/;
 
         return ret;
     }

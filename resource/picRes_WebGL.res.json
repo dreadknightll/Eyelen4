@@ -78,6 +78,21 @@
 			"name": "img_015_gif"
 		},
 		{
+			"url": "pics/img_016.png",
+			"type": "image",
+			"name": "img_016_png"
+		},
+		{
+			"url": "pics/img_017.png",
+			"type": "image",
+			"name": "img_017_png"
+		},
+		{
+			"url": "pics/img_018.png",
+			"type": "image",
+			"name": "img_018_png"
+		},
+		{
 			"url": "pics/pic001.json",
 			"type": "json",
 			"name": "pic001_json"
@@ -151,6 +166,21 @@
 			"url": "pics/pic015.json",
 			"type": "json",
 			"name": "pic015_json"
+		},
+		{
+			"url": "pics/pic016.json",
+			"type": "json",
+			"name": "pic016_json"
+		},
+		{
+			"url": "pics/pic017.json",
+			"type": "json",
+			"name": "pic017_json"
+		},
+		{
+			"url": "pics/pic018.json",
+			"type": "json",
+			"name": "pic018_json"
 		}
 	]
 }

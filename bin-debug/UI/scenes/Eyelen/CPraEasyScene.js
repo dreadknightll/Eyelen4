@@ -226,8 +226,8 @@ var eyelen4;
             tmpPoint.m_x = tmpLen.m_x + tmpLen.m_length / 2;
             tmpPoint.m_y = tmpLen.m_y;
             var qdp = this.m_UIPresenter.getThumbQuestionerDispPt();
-            this.topArea.thumbUI.thumbQuestioner.x = qdp.m_x;
-            this.topArea.thumbUI.thumbQuestioner.y = qdp.m_y;
+            this.topArea.thumbUI.thumbQuestioner.x = qdp.m_x - 8;
+            this.topArea.thumbUI.thumbQuestioner.y = qdp.m_y - 11;
         };
         /*
         * 在屏幕显示图片。
@@ -708,8 +708,8 @@ var eyelen4;
             // ThumbQuestioner
             var questionerPt;
             questionerPt = this.m_UIPresenter.getThumbQuestionerDispPt();
-            this.topArea.thumbUI.thumbQuestioner.x = questionerPt.m_x;
-            this.topArea.thumbUI.thumbQuestioner.y = questionerPt.m_y;
+            this.topArea.thumbUI.thumbQuestioner.x = questionerPt.m_x - 8;
+            this.topArea.thumbUI.thumbQuestioner.y = questionerPt.m_y - 11;
             // ThumbSel
             this.readjustThumbSel();
         };
