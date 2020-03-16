@@ -45,7 +45,7 @@ var eyelen4;
             _this.m_wm = new CEyelen3EWinModelV2();
             _this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
             _this.m_wm.setTopHeight1(30);
-            _this.m_wm.setTopHeight2(170);
+            _this.m_wm.setTopHeight2(190);
             _this.m_wm.showTop();
             _this.m_wm.setBottomHeight(300);
             _this.m_pm = new CEyelen3EPraMachineDifficult();

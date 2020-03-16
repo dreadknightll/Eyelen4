@@ -85,7 +85,7 @@ namespace eyelen4 {
 
             this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
-            this.m_wm.setTopHeight2(170);
+            this.m_wm.setTopHeight2(190);
             this.m_wm.showTop();
             this.m_wm.setBottomHeight(300);
 
