@@ -26,6 +26,7 @@ var eyelen4;
             _this.m2_cc = false;
             _this.s_horSpace = 80;
             _this.s_verSpace = 80;
+            _this.m_imgCircler = new gdeint.CSquareCircler();
             _this.m_bg = new egret.Shape();
             _this.m2_imgTchStartPoint = new gdeint.CPoint();
             _this.m2_imgStartPoint = new gdeint.CPoint();
@@ -86,7 +87,35 @@ var eyelen4;
             rect.height = 3000;
             this.mask = rect;
         };
+        CMidAreaDifficult.prototype.readjustCircler = function () {
+            //Use dispWidth.
+            var circlerRect = new gdeint.CRect();
+            circlerRect.m_left = 0;
+            circlerRect.m_top = this.m_visibleStartY;
+            circlerRect.m_width = this.getTrueWidth();
+            circlerRect.m_height = this.getTrueHeight() - this.m_visibleStartY;
+            this.m_imgCircler.setCirclerRect(circlerRect);
+            this.m_imgCircler.setPullGapHor(this.s_horSpace);
+            this.m_imgCircler.setPullGapVer(this.s_verSpace);
+            this.m_imgCircler.setPushGapHor(this.s_horSpace);
+            this.m_imgCircler.setPushGapVer(this.s_verSpace);
+            var imgRect = new gdeint.CRect();
+            if (S_NO_IMG_MODE) {
+                imgRect.m_width = this.randomGraph.width;
+                imgRect.m_height = this.randomGraph.height;
+            }
+            else {
+                imgRect.m_width = this.imgFromFile.width;
+                imgRect.m_height = this.imgFromFile.height;
+            }
+            this.m_imgCircler.setItemRect(imgRect);
+            var inpPos = new gdeint.CPoint();
+            inpPos.m_x = -this.midContentGroup.x;
+            inpPos.m_y = -this.midContentGroup.y;
+            this.m_imgCircler.setInpPos(inpPos);
+        };
         CMidAreaDifficult.prototype.touchBegin = function (evt) {
+            this.readjustCircler();
             this.m2_imgTchStartPoint.m_x = evt.stageX;
             this.m2_imgTchStartPoint.m_y = evt.stageY;
             this.m2_imgStartPoint.m_x = this.midContentGroup.x;
@@ -101,54 +130,69 @@ var eyelen4;
                     dy = evt.stageY - this.m2_imgTchStartPoint.m_y;
                     newX = this.m2_imgStartPoint.m_x + dx;
                     newY = this.m2_imgStartPoint.m_y + dy;
-                    if (newX > this.s_horSpace
-                        && newX + this.imgFromFile.width > this.getTrueWidth() + this.s_horSpace) {
-                        var gap1 = 0, gap2 = 0;
-                        gap1 = newX - this.s_horSpace;
-                        gap2 = newX + this.imgFromFile.width - (this.getTrueWidth() + this.s_horSpace);
-                        if (gap1 > gap2) {
-                            newX = -(this.imgFromFile.width - (this.getTrueWidth() + this.s_horSpace));
-                        }
-                        else {
-                            newX = this.s_horSpace;
-                        }
-                    }
-                    if (newX < -(this.imgFromFile.width + this.s_horSpace - this.getTrueWidth())
-                        && newX < -this.s_horSpace) {
-                        var gap1 = 0, gap2 = 0;
-                        gap1 = newX + this.imgFromFile.width + this.s_horSpace - this.getTrueWidth();
-                        gap2 = newX + this.s_horSpace;
-                        if (gap1 < gap2) {
-                            newX = -this.s_horSpace;
-                        }
-                        else {
-                            newX = -(this.imgFromFile.width + this.s_horSpace - this.getTrueWidth());
-                        }
-                    }
-                    if (newY > this.s_verSpace
-                        && newY + this.imgFromFile.height - this.getTrueHeight() > this.s_verSpace) {
-                        var gap1 = 0, gap2 = 0;
-                        gap1 = newY - this.s_verSpace;
-                        gap2 = newY + this.imgFromFile.height - this.getTrueHeight() - this.s_verSpace;
-                        if (gap1 > gap2) {
-                            newY = -(this.imgFromFile.height - this.getTrueHeight() - this.s_verSpace);
-                        }
-                        else {
-                            newY = this.s_verSpace;
-                        }
-                    }
-                    if (newY < -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight())
-                        && newY < -this.s_verSpace) {
-                        var gap1 = 0, gap2 = 0;
-                        gap1 = newY + this.imgFromFile.height + this.s_verSpace - this.getTrueHeight();
-                        gap2 = this.s_verSpace;
-                        if (gap1 < gap2) {
-                            newY = -this.s_verSpace;
-                        }
-                        else {
-                            newY = -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight());
-                        }
-                    }
+                    var inpPos = new gdeint.CPoint();
+                    inpPos.m_x = newX;
+                    inpPos.m_y = newY;
+                    this.m_imgCircler.setInpPos(inpPos);
+                    var outPos;
+                    outPos = this.m_imgCircler.getOutpPos();
+                    newX = outPos.m_x;
+                    newY = outPos.m_y;
+                    /*                    if(newX > this.s_horSpace
+                                            && newX+this.imgFromFile.width > this.getTrueWidth()+this.s_horSpace)
+                                        {
+                                            var gap1:number=0,gap2:number=0;
+                                            gap1 = newX - this.s_horSpace;
+                                            gap2 = newX+this.imgFromFile.width - (this.getTrueWidth()+this.s_horSpace);
+                                            if(gap1 > gap2) {
+                                                newX = -(this.imgFromFile.width - (this.getTrueWidth()+this.s_horSpace));
+                                            }
+                                            else {
+                                                newX = this.s_horSpace;
+                                            }
+                                        }
+                    
+                                        if(newX < -(this.imgFromFile.width + this.s_horSpace - this.getTrueWidth())
+                                            && newX < -this.s_horSpace)
+                                        {
+                                            var gap1:number=0,gap2:number=0;
+                                            gap1 = newX + this.imgFromFile.width + this.s_horSpace - this.getTrueWidth();
+                                            gap2 = newX + this.s_horSpace;
+                                            if(gap1<gap2) {
+                                                newX = -this.s_horSpace;
+                                            }
+                                            else {
+                                                newX = -(this.imgFromFile.width + this.s_horSpace - this.getTrueWidth());
+                                            }
+                                        }
+                    
+                                        if(newY > this.s_verSpace
+                                            && newY+this.imgFromFile.height-this.getTrueHeight()>this.s_verSpace)
+                                        {
+                                            var gap1:number=0,gap2:number=0;
+                                            gap1 = newY - this.s_verSpace;
+                                            gap2 = newY+this.imgFromFile.height-this.getTrueHeight()-this.s_verSpace;
+                                            if(gap1>gap2) {
+                                                newY = -(this.imgFromFile.height-this.getTrueHeight()-this.s_verSpace);
+                                            }
+                                            else {
+                                                newY = this.s_verSpace;
+                                            }
+                                        }
+                    
+                                        if(newY < -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight())
+                                            && newY < -this.s_verSpace)
+                                        {
+                                            var gap1:number=0,gap2:number=0;
+                                            gap1 = newY+this.imgFromFile.height + this.s_verSpace - this.getTrueHeight();
+                                            gap2 = this.s_verSpace;
+                                            if(gap1<gap2) {
+                                                newY = -this.s_verSpace;
+                                            }
+                                            else {
+                                                newY = -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight());
+                                            }
+                                        }*/
                     this.midContentGroup.x = newX;
                     this.midContentGroup.y = newY;
                     var pt;

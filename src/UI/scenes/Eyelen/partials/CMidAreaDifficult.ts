@@ -7,8 +7,10 @@ namespace eyelen4 {
     export class CMidAreaDifficult extends eui.Component {
         public constructor() {
             super();
+
+            this.m_imgCircler = new gdeint.CSquareCircler();
             this.m_bg = new egret.Shape();
-            
+
             this.m2_imgTchStartPoint = new gdeint.CPoint();
             this.m2_imgStartPoint = new gdeint.CPoint();
 
@@ -26,10 +28,11 @@ namespace eyelen4 {
         public midCanvasGrp:eui.Group;
 
         public m_UIPresenter:CEyelen3EPraDifficultPresenter;
+        public m_imgCircler:gdeint.CSquareCircler;
 
         private m_trueWidth: number = 0;
         private m_trueHeight:number = 0;
-        private m_visibleStartY:number = 0;
+        public m_visibleStartY:number = 0;
 
         private m_bg: egret.Shape;
         private m_evtImgDragEnd: CMidAreaEvent_Eyelen;
@@ -108,7 +111,39 @@ namespace eyelen4 {
 
         }
 
+
+        public readjustCircler(): void
+        {
+            //Use dispWidth.
+            var circlerRect:gdeint.CRect = new gdeint.CRect();
+            circlerRect.m_left = 0;
+            circlerRect.m_top = this.m_visibleStartY;
+            circlerRect.m_width = this.getTrueWidth();
+            circlerRect.m_height = this.getTrueHeight() - this.m_visibleStartY;
+            this.m_imgCircler.setCirclerRect(circlerRect);
+            this.m_imgCircler.setPullGapHor(this.s_horSpace);
+            this.m_imgCircler.setPullGapVer(this.s_verSpace);
+            this.m_imgCircler.setPushGapHor(this.s_horSpace);
+            this.m_imgCircler.setPushGapVer(this.s_verSpace);
+            var imgRect:gdeint.CRect = new gdeint.CRect();
+            if(S_NO_IMG_MODE) {
+                imgRect.m_width = this.randomGraph.width;
+                imgRect.m_height = this.randomGraph.height;
+            }
+            else {
+                imgRect.m_width = this.imgFromFile.width;
+                imgRect.m_height = this.imgFromFile.height;
+            }
+            this.m_imgCircler.setItemRect(imgRect);
+            var inpPos:gdeint.CPoint = new gdeint.CPoint();
+            inpPos.m_x = -this.midContentGroup.x;
+            inpPos.m_y = -this.midContentGroup.y;
+
+            this.m_imgCircler.setInpPos(inpPos);
+        }
+
         private touchBegin(evt:egret.TouchEvent):void {
+            this.readjustCircler();
             this.m2_imgTchStartPoint.m_x = evt.stageX;
             this.m2_imgTchStartPoint.m_y = evt.stageY;
             this.m2_imgStartPoint.m_x = this.midContentGroup.x;
@@ -127,7 +162,17 @@ namespace eyelen4 {
                     newX = this.m2_imgStartPoint.m_x + dx;
                     newY = this.m2_imgStartPoint.m_y + dy;
 
-                    if(newX > this.s_horSpace 
+                    var inpPos:gdeint.CPoint = new gdeint.CPoint();
+                    inpPos.m_x = newX;
+                    inpPos.m_y = newY;
+                    this.m_imgCircler.setInpPos(inpPos);
+                    var outPos:gdeint.CPoint;
+                    outPos = this.m_imgCircler.getOutpPos();
+
+                    newX = outPos.m_x;
+                    newY = outPos.m_y;
+
+/*                    if(newX > this.s_horSpace 
                         && newX+this.imgFromFile.width > this.getTrueWidth()+this.s_horSpace)
                     {
                         var gap1:number=0,gap2:number=0;
@@ -181,7 +226,7 @@ namespace eyelen4 {
                         else {
                             newY = -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight());
                         }
-                    }
+                    }*/
 
                     this.midContentGroup.x = newX;
                     this.midContentGroup.y = newY;

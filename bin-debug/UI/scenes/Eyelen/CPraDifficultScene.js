@@ -677,8 +677,18 @@ var eyelen4;
                     this.showImg(tmpLen.m2_imgResName);
                 }
             }
-            this.midArea.midContentGroup.x = this.m_UIPresenter.getImgRect().m_left;
-            this.midArea.midContentGroup.y = this.m_UIPresenter.getImgRect().m_top;
+            var inpPos = new gdeint.CPoint();
+            inpPos.m_x = this.m_UIPresenter.getImgRect().m_left;
+            inpPos.m_y = this.m_UIPresenter.getImgRect().m_top;
+            this.midArea.m_imgCircler.setInpPos(inpPos);
+            var inpPosFinal = this.midArea.m_imgCircler.getOutpPos();
+            console.log("inpPosFinal:[" + inpPosFinal.m_x + "," + inpPosFinal.m_y + "]");
+            this.midArea.midContentGroup.x = inpPosFinal.m_x;
+            this.midArea.midContentGroup.y = inpPosFinal.m_y;
+            var newImgSelPt = new gdeint.CPoint();
+            newImgSelPt.m_x = -inpPosFinal.m_x;
+            newImgSelPt.m_y = -inpPosFinal.m_y + this.midArea.m_visibleStartY;
+            this.midArea.m_UIPresenter.inpImgSelPt(newImgSelPt);
             // Len
             this._showLen(tmpLen);
             // Thumb

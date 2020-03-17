@@ -123,8 +123,7 @@ var CEyelenPraContainer = (function (_super) {
         preloaderUI.setCompleteListener(this.onPicXMLLoadComplete, this);
         var picXMLTask = new gdeint.CPreloadTask(); //创建任务对象。
         var resListPicXML = new Array();
-        //        this.m_seledPicTagArr = gdeint.randomNums_ts(18,4); //从18张图片中随机选4张。
-        this.m_seledPicTagArr = [16];
+        this.m_seledPicTagArr = gdeint.randomNums_ts(18, 4); //从18张图片中随机选4张。
         var i;
         for (i = 0; i < this.m_seledPicTagArr.length; ++i) {
             resListPicXML[i] = new gdeint.ResStruct();
