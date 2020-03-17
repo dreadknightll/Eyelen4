@@ -9,23 +9,6 @@ var CEyelen4HTTPSResUrlFinder = (function () {
         this.m_inpStr = inp;
     };
     CEyelen4HTTPSResUrlFinder.prototype.getResult = function () {
-        /*		//返回得到的资源名。
-                var ret:string;
-                ret = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getImgCrossDomain.php?tag="
-        //		var temp:number = parseInt(this.m_inpStr.substr(4,3));
-                var temp:number = parseInt(this.m_inpStr);
-                if(temp < 10) {
-                    ret += ("00" + temp.toString());
-                }
-                else if(temp < 100) {
-                    ret += ("0" + temp.toString());
-                }
-                else {
-                    ret += temp.toString();
-                }
-        
-                return ret;
-        */
         //返回得到的资源URL。
         var ret;
         var strTmpTag;
@@ -42,7 +25,8 @@ var CEyelen4HTTPSResUrlFinder = (function () {
             else {
                 strTmpTag = "" + temp.toString();
             }
-            ret = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getImgCrossDomain.php?tag=";
+            //			ret = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getImgCrossDomain.php?tag=";
+            ret = "https://www.gdeint.cn/HTTPSExports/wechat/Eyelen/Eyelen4_Wechat/pics/Eyelen/getImgCrossDomain.php?tag=";
             ret += strTmpTag;
         }
         else {
@@ -62,7 +46,8 @@ var CEyelen4HTTPSResUrlFinder = (function () {
             else {
                 strTmpTag = "" + temp.toString();
             }
-            ret = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getPicCrossDomain.php?tag=";
+            //			ret = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getPicCrossDomain.php?tag=";
+            ret = "https://www.gdeint.cn/HTTPSExports/wechat/Eyelen/Eyelen4_Wechat/pics/Eyelen/getPicCrossDomain.php?tag=";
             ret += strTmpTag;
         }
         return ret;
