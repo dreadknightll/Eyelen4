@@ -655,6 +655,7 @@ var eyelen4;
         */
         CPraDifficultScene.prototype.syncWithUIPresenter = function () {
             // Img
+            this.midArea.readjustCircler();
             var imgRect;
             imgRect = this.m_UIPresenter.getImgRect();
             if (this.m_NoImgMode) {

@@ -870,6 +870,7 @@ namespace eyelen4 {
         public syncWithUIPresenter() : void {
 
             // Img
+            this.midArea.readjustCircler();
             var imgRect: gdeint.CRect;
             imgRect = this.m_UIPresenter.getImgRect();
             if(this.m_NoImgMode) {
