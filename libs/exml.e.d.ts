@@ -84,6 +84,8 @@ declare class scoreViewSkin extends eui.Skin{
 }
 declare class shutdownClock extends eui.Skin{
 }
+declare class shutdownScrSkin extends eui.Skin{
+}
 declare class thumbUI extends eui.Skin{
 }
 declare class userProPanelSkin extends eui.Skin{

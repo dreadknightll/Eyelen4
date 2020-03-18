@@ -82,6 +82,7 @@
 		"resource/skins/components/common/progressViewSkin.exml",
 		"resource/skins/components/common/scoreViewSkin.exml",
 		"resource/skins/components/common/shutdownClockSkin.exml",
+		"resource/skins/components/common/shutdownScrSkin.exml",
 		"resource/skins/components/common/thumbUISkin.exml",
 		"resource/skins/components/common/userProPanelSkin.exml",
 		"resource/skins/components/eyelen/cmpLenNextBtnSkin.exml",
