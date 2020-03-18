@@ -57,7 +57,7 @@ namespace eyelen4 {
         private m_imgOriWidth: number; // 当前图片原宽。每次读取完新图片都要更新。
 //        private m_lenEdge1: egret.Shape; // 画板，画图上长度的起始边。
 //        private m_lenEdge2: egret.Shape; // 画板，画图上长度的结束边。
-        private m_lenEdgeCanvas: egret.Shape; // 画板，画图上长度的结束边。
+        private m_lenEdgeCanvas: egret.Shape; // 画板，画图上长度的两条边。注：不能两条边各用一个Shape。否则长度小图片大时很容易出现显示问题。
 
         private m_lenQuestioner: egret.TextField; // 图上长度中部的问号。
         private m_lenView: egret.DisplayObjectContainer; // 长度容器，包含长度的几个部件。
