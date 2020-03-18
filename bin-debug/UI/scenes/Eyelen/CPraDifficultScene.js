@@ -250,8 +250,8 @@ var eyelen4;
             this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
             // Obvious miss here.
             //////Sentences for test//////
-            this.topArea.thumbUI.visible = false;
-            return;
+            //            this.topArea.thumbUI.visible = false;
+            //            return;
             ////////////////////////////
             this.m_curImgResName = imgResName;
             this.topArea.thumbUI.setImgSrc(imgResName);
@@ -329,8 +329,8 @@ var eyelen4;
                 this.m_lenEdge2Canvas.graphics.beginFill(0x00FFFF);
                 this.m_lenEdge2Canvas.graphics.drawRect(0, 0, 5, 60);
                 this.m_lenEdge2Canvas.graphics.endFill();
-                this.m_lenEdgeCanvas.x = len.m_x * this.m_UIPresenter.getRenderFilter()._getCaRat() - 5 + 33;
-                this.m_lenEdgeCanvas.y = len.m_y - 30 + 33;
+                this.m_lenEdgeCanvas.x = len.m_x * this.m_UIPresenter.getRenderFilter()._getCaRat() - 5;
+                this.m_lenEdgeCanvas.y = len.m_y - 30;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
                 this.m_lenEdgeCanvas.graphics.drawRect(0, 0, 5, 60); //Edge1
                 var edge2X, edge2Y;
@@ -366,8 +366,8 @@ var eyelen4;
                 this.m_lenEdge2Canvas.graphics.beginFill(0x00FFDD);
                 this.m_lenEdge2Canvas.graphics.drawRect(0, 0, lenDispPtsRect.m_lenEdge2DispRect.m_width, lenDispPtsRect.m_lenEdge2DispRect.m_height);
                 this.m_lenEdge2Canvas.graphics.endFill();
-                this.m_lenEdgeCanvas.x = lenDispPtsRect.m_lenEdge1DispRect.m_left + 33;
-                this.m_lenEdgeCanvas.y = lenDispPtsRect.m_lenEdge1DispRect.m_top + 33;
+                this.m_lenEdgeCanvas.x = lenDispPtsRect.m_lenEdge1DispRect.m_left;
+                this.m_lenEdgeCanvas.y = lenDispPtsRect.m_lenEdge1DispRect.m_top;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
                 this.m_lenEdgeCanvas.graphics.drawRect(0, 0, lenDispPtsRect.m_lenEdge1DispRect.m_width, lenDispPtsRect.m_lenEdge1DispRect.m_height);
                 var edge2X, edge2Y;
