@@ -400,7 +400,7 @@ var eyelen4;
             this.m_imgOriWidth = 160;
             this.m_lenView = new egret.DisplayObjectContainer();
             //            this.m_lenEdge1 = new egret.Shape();
-            this.m_lenEdge1Canvas = new egret.Shape();
+            this.m_lenEdge1Canvas = new egret.Shape(); //因为createTop里其它地方要用，所以不放在createMid。
             //            this.m_lenEdge2 = new egret.Shape();
             this.m_lenEdge2Canvas = new egret.Shape();
             this.m_lenQuestioner = new egret.TextField();
@@ -576,6 +576,7 @@ var eyelen4;
             this.midAreaGroup.y = this.m_wm.getMidY();
             this.topArea.switchBtn.source = RES.getRes("top_screen_button_up_png");
             this.m_UIPresenter.inpImgSelHeight(this.m_wm.getMidVisibleHeight());
+            this.midArea.setVisibleStartY(this.m_wm.getTopHeight2() - this.m_wm.getTopHeight1());
             this.readjustThumbSel();
         };
         /*
@@ -586,6 +587,7 @@ var eyelen4;
             this.midAreaGroup.y = this.m_wm.getMidY();
             this.topArea.switchBtn.source = RES.getRes("top_screen_button_down_png");
             this.m_UIPresenter.inpImgSelHeight(this.m_wm.getMidVisibleHeight());
+            this.midArea.setVisibleStartY(0);
             this.readjustThumbSel();
         };
         CPraDifficultScene.prototype.onImgDragMove = function (evt) {
