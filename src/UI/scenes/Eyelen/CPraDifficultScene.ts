@@ -341,34 +341,33 @@ namespace eyelen4 {
             var oldImgResName:string;
             oldImgResName = this.m_curImgResName;// getCurImgResName();
 
-            var tmpImg: egret.Bitmap = new egret.Bitmap();
-
+            var tmpImg: egret.Bitmap = new egret.Bitmap(); //既用作计算大图，也用作缩略图。
             tmpImg.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
 
             this.m_imgOriWidth = tmpImg.width;
-            this.midArea.imgFromFile.width = this.m_UIPresenter.getImgRect().m_width;
-            this.midArea.imgFromFile.height = tmpImg.height;
 
-// OK here!
+//            this.midArea.imgFromFile.width = this.m_UIPresenter.getImgRect().m_width; 后面有相关计算，此处不设置。
+            this.midArea.imgFromFile.height = tmpImg.height;
+            this.m_UIPresenter.setImgWidth(this.m_imgOriWidth);
+            this.m_UIPresenter.setImgHeight(this.midArea.imgFromFile.height);
+            this.midArea.imgFromFile.width = this.m_imgOriWidth * this.m_UIPresenter.getRenderFilter()._getCaRat();
+
+// OK here
 
             this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
 
-// A little miss here.
-
-            this.m_curImgResName = imgResName;
-            this.topArea.thumbUI.setImgSrc(imgResName);
-
-            this.m_UIPresenter.setImgWidth(this.m_imgOriWidth);
-            this.m_UIPresenter.setImgHeight(this.midArea.imgFromFile.height);
-
-            this.midArea.imgFromFile.width = this.m_imgOriWidth * this.m_UIPresenter.getRenderFilter()._getCaRat();
-
 // Obvious miss here.
+
+
 
 //////Sentences for test//////
             this.topArea.thumbUI.visible = false;
             return;
 ////////////////////////////
+
+            this.m_curImgResName = imgResName;
+            this.topArea.thumbUI.setImgSrc(imgResName);
+
 
         /*
             换了图片：框移到右上角；

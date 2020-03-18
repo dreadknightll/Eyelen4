@@ -6,6 +6,6 @@
 			<e:Group id="randomGraph" x="0" y="0" width="1024" height="720" visible="false" />
 			<e:Image id="imgFromFile" source="noImg_gif" x="0" y="0" width="400" height="300" visible="true" />
 		</e:Group>
-		<e:Group id="midCanvasGrp" width="1" height="1" />
+		<e:Group id="midCanvasGrp" />
 	</e:Group>
 </e:Skin>
