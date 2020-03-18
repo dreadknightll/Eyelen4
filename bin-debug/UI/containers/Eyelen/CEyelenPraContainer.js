@@ -124,7 +124,8 @@ var CEyelenPraContainer = (function (_super) {
         var picXMLTask = new gdeint.CPreloadTask(); //创建任务对象。
         var resListPicXML = new Array();
         //        this.m_seledPicTagArr = gdeint.randomNums_ts(18,4); //从18张图片中随机选4张。
-        this.m_seledPicTagArr = [17, 6];
+        //        this.m_seledPicTagArr = [6,17];
+        this.m_seledPicTagArr = [17];
         var i;
         for (i = 0; i < this.m_seledPicTagArr.length; ++i) {
             resListPicXML[i] = new gdeint.ResStruct();

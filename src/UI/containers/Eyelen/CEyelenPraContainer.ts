@@ -140,7 +140,8 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
         var resListPicXML:Array<gdeint.ResStruct> = new Array<gdeint.ResStruct>();
 
 //        this.m_seledPicTagArr = gdeint.randomNums_ts(18,4); //从18张图片中随机选4张。
-        this.m_seledPicTagArr = [17,6];
+//        this.m_seledPicTagArr = [6,17];
+        this.m_seledPicTagArr = [17];
 
         var i:number;
         for(i=0;i<this.m_seledPicTagArr.length;++i) {

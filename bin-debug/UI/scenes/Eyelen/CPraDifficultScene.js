@@ -236,18 +236,26 @@ var eyelen4;
                 console.log("Warning! showImg not supported in no img mode!");
                 return;
             }
-            var oldImgResName = this.m_curImgResName; // getCurImgResName();
+            var oldImgResName;
+            oldImgResName = this.m_curImgResName; // getCurImgResName();
             var tmpImg = new egret.Bitmap();
             tmpImg.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
             this.m_imgOriWidth = tmpImg.width;
-            this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
             this.midArea.imgFromFile.width = this.m_UIPresenter.getImgRect().m_width;
             this.midArea.imgFromFile.height = tmpImg.height;
+            // OK here!
+            this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
+            // A little miss here.
             this.m_curImgResName = imgResName;
             this.topArea.thumbUI.setImgSrc(imgResName);
             this.m_UIPresenter.setImgWidth(this.m_imgOriWidth);
             this.m_UIPresenter.setImgHeight(this.midArea.imgFromFile.height);
             this.midArea.imgFromFile.width = this.m_imgOriWidth * this.m_UIPresenter.getRenderFilter()._getCaRat();
+            // Obvious miss here.
+            //////Sentences for test//////
+            this.topArea.thumbUI.visible = false;
+            return;
+            ////////////////////////////
             /*
                 换了图片：框移到右上角；
                 没换图片：框回到原来的位置：
