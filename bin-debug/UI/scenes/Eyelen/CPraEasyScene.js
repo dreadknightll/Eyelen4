@@ -308,6 +308,7 @@ var eyelen4;
         CPraEasyScene.prototype._showLen = function (len) {
             this.m_lenEdge1.graphics.clear();
             this.m_lenEdge2.graphics.clear();
+            this.m_lenEdgeCanvas.graphics.clear();
             if (len.m_isHor) {
                 //Draw edge1:
                 this.m_lenEdge1.graphics.beginFill(0x00FFFF);
@@ -320,6 +321,15 @@ var eyelen4;
                 this.m_lenEdge2.graphics.beginFill(0x00FFFF);
                 this.m_lenEdge2.graphics.drawRect(len.m_x * this.m_UIPresenter.getRenderFilter()._getCaRat() + len.m_length * this.m_UIPresenter.getRenderFilter()._getCaRat(), len.m_y - 30, 5, 60);
                 this.m_lenEdge2.graphics.endFill();
+                this.m_lenEdgeCanvas.x = len.m_x * this.m_UIPresenter.getRenderFilter()._getCaRat() - 5;
+                this.m_lenEdgeCanvas.y = len.m_y - 30;
+                this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
+                this.m_lenEdgeCanvas.graphics.drawRect(0, 0, 5, 60); //Edge1
+                var edge2X, edge2Y;
+                edge2X = len.m_length * this.m_UIPresenter.getRenderFilter()._getCaRat() + 5;
+                edge2Y = 0;
+                this.m_lenEdgeCanvas.graphics.drawRect(edge2X, edge2Y, 5, 60); //Edge1
+                this.m_lenEdgeCanvas.graphics.endFill();
             }
             else {
                 var tmpRect, tmpPt;
@@ -339,6 +349,15 @@ var eyelen4;
                 tmpRect = this.m_UIPresenter.getLenEdge2DispRect();
                 this.m_lenEdge2.graphics.drawRect(tmpRect.m_left, tmpRect.m_top, tmpRect.m_width, tmpRect.m_height);
                 this.m_lenEdge2.graphics.endFill();
+                this.m_lenEdgeCanvas.x = this.m_UIPresenter.getLenEdge1DispRect().m_left;
+                this.m_lenEdgeCanvas.y = this.m_UIPresenter.getLenEdge1DispRect().m_top;
+                this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
+                this.m_lenEdgeCanvas.graphics.drawRect(0, 0, tmpRect.m_width, tmpRect.m_height);
+                var edge2X, edge2Y;
+                edge2X = this.m_UIPresenter.getLenEdge2DispRect().m_left - this.m_UIPresenter.getLenEdge1DispRect().m_left;
+                edge2Y = this.m_UIPresenter.getLenEdge2DispRect().m_top - this.m_UIPresenter.getLenEdge1DispRect().m_top;
+                this.m_lenEdgeCanvas.graphics.drawRect(edge2X, edge2Y, tmpRect.m_width, tmpRect.m_height);
+                this.m_lenEdgeCanvas.graphics.endFill();
             }
         };
         /*
@@ -388,12 +407,14 @@ var eyelen4;
             this.m_lenView = new egret.DisplayObjectContainer();
             this.m_lenEdge1 = new egret.Shape();
             this.m_lenEdge2 = new egret.Shape();
+            this.m_lenEdgeCanvas = new egret.Shape();
             this.m_lenQuestioner = new egret.TextField();
             this.m_lenQuestioner.textColor = 0xFF0000;
             this.m_lenQuestioner.size = 36;
             this.m_lenQuestioner.text = "?";
             this.midArea.midCanvasGrp.addChild(this.m_lenEdge1);
             this.midArea.midCanvasGrp.addChild(this.m_lenEdge2);
+            this.midArea.midCanvasGrp.addChild(this.m_lenEdgeCanvas);
             this.midArea.midCanvasGrp.addChild(this.m_lenQuestioner);
             //Add thumb and thumbSel:
             var selPt = new gdeint.CPoint();
