@@ -55,8 +55,8 @@ namespace eyelen4 {
         private m_bgUnderTop:egret.Shape; //Necessary because in native mode default bg is not suitable.
 
         private m_imgOriWidth: number; // 当前图片原宽。每次读取完新图片都要更新。
-        private m_lenEdge1: egret.Shape; // 画板，画图上长度的起始边。
-        private m_lenEdge2: egret.Shape; // 画板，画图上长度的结束边。
+//        private m_lenEdge1: egret.Shape; // 画板，画图上长度的起始边。
+//        private m_lenEdge2: egret.Shape; // 画板，画图上长度的结束边。
         private m_lenEdgeCanvas: egret.Shape; // 画板，画图上长度的结束边。
 
         private m_lenQuestioner: egret.TextField; // 图上长度中部的问号。
@@ -427,24 +427,24 @@ namespace eyelen4 {
         */ 
         private _showLen(len:CLen):void {
 
-            this.m_lenEdge1.graphics.clear();
-            this.m_lenEdge2.graphics.clear();
+//            this.m_lenEdge1.graphics.clear();
+//            this.m_lenEdge2.graphics.clear();
             this.m_lenEdgeCanvas.graphics.clear();
 
             if(len.m_isHor) {
                 //Draw edge1:
-                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
+/*                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
                 this.m_lenEdge1.graphics.drawRect(len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()-5,len.m_y - 30,5,60);
-                this.m_lenEdge1.graphics.endFill();
+                this.m_lenEdge1.graphics.endFill();*/
                 
                 //Draw questioner:
                 this.m_lenQuestioner.x = len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat() + len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat()/2 - 10;
                 this.m_lenQuestioner.y = len.m_y - 20;
 
                 //Draw edge2:
-                this.m_lenEdge2.graphics.beginFill(0x00FFFF);
+/*                this.m_lenEdge2.graphics.beginFill(0x00FFFF);
                 this.m_lenEdge2.graphics.drawRect(len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()+len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat(),len.m_y - 30,5,60);
-                this.m_lenEdge2.graphics.endFill();
+                this.m_lenEdge2.graphics.endFill();*/
 
                 this.m_lenEdgeCanvas.x = len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()-5;
                 this.m_lenEdgeCanvas.y = len.m_y - 30;
@@ -461,10 +461,10 @@ namespace eyelen4 {
             {
                 var tmpRect:gdeint.CRect , tmpPt:gdeint.CPoint;
                 //Draw edge1:
-                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
+/*                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
                 tmpRect = this.m_UIPresenter.getLenEdge1DispRect();
                 this.m_lenEdge1.graphics.drawRect(tmpRect.m_left,tmpRect.m_top,tmpRect.m_width,tmpRect.m_height);
-                this.m_lenEdge1.graphics.endFill();
+                this.m_lenEdge1.graphics.endFill();*/
 
                 //Draw questioner:
                 tmpPt = this.m_UIPresenter.getLenQuestionerDispPt();
@@ -474,11 +474,12 @@ namespace eyelen4 {
                 this.m_lenQuestioner.size = tmpFontSize;
 
                 //Draw edge2:
-                this.m_lenEdge2.graphics.beginFill(0x00FFDD);
+/*                this.m_lenEdge2.graphics.beginFill(0x00FFDD);
                 tmpRect = this.m_UIPresenter.getLenEdge2DispRect();
                 this.m_lenEdge2.graphics.drawRect(tmpRect.m_left , tmpRect.m_top , tmpRect.m_width , tmpRect.m_height);
-                this.m_lenEdge2.graphics.endFill();
+                this.m_lenEdge2.graphics.endFill();*/
 
+                tmpRect = this.m_UIPresenter.getLenEdge1DispRect();
                 this.m_lenEdgeCanvas.x = this.m_UIPresenter.getLenEdge1DispRect().m_left;
                 this.m_lenEdgeCanvas.y = this.m_UIPresenter.getLenEdge1DispRect().m_top;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
@@ -549,16 +550,16 @@ namespace eyelen4 {
             this.m_imgOriWidth = 160;
 
             this.m_lenView = new egret.DisplayObjectContainer();
-            this.m_lenEdge1 = new egret.Shape();
-            this.m_lenEdge2 = new egret.Shape();
+//            this.m_lenEdge1 = new egret.Shape();
+//            this.m_lenEdge2 = new egret.Shape();
             this.m_lenEdgeCanvas = new egret.Shape();
             this.m_lenQuestioner = new egret.TextField();
             this.m_lenQuestioner.textColor = 0xFF0000;
             this.m_lenQuestioner.size = 36;
             this.m_lenQuestioner.text = "?";
 
-            this.midArea.midCanvasGrp.addChild(this.m_lenEdge1);
-            this.midArea.midCanvasGrp.addChild(this.m_lenEdge2);
+//            this.midArea.midCanvasGrp.addChild(this.m_lenEdge1);
+//            this.midArea.midCanvasGrp.addChild(this.m_lenEdge2);
             this.midArea.midCanvasGrp.addChild(this.m_lenEdgeCanvas);
             this.midArea.midCanvasGrp.addChild(this.m_lenQuestioner);
 
