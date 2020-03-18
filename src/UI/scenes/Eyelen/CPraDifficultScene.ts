@@ -58,6 +58,7 @@ namespace eyelen4 {
         private m_imgOriWidth: number; // 当前图片原宽。每次读取完新图片都要更新。
 //        private m_lenEdge1: egret.Shape; // 画板，画图上长度的起始边。 old
 //        private m_lenEdge2: egret.Shape; // 画板，画图上长度的结束边。 old
+        private m_lenEdgeCanvas: egret.Shape; // 画板，画图上长度的边。 New
         private m_lenEdge1Canvas: egret.Shape; // 画板，画图上长度的起始边。 New
         private m_lenEdge2Canvas: egret.Shape; // 画板，画图上长度的结束边。 New
 
@@ -429,6 +430,7 @@ namespace eyelen4 {
             this.m_lenEdge1Canvas.graphics.clear();
 //            this.m_lenEdge2.graphics.clear();
             this.m_lenEdge2Canvas.graphics.clear();
+            this.m_lenEdgeCanvas.graphics.clear();
 
             if(len.m_isHor) {
                 //Draw edge1:
@@ -454,6 +456,16 @@ namespace eyelen4 {
                 this.m_lenEdge2Canvas.graphics.beginFill(0x00FFFF);
                 this.m_lenEdge2Canvas.graphics.drawRect(0,0,5,60);
                 this.m_lenEdge2Canvas.graphics.endFill();
+
+                this.m_lenEdgeCanvas.x = len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()-5 +33;
+                this.m_lenEdgeCanvas.y = len.m_y - 30 +33;
+                this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
+                this.m_lenEdgeCanvas.graphics.drawRect(0,0,5,60); //Edge1
+                var edge2X:number,edge2Y:number;
+                edge2X = len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat()+5;
+                edge2Y = 0;
+                this.m_lenEdgeCanvas.graphics.drawRect(edge2X,edge2Y,5,60); //Edge2
+                this.m_lenEdgeCanvas.graphics.endFill();
 
             }
             else
@@ -486,6 +498,16 @@ namespace eyelen4 {
                 this.m_lenEdge2Canvas.graphics.beginFill(0x00FFDD);
                 this.m_lenEdge2Canvas.graphics.drawRect(0 , 0 , lenDispPtsRect.m_lenEdge2DispRect.m_width , lenDispPtsRect.m_lenEdge2DispRect.m_height);
                 this.m_lenEdge2Canvas.graphics.endFill();
+
+                this.m_lenEdgeCanvas.x = lenDispPtsRect.m_lenEdge1DispRect.m_left+33;
+                this.m_lenEdgeCanvas.y = lenDispPtsRect.m_lenEdge1DispRect.m_top+33;
+                this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
+                this.m_lenEdgeCanvas.graphics.drawRect(0,0,lenDispPtsRect.m_lenEdge1DispRect.m_width,lenDispPtsRect.m_lenEdge1DispRect.m_height);
+                var edge2X:number,edge2Y:number;
+                edge2X = lenDispPtsRect.m_lenEdge2DispRect.m_left - lenDispPtsRect.m_lenEdge1DispRect.m_left;
+                edge2Y = lenDispPtsRect.m_lenEdge2DispRect.m_top - lenDispPtsRect.m_lenEdge1DispRect.m_top;
+                this.m_lenEdgeCanvas.graphics.drawRect(edge2X,edge2Y,lenDispPtsRect.m_lenEdge1DispRect.m_width,lenDispPtsRect.m_lenEdge1DispRect.m_height);
+                this.m_lenEdgeCanvas.graphics.endFill();
 
             }
         }
@@ -554,6 +576,7 @@ namespace eyelen4 {
             this.m_lenEdge1Canvas = new egret.Shape(); //因为createTop里其它地方要用，所以不放在createMid。
 //            this.m_lenEdge2 = new egret.Shape();
             this.m_lenEdge2Canvas = new egret.Shape();
+            this.m_lenEdgeCanvas = new egret.Shape();
             this.m_lenQuestioner = new egret.TextField();
             this.m_lenQuestioner.textColor = 0xFF0000;
             this.m_lenQuestioner.size = 36;
@@ -563,6 +586,7 @@ namespace eyelen4 {
             this.midArea.midCanvasGrp.addChild(this.m_lenEdge1Canvas);
 //            this.midArea.midCanvasGrp.addChild(this.m_lenEdge2);
             this.midArea.midCanvasGrp.addChild(this.m_lenEdge2Canvas);
+            this.midArea.midCanvasGrp.addChild(this.m_lenEdgeCanvas);
             this.midArea.midCanvasGrp.addChild(this.m_lenQuestioner);
 
             //Add thumb and thumbSel:
