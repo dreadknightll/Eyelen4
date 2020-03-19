@@ -182,8 +182,8 @@ namespace eyelen4 {
             this.m2_tmpS2StartBtn = false;
             this.startBtn.visible = false;
 
-//            g_pageJumper.gotoPage("MainMenu",null);
-            g_pageJumper.gotoPage("ShutdownScr",null);
+            g_pageJumper.gotoPage("MainMenu",null);
+//            g_pageJumper.gotoPage("ShutdownScr",null);
             g_mainMenu.run();
         }
     }

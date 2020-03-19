@@ -66,6 +66,7 @@ var eyelen4;
         };
         CMainMenu.prototype.run = function () {
             this.m_startTimer.start();
+            g_shutdownTimer.start();
         };
         /*
         * 开始简单练习。

@@ -9,13 +9,19 @@ module eyelen4 {
 			this.m2_cc = 94;
 		}
 
+		private m_timerPointer:egret.Timer;
+		private m_tracerTimer:egret.Timer; // 用于刷新时间显示的Timer。
+
 		private m2_cc;
 		private m2_fontSize;
+
 
 		public childrenCreated() {
 			this.m2_cc = true;
 			this.timeLabel.size=this.m2_fontSize;
 
+			this.m_tracerTimer = new egret.Timer(200 , 0);
+			this.m_tracerTimer.addEventListener(egret.TimerEvent.TIMER , this.onTracerTimer , this);
 		}
 
 		public setFontSize(fs:number) {
@@ -26,12 +32,19 @@ module eyelen4 {
 			}
 		}
 
-		public setTimer(msCnt:number , listener:Function) {
-/*			var timer:egret.Timer;
+		public onTracerTimer() {
+			this.timeLabel.text = this.m_timerPointer.currentCount.toString();
+		}
+
+/*		public setTimer(msCnt:number , listener:Function) {
+			var timer:egret.Timer;
 			timer = new egret.Timer(msCnt , 1);
-			timer.$addListener(egret.TimerEvent.TIMER,listener,this);
-			timer.addEventListener()
-			listener();*/
+			timer.addEventListener(egret.TimerEvent.TIMER,listener,this);
+			timer.start();
+		}*/
+		public setTimer(timer:egret.Timer) {
+			this.m_timerPointer = timer;
+			this.m_tracerTimer.start();
 		}
 	}
 }

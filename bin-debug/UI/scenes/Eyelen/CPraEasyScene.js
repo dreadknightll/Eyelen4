@@ -75,6 +75,11 @@ var eyelen4;
             this.bottomArea.backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backBtnTap, this);
             this.bottomArea.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCaliBtn, this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOKButtonTap, this);
+            //            this.shutDownClock.setTimer(1200000 , this.shutdown);
+            this.shutDownClock.setTimer(g_shutdownTimer);
+        };
+        CPraEasyScene.prototype.shutdown = function () {
+            g_pageJumper.gotoPage("ShutdownScr", null);
         };
         CPraEasyScene.prototype._setParentContainer = function (c) {
             _super.prototype._setParentContainer.call(this, c);

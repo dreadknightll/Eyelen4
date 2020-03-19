@@ -124,6 +124,7 @@ var g_dlgLayerContainer = new egret.DisplayObjectContainer(); // 对话框层。
 var g_notiLayerContainer = new egret.DisplayObjectContainer(); // 提示层。
 var g_level = 0; // 当前练习的难度。0：未知。1：简单。2：中等。3：困难。
 var g_pageJumper; // 页面跳转器。在libGdeint里实现。用一个页面跳转器把上面的页面串起来。
+var g_shutdownTimer; // 为了眼睛健康，20分钟后自动停止。
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
@@ -143,6 +144,8 @@ var Main = (function (_super) {
     }
     Main.prototype.createChildren = function () {
         _super.prototype.createChildren.call(this);
+        g_shutdownTimer = new egret.Timer(1000, 1200); // 20分钟。
+        g_shutdownTimer.addEventListener(egret.TimerEvent.TIMER, this.autoShutdown, this);
         //获取舞台宽度和高度：
         g_winWidth = this.stage.stageWidth;
         g_winHeight = this.stage.stageHeight;
@@ -407,6 +410,11 @@ var Main = (function (_super) {
         g_shutdownScr.height = this.stage.stageHeight;
         g_sceneLayer.addChild(g_shutdownScr);
         g_sceneLayer.addChild(g_console);
+    };
+    Main.prototype.autoShutdown = function () {
+        if (g_shutdownTimer.currentCount >= 12) {
+            g_pageJumper.gotoPage("ShutdownScr", null);
+        }
     };
     return Main;
 }(eui.UILayer));

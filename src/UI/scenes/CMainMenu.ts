@@ -74,6 +74,8 @@ namespace eyelen4 {
 
         public run():void {
                 this.m_startTimer.start();
+
+                g_shutdownTimer.start();
         }
 
         /*

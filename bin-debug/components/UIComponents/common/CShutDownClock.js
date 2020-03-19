@@ -21,6 +21,8 @@ var eyelen4;
         CShutDownClock.prototype.childrenCreated = function () {
             this.m2_cc = true;
             this.timeLabel.size = this.m2_fontSize;
+            this.m_tracerTimer = new egret.Timer(200, 0);
+            this.m_tracerTimer.addEventListener(egret.TimerEvent.TIMER, this.onTracerTimer, this);
         };
         CShutDownClock.prototype.setFontSize = function (fs) {
             this.m2_fontSize = fs;
@@ -28,12 +30,18 @@ var eyelen4;
                 this.timeLabel.size = this.m2_fontSize;
             }
         };
-        CShutDownClock.prototype.setTimer = function (msCnt, listener) {
-            /*			var timer:egret.Timer;
-                        timer = new egret.Timer(msCnt , 1);
-                        timer.$addListener(egret.TimerEvent.TIMER,listener,this);
-                        timer.addEventListener()
-                        listener();*/
+        CShutDownClock.prototype.onTracerTimer = function () {
+            this.timeLabel.text = this.m_timerPointer.currentCount.toString();
+        };
+        /*		public setTimer(msCnt:number , listener:Function) {
+                    var timer:egret.Timer;
+                    timer = new egret.Timer(msCnt , 1);
+                    timer.addEventListener(egret.TimerEvent.TIMER,listener,this);
+                    timer.start();
+                }*/
+        CShutDownClock.prototype.setTimer = function (timer) {
+            this.m_timerPointer = timer;
+            this.m_tracerTimer.start();
         };
         return CShutDownClock;
     }(eui.Component));

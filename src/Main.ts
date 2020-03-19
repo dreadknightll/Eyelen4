@@ -103,6 +103,8 @@ var g_level: number = 0; // 当前练习的难度。0：未知。1：简单。2�
 
 var g_pageJumper:gdeint.CPageJumper; // 页面跳转器。在libGdeint里实现。用一个页面跳转器把上面的页面串起来。
 
+var g_shutdownTimer:egret.Timer; // 为了眼睛健康，20分钟后自动停止。
+
 class Main extends eui.UILayer {
 
     public constructor () {
@@ -125,6 +127,10 @@ class Main extends eui.UILayer {
 
     protected createChildren(): void {
         super.createChildren();
+
+        g_shutdownTimer = new egret.Timer(1000 , 0); // 这里用无限次。实际时间在别处控制。
+        g_shutdownTimer.addEventListener(egret.TimerEvent.TIMER,this.autoShutdown,this);
+
 
         //获取舞台宽度和高度：
         g_winWidth = this.stage.stageWidth;
@@ -411,5 +417,16 @@ class Main extends eui.UILayer {
         g_sceneLayer.addChild(g_shutdownScr);
 
         g_sceneLayer.addChild(g_console);
+    }
+
+    public autoShutdown() {
+        if(g_shutdownTimer.currentCount >= 12) 
+        {
+            g_pageJumper.gotoPage("ShutdownScr",null);
+        }
+/*        if(g_shutdownTimer.currentCount >= 1200) //20分钟。
+        {
+            g_pageJumper.gotoPage("ShutdownScr",null);
+        }*/
     }
 }
