@@ -131,7 +131,8 @@ var eyelen4;
             //        先显示翻页动画 （未完成）
             this.m2_tmpS2StartBtn = false;
             this.startBtn.visible = false;
-            g_pageJumper.gotoPage("MainMenu", null);
+            //            g_pageJumper.gotoPage("MainMenu",null);
+            g_pageJumper.gotoPage("ShutdownScr", null);
             g_mainMenu.run();
         };
         return CWelcomeScene_Eyelen4;

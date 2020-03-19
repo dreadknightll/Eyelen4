@@ -91,6 +91,7 @@ var g_praDifficultContainer:CEyelenPraContainer; //困难难度显示容器。
 
 //var g_welcomeScene:eyelen3E.CWelcomeScene_Eyelen3E; // 欢迎屏幕画面。
 var g_welcomeScene:eyelen4.CWelcomeScene_Eyelen4; // 欢迎屏幕画面。
+var g_shutdownScr:gdeint.CShutdownScr;
 var g_mainMenu:eyelen4.CMainMenu; // 主菜单画面
 
 //画面采用分层设计。不同类型的元素应显示在不同的层上，以维持合理的前后顺序。
@@ -268,6 +269,9 @@ class Main extends eui.UILayer {
         g_notiLayerContainer.addChild(g_praEasyScene.getNotiLayer().toEgretDispObjContainer());
 
         g_praDifficultScene = new eyelen4.CPraDifficultScene();
+
+        g_shutdownScr = new gdeint.CShutdownScr();
+
 /*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
             g_praDifficultScene.m_NoImgMode = true;
         }*/
@@ -374,11 +378,15 @@ class Main extends eui.UILayer {
         var praDifficultContainerAdapter:CPage2EyelenPraContainerAdapter = new CPage2EyelenPraContainerAdapter();
         praDifficultContainerAdapter.m_adaptee = g_praDifficultContainer;
 
+        var shutdownPageAdapter:CPage2EuiAdapter = new CPage2EuiAdapter();
+        shutdownPageAdapter.m_adaptee = g_shutdownScr;
+
 // 把以上场景添加到页面跳转器，方便跳转。
         g_pageJumper.setPage("WelcomeScene" , welcomePage);
         g_pageJumper.setPage("MainMenu" , mainMenuSceneAdapter);
         g_pageJumper.setPage("PraEasyScene" , praEasyContainerAdapter);
         g_pageJumper.setPage("PraDifficultScene" , praDifficultContainerAdapter);
+        g_pageJumper.setPage("ShutdownScr" , shutdownPageAdapter);
 
         g_praDifficultScene.setWinWidth(g_winWidth);
         g_praDifficultScene.setWinHeight(g_winHeight);
@@ -396,6 +404,11 @@ class Main extends eui.UILayer {
         g_mainMenu.width = this.stage.stageWidth;
         g_mainMenu.height = this.stage.stageHeight;
         g_sceneLayer.addChild(g_mainMenu);
+
+        g_shutdownScr.visible = false;
+        g_shutdownScr.width = this.stage.stageWidth;
+        g_shutdownScr.height = this.stage.stageHeight;
+        g_sceneLayer.addChild(g_shutdownScr);
 
         g_sceneLayer.addChild(g_console);
     }

@@ -45,7 +45,8 @@
 		"eyelen4.CUserProPanel": "resource/skins/components/common/userProPanelSkin.exml",
 		"eyelen4.CPrivacyPolicyPanel": "resource/skins/components/common/privacyPolicyPanelSkin.exml",
 		"eyelen4.CHorverCheckPanel": "resource/skins/components/common/horverCheckPanelSkin.exml",
-		"eyelen4.CHelpPanel": "resource/skins/components/common/helpPanelSkin.exml"
+		"eyelen4.CHelpPanel": "resource/skins/components/common/helpPanelSkin.exml",
+		"gdeint.CShutdownScr": "resource/skins/components/common/shutdownScrSkin.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [

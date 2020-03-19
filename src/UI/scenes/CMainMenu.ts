@@ -109,6 +109,7 @@ namespace eyelen4 {
                 g_praDifficultContainer.saveVisibleStates();
                 g_pageJumper.gotoPage("PraDifficultScene",null);
 
+
                 this.m_startTimer.stop();
                 }
 
