@@ -33,7 +33,7 @@ module eyelen4 {
 		}
 
 		public onTracerTimer() {
-			this.timeLabel.text = this.m_timerPointer.currentCount.toString();
+			this.timeLabel.text = gdeint.seconds2MinSec(1200 - this.m_timerPointer.currentCount);
 		}
 
 /*		public setTimer(msCnt:number , listener:Function) {

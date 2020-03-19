@@ -31,7 +31,7 @@ var eyelen4;
             }
         };
         CShutDownClock.prototype.onTracerTimer = function () {
-            this.timeLabel.text = this.m_timerPointer.currentCount.toString();
+            this.timeLabel.text = gdeint.seconds2MinSec(1200 - this.m_timerPointer.currentCount);
         };
         /*		public setTimer(msCnt:number , listener:Function) {
                     var timer:egret.Timer;

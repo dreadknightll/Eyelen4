@@ -435,6 +435,29 @@ var gdeint;
         return false;
     }
     gdeint.tailContain = tailContain;
+    function seconds2MinSec(seconds) {
+        var ret;
+        ret = "00:00";
+        var minPart, secPart;
+        secPart = seconds % 60;
+        minPart = Math.floor(seconds / 60);
+        var strMinPart, strSecPart;
+        if (minPart < 10) {
+            strMinPart = "0" + minPart;
+        }
+        else {
+            strMinPart = "" + minPart;
+        }
+        if (secPart < 10) {
+            strSecPart = "0" + secPart;
+        }
+        else {
+            strSecPart = "" + secPart;
+        }
+        ret = strMinPart + ":" + strSecPart;
+        return ret;
+    }
+    gdeint.seconds2MinSec = seconds2MinSec;
     // 对Date的扩展，将 Date 转化为指定格式的String   
     // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，   
     // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)   

@@ -67,6 +67,7 @@ var eyelen4;
             return _this;
         }
         CPraDifficultScene.prototype.childrenCreated = function () {
+            this.shutDownClock.setFontSize(24);
             this.m_bgUnderTop = new egret.Shape();
             this.bgUnderTopGrp.addChild(this.m_bgUnderTop);
             this.midArea.m_UIPresenter = this.m_UIPresenter;
@@ -75,6 +76,7 @@ var eyelen4;
             this.bottomArea.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCaliBtn, this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOKButtonTap, this);
             this.m2_cc = true;
+            this.shutDownClock.setTimer(g_shutdownTimer);
         };
         CPraDifficultScene.prototype._setParentContainer = function (c) {
             _super.prototype._setParentContainer.call(this, c);

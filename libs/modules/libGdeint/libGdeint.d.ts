@@ -147,6 +147,7 @@ declare namespace gdeint {
     function randomNums(maxNum: any, cnt: any): any;
     function randomNums_ts(maxNum: number, cnt: number): Array<number>;
     function tailContain(str1: any, str2: any): boolean;
+    function seconds2MinSec(seconds: number): string;
     function objectSize(the_object: any): number;
     function objectValues(the_object: any): string;
 }

@@ -144,7 +144,7 @@ var Main = (function (_super) {
     }
     Main.prototype.createChildren = function () {
         _super.prototype.createChildren.call(this);
-        g_shutdownTimer = new egret.Timer(1000, 1200); // 20分钟。
+        g_shutdownTimer = new egret.Timer(1000, 0); // 这里用无限次。实际时间在别处控制。
         g_shutdownTimer.addEventListener(egret.TimerEvent.TIMER, this.autoShutdown, this);
         //获取舞台宽度和高度：
         g_winWidth = this.stage.stageWidth;
@@ -412,7 +412,11 @@ var Main = (function (_super) {
         g_sceneLayer.addChild(g_console);
     };
     Main.prototype.autoShutdown = function () {
-        if (g_shutdownTimer.currentCount >= 12) {
+        /*        if(g_shutdownTimer.currentCount >= 12)
+                {
+                    g_pageJumper.gotoPage("ShutdownScr",null);
+                }*/
+        if (g_shutdownTimer.currentCount >= 1200) {
             g_pageJumper.gotoPage("ShutdownScr", null);
         }
     };

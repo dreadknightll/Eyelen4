@@ -78,9 +78,6 @@ var eyelen4;
             //            this.shutDownClock.setTimer(1200000 , this.shutdown);
             this.shutDownClock.setTimer(g_shutdownTimer);
         };
-        CPraEasyScene.prototype.shutdown = function () {
-            g_pageJumper.gotoPage("ShutdownScr", null);
-        };
         CPraEasyScene.prototype._setParentContainer = function (c) {
             _super.prototype._setParentContainer.call(this, c);
             this.m_UIPresenter.setRenderFilter(this.getParentContainer()._getRenderFilter());

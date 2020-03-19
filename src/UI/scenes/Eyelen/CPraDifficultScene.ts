@@ -34,6 +34,8 @@ namespace eyelen4 {
         public bottomAreaGroup:eui.Group;
         public bottomArea:CBottomAreaDifficult;
 
+        public shutDownClock:eyelen4.CShutDownClock;
+
         public m_pm: IPlainLenPraMachine; // 练习机器。处理长度切换、计分等事务。可单元测试。
 
         public m_tipBalloon1:CBalloonTip;
@@ -121,6 +123,7 @@ namespace eyelen4 {
         }
 
         public childrenCreated(): void {
+            this.shutDownClock.setFontSize(24);
             this.m_bgUnderTop = new egret.Shape();
             this.bgUnderTopGrp.addChild(this.m_bgUnderTop);
 
@@ -132,6 +135,7 @@ namespace eyelen4 {
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onOKButtonTap , this);
 
             this.m2_cc = true;
+            this.shutDownClock.setTimer(g_shutdownTimer);
         }
 
         public _setParentContainer(c:IEyelenPraContainer):void {

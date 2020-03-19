@@ -133,10 +133,6 @@ namespace eyelen4 {
             this.shutDownClock.setTimer(g_shutdownTimer);
         }
 
-        public shutdown() {
-            g_pageJumper.gotoPage("ShutdownScr" , null);
-        }
-
         public _setParentContainer(c:IEyelenPraContainer):void {
             super._setParentContainer(c);
             this.m_UIPresenter.setRenderFilter(this.getParentContainer()._getRenderFilter());
