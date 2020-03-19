@@ -4,6 +4,7 @@ class CWelcomePage_Eyelen4 implements gdeint.IPage {
 
     private m_commonPage:gdeint.CPage;
     public m_scene:eyelen4.CWelcomeScene_Eyelen4;
+    private shutdownClock:gdeint.CShutDownClock;
 
     public constructor() {
         this.m_commonPage = new gdeint.CPage();

@@ -59,6 +59,8 @@ var eyelen4;
                             this.showCRBtn.x += 20;
                             this.showCRBtn.y += 15;
                         }*/
+            this.shutdownClock.setFontSize(18);
+            this.shutdownClock.setTimer(g_shutdownTimer);
             if (this.m2_tmpS2StartBtn) {
                 this.startBtn.visible = true;
             }

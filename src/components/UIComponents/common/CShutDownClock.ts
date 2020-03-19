@@ -1,4 +1,4 @@
-module eyelen4 {
+module gdeint {
 	export class CShutDownClock extends eui.Component{
 
 		private timeLabel:eui.Label;
@@ -13,7 +13,7 @@ module eyelen4 {
 		private m_tracerTimer:egret.Timer; // 用于刷新时间显示的Timer。
 
 		private m2_cc;
-		private m2_fontSize;
+		private m2_fontSize = 24;
 
 
 		public childrenCreated() {

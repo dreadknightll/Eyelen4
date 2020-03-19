@@ -14,7 +14,7 @@
 		"eui.VSlider": "resource/eui_skins/VSliderSkin.exml",
 		"eui.ItemRenderer": "resource/eui_skins/ItemRendererSkin.exml",
 		"eyelen4.CCloseBtn": "resource/skins/components/common/closeBtnSkin.exml",
-		"eyelen4.CShutDownClock": "resource/skins/components/common/shutdownClockSkin.exml",
+		"gdeint.CShutDownClock": "resource/skins/components/common/shutdownClockSkin.exml",
 		"eyelen4.CCopyrightPanel": "resource/skins/components/common/copyrightPanelSkin.exml",
 		"eyelen4.CPrivacyPanel": "resource/skins/components/common/privacyPanelSkin.exml",
 		"gdeint.CAlertPanel": "resource/skins/components/common/alertPanelSkin.exml",

@@ -8,12 +8,13 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var eyelen4;
-(function (eyelen4) {
+var gdeint;
+(function (gdeint) {
     var CShutDownClock = (function (_super) {
         __extends(CShutDownClock, _super);
         function CShutDownClock() {
             var _this = _super.call(this) || this;
+            _this.m2_fontSize = 24;
             _this.m2_cc = false;
             _this.m2_cc = 94;
             return _this;
@@ -45,7 +46,7 @@ var eyelen4;
         };
         return CShutDownClock;
     }(eui.Component));
-    eyelen4.CShutDownClock = CShutDownClock;
-    __reflect(CShutDownClock.prototype, "eyelen4.CShutDownClock");
-})(eyelen4 || (eyelen4 = {}));
+    gdeint.CShutDownClock = CShutDownClock;
+    __reflect(CShutDownClock.prototype, "gdeint.CShutDownClock");
+})(gdeint || (gdeint = {}));
 //# sourceMappingURL=CShutDownClock.js.map

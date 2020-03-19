@@ -37,8 +37,9 @@ namespace eyelen4 {
         private m_cc:boolean = false; //Children created boolean.
         private m2_tmpS2StartBtn = true; //Switched to StartBtn.
 
-        public m_latestVerLoader:egret.URLLoader;
+//        public m_latestVerLoader:egret.URLLoader;
 
+        private shutdownClock:gdeint.CShutDownClock;
 
         public switch2StartBtn():void {
             this.m2_tmpS2StartBtn = true;
@@ -77,6 +78,8 @@ namespace eyelen4 {
                 this.showCRBtn.x += 20;
                 this.showCRBtn.y += 15;
             }*/
+            this.shutdownClock.setFontSize(18);
+            this.shutdownClock.setTimer(g_shutdownTimer);
 
             if(this.m2_tmpS2StartBtn) {
                 this.startBtn.visible = true;
