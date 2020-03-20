@@ -343,8 +343,6 @@ namespace eyelen4 {
                 var oldImgResName = this.m_curImgResName;
 
                 var tmpImg: egret.Bitmap = new egret.Bitmap();
-    //            tmpImg.texture = RES.getRes(imgResName);
-
                 tmpImg.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
                 this.m_imgOriWidth = tmpImg.width;
 
@@ -459,14 +457,11 @@ namespace eyelen4 {
                 this.m_lenEdgeCanvas.y = tmpRect1.m_top;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
 
-                this.m_lenEdgeCanvas.graphics.drawRect(-160,0,tmpRect1.m_width ,tmpRect1.m_height); //Edge1
-
-                this.m_lenEdgeCanvas.graphics.drawRect(0,0,tmpRect1.m_width +70,tmpRect1.m_height); //Edge1
+                this.m_lenEdgeCanvas.graphics.drawRect(0,0,tmpRect1.m_width ,tmpRect1.m_height); //Edge1
                 var edge2X:number,edge2Y:number;
                 edge2X = tmpRect2.m_left - tmpRect1.m_left;
                 edge2Y = tmpRect2.m_top - tmpRect1.m_top;
                 this.m_lenEdgeCanvas.graphics.drawRect(edge2X,edge2Y,tmpRect2.m_width,tmpRect2.m_height); //Edge2
-                this.m_lenEdgeCanvas.graphics.drawRect(edge2X+100,edge2Y,tmpRect2.m_width,tmpRect2.m_height); //Edge2
                 this.m_lenEdgeCanvas.graphics.endFill();
             }
             else
