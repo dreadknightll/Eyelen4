@@ -346,7 +346,7 @@ namespace eyelen4 {
                 tmpImg.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
                 this.m_imgOriWidth = tmpImg.width;
 
-//                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
+                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
 
                 this.midArea.imgFromFile.width = this.m_UIPresenter.getImgRect().m_width;
                 this.midArea.imgFromFile.height = tmpImg.height;
@@ -451,7 +451,7 @@ namespace eyelen4 {
 
                 var tmpRect1:gdeint.CRect = this.m_UIPresenter.getLenEdge1DispRect();
                 var tmpRect2:gdeint.CRect = this.m_UIPresenter.getLenEdge2DispRect();
-                this.m_lenEdgeCanvas.x = tmpRect1.m_left;
+                this.m_lenEdgeCanvas.x = tmpRect1.m_left -100;
                 this.m_lenEdgeCanvas.y = tmpRect1.m_top;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
                 this.m_lenEdgeCanvas.graphics.drawRect(0,0,tmpRect1.m_width,tmpRect1.m_height); //Edge1
@@ -656,7 +656,6 @@ namespace eyelen4 {
 /*            this.readjustThumb();
             this.readjustThumbSel();*/
 
-
             this.showInitInstrus();
 
         }
@@ -722,10 +721,7 @@ namespace eyelen4 {
             this.recoverNotiLayerBg();//make ruler dark again for other disable scene actions.
             this.m_notiLayer.visible = false;
 
-            this.midArea.imgFromFile.
-                            
-                            
-                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes("img_017_png");
+//                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes("img_017_png");
         }
 
         /*
