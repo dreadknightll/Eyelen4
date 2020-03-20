@@ -346,8 +346,7 @@ namespace eyelen4 {
                 tmpImg.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
                 this.m_imgOriWidth = tmpImg.width;
 
-    //            this.midArea.img.texture = RES.getRes(imgResName);
-                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
+//                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
 
                 this.midArea.imgFromFile.width = this.m_UIPresenter.getImgRect().m_width;
                 this.midArea.imgFromFile.height = tmpImg.height;
@@ -655,8 +654,10 @@ namespace eyelen4 {
             this.syncWithUIPresenter();
 
 /*            this.readjustThumb();
-            this.readjustThumbSel();
-            this.showInitInstrus();*/
+            this.readjustThumbSel();*/
+
+
+            this.showInitInstrus();
 
         }
 
@@ -720,6 +721,11 @@ namespace eyelen4 {
             this.enabled = true;
             this.recoverNotiLayerBg();//make ruler dark again for other disable scene actions.
             this.m_notiLayer.visible = false;
+
+            this.midArea.imgFromFile.
+                            
+                            
+                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes("img_017_png");
         }
 
         /*

@@ -243,8 +243,7 @@ var eyelen4;
                 //            tmpImg.texture = RES.getRes(imgResName);
                 tmpImg.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
                 this.m_imgOriWidth = tmpImg.width;
-                //            this.midArea.img.texture = RES.getRes(imgResName);
-                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
+                //                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
                 this.midArea.imgFromFile.width = this.m_UIPresenter.getImgRect().m_width;
                 this.midArea.imgFromFile.height = tmpImg.height;
                 this.m_curImgResName = imgResName;
@@ -485,12 +484,12 @@ var eyelen4;
             this.initCmpLenDlg();
             //OK to start and show first len.
             var firstLen = this.m_pm.getCurLen();
-            this.showLen(firstLen); // UIPresenter.showLen+syncWithUIPresenter = showLen+*
-            //            this.m_UIPresenter.showLen(firstLen);
-            //            this.syncWithUIPresenter();
+            //            this.showLen(firstLen);  // UIPresenter.showLen+syncWithUIPresenter = showLen+*
+            this.m_UIPresenter.showLen(firstLen);
+            this.syncWithUIPresenter();
             /*            this.readjustThumb();
-                        this.readjustThumbSel();
-                        this.showInitInstrus();*/
+                        this.readjustThumbSel();*/
+            this.showInitInstrus();
         };
         /*
         * 显示开始练习时的提示说明。
@@ -541,6 +540,8 @@ var eyelen4;
             this.enabled = true;
             this.recoverNotiLayerBg(); //make ruler dark again for other disable scene actions.
             this.m_notiLayer.visible = false;
+            this.midArea.imgFromFile.
+                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes("img_017_png");
         };
         /*
         * 顶部按钮触摸后触发。
