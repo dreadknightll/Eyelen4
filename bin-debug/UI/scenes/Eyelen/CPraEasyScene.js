@@ -363,7 +363,7 @@ var eyelen4;
                 this.m_lenEdgeCanvas.graphics.drawRect(0, 0, tmpRect1.m_width, tmpRect1.m_height);
                 var edge2X, edge2Y;
                 edge2X = tmpRect2.m_left - tmpRect1.m_left;
-                edge2Y = this.m_UIPresenter.getLenEdge2DispRect().m_top - this.m_UIPresenter.getLenEdge1DispRect().m_top;
+                edge2Y = tmpRect2.m_top - tmpRect1.m_top;
                 this.m_lenEdgeCanvas.graphics.drawRect(edge2X, edge2Y, tmpRect2.m_width, tmpRect2.m_height);
                 this.m_lenEdgeCanvas.graphics.endFill();
             }
