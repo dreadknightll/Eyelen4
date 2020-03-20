@@ -191,7 +191,7 @@ var CEyelen3EPraEasyPresenter = (function () {
         //Edge2:
         if (this.m_len.m_isHor) {
             this.m_lenEdge2DispRect.m_left = this.m_renderFilter.xOConv(this.m_len.m_x + this.m_len.m_length);
-            this.m_lenEdge2DispRect.m_top = this.m_len.m_y;
+            this.m_lenEdge2DispRect.m_top = this.m_len.m_y - 30;
             this.m_lenEdge2DispRect.m_width = 5;
             this.m_lenEdge2DispRect.m_height = 60;
         }

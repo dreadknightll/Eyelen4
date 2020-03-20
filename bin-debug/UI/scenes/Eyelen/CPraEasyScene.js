@@ -310,6 +310,7 @@ var eyelen4;
         CPraEasyScene.prototype._showLen = function (len) {
             //            this.m_lenEdge1.graphics.clear();
             //            this.m_lenEdge2.graphics.clear();
+            this.m_lenEdgeCanvas.graphics.drawRect(0, 0, 5, 60);
             this.m_lenEdgeCanvas.graphics.clear();
             if (len.m_isHor) {
                 //Draw edge1:
@@ -323,14 +324,16 @@ var eyelen4;
                 /*                this.m_lenEdge2.graphics.beginFill(0x00FFFF);
                                 this.m_lenEdge2.graphics.drawRect(len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()+len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat(),len.m_y - 30,5,60);
                                 this.m_lenEdge2.graphics.endFill();*/
-                this.m_lenEdgeCanvas.x = len.m_x * this.m_UIPresenter.getRenderFilter()._getCaRat() - 5;
-                this.m_lenEdgeCanvas.y = len.m_y - 30;
+                var tmpRect1 = this.m_UIPresenter.getLenEdge1DispRect();
+                var tmpRect2 = this.m_UIPresenter.getLenEdge2DispRect();
+                this.m_lenEdgeCanvas.x = tmpRect1.m_left;
+                this.m_lenEdgeCanvas.y = tmpRect1.m_top;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
-                this.m_lenEdgeCanvas.graphics.drawRect(0, 0, 5, 60); //Edge1
+                this.m_lenEdgeCanvas.graphics.drawRect(0, 0, tmpRect1.m_width, tmpRect1.m_height); //Edge1
                 var edge2X, edge2Y;
-                edge2X = len.m_length * this.m_UIPresenter.getRenderFilter()._getCaRat() + 5;
-                edge2Y = 0;
-                this.m_lenEdgeCanvas.graphics.drawRect(edge2X, edge2Y, 5, 60); //Edge1
+                edge2X = tmpRect2.m_left - tmpRect1.m_left;
+                edge2Y = tmpRect2.m_top - tmpRect1.m_top;
+                this.m_lenEdgeCanvas.graphics.drawRect(edge2X, edge2Y, tmpRect2.m_width, tmpRect2.m_height); //Edge2
                 this.m_lenEdgeCanvas.graphics.endFill();
             }
             else {
@@ -482,8 +485,9 @@ var eyelen4;
             this.initCmpLenDlg();
             //OK to start and show first len.
             var firstLen = this.m_pm.getCurLen();
-            this.showLen(firstLen);
-            this.syncWithUIPresenter();
+            this.showLen(firstLen); // UIPresenter.showLen+syncWithUIPresenter = showLen+*
+            //            this.m_UIPresenter.showLen(firstLen);
+            //            this.syncWithUIPresenter();
             /*            this.readjustThumb();
                         this.readjustThumbSel();
                         this.showInitInstrus();*/
