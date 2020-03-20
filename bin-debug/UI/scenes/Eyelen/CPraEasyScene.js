@@ -235,6 +235,7 @@ var eyelen4;
         * 在屏幕显示图片。
         */
         CPraEasyScene.prototype.showImg = function (imgResName) {
+            //注：Png图片的渐变等特效很可能会对长度显示造成影响！须谨慎！
             if (this.m_NoImgMode) {
             }
             else {
@@ -243,7 +244,10 @@ var eyelen4;
                 //            tmpImg.texture = RES.getRes(imgResName);
                 tmpImg.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
                 this.m_imgOriWidth = tmpImg.width;
-                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
+                var tmpBitmap = new egret.Bitmap();
+                tmpBitmap.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
+                this.midArea.imgFromFile.$setBitmapData(tmpBitmap.texture);
+                //                this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
                 this.midArea.imgFromFile.width = this.m_UIPresenter.getImgRect().m_width;
                 this.midArea.imgFromFile.height = tmpImg.height;
                 this.m_curImgResName = imgResName;
@@ -325,14 +329,16 @@ var eyelen4;
                                 this.m_lenEdge2.graphics.endFill();*/
                 var tmpRect1 = this.m_UIPresenter.getLenEdge1DispRect();
                 var tmpRect2 = this.m_UIPresenter.getLenEdge2DispRect();
-                this.m_lenEdgeCanvas.x = tmpRect1.m_left - 100;
+                this.m_lenEdgeCanvas.x = tmpRect1.m_left;
                 this.m_lenEdgeCanvas.y = tmpRect1.m_top;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
-                this.m_lenEdgeCanvas.graphics.drawRect(0, 0, tmpRect1.m_width, tmpRect1.m_height); //Edge1
+                this.m_lenEdgeCanvas.graphics.drawRect(-160, 0, tmpRect1.m_width, tmpRect1.m_height); //Edge1
+                this.m_lenEdgeCanvas.graphics.drawRect(0, 0, tmpRect1.m_width + 70, tmpRect1.m_height); //Edge1
                 var edge2X, edge2Y;
                 edge2X = tmpRect2.m_left - tmpRect1.m_left;
                 edge2Y = tmpRect2.m_top - tmpRect1.m_top;
                 this.m_lenEdgeCanvas.graphics.drawRect(edge2X, edge2Y, tmpRect2.m_width, tmpRect2.m_height); //Edge2
+                this.m_lenEdgeCanvas.graphics.drawRect(edge2X + 100, edge2Y, tmpRect2.m_width, tmpRect2.m_height); //Edge2
                 this.m_lenEdgeCanvas.graphics.endFill();
             }
             else {
