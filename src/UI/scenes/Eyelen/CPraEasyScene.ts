@@ -466,7 +466,7 @@ namespace eyelen4 {
             }
             else
             {
-                var tmpRect:gdeint.CRect , tmpPt:gdeint.CPoint;
+                var tmpRect1:gdeint.CRect , tmpRect2:gdeint.CRect , tmpPt:gdeint.CPoint;
                 //Draw edge1:
 /*                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
                 tmpRect = this.m_UIPresenter.getLenEdge1DispRect();
@@ -486,15 +486,16 @@ namespace eyelen4 {
                 this.m_lenEdge2.graphics.drawRect(tmpRect.m_left , tmpRect.m_top , tmpRect.m_width , tmpRect.m_height);
                 this.m_lenEdge2.graphics.endFill();*/
 
-                tmpRect = this.m_UIPresenter.getLenEdge1DispRect();
+                tmpRect1 = this.m_UIPresenter.getLenEdge1DispRect();
+                tmpRect2 = this.m_UIPresenter.getLenEdge2DispRect();
                 this.m_lenEdgeCanvas.x = this.m_UIPresenter.getLenEdge1DispRect().m_left;
                 this.m_lenEdgeCanvas.y = this.m_UIPresenter.getLenEdge1DispRect().m_top;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
-                this.m_lenEdgeCanvas.graphics.drawRect(0,0,tmpRect.m_width,tmpRect.m_height);
+                this.m_lenEdgeCanvas.graphics.drawRect(0,0,tmpRect1.m_width,tmpRect1.m_height);
                 var edge2X:number,edge2Y:number;
-                edge2X = this.m_UIPresenter.getLenEdge2DispRect().m_left - this.m_UIPresenter.getLenEdge1DispRect().m_left;
-                edge2Y = this.m_UIPresenter.getLenEdge2DispRect().m_top - this.m_UIPresenter.getLenEdge1DispRect().m_top;
-                this.m_lenEdgeCanvas.graphics.drawRect(edge2X,edge2Y,tmpRect.m_width,tmpRect.m_height);
+                edge2X = tmpRect2.m_left - tmpRect1.m_left;
+                edge2Y = tmpRect2.m_top - tmpRect1.m_top;
+                this.m_lenEdgeCanvas.graphics.drawRect(edge2X,edge2Y,tmpRect2.m_width,tmpRect2.m_height);
                 this.m_lenEdgeCanvas.graphics.endFill();
 
             }
