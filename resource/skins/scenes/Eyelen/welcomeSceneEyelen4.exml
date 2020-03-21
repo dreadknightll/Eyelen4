@@ -3,7 +3,7 @@
     <e:Rect width="100%" height="100%" fillColor="0xFFFFFF"/>
 
 	<e:Group x="59.5" y="84.5" anchorOffsetY="0" height="109" anchorOffsetX="0" width="359">
-	   	<e:Image source="eyelen3_logo_png" y="6.5" width="95" height="95" x="8"/>
+	   	<e:Image y="6.5" width="95" height="95" x="8" source="eyelen4_icon_180_png"/>
     	<e:Label text="宜英尺眼通4——\n长度目测训练" x="109" y="25.5" textColor="0x000000" />
 	</e:Group>
 
