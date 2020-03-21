@@ -67,7 +67,7 @@ var eyelen4;
             return _this;
         }
         CPraEasyScene.prototype.childrenCreated = function () {
-            this.shutDownClock.setFontSize(24);
+            this.shutdownClock.setFontSize(24);
             this.midArea.m_UIPresenter = this.m_UIPresenter;
             this.midArea.setVisibleStartY(this.m_wm.getTopHeight2() - this.m_wm.getTopHeight1());
             this.m_bgUnderTop = new egret.Shape();
@@ -76,7 +76,8 @@ var eyelen4;
             this.bottomArea.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCaliBtn, this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOKButtonTap, this);
             //            this.shutDownClock.setTimer(1200000 , this.shutdown);
-            this.shutDownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClockTap, this);
         };
         CPraEasyScene.prototype._setParentContainer = function (c) {
             _super.prototype._setParentContainer.call(this, c);
@@ -182,6 +183,9 @@ var eyelen4;
             this.bottomArea.lenInputer.unlock();
             this.bottomArea.lenInputer.clearLen();
             this.getParentContainer().startNewPra();
+        };
+        CPraEasyScene.prototype.onClockTap = function () {
+            g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。", null);
         };
         CPraEasyScene.prototype.startNewPra = function () {
             this.m_pm.startPra();

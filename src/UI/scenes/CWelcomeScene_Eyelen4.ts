@@ -80,6 +80,7 @@ namespace eyelen4 {
             }*/
             this.shutdownClock.setFontSize(18);
             this.shutdownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onClockTap , this);
 
             if(this.m2_tmpS2StartBtn) {
                 this.startBtn.visible = true;
@@ -188,6 +189,10 @@ namespace eyelen4 {
             g_pageJumper.gotoPage("MainMenu",null);
 //            g_pageJumper.gotoPage("ShutdownScr",null);
             g_mainMenu.run();
+        }
+
+        private onClockTap():void {
+            g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
         }
     }
 }

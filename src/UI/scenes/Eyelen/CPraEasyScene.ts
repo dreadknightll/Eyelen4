@@ -33,7 +33,7 @@ namespace eyelen4 {
         public midArea:CMidAreaEasy;
         public bottomAreaGroup:eui.Group;
         public bottomArea:CBottomAreaEasy;
-        public shutDownClock:gdeint.CShutDownClock;
+        public shutdownClock:gdeint.CShutDownClock;
 
         public m_pm: IGridLenPraMachine; // 练习机器。处理长度切换、计分等事务。可单元测试。
 
@@ -118,7 +118,7 @@ namespace eyelen4 {
         }
 
         public childrenCreated(): void {
-            this.shutDownClock.setFontSize(24);
+            this.shutdownClock.setFontSize(24);
             this.midArea.m_UIPresenter = this.m_UIPresenter;
             this.midArea.setVisibleStartY(this.m_wm.getTopHeight2()-this.m_wm.getTopHeight1());
 
@@ -130,7 +130,8 @@ namespace eyelen4 {
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onOKButtonTap , this);
 
 //            this.shutDownClock.setTimer(1200000 , this.shutdown);
-            this.shutDownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onClockTap , this);
         }
 
         public _setParentContainer(c:IEyelenPraContainer):void {
@@ -265,6 +266,10 @@ namespace eyelen4 {
             this.bottomArea.lenInputer.clearLen();
 
             this.getParentContainer().startNewPra();
+        }
+
+        private onClockTap():void {
+            g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
         }
 
         public startNewPra(): void {
