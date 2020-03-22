@@ -219,7 +219,7 @@ class Main extends eui.UILayer {
             loadingView1.visible = false;
             this.stage.removeChild(loadingView1);
 
-            const loadingView2: LoadingUI_Eint_V2 = new LoadingUI_Eint_V2(); // 启动时的资源加载画面。该画面为自定义界面。
+            const loadingView2: LoadingUI_Eint_V3 = new LoadingUI_Eint_V3(); // 启动时的资源加载画面。该画面为自定义界面。
 
             loadingView2.setWinSize(g_winWidth,g_winHeight);
 //            loadingView2.setWinSize(200,300);
@@ -230,7 +230,7 @@ class Main extends eui.UILayer {
 
             await RES.loadGroup("eint", 0, loadingView2); //eint资源组有宜英通用的图片音乐等资源。
             await RES.loadGroup("preload", 0, loadingView2); //preload资源组为系统默认资源组。未人工分类的资源都在这里。资源较多。
-//            await press anykey to continue
+            await loadingView2.touch2C();
             this.stage.removeChild(loadingView2); //加载界面用完必须尽快移除。否则安卓Native下很可能会黑屏。
         }
         catch (e) {
