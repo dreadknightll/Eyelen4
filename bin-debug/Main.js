@@ -207,7 +207,7 @@ var Main = (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 14, , 15]);
+                        _a.trys.push([0, 15, , 16]);
                         loadingView1 = new LoadingUI_NoUI();
                         this.stage.addChild(loadingView1);
                         loadingView1.visible = true;
@@ -245,7 +245,7 @@ var Main = (function (_super) {
                         _a.sent(); //logo资源组有宜英logo等资源。
                         loadingView1.visible = false;
                         this.stage.removeChild(loadingView1);
-                        loadingView2 = new LoadingUI_Eint_V2();
+                        loadingView2 = new LoadingUI_Eint_V3();
                         loadingView2.setWinSize(g_winWidth, g_winHeight);
                         //            loadingView2.setWinSize(200,300);
                         loadingView2.create();
@@ -257,14 +257,16 @@ var Main = (function (_super) {
                         return [4 /*yield*/, RES.loadGroup("preload", 0, loadingView2)];
                     case 13:
                         _a.sent(); //preload资源组为系统默认资源组。未人工分类的资源都在这里。资源较多。
-                        //            await press anykey to continue
-                        this.stage.removeChild(loadingView2); //加载界面用完必须尽快移除。否则安卓Native下很可能会黑屏。
-                        return [3 /*break*/, 15];
+                        return [4 /*yield*/, loadingView2.touch2C()];
                     case 14:
+                        _a.sent();
+                        this.stage.removeChild(loadingView2); //加载界面用完必须尽快移除。否则安卓Native下很可能会黑屏。
+                        return [3 /*break*/, 16];
+                    case 15:
                         e_1 = _a.sent();
                         console.error(e_1);
-                        return [3 /*break*/, 15];
-                    case 15: return [2 /*return*/];
+                        return [3 /*break*/, 16];
+                    case 16: return [2 /*return*/];
                 }
             });
         });
