@@ -51,7 +51,7 @@ const S_NATIVE_IOS:number = 3;
 const S_NATIVE_WP:number = 4;
 const S_WECHAT:number = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
 
-const S_BUILD_FOR:number = S_NATIVE_IOS;
+const S_BUILD_FOR:number = S_NATIVE_ANDROID;
 
 const S_NO_IMG_MODE:boolean = false; // 无图模式开关。开启后Pic从本地读取，且不使用img。
 //const S_NO_IMG_MODE:boolean = true; // 无图模式开关。只在S_WECHAT模式有效。开启后Pic从本地读取，且不使用img。
@@ -64,8 +64,8 @@ var g_winHeight: number; // 保存屏幕高度。
 var g_console: egret.TextField = new egret.TextField(); // 调试终端。
 
 
-//var s_topSpaceHeight: number = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
-var s_topSpaceHeight: number = 30; // 顶部空白条的高度。也为显示使用时间留位置。
+var s_topSpaceHeight: number = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
+//var s_topSpaceHeight: number = 30; // 顶部空白条的高度。也为显示使用时间留位置。
 
 if(S_BUILD_FOR == S_NATIVE_IOS) {
     s_topSpaceHeight = 0;
