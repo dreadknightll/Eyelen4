@@ -31,7 +31,7 @@
   ],
   "targets": {
     "android": {
-      "appname": "宜英尺眼通4",
+      "appname": "宜英尺眼通4代",
       "packagename": "org.gdeint.Eyelen"
     },
     "ios": {
