@@ -11,6 +11,6 @@
 	<e:Group id="bottomAreaGroup" x="0" y="400">
 		<eyelen4:CBottomAreaEasy id="bottomArea" x="0" y="0" />
 	</e:Group>
-	<gdeint:CShutDownClock id="shutdownClock" width="146" height="104" x="18" y="240" anchorOffsetX="0" anchorOffsetY="0"/>
+	<gdeint:CShutdownClock id="shutdownClock" width="146" height="104" x="18" y="240" anchorOffsetX="0" anchorOffsetY="0"/>
 	<eyelen4:CFinalScoreDlg id="finalScoreDlg" x="60" y="111" visible="false"/>
 </e:Skin>

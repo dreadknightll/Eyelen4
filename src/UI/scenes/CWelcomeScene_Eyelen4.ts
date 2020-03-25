@@ -39,7 +39,7 @@ namespace eyelen4 {
 
 //        public m_latestVerLoader:egret.URLLoader;
 
-        private shutdownClock:gdeint.CShutDownClock;
+        private shutdownClock:gdeint.CShutdownClock;
 
         public switch2StartBtn():void {
             this.m2_tmpS2StartBtn = true;

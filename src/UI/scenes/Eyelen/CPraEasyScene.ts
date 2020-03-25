@@ -33,7 +33,7 @@ namespace eyelen4 {
         public midArea:CMidAreaEasy;
         public bottomAreaGroup:eui.Group;
         public bottomArea:CBottomAreaEasy;
-        public shutdownClock:gdeint.CShutDownClock;
+        public shutdownClock:gdeint.CShutdownClock;
 
         public m_pm: IGridLenPraMachine; // 练习机器。处理长度切换、计分等事务。可单元测试。
 

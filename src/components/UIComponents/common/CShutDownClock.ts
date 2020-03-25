@@ -1,5 +1,5 @@
 module gdeint {
-	export class CShutDownClock extends eui.Component{
+	export class CShutdownClock extends eui.Component{
 
 		private timeLabel:eui.Label;
 

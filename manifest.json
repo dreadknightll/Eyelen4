@@ -88,7 +88,7 @@
 		"bin-debug/components/UIComponents/common/CRandomGraph.js",
 		"bin-debug/components/UIComponents/common/CScoreFlagRect.js",
 		"bin-debug/components/UIComponents/common/CScoreView.js",
-		"bin-debug/components/UIComponents/common/CShutDownClock.js",
+		"bin-debug/components/UIComponents/common/CShutdownClock.js",
 		"bin-debug/components/UIComponents/common/CShutdownScr.js",
 		"bin-debug/components/UIComponents/common/CThumbUI.js",
 		"bin-debug/components/UIComponents/common/CThumbUIEvent.js",
