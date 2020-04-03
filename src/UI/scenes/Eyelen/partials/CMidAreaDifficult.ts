@@ -27,7 +27,7 @@ namespace eyelen4 {
         public m_randomGraphShape:gdeint.CRandomGraph;
         public midCanvasGrp:eui.Group;
 
-        public m_UIPresenter:CEyelen3EPraDifficultPresenter;
+        public m_UIPresenter:CEyelen4PraDifficultPresenter;
         public m_imgCircler:gdeint.CSquareCircler;
 
         private m_trueWidth: number = 0;

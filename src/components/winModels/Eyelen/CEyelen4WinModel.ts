@@ -5,7 +5,7 @@
  * 
  */
 
-class CEyelen3EWinModelV2 implements IEyelen3EWinModelV2 {
+class CEyelen4WinModel implements IEyelen4WinModel {
 	public constructor() {
 
 	}

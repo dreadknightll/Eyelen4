@@ -3,7 +3,7 @@
  * @author 
  *
  */
-interface IEyelen3EPraEasyPresenter extends IPraPresenter,IPresenterWithThumb,IPresenterWithCa {
+interface IEyelen4PraDifficultPresenter extends IPraPresenter,IPresenterWithThumb,IPresenterWithCa {
 
     showLen(len: CLen): void;
 //    setLenArr(lenArr: Array<CLen>): void;
@@ -16,7 +16,7 @@ interface IEyelen3EPraEasyPresenter extends IPraPresenter,IPresenterWithThumb,IP
     getImgHeight(): number;
     setCaRat(caRat:number): void;
 
-    setUserGridCnt(gcnt: number): void;
+    setUserLen(len: number): void;
     submitLen(): void;
     nextLen(): void;
     getCurRank(): number;

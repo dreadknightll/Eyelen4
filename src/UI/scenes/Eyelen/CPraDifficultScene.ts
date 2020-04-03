@@ -41,8 +41,8 @@ namespace eyelen4 {
         public m_tipBalloon1:CBalloonTip;
         public m_tipBalloon2:CBalloonTip;
 
-        public m_UIPresenter:CEyelen3EPraDifficultPresenter;
-        public m_wm:IEyelen3EWinModelV2; // 画面布局模型。用于计算画面各元素的坐标位置。可单元测试。
+        public m_UIPresenter:CEyelen4PraDifficultPresenter;
+        public m_wm:IEyelen4WinModel; // 画面布局模型。用于计算画面各元素的坐标位置。可单元测试。
 
         public m_curPicTag: number; // 当前图片在图片缓冲区的下标。
         private m_curRoundTag: number; // 当前练习的轮号。
@@ -87,7 +87,7 @@ namespace eyelen4 {
 
             this.m_topOpen = true;
 
-            this.m_wm = new CEyelen3EWinModelV2();
+            this.m_wm = new CEyelen4WinModel();
 
             this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
@@ -95,9 +95,9 @@ namespace eyelen4 {
             this.m_wm.showTop();
             this.m_wm.setBottomHeight(300);
 
-            this.m_pm = new CEyelen3EPraMachineDifficult();
+            this.m_pm = new CEyelen3EPraMachineDifficult(); //部件没改动，继续使用上一代的。
 
-            this.m_UIPresenter = new CEyelen3EPraDifficultPresenter();
+            this.m_UIPresenter = new CEyelen4PraDifficultPresenter();
             this.m_UIPresenter.bindPM(this.m_pm);
 
             this.m_tipBalloon1 = new CBalloonTip();

@@ -5,9 +5,9 @@
  * 练习界面的Presenter。包含待显示元素的坐标计算等。可单元测试。
  *
  */
-class CEyelen3EPraDifficultPresenter implements IEyelen3EPraDifficultPresenter {
+class CEyelen4PraDifficultPresenter implements IEyelen4PraDifficultPresenter {
 	public constructor() {
-        this.m_pm = new CEyelen3EPraMachineDifficult();
+        this.m_pm = new CEyelen3EPraMachineDifficult(); // 部件没改动，继续使用上一代的。
         
         this.m_itm = new gdeint.ImgThumbModelV2();
         this.m_itm.setThMaxWidth(this.s_thMaxWidth);

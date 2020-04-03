@@ -53,21 +53,16 @@ const S_WECHAT:number = 5; // 发布成微信小游戏。另须移除项目里�
 
 const S_BUILD_FOR:number = S_NATIVE_ANDROID;
 
-const S_NO_IMG_MODE:boolean = false; // 无图模式开关。开启后Pic从本地读取，且不使用img。
-//const S_NO_IMG_MODE:boolean = true; // 无图模式开关。只在S_WECHAT模式有效。开启后Pic从本地读取，且不使用img。
+const S_NO_IMG_MODE:boolean = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
 
-var S_CHECK_UPDATE_ANDROID: boolean = false; // 是否检查更新。
+var g_console: egret.TextField = new egret.TextField(); // 调试终端。
 
 var g_winWidth: number; // 保存屏幕宽度。
 var g_winHeight: number; // 保存屏幕高度。
 
-var g_console: egret.TextField = new egret.TextField(); // 调试终端。
-
-
 var s_topSpaceHeight: number = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
-//var s_topSpaceHeight: number = 30; // 顶部空白条的高度。也为显示使用时间留位置。
 
-if(S_BUILD_FOR == S_NATIVE_IOS) {
+if(S_BUILD_FOR == S_NATIVE_ANDROID) {
     s_topSpaceHeight = 0;
 }
 
@@ -77,24 +72,18 @@ var g_scale:number = 1;
 var g_praDifficultScene:eyelen4.CPraDifficultScene; // 困难难度练习场景。
 var g_praEasyScene:eyelen4.CPraEasyScene; // 简单难度练习场景。
 
-
-var g_resCache:{[index:string]:CHTTPSResStru} = {};
-/*var g_imgResCache:{[index:string]:egret.Texture};
-var g_jsonResCache:{[index:string]:JSON};*/
+var g_resCache:{[index:string]:CHTTPSResStru} = {}; // 用于缓存远程获取的数据。目前主要用在微信版。
 
 var g_resLoader:IResFetcher; //资源读取器。用于通过资源名读取已加载到缓存的资源。可灵活选择从本地读取还是通过网络读取。可供显示容器使用。
 
-//简单难度显示容器。该容器除了包含练习场景，还可注入各式各样的提示框、功能对话框等插件。此设计便于代码测试和重用。
-var g_praEasyContainer:CEyelenPraContainer; 
-
+var g_praEasyContainer:CEyelenPraContainer; //简单难度显示容器。该容器除了包含练习场景，还可注入各式各样的提示框、功能对话框等插件。此设计便于代码测试和重用。
 var g_praDifficultContainer:CEyelenPraContainer; //困难难度显示容器。
 
-//var g_welcomeScene:eyelen3E.CWelcomeScene_Eyelen3E; // 欢迎屏幕画面。
-var g_welcomeScene:eyelen4.CWelcomeScene_Eyelen4; // 欢迎屏幕画面。
-var g_shutdownScr:gdeint.CShutdownScr;
-var g_mainMenu:eyelen4.CMainMenu; // 主菜单画面
+var g_welcomeScene:eyelen4.CWelcomeScene_Eyelen4; // 欢迎屏幕画面。含用户协议、隐私政策、指引等入口。
+var g_shutdownScr:gdeint.CShutdownScr; // 为了眼睛健康，使用时间超过20分钟后练习自动停止并显示为此画面。
+var g_mainMenu:eyelen4.CMainMenu; // 主菜单画面。难度选择。
 
-//画面采用分层设计。不同类型的元素应显示在不同的层上，以维持合理的前后顺序。
+//画面采用分层设计。不同类型的元素应显示在不同的图层上，以维持合理的前后顺序。
 var g_sceneLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 场景层。
 var g_dlgLayerContainer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 对话框层。
 var g_notiLayerContainer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 提示层。
