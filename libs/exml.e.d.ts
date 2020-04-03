@@ -58,8 +58,6 @@ declare class closeBtnSkin extends eui.Skin{
 }
 declare class copyrightPanelSkin_v2 extends eui.Skin{
 }
-declare class copyrightPanelSkin extends eui.Skin{
-}
 declare class cpyTextPanelSkin extends eui.Skin{
 }
 declare class finalScoreDlgSkin extends eui.Skin{

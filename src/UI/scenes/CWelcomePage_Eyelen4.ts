@@ -32,7 +32,6 @@ class CWelcomePage_Eyelen4 implements gdeint.IPage {
 
     public onShownOnFront():void {
         this.m_commonPage.onShownOnFront();
-//        window.alert("CWelcomePage:OnShowOnFront");
         this.m_scene.switch2StartBtn();
     }
 }

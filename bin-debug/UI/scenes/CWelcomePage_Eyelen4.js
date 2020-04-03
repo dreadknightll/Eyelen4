@@ -24,7 +24,6 @@ var CWelcomePage_Eyelen4 = (function () {
     };
     CWelcomePage_Eyelen4.prototype.onShownOnFront = function () {
         this.m_commonPage.onShownOnFront();
-        //        window.alert("CWelcomePage:OnShowOnFront");
         this.m_scene.switch2StartBtn();
     };
     return CWelcomePage_Eyelen4;
