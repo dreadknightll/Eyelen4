@@ -1,5 +1,10 @@
+/****************************************************
+ * /src/UI/scenes/CWelcomePage_Eyelen4.ts
+ * 
+ * 用于实现切换页面时启用/禁止开始练习按钮等操作。
+ *
+ ****************************************************/
 
-//此类用于实现切换页面时启用/禁止开始练习按钮等操作。
 class CWelcomePage_Eyelen4 implements gdeint.IPage {
 
     private m_commonPage:gdeint.CPage;
@@ -15,6 +20,9 @@ class CWelcomePage_Eyelen4 implements gdeint.IPage {
         this.m_scene.visible = true;
 	}
 
+    /*
+    *   离开此页面或其它隐藏操作时触发。
+    */
 	public hide():void {
         this.m_commonPage.hide();
         this.m_scene.visible = false;
@@ -24,6 +32,9 @@ class CWelcomePage_Eyelen4 implements gdeint.IPage {
         return this.m_scene.visible;
     }
 
+    /*
+    *   切换到此页面时触发。
+    */
 	public showOnFront():void {
         this.m_commonPage.showOnFront();
         this.show();
