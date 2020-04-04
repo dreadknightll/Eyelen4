@@ -8,34 +8,6 @@
 // 宜英（eint或gdeint）是本作者设立的个人品牌。
 // 本程序采用北京白鹭公司的白鹭引擎为核心。
 // 本程序调用了libGdeint库。libGdeint是本作者开发的共享库，供多套软件调用，命名空间主要是gdeint。
-
-//////////////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (c) 2014-present, Egret Technology.
-//  All rights reserved.
-//  Redistribution and use in source and binary forms, with or without
-//  modification, are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//     * Neither the name of the Egret nor the
-//       names of its contributors may be used to endorse or promote products
-//       derived from this software without specific prior written permission.
-//
-//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
-//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
-//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
 //////////////////////////////////////////////////////////////////////////////////////
 
 /**************************************************
@@ -53,12 +25,14 @@ const S_WECHAT:number = 5; // 发布成微信小游戏。另须移除项目里�
 
 const S_BUILD_FOR:number = S_NATIVE_ANDROID;
 
+//Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
 const S_NO_IMG_MODE:boolean = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
+
 
 var g_console: egret.TextField = new egret.TextField(); // 调试终端。
 
-var g_winWidth: number; // 保存屏幕宽度。
-var g_winHeight: number; // 保存屏幕高度。
+var g_winWidth: number; // 保存舞台宽度。
+var g_winHeight: number; // 保存舞台高度。
 
 var s_topSpaceHeight: number = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
 
@@ -67,7 +41,7 @@ if(S_BUILD_FOR == S_NATIVE_ANDROID) {
 }
 
 var g_scenePos:gdeint.CPoint; // 此处gdeint为libGdeint使用的命名空间。
-var g_scale:number = 1;
+var g_scale:number = 1; // 有些元素需要根据实际分辨率确定大小、位置等信息，因此需要保存此变量。好处：舞台分辨率提高了也无重新设计exml等界面。
 
 var g_praDifficultScene:eyelen4.CPraDifficultScene; // 困难难度练习场景。
 var g_praEasyScene:eyelen4.CPraEasyScene; // 简单难度练习场景。
@@ -84,9 +58,9 @@ var g_shutdownScr:gdeint.CShutdownScr; // 为了眼睛健康，使用时间超�
 var g_mainMenu:eyelen4.CMainMenu; // 主菜单画面。难度选择。
 
 //画面采用分层设计。不同类型的元素应显示在不同的图层上，以维持合理的前后顺序。
-var g_sceneLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 场景层。
-var g_dlgLayerContainer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 对话框层。
-var g_notiLayerContainer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 提示层。
+var g_sceneLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 场景图层。
+var g_dlgLayerContainer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 对话框图层。
+var g_notiLayerContainer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer(); // 提示图层。
 
 var g_level: number = 0; // 当前练习的难度。0：未知。1：简单。2：中等。3：困难。
 
@@ -117,7 +91,7 @@ class Main extends eui.UILayer {
     protected createChildren(): void {
         super.createChildren();
 
-        g_shutdownTimer = new egret.Timer(1000 , 0); // 这里用无限次。实际时间在别处控制。
+        g_shutdownTimer = new egret.Timer(1000 , 0); // 这里用无限次。实际时间在listener里控制。
         g_shutdownTimer.addEventListener(egret.TimerEvent.TIMER,this.autoShutdown,this);
 
 
@@ -126,21 +100,21 @@ class Main extends eui.UILayer {
         g_winHeight = this.stage.stageHeight;
 
         //计算适配屏幕应采用的图形缩放比例和起始显示坐标。新版白鹭引擎下可考虑去掉：
-        var scaleX = g_winWidth / 480;
+        var scaleX = g_winWidth / 480; // 界面设计使用尺寸：480*800。
         var scaleY = g_winHeight / 800;
 
         if(scaleX < scaleY) {
             g_scale = scaleX;
             g_scenePos.m_x = 0;
-            g_scenePos.m_y = (g_winHeight - 800*g_scale)/2;
+            g_scenePos.m_y = (g_winHeight - 800*g_scale)/2; //宽占满，高居中。
         }
         else {
             g_scale = scaleY;
-            g_scenePos.m_x = (g_winWidth - 480*g_scale)/2;
+            g_scenePos.m_x = (g_winWidth - 480*g_scale)/2; //宽居中，高占满。
             g_scenePos.m_y = 0;
         }
 
-        //把三个核心自定义层添加到舞台：
+        //把三个核心自定义图层添加到舞台：
         this.addChild(g_sceneLayer);
         this.addChild(g_dlgLayerContainer);
         this.addChild(g_notiLayerContainer);
@@ -211,7 +185,6 @@ class Main extends eui.UILayer {
             const loadingView2: LoadingUI_Eint_V3 = new LoadingUI_Eint_V3(); // 启动时的资源加载画面。该画面为自定义界面。
 
             loadingView2.setWinSize(g_winWidth,g_winHeight);
-//            loadingView2.setWinSize(200,300);
             loadingView2.create();
 
             this.stage.addChild(loadingView2);
@@ -219,7 +192,7 @@ class Main extends eui.UILayer {
 
             await RES.loadGroup("eint", 0, loadingView2); //eint资源组有宜英通用的图片音乐等资源。
             await RES.loadGroup("preload", 0, loadingView2); //preload资源组为系统默认资源组。未人工分类的资源都在这里。资源较多。
-            await loadingView2.touch2C();
+            await loadingView2.touch2C(); //资源加载完以后“触摸屏幕继续”。使用Promise控制。
             this.stage.removeChild(loadingView2); //加载界面用完必须尽快移除。否则安卓Native下很可能会黑屏。
         }
         catch (e) {
@@ -245,17 +218,7 @@ class Main extends eui.UILayer {
      */
     protected createScene(): void {
 
-/*        var aLabel:eui.Label = new eui.Label();
-        aLabel.text="abcdabcdabcdabcdabcdabcdabcd";
-        this.addChild(aLabel);
-        return;*/
-
-
-
         g_praEasyScene = new eyelen4.CPraEasyScene();
-/*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-            g_praEasyScene.m_NoImgMode = true;
-        }*/
         if(S_NO_IMG_MODE) {
             g_praEasyScene.m_NoImgMode = true;
         }
@@ -267,9 +230,6 @@ class Main extends eui.UILayer {
 
         g_shutdownScr = new gdeint.CShutdownScr();
 
-/*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-            g_praDifficultScene.m_NoImgMode = true;
-        }*/
         if(S_NO_IMG_MODE) {
             g_praDifficultScene.m_NoImgMode = true;
         }
@@ -278,9 +238,7 @@ class Main extends eui.UILayer {
         g_notiLayerContainer.addChild(g_praDifficultScene.getNotiLayer().toEgretDispObjContainer());
 
         g_praEasyContainer = new CEyelenPraContainer();
-/*        if (S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-            g_praEasyContainer.m_NoImgMode = true;
-        }*/
+
         if (S_NO_IMG_MODE) {
             g_praEasyContainer.m_NoImgMode = true;
         }
@@ -298,7 +256,7 @@ class Main extends eui.UILayer {
 
         var cad:gdeint.CAlertPanel = new gdeint.CAlertPanel();
         cad.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale); // 把主场景的位置和尺寸告诉警告框插件，让其可以自行计算警告框的位置和尺寸。
-        g_praEasyContainer.setAlertDlg(cad);
+        g_praEasyContainer.setAlertDlg(cad); // 提示框的创建在Container类以外，这样可以灵活改用各种风格的提示框。
 
         var cp:gdeint.CConfirmPanel = new gdeint.CConfirmPanel();
         cp.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
@@ -359,8 +317,8 @@ class Main extends eui.UILayer {
         g_welcomeScene.x = g_scenePos.m_x;
         g_welcomeScene.y = g_scenePos.m_y;
 
-/*        var welcomeSceneAdapter:CPage2EuiAdapter = new CPage2EuiAdapter();
-        welcomeSceneAdapter.m_adaptee = g_welcomeScene;*/
+        // 一个Page对应一个Scene。
+        // 根据需处理事件的差异，部分页面要专门定义Page子类，Container页面有可能需要定义各自的Adapter转成Page，其余页面使用统一的Adapter由eui.Component转Page即可。
         var welcomePage:CWelcomePage_Eyelen4 = new CWelcomePage_Eyelen4();
         welcomePage.m_scene = g_welcomeScene;
 
@@ -409,11 +367,8 @@ class Main extends eui.UILayer {
     }
 
     public autoShutdown() {
-/*        if(g_shutdownTimer.currentCount >= 12) 
-        {
-            g_pageJumper.gotoPage("ShutdownScr",null);
-        }*/
-        if(g_shutdownTimer.currentCount >= 1200) //20分钟。
+
+        if(g_shutdownTimer.currentCount >= 1200) //1200秒，即20分钟。
         {
             g_pageJumper.gotoPage("ShutdownScr",null);
         }

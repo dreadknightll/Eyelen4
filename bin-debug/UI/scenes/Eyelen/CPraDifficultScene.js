@@ -48,7 +48,7 @@ var eyelen4;
             _this.m_wm.setTopHeight2(190);
             _this.m_wm.showTop();
             _this.m_wm.setBottomHeight(300);
-            _this.m_pm = new CEyelen3EPraMachineDifficult();
+            _this.m_pm = new CEyelen3EPraMachineDifficult(); //部件没改动，继续使用上一代的。
             _this.m_UIPresenter = new CEyelen4PraDifficultPresenter();
             _this.m_UIPresenter.bindPM(_this.m_pm);
             _this.m_tipBalloon1 = new eyelen4.CBalloonTip();

@@ -21,7 +21,7 @@ var CEyelen4PraEasyPresenter = (function () {
         this.m_visibleStartY = 0; // 中部区域的可视区域起始Y坐标（相对于中部区域）。
         //    public m_userLen: number = 0; // 用户输入的长度值。(校准后)
         this.m_userGCnt = 0; // 用户输入的格数。
-        this.m_pm = new CEyelen3EPraMachineEasy();
+        this.m_pm = new CEyelen3EPraMachineEasy(); //部件没改动，继续使用上一代的。
         this.m_itm = new gdeint.ImgThumbModelV2();
         this.m_itm.setThMaxWidth(this.s_thMaxWidth);
         this.m_itm.setThMaxHeight(this.s_thMaxHeight);

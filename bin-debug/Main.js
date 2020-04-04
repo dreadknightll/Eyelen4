@@ -8,6 +8,7 @@
 // 宜英（eint或gdeint）是本作者设立的个人品牌。
 // 本程序采用北京白鹭公司的白鹭引擎为核心。
 // 本程序调用了libGdeint库。libGdeint是本作者开发的共享库，供多套软件调用，命名空间主要是gdeint。
+//////////////////////////////////////////////////////////////////////////////////////
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
@@ -53,34 +54,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-//////////////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (c) 2014-present, Egret Technology.
-//  All rights reserved.
-//  Redistribution and use in source and binary forms, with or without
-//  modification, are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//     * Neither the name of the Egret nor the
-//       names of its contributors may be used to endorse or promote products
-//       derived from this software without specific prior written permission.
-//
-//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
-//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
-//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-//////////////////////////////////////////////////////////////////////////////////////
 /**************************************************
  *
  * Main类为程序入口类。
@@ -92,36 +65,30 @@ var S_NATIVE_IOS = 3;
 var S_NATIVE_WP = 4;
 var S_WECHAT = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
 var S_BUILD_FOR = S_NATIVE_ANDROID;
-var S_NO_IMG_MODE = false; // 无图模式开关。开启后Pic从本地读取，且不使用img。
-//const S_NO_IMG_MODE:boolean = true; // 无图模式开关。只在S_WECHAT模式有效。开启后Pic从本地读取，且不使用img。
-var S_CHECK_UPDATE_ANDROID = false; // 是否检查更新。
-var g_winWidth; // 保存屏幕宽度。
-var g_winHeight; // 保存屏幕高度。
+//！！Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
+var S_NO_IMG_MODE = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
 var g_console = new egret.TextField(); // 调试终端。
+var g_winWidth; // 保存舞台宽度。
+var g_winHeight; // 保存舞台高度。
 var s_topSpaceHeight = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
-//var s_topSpaceHeight: number = 30; // 顶部空白条的高度。也为显示使用时间留位置。
-if (S_BUILD_FOR == S_NATIVE_IOS) {
+if (S_BUILD_FOR == S_NATIVE_ANDROID) {
     s_topSpaceHeight = 0;
 }
 var g_scenePos; // 此处gdeint为libGdeint使用的命名空间。
-var g_scale = 1;
+var g_scale = 1; // 有些元素需要根据实际分辨率确定大小、位置等信息，因此需要保存此变量。好处：舞台分辨率提高了也无重新设计exml等界面。
 var g_praDifficultScene; // 困难难度练习场景。
 var g_praEasyScene; // 简单难度练习场景。
-var g_resCache = {};
-/*var g_imgResCache:{[index:string]:egret.Texture};
-var g_jsonResCache:{[index:string]:JSON};*/
+var g_resCache = {}; // 用于缓存远程获取的数据。目前主要用在微信版。
 var g_resLoader; //资源读取器。用于通过资源名读取已加载到缓存的资源。可灵活选择从本地读取还是通过网络读取。可供显示容器使用。
-//简单难度显示容器。该容器除了包含练习场景，还可注入各式各样的提示框、功能对话框等插件。此设计便于代码测试和重用。
-var g_praEasyContainer;
+var g_praEasyContainer; //简单难度显示容器。该容器除了包含练习场景，还可注入各式各样的提示框、功能对话框等插件。此设计便于代码测试和重用。
 var g_praDifficultContainer; //困难难度显示容器。
-//var g_welcomeScene:eyelen3E.CWelcomeScene_Eyelen3E; // 欢迎屏幕画面。
-var g_welcomeScene; // 欢迎屏幕画面。
-var g_shutdownScr;
-var g_mainMenu; // 主菜单画面
-//画面采用分层设计。不同类型的元素应显示在不同的层上，以维持合理的前后顺序。
-var g_sceneLayer = new egret.DisplayObjectContainer(); // 场景层。
-var g_dlgLayerContainer = new egret.DisplayObjectContainer(); // 对话框层。
-var g_notiLayerContainer = new egret.DisplayObjectContainer(); // 提示层。
+var g_welcomeScene; // 欢迎屏幕画面。含用户协议、隐私政策、指引等入口。
+var g_shutdownScr; // 为了眼睛健康，使用时间超过20分钟后练习自动停止并显示为此画面。
+var g_mainMenu; // 主菜单画面。难度选择。
+//画面采用分层设计。不同类型的元素应显示在不同的图层上，以维持合理的前后顺序。
+var g_sceneLayer = new egret.DisplayObjectContainer(); // 场景图层。
+var g_dlgLayerContainer = new egret.DisplayObjectContainer(); // 对话框图层。
+var g_notiLayerContainer = new egret.DisplayObjectContainer(); // 提示图层。
 var g_level = 0; // 当前练习的难度。0：未知。1：简单。2：中等。3：困难。
 var g_pageJumper; // 页面跳转器。在libGdeint里实现。用一个页面跳转器把上面的页面串起来。
 var g_shutdownTimer; // 为了眼睛健康，20分钟后自动停止。
@@ -144,13 +111,13 @@ var Main = (function (_super) {
     }
     Main.prototype.createChildren = function () {
         _super.prototype.createChildren.call(this);
-        g_shutdownTimer = new egret.Timer(1000, 0); // 这里用无限次。实际时间在别处控制。
+        g_shutdownTimer = new egret.Timer(1000, 0); // 这里用无限次。实际时间在listener里控制。
         g_shutdownTimer.addEventListener(egret.TimerEvent.TIMER, this.autoShutdown, this);
         //获取舞台宽度和高度：
         g_winWidth = this.stage.stageWidth;
         g_winHeight = this.stage.stageHeight;
         //计算适配屏幕应采用的图形缩放比例和起始显示坐标。新版白鹭引擎下可考虑去掉：
-        var scaleX = g_winWidth / 480;
+        var scaleX = g_winWidth / 480; // 界面设计使用尺寸：480*800。
         var scaleY = g_winHeight / 800;
         if (scaleX < scaleY) {
             g_scale = scaleX;
@@ -162,7 +129,7 @@ var Main = (function (_super) {
             g_scenePos.m_x = (g_winWidth - 480 * g_scale) / 2;
             g_scenePos.m_y = 0;
         }
-        //把三个核心自定义层添加到舞台：
+        //把三个核心自定义图层添加到舞台：
         this.addChild(g_sceneLayer);
         this.addChild(g_dlgLayerContainer);
         this.addChild(g_notiLayerContainer);
@@ -247,7 +214,6 @@ var Main = (function (_super) {
                         this.stage.removeChild(loadingView1);
                         loadingView2 = new LoadingUI_Eint_V3();
                         loadingView2.setWinSize(g_winWidth, g_winHeight);
-                        //            loadingView2.setWinSize(200,300);
                         loadingView2.create();
                         this.stage.addChild(loadingView2);
                         loadingView2.visible = true;
@@ -259,7 +225,7 @@ var Main = (function (_super) {
                         _a.sent(); //preload资源组为系统默认资源组。未人工分类的资源都在这里。资源较多。
                         return [4 /*yield*/, loadingView2.touch2C()];
                     case 14:
-                        _a.sent();
+                        _a.sent(); //资源加载完以后“触摸屏幕继续”。使用Promise控制。
                         this.stage.removeChild(loadingView2); //加载界面用完必须尽快移除。否则安卓Native下很可能会黑屏。
                         return [3 /*break*/, 16];
                     case 15:
@@ -287,14 +253,7 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createScene = function () {
-        /*        var aLabel:eui.Label = new eui.Label();
-                aLabel.text="abcdabcdabcdabcdabcdabcdabcd";
-                this.addChild(aLabel);
-                return;*/
         g_praEasyScene = new eyelen4.CPraEasyScene();
-        /*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-                    g_praEasyScene.m_NoImgMode = true;
-                }*/
         if (S_NO_IMG_MODE) {
             g_praEasyScene.m_NoImgMode = true;
         }
@@ -302,18 +261,12 @@ var Main = (function (_super) {
         g_notiLayerContainer.addChild(g_praEasyScene.getNotiLayer().toEgretDispObjContainer());
         g_praDifficultScene = new eyelen4.CPraDifficultScene();
         g_shutdownScr = new gdeint.CShutdownScr();
-        /*        if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-                    g_praDifficultScene.m_NoImgMode = true;
-                }*/
         if (S_NO_IMG_MODE) {
             g_praDifficultScene.m_NoImgMode = true;
         }
         g_dlgLayerContainer.addChild(g_praDifficultScene.getDlgLayer().toEgretDispObjContainer());
         g_notiLayerContainer.addChild(g_praDifficultScene.getNotiLayer().toEgretDispObjContainer());
         g_praEasyContainer = new CEyelenPraContainer();
-        /*        if (S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-                    g_praEasyContainer.m_NoImgMode = true;
-                }*/
         if (S_NO_IMG_MODE) {
             g_praEasyContainer.m_NoImgMode = true;
         }
@@ -414,10 +367,6 @@ var Main = (function (_super) {
         g_sceneLayer.addChild(g_console);
     };
     Main.prototype.autoShutdown = function () {
-        /*        if(g_shutdownTimer.currentCount >= 12)
-                {
-                    g_pageJumper.gotoPage("ShutdownScr",null);
-                }*/
         if (g_shutdownTimer.currentCount >= 1200) {
             g_pageJumper.gotoPage("ShutdownScr", null);
         }

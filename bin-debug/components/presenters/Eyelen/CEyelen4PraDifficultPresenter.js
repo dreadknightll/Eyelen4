@@ -23,7 +23,7 @@ var CEyelen4PraDifficultPresenter = (function () {
             private m_lenQuestionerFontSize:number;
             private m_lenEdge2DispRect:gdeint.CRect;*/
         this.m_userLen = 0; // 用户输入的长度值。(校准后)
-        this.m_pm = new CEyelen3EPraMachineDifficult();
+        this.m_pm = new CEyelen3EPraMachineDifficult(); // 部件没改动，继续使用上一代的。
         this.m_itm = new gdeint.ImgThumbModelV2();
         this.m_itm.setThMaxWidth(this.s_thMaxWidth);
         this.m_itm.setThMaxHeight(this.s_thMaxHeight);
