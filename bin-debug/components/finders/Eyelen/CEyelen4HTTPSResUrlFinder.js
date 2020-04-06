@@ -1,6 +1,10 @@
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
+/*
+ * /src/components/finders/Eyelen/CEyelen4HTTPSResUrlFinder.ts
+ * 使用本寻找器可通过文件名、编号等获取远程资源URL。
+*/
 var CEyelen4HTTPSResUrlFinder = (function () {
     function CEyelen4HTTPSResUrlFinder() {
     }

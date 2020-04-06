@@ -9,7 +9,7 @@ for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
 /**
- * src/UI/scenes/Eyelen/partials/CMidAreaDifficult.ts
+ * /src/UI/scenes/Eyelen/partials/CMidAreaDifficult.ts
  * 练习场景中部区域。
  *
  */

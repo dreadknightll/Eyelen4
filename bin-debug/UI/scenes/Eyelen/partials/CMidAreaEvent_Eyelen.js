@@ -9,7 +9,7 @@ for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
 /**
- * src/UI/scenes/Eyelen/partials/CMidAreaEvent_Eyelen.ts
+ * /src/UI/scenes/Eyelen/partials/CMidAreaEvent_Eyelen.ts
  */
 var CMidAreaEvent_Eyelen = (function (_super) {
     __extends(CMidAreaEvent_Eyelen, _super);

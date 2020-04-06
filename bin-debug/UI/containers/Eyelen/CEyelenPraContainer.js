@@ -123,22 +123,10 @@ var CEyelenPraContainer = (function (_super) {
         preloaderUI.setCompleteListener(this.onPicXMLLoadComplete, this);
         var picXMLTask = new gdeint.CPreloadTask(); //创建任务对象。
         var resListPicXML = new Array();
-        this.m_seledPicTagArr = gdeint.randomNums_ts(18, 4); //从18张图片中随机选4张。
-        //        this.m_seledPicTagArr = [17];
+        this.m_seledPicTagArr = gdeint.randomNums_ts(18, 4); //从18张图片材料中随机选4张进行练习。
         var i;
         for (i = 0; i < this.m_seledPicTagArr.length; ++i) {
             resListPicXML[i] = new gdeint.ResStruct();
-            /*            if(S_BUILD_FOR == S_WECHAT) {
-                            if(S_NO_IMG_MODE) {
-                                resListPicXML[i].m_resName = tag2PicResName_Eyelen(this.m_seledPicTagArr[i]);
-                            }
-                            else {
-                                resListPicXML[i].m_resName = tag2HTTPSPicResUrl_Eyelen(this.m_seledPicTagArr[i]);
-                            }
-                        }
-                        else {
-                            resListPicXML[i].m_resName = tag2PicResName_Eyelen(this.m_seledPicTagArr[i]);
-                        }*/
             this.m_resNameFinder.setInp(this.m_seledPicTagArr[i].toString());
             resListPicXML[i].m_resName = this.m_resNameFinder.getResult();
             resListPicXML[i].m_givenSize = 500;
@@ -152,8 +140,7 @@ var CEyelenPraContainer = (function (_super) {
         }
         picXMLTask.m_taskName = "picXMLs";
         preloaderUI.addTask(picXMLTask);
-        preloaderUI.setNoTaskLeft(true);
-        //New: Clear old pra in the presenter
+        preloaderUI.setNoTaskLeft(true); // 表示需加载的资源已全部添加到列表。
         preloaderUI.startPreload();
     };
     /*
@@ -236,39 +223,10 @@ var CEyelenPraContainer = (function (_super) {
                 var tmpImgFileName = "", tmpImgResName = "";
                 resListPicImg[i] = new gdeint.ResStruct();
                 var resName;
-                /*            if(S_BUILD_FOR == S_WECHAT) {
-                                if(S_NO_IMG_MODE) {
-                                    resName = tag2PicResName_Eyelen(this.m_seledPicTagArr[i]);
-                                }
-                                else {
-                                    resName = tag2HTTPSPicResUrl_Eyelen(this.m_seledPicTagArr[i]);
-                                }
-                            }
-                            else {
-                                resName = tag2PicResName_Eyelen(this.m_seledPicTagArr[i]);
-                            }*/
                 this.m_resNameFinder.setInp(this.m_seledPicTagArr[i].toString());
                 resName = this.m_resNameFinder.getResult();
                 var picJsn = this.m_resLoader.getRes(resName);
                 tmpImgFileName = picJsn.pics.pic.imgPath;
-                /*            if(S_BUILD_FOR == S_WECHAT) {
-                                var strArr:Array<string> = tmpImgFileName.split(".");
-                                if(S_NO_IMG_MODE) {
-                                    tmpImgResName = "";
-                                }
-                                else {
-                                    tmpImgResName = "https://www.gdeint.cn/wechatAppData/eyelen/eyelen3E/pics/getImgCrossDomain.php?tag=" + strArr[0].substr(strArr[0].length-3 , 3);
-                                }
-                            }
-                            else {
-                                var strArr:Array<string> = tmpImgFileName.split(".");
-                                var j:number;
-                                tmpImgResName = strArr[0];
-                                for(j=1;j<strArr.length;++j) {
-                                    tmpImgResName += "_";
-                                    tmpImgResName += strArr[j];
-                                }
-                            }*/
                 this.m_resNameFinder.setInp(tmpImgFileName);
                 tmpImgResName = this.m_resNameFinder.getResult();
                 resListPicImg[i].m_resName = tmpImgResName;

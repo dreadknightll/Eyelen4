@@ -8,6 +8,9 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
+/*
+ * /src/UI/scenes/Eyelen/partials/CBottomAreaDifficult.ts
+ */
 var eyelen4;
 (function (eyelen4) {
     var CBottomAreaDifficult = (function (_super) {
@@ -48,7 +51,6 @@ var eyelen4;
             //		adjust the size of the buttons
             var scale;
             scale = 0.32 * this.m_trueHeight / this.backBtn.height;
-            //		this.scaleX = scale;
             this.menuGroup.scaleY = scale;
             this.menuGroup.scaleX = scale;
         };
