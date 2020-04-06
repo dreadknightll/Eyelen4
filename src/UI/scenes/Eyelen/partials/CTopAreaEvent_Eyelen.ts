@@ -1,7 +1,5 @@
 /**
- *
- * @author 
- *
+ * /src/UI/scenes/Eyelen/partials/CTopAreaEvent_Eyelen.ts 
  */
 class CTopAreaEvent_Eyelen extends egret.Event {
     public constructor(type: string,bulle: boolean = false,cancel: boolean = false) {

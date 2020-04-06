@@ -1,5 +1,5 @@
 /**************************************************
- * UI/scenes/CMainMenu.ts
+ * /src/UI/scenes/CMainMenu.ts
  *
  * 主菜单画面。
  *
@@ -23,7 +23,7 @@ var eyelen4;
             _this.m_trueWidth = 480;
             _this.m_trueHeight = 744;
             _this.m2_cc = false;
-            _this.m_startTimer = new egret.Timer(5000, 1);
+            _this.m_startTimer = new egret.Timer(5000, 1); // 5秒内不选择则自动进入困难练习。
             _this.m_startTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, _this.startDifficult, _this);
             return _this;
         }
@@ -35,6 +35,7 @@ var eyelen4;
             this.m2_cc = true;
             this.rearrangeUI();
         };
+        //定义了一些函数使内容居中。
         CMainMenu.prototype.setTrueWidth = function (w) {
             this.m_trueWidth = w;
             if (this.m2_cc) {
@@ -73,18 +74,14 @@ var eyelen4;
         */
         CMainMenu.prototype.startEasy = function () {
             g_level = 1;
-            /*        g_welcomeScene.visible = false;
-                    this.visible = false;
-    
-                    g_praEasyScene.startNewPra();
-                    g_praEasyScene.visible = true;
-                    this.m_startTimer.stop();*/
-            g_praEasyContainer.startNewPra();
+            g_praEasyContainer.startNewPra(); // 切换画面前先启动练习。
+            //        先显示翻页动画 （未完成）
             g_praEasyContainer.saveVisibleStates();
-            g_pageJumper.gotoPage("PraEasyScene", null);
+            g_pageJumper.gotoPage("PraEasyScene", null); // 使用页面跳转器换页。非常方便。
             this.m_startTimer.stop();
         };
         CMainMenu.prototype.startNormal = function () {
+            //目前没有中等难度。
             g_level = 2;
         };
         /*

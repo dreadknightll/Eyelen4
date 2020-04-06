@@ -1,10 +1,10 @@
-// myscenes/pra/difficult/CPraDifficultScene.ts
+// src/UI/scenes/Eyelen/CPraEasyScene.ts
 /**
  *
- * 困难难度练习画面场景。
+ * 简单难度练习画面场景。
  * 分为顶部、中部、底部三大区域。
  *  顶部区域可收缩和展开，显示缩略图，得分和进度。
- *  中部区域显示背景图片和待测角度。
+ *  中部区域显示背景图片和待测长度。
  *  底部区域显示用户长度输入控件和菜单。
  * 
  * 拖动中部区域的图片或点击顶部区域的缩略图均可变换屏幕选择区域。
@@ -14,9 +14,9 @@
 var MSG_PICS_PRELOAD_FINISHED: number = 1; // 事件ID。练习图片json加载完成。
 var MSG_IMGS_PRELOAD_FINISHED: number = 2; // 事件ID。练习图片加载完成。
 
-var s_topRightWidth = 250;
-var s_topRightHeight1 = 70;
-var s_cellWidth = 20;
+var s_topRightWidth = 250; // 顶部右边宽度。
+var s_topRightHeight1 = 70; // 顶部收起时的高度。
+var s_cellWidth = 20; // 拉尺每格的宽度。
 
 /*
  * 画面初始化方法：
@@ -27,7 +27,7 @@ var s_cellWidth = 20;
 namespace eyelen4 {
     export class CPraEasyScene extends CCommonEyelenPraScene{
         public topAreaGroup:eui.Group;
-        private bgUnderTopGrp:eui.Group;
+        private bgUnderTopGrp:eui.Group; // 顶部背景色。
         public topArea:CTopArea_Eyelen;
         public midAreaGroup:eui.Group;
         public midArea:CMidAreaEasy;
@@ -37,12 +37,11 @@ namespace eyelen4 {
 
         public m_pm: IGridLenPraMachine; // 练习机器。处理长度切换、计分等事务。可单元测试。
 
-        public m_tipBalloon1:CBalloonTip;
+        public m_tipBalloon1:CBalloonTip; // 刚进入练习时的指引气球。共两个。
         public m_tipBalloon2:CBalloonTip;
 
-        public m_UIPresenter:CEyelen4PraEasyPresenter;
-        public m_wm:IEyelen4WinModel; // 画面布局模型。用于计算画面各元素的坐标位置。可单元测试。
-        //m_wm 分辨率：480*???。 ???????
+        public m_UIPresenter:CEyelen4PraEasyPresenter; // 需要进行校准等复杂计算，因此要分离出presenter以便单元测试。
+        public m_wm:IEyelen4WinModel; // 画面布局模型。用于计算各区域的位置和大小等。可单元测试。
 
         public m_curPicTag: number; // 当前图片在图片缓冲区的下标。
         private m_curRoundTag: number; // 当前练习的轮号。
@@ -55,8 +54,6 @@ namespace eyelen4 {
         private m_bgUnderTop:egret.Shape; //Necessary because in native mode default bg is not suitable.
 
         private m_imgOriWidth: number; // 当前图片原宽。每次读取完新图片都要更新。
-//        private m_lenEdge1: egret.Shape; // 画板，画图上长度的起始边。
-//        private m_lenEdge2: egret.Shape; // 画板，画图上长度的结束边。
         private m_lenEdgeCanvas: egret.Shape; // 画板，画图上长度的两条边。注：不能两条边各用一个Shape。否则长度小图片大时更容易出现显示问题。
 
         private m_lenQuestioner: egret.TextField; // 图上长度中部的问号。
@@ -84,7 +81,6 @@ namespace eyelen4 {
 
             this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
-//            this.m_wm.setTopHeight2(170);
             this.m_wm.setTopHeight2(190);
 
             this.m_wm.showTop();
@@ -129,12 +125,12 @@ namespace eyelen4 {
             this.bottomArea.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onCaliBtn , this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onOKButtonTap , this);
 
-//            this.shutDownClock.setTimer(1200000 , this.shutdown);
-            this.shutdownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.setTimer(g_shutdownTimer); // 关联全局计时器以显示时间。
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onClockTap , this);
         }
 
         public _setParentContainer(c:IEyelenPraContainer):void {
+            // 设置父容器，以使用各种提示框等。
             super._setParentContainer(c);
             this.m_UIPresenter.setRenderFilter(this.getParentContainer()._getRenderFilter());
         }
@@ -166,7 +162,7 @@ namespace eyelen4 {
             this.m_cmpLenDlg.onNextBtnEvent(egret.TouchEvent.TOUCH_TAP,this.onNextButtonTap,this);
             this.addChild(this.m_cmpLenDlg);
         }
-        
+
         /*
         * 触摸“下一长度”按钮后触发。
         */ 
@@ -392,6 +388,9 @@ namespace eyelen4 {
             this.readjustThumbSel();
         }
 
+        /*
+            使用无图模式时，随机图形在这函数生成。
+        */
         private showRandomGraph() {
             this.m_imgOriWidth = 1024;
 
@@ -436,26 +435,16 @@ namespace eyelen4 {
         */ 
         private _showLen(len:CLen):void {
 
-//            this.m_lenEdge1.graphics.clear();
-//            this.m_lenEdge2.graphics.clear();
             this.m_lenEdgeCanvas.graphics.drawRect(0,0,5,60);
             this.m_lenEdgeCanvas.graphics.clear();
 
             if(len.m_isHor) {
-                //Draw edge1:
-/*                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
-                this.m_lenEdge1.graphics.drawRect(len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()-5,len.m_y - 30,5,60);
-                this.m_lenEdge1.graphics.endFill();*/
                 
                 //Draw questioner:
                 this.m_lenQuestioner.x = len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat() + len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat()/2 - 10;
                 this.m_lenQuestioner.y = len.m_y - 20;
 
-                //Draw edge2:
-/*                this.m_lenEdge2.graphics.beginFill(0x00FFFF);
-                this.m_lenEdge2.graphics.drawRect(len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()+len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat(),len.m_y - 30,5,60);
-                this.m_lenEdge2.graphics.endFill();*/
-
+                //Draw two edges:
                 var tmpRect1:gdeint.CRect = this.m_UIPresenter.getLenEdge1DispRect();
                 var tmpRect2:gdeint.CRect = this.m_UIPresenter.getLenEdge2DispRect();
                 this.m_lenEdgeCanvas.x = tmpRect1.m_left;
@@ -472,11 +461,6 @@ namespace eyelen4 {
             else
             {
                 var tmpRect1:gdeint.CRect , tmpRect2:gdeint.CRect , tmpPt:gdeint.CPoint;
-                //Draw edge1:
-/*                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
-                tmpRect = this.m_UIPresenter.getLenEdge1DispRect();
-                this.m_lenEdge1.graphics.drawRect(tmpRect.m_left,tmpRect.m_top,tmpRect.m_width,tmpRect.m_height);
-                this.m_lenEdge1.graphics.endFill();*/
 
                 //Draw questioner:
                 tmpPt = this.m_UIPresenter.getLenQuestionerDispPt();
@@ -485,11 +469,7 @@ namespace eyelen4 {
                 this.m_lenQuestioner.y = tmpPt.m_y;
                 this.m_lenQuestioner.size = tmpFontSize;
 
-                //Draw edge2:
-/*                this.m_lenEdge2.graphics.beginFill(0x00FFDD);
-                tmpRect = this.m_UIPresenter.getLenEdge2DispRect();
-                this.m_lenEdge2.graphics.drawRect(tmpRect.m_left , tmpRect.m_top , tmpRect.m_width , tmpRect.m_height);
-                this.m_lenEdge2.graphics.endFill();*/
+                //Draw two edges:
 
                 tmpRect1 = this.m_UIPresenter.getLenEdge1DispRect();
                 tmpRect2 = this.m_UIPresenter.getLenEdge2DispRect();
@@ -563,21 +543,16 @@ namespace eyelen4 {
             this.m_imgOriWidth = 160;
 
             this.m_lenView = new egret.DisplayObjectContainer();
-//            this.m_lenEdge1 = new egret.Shape();
-//            this.m_lenEdge2 = new egret.Shape();
             this.m_lenEdgeCanvas = new egret.Shape();
             this.m_lenQuestioner = new egret.TextField();
             this.m_lenQuestioner.textColor = 0xFF0000;
             this.m_lenQuestioner.size = 36;
             this.m_lenQuestioner.text = "?";
 
-//            this.midArea.midCanvasGrp.addChild(this.m_lenEdge1);
-//            this.midArea.midCanvasGrp.addChild(this.m_lenEdge2);
             this.midArea.midCanvasGrp.addChild(this.m_lenEdgeCanvas);
             this.midArea.midCanvasGrp.addChild(this.m_lenQuestioner);
 
-            //Add thumb and thumbSel:
-
+            //Calculate for thumb and thumbSel（计算结果保存在presenter）:
             var selPt:gdeint.CPoint = new gdeint.CPoint();
             selPt.m_x = 0;
             selPt.m_y = 0;
@@ -585,7 +560,7 @@ namespace eyelen4 {
             this.m_UIPresenter.inpImgSelWidth(this.m_wm.getWinWidth() / this.m_UIPresenter.getRenderFilter()._getCaRat());
             this.m_UIPresenter.inpImgSelHeight(this.m_wm.getMidVisibleHeight());
 
-            //Add components to scene:
+            //先在这里添加listener，后面统一调整的时候会调整缩略图显示位置等:
             this.topArea.thumbUI.addEventListener(CThumbUIEvent.EVT_THUMB_TAP , this.onThumbTap , this);
             this.topArea.visible = true;
 
@@ -653,18 +628,12 @@ namespace eyelen4 {
             this.finalScoreDlg.visible = false;
             this.finalScoreDlg.addEventListener(CFinalScoreDlgEvent.EVT_REPLAY_BTN_TAP,this.replayBtnTouched,this);
 
-    //Add touch events:
             this.initCmpLenDlg();
-    //OK to start and show first len.
-            var firstLen:CLen = this.m_pm.getCurLen();
 
-//            this.showLen(firstLen);  // UIPresenter.showLen+syncWithUIPresenter = showLen+*
+    //OK to start and show first len. （对于无图模式此处代码未必正确）
+            var firstLen:CLen = this.m_pm.getCurLen();
             this.m_UIPresenter.showLen(firstLen);
             this.syncWithUIPresenter();
-
-/*            this.readjustThumb();
-            this.readjustThumbSel();*/
-
             this.showInitInstrus();
 
         }
@@ -696,11 +665,11 @@ namespace eyelen4 {
             this.m_tipBalloon2.scaleY = g_scale;
             this.m_tipBalloon2.title = "提示";
             this.m_tipBalloon2.setContent("请目测图上“？”处显示的\n长度并点击格子输入您目测的结果。");
-            this.m_tipBalloon2.visible = false; //隐藏2以防两个重叠显示。
+            this.m_tipBalloon2.visible = false; //隐藏气球2以防两个重叠显示。
 
             this.m_tipBalloon1.addEventListener(CBalloonTipEvent.EVT_CLOSE , this.onTipBalloon1Close , this);
 
-    //        make rulerUser bright
+            //此时尺子亮起来，屏幕其它内容变灰，直到关闭气球：
             var r:gdeint.CRect = new gdeint.CRect();
             r.m_left = 5;
             r.m_top = this.m_wm.getBottomY() + 25;

@@ -1,7 +1,7 @@
 /***********************************************************
 * /src/UI/scenes/other/loadingUI_Eint_V3.ts
 * 程序启动时的资源加载界面。
-* 使用方法：创建对象 —> setWinSize —> create 。需要“触摸屏幕继续”时，调用touch2C。
+* 使用方法：创建对象 —> setWinSize —> create 。需要“触摸屏幕继续”时，await调用touch2C。
 *
 ************************************************************/
 var __reflect = (this && this.__reflect) || function (p, c, t) {
@@ -60,6 +60,7 @@ var LoadingUI_Eint_V3 = (function (_super) {
         this.width = this.m_winWidth;
         this.height = this.m_winHeight;
         this.createView();
+        // 初始化“触摸屏幕继续”定时器等：
         this.m_flashCnt = 0;
         this.m_flashTimer = new egret.Timer(300, 0);
         this.m_flashTimer.addEventListener(egret.TimerEvent.TIMER, this.onFlashTimer, this);
@@ -122,6 +123,7 @@ var LoadingUI_Eint_V3 = (function (_super) {
         this.visible = false;
     };
     LoadingUI_Eint_V3.prototype.setProgress = function (current, total) {
+        // 让界面显示为参数的数值。
         this.m_progress.text = "准备中..." + (current / total * 100).toString().substr(0, 4) + "%";
     };
     LoadingUI_Eint_V3.prototype.setWinSize = function (wid, hei) {

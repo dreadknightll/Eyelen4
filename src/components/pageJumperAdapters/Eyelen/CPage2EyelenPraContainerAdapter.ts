@@ -1,8 +1,12 @@
 /*
-    1.Set m_adaptee.
-    2.m_adaptee children created.
-    3.firstShow.
-    4.showPage/hidePage.
+ * /src/components/pageJumperAdapters/Eyelen/CPage2EyelenPraContainerAdapter.ts
+ * 
+ * 用途：Container转Page。
+ 
+        使用步骤：
+        1、设定 m_adaptee.
+        2、绑定PageJumper。
+        3、利用PageJumer切换页面时，show或hide会触发。
 */
 
 class CPage2EyelenPraContainerAdapter extends gdeint.CPage {

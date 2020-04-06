@@ -65,7 +65,7 @@ var S_NATIVE_IOS = 3;
 var S_NATIVE_WP = 4;
 var S_WECHAT = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
 var S_BUILD_FOR = S_NATIVE_ANDROID;
-//！！Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
+//Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
 var S_NO_IMG_MODE = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
 var g_console = new egret.TextField(); // 调试终端。
 var g_winWidth; // 保存舞台宽度。
@@ -122,11 +122,11 @@ var Main = (function (_super) {
         if (scaleX < scaleY) {
             g_scale = scaleX;
             g_scenePos.m_x = 0;
-            g_scenePos.m_y = (g_winHeight - 800 * g_scale) / 2;
+            g_scenePos.m_y = (g_winHeight - 800 * g_scale) / 2; //宽占满，高居中。
         }
         else {
             g_scale = scaleY;
-            g_scenePos.m_x = (g_winWidth - 480 * g_scale) / 2;
+            g_scenePos.m_x = (g_winWidth - 480 * g_scale) / 2; //宽居中，高占满。
             g_scenePos.m_y = 0;
         }
         //把三个核心自定义图层添加到舞台：
@@ -281,7 +281,7 @@ var Main = (function (_super) {
         g_praEasyContainer.setPraScene(g_praEasyScene);
         var cad = new gdeint.CAlertPanel();
         cad.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale); // 把主场景的位置和尺寸告诉警告框插件，让其可以自行计算警告框的位置和尺寸。
-        g_praEasyContainer.setAlertDlg(cad);
+        g_praEasyContainer.setAlertDlg(cad); // 提示框的创建在Container类以外，这样可以灵活改用各种风格的提示框。
         var cp = new gdeint.CConfirmPanel();
         cp.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         g_praEasyContainer.setConfirmDlg(cp);
@@ -330,8 +330,8 @@ var Main = (function (_super) {
         g_welcomeScene.scaleY = g_scale; //scaleX、scaleY保持相等，确保横竖检验功能正常。
         g_welcomeScene.x = g_scenePos.m_x;
         g_welcomeScene.y = g_scenePos.m_y;
-        /*        var welcomeSceneAdapter:CPage2EuiAdapter = new CPage2EuiAdapter();
-                welcomeSceneAdapter.m_adaptee = g_welcomeScene;*/
+        // 一个Page对应一个Scene。
+        // 根据需处理事件的差异，部分页面要专门定义Page子类，Container页面有可能需要定义各自的Adapter转成Page，其余页面使用统一的Adapter由eui.Component转Page即可。
         var welcomePage = new CWelcomePage_Eyelen4();
         welcomePage.m_scene = g_welcomeScene;
         var mainMenuSceneAdapter = new CPage2EuiAdapter();

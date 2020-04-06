@@ -1,5 +1,5 @@
 /****************************************************
- * /src/UI/scenes/CWelcomeScene_Eyeangle2.ts
+ * /src/UI/scenes/CWelcomeScene_Eyelen4.ts
  *
  * 欢迎场景界面。
  *
@@ -21,50 +21,19 @@ var eyelen4;
         function CWelcomeScene_Eyelen4() {
             var _this = _super.call(this) || this;
             _this.m_cc = false; //Children created boolean.
-            _this.m2_tmpS2StartBtn = true; //Switched to StartBtn.
             _this.m_cc = false;
-            _this.m2_tmpS2StartBtn = true;
             return _this;
         }
         CWelcomeScene_Eyelen4.prototype.switch2StartBtn = function () {
-            this.m2_tmpS2StartBtn = true;
+            //旧版本留下的方法。暂未使用。
             if (this.m_cc) {
                 this.startBtn.visible = true;
             }
         };
         CWelcomeScene_Eyelen4.prototype.childrenCreated = function () {
-            /*
-                        if(S_BUILD_FOR == S_NATIVE_IOS || !S_CHECK_UPDATE_ANDROID) {
-                            this.updateGroup.visible = false;
-                        }
-            */
-            /*
-                        //获取程序本地版本号和服务器上的最新版本号：
-                        var tmpJson = RES.getRes("localVer_json");
-                        g_localVer = tmpJson.curVer;
-                        this.localVer.text = g_localVer;
-            
-                        this.m_latestVerLoader = new egret.URLLoader();
-                        this.m_latestVerLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
-                        this.m_latestVerLoader.addEventListener(egret.Event.COMPLETE,this.onLatestVerLoaded,this);
-            
-                        var latestVerURL: string = "http://www.gdeint.cn/download/eyeangle/latestVer.json";
-            
-                        if(S_BUILD_FOR!=S_NATIVE_IOS && S_CHECK_UPDATE_ANDROID) {
-                            RES.getResByUrl(latestVerURL,this.onLatestVerLoaded,this,RES.ResourceItem.TYPE_JSON);
-                        }
-            */
-            /*            if(S_BUILD_FOR == S_NATIVE_IOS) {
-                            //对于iOS，需要调整按钮的位置。
-                            this.showCRBtn.x += 20;
-                            this.showCRBtn.y += 15;
-                        }*/
             this.shutdownClock.setFontSize(18);
             this.shutdownClock.setTimer(g_shutdownTimer);
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClockTap, this);
-            if (this.m2_tmpS2StartBtn) {
-                this.startBtn.visible = true;
-            }
             //填写超链接文本流：
             //1、用户协议：
             this.userProLabel.text = "";
@@ -114,28 +83,25 @@ var eyelen4;
         };
         CWelcomeScene_Eyelen4.prototype.onReadyCBCheck = function () {
             if (this.userProRead.selected && this.priPoliRead.selected && this.horverChecked.selected) {
+                //当且仅当三个复选框都选上开始练习按钮才会启用。
                 this.startBtn.enabled = true;
             }
             else {
                 this.startBtn.enabled = false;
             }
         };
-        CWelcomeScene_Eyelen4.prototype.onLatestVerLoaded = function (e) {
-            var jsnTxt = e;
-            this.latestVer.text = jsnTxt.curVer;
-        };
         CWelcomeScene_Eyelen4.prototype.onShowCR = function () {
+            // 显示著作权声明：
             this.crPanel.visible = true;
         };
         CWelcomeScene_Eyelen4.prototype.onHelp = function () {
+            // 显示指引：
             this.helpPanel.visible = true;
         };
         CWelcomeScene_Eyelen4.prototype.onStartPra = function (evt) {
             //        先显示翻页动画 （未完成）
-            this.m2_tmpS2StartBtn = false;
             this.startBtn.visible = false;
             g_pageJumper.gotoPage("MainMenu", null);
-            //            g_pageJumper.gotoPage("ShutdownScr",null);
             g_mainMenu.run();
         };
         CWelcomeScene_Eyelen4.prototype.onClockTap = function () {

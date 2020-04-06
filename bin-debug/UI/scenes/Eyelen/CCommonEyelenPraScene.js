@@ -8,9 +8,9 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-// UI/scenes/Eyelen/CCommonEyelenPraScene.ts
 /**
  *
+ * /src/UI/scenes/Eyelen/CCommonEyelenPraScene.ts
  * 通用练习场景。简单难度练习场景和困难难度练习场景都从本类派生。
  *
  */
@@ -29,11 +29,8 @@ var CCommonEyelenPraScene = (function (_super) {
         return _this;
     }
     /*
-     * 资源加载完成时触发。
-     * 正常情况应当调用子类的同名函数。若本类的本函数被调用，则表明子类实现有误。
+     * 正常情况下很多函数应当调用子类的同名函数。若本类的本函数被调用，则表明子类实现有误。
      */
-    /*    public onPraResLoadComplete(evt: CPIPreloaderEvent): void {
-        }*/
     /*
      * 开始一轮新的练习。
      */
@@ -108,7 +105,7 @@ var CCommonEyelenPraScene = (function (_super) {
         return null;
     };
     CCommonEyelenPraScene.prototype.brightenNotiLayerBgRect = function (r) {
-        // Only 1 rect can be rightened at one time.
+        // 让背景变得更灰，只让指定区域亮着。显示某些特殊提示时需调用。
         this.m_notiLayerBg.graphics.clear();
         this.m_notiLayerBg.graphics.beginFill(0xaaaaaa, 0.6);
         this.m_notiLayerBg.graphics.drawRect(0, 0, g_winWidth, r.m_top);
@@ -118,6 +115,7 @@ var CCommonEyelenPraScene = (function (_super) {
         this.m_notiLayerBg.graphics.endFill();
     };
     CCommonEyelenPraScene.prototype.recoverNotiLayerBg = function () {
+        // 让提示显示时场景背景复原（不是背景不变灰），供下次提示用（不是供没提示时）。
         this.m_notiLayerBg.graphics.clear();
         this.m_notiLayerBg.graphics.beginFill(0xaaaaaa, 0.4);
         this.m_notiLayerBg.graphics.drawRect(0, 0, g_winWidth, g_winHeight);

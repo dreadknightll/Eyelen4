@@ -1,3 +1,8 @@
+/*
+*   /src/components/UIComponents/common/CHorverCheckPanel.ts
+*   横竖检验框。
+*/
+
 module eyelen4 {
 	export class CHorverCheckPanel extends eui.Component {
 		public constructor() {
@@ -5,11 +10,11 @@ module eyelen4 {
 		}
 
 		private closeBtn:eui.Button;
-        public caliSquare:eui.Image;
+        public caliSquare:eui.Image; // 检验用正方形。触摸可改变图案方便检验。
 
-        public m_rippleCircle:egret.Bitmap;
+        public m_rippleCircle:egret.Bitmap; // 每隔几秒闪烁一次的红圈。
         
-        public m_squareTag:number=1;
+        public m_squareTag:number=1; // 当前图案的编号。
         public m_squareChCntTotal:number=1; // 表示换图所需敲击次数。敲击多了该值会逐渐增大，换图逐渐变慢。
         public m_squareChCntLeft:number=1; // 剩余换图敲击次数。敲击一次该值减小1。减到 0 则换图并把该值置为换图最大次数。
 
@@ -23,10 +28,6 @@ module eyelen4 {
             this.m_rippleCircle = new egret.Bitmap();
             this.m_rippleCircle.width = 20;
             this.m_rippleCircle.height = 20;
-//            this.m_rippleCircle.anchorOffsetX = this.m_rippleCircle.width/2;
-//            this.m_rippleCircle.$anchorOffsetY = this.m_rippleCircle.height/2;
-/*            this.m_rippleCircle.x = 329;
-            this.m_rippleCircle.y = 569;*/
             this.m_rippleCircle.x = this.caliSquare.x + this.caliSquare.width/2 - 10;
             this.m_rippleCircle.y = this.caliSquare.y + this.caliSquare.height/2 - 10;
 
@@ -35,8 +36,6 @@ module eyelen4 {
             //开启红圈动画效果:
             var tw = egret.Tween.get(this.m_rippleCircle , {loop:true});
             tw.to({x:this.caliSquare.x+5 , y:this.caliSquare.y+5 , width:150 , height:150 , alpha:0.4},200).to({alpha:0},100).wait(1500);
-//            tw.to({x:264 , y:504 , width:150 , height:150 , alpha:0.4},200).to({alpha:0},100).wait(1500).to({x:329 , y:569 , width:20 , height:20});
-
 
 		}
 

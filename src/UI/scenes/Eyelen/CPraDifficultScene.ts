@@ -1,4 +1,4 @@
-// UI/scenes/Eyelen/CPraDifficultScene.ts
+// src/UI/scenes/Eyelen/CPraDifficultScene.ts
 /**
  * 
  * 困难难度练习画面场景。
@@ -41,7 +41,7 @@ namespace eyelen4 {
         public m_tipBalloon1:CBalloonTip;
         public m_tipBalloon2:CBalloonTip;
 
-        public m_UIPresenter:CEyelen4PraDifficultPresenter;
+        public m_UIPresenter:CEyelen4PraDifficultPresenter; // 很多元素的位置、大小均在presenter里计算。
         public m_wm:IEyelen4WinModel; // 画面布局模型。用于计算画面各元素的坐标位置。可单元测试。
 
         public m_curPicTag: number; // 当前图片在图片缓冲区的下标。
@@ -51,18 +51,10 @@ namespace eyelen4 {
         public m_topSpace: CTopSpace_Eyelen; // 顶部空白带。仅于 iOS 下显示。
 
         private m_topOpen; // 顶部区域是否已展开。
-    //    private m_topBgX; // 顶部区域上面的背景X坐标。
-    //    private m_topBgY;
-    //    private m_topBgWidth;
-    //    private m_topBgHeight;
         private m_bgUnderTop:egret.Shape;
 
         private m_imgOriWidth: number; // 当前图片原宽。每次读取完新图片都要更新。
-//        private m_lenEdge1: egret.Shape; // 画板，画图上长度的起始边。 old
-//        private m_lenEdge2: egret.Shape; // 画板，画图上长度的结束边。 old
-        private m_lenEdgeCanvas: egret.Shape; // 画板，画图上长度的两边。 New
-//        private m_lenEdge1Canvas: egret.Shape; // 画板，画图上长度的起始边。 New
-//        private m_lenEdge2Canvas: egret.Shape; // 画板，画图上长度的结束边。 New
+        private m_lenEdgeCanvas: egret.Shape; // 画板，画图上长度的两边。
 
         private m_lenQuestioner: egret.TextField; // 图上长度中部的问号。
         private m_lenView: egret.DisplayObjectContainer; // 长度容器，包含长度的几个部件。
@@ -87,7 +79,7 @@ namespace eyelen4 {
 
             this.m_topOpen = true;
 
-            this.m_wm = new CEyelen4WinModel();
+            this.m_wm = new CEyelen4WinModel(); // 此模型用于计算画面各区域的位置大小等数据。
 
             this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
@@ -97,7 +89,7 @@ namespace eyelen4 {
 
             this.m_pm = new CEyelen3EPraMachineDifficult(); //部件没改动，继续使用上一代的。
 
-            this.m_UIPresenter = new CEyelen4PraDifficultPresenter();
+            this.m_UIPresenter = new CEyelen4PraDifficultPresenter(); // 很多元素的位置大小不在Scene里计算，而在此presenter里。
             this.m_UIPresenter.bindPM(this.m_pm);
 
             this.m_tipBalloon1 = new CBalloonTip();
@@ -201,11 +193,9 @@ namespace eyelen4 {
                 }
             }
             else {
-                console.log("OK1");
                 this.m_UIPresenter.nextLen();
                 this.m_UIPresenter.setUserLen(0);
                 this.bottomArea.lenInputer.clearLen();
-                console.log("Len cleared!");
                 this.bottomArea.lenInputer.unlock();
 
                 this.showLen(this.m_pm.getCurLen());
@@ -362,27 +352,16 @@ namespace eyelen4 {
             this.m_UIPresenter.setImgHeight(this.midArea.imgFromFile.height);
             this.midArea.imgFromFile.width = this.m_imgOriWidth * this.m_UIPresenter.getRenderFilter()._getCaRat();
 
-// OK here
-
             this.midArea.imgFromFile.texture = this.m_parentContainer._getResLoader().getRes(imgResName);
-
-// Obvious miss here.
-
-
-
-//////Sentences for test//////
-//            this.topArea.thumbUI.visible = false;
-//            return;
-////////////////////////////
 
             this.m_curImgResName = imgResName;
             this.topArea.thumbUI.setImgSrc(imgResName);
 
 
-        /*
-            换了图片：框移到右上角；
-            没换图片：框回到原来的位置：
-        */
+            /*
+                换了图片：框移到右上角；
+                没换图片：框回到原来的位置：
+            */
             if(oldImgResName == this.m_curImgResName) {
 
             }
@@ -435,37 +414,15 @@ namespace eyelen4 {
         * 在屏幕显示一个长度。不显示图片，不更新presenter。
         */ 
         private _showLen(len:CLen) {
-//            this.m_lenEdge1.graphics.clear();
-//            this.m_lenEdge1Canvas.graphics.clear();
-//            this.m_lenEdge2.graphics.clear();
-//            this.m_lenEdge2Canvas.graphics.clear();
             this.m_lenEdgeCanvas.graphics.clear();
 
             if(len.m_isHor) {
-                //Draw edge1:
-/*                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
-                this.m_lenEdge1.graphics.drawRect(len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()-5,len.m_y - 30,5,60);
-                this.m_lenEdge1.graphics.endFill();*/
-/*                this.m_lenEdge1Canvas.x = len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()-5;
-                this.m_lenEdge1Canvas.y = len.m_y - 30;
-                this.m_lenEdge1Canvas.graphics.beginFill(0x00FFFF);
-                this.m_lenEdge1Canvas.graphics.drawRect(0,0,5,60);
-                this.m_lenEdge1Canvas.graphics.endFill();*/
                 
                 //Draw questioner:
                 this.m_lenQuestioner.x = len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat() + len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat()/2 - 10;
                 this.m_lenQuestioner.y = len.m_y - 20;
                 
-                //Draw edge2:
-/*                this.m_lenEdge2.graphics.beginFill(0x00FFFF);
-                this.m_lenEdge2.graphics.drawRect(len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()+len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat(),len.m_y - 30,5,60);
-                this.m_lenEdge2.graphics.endFill();*/
-/*                this.m_lenEdge2Canvas.x = len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()+len.m_length*this.m_UIPresenter.getRenderFilter()._getCaRat();
-                this.m_lenEdge2Canvas.y = len.m_y - 30;
-                this.m_lenEdge2Canvas.graphics.beginFill(0x00FFFF);
-                this.m_lenEdge2Canvas.graphics.drawRect(0,0,5,60);
-                this.m_lenEdge2Canvas.graphics.endFill();*/
-
+                //Draw two edges:
                 this.m_lenEdgeCanvas.x = len.m_x*this.m_UIPresenter.getRenderFilter()._getCaRat()-5;
                 this.m_lenEdgeCanvas.y = len.m_y - 30;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
@@ -479,18 +436,8 @@ namespace eyelen4 {
             }
             else
             {
-//                var tmpRect:gdeint.CRect , tmpPt:gdeint.CPoint;
                 var lenDispPtsRect:CLenPtsRects;
                 lenDispPtsRect = this.m_UIPresenter.calcuLenPtsRects(len);
-                //Draw edge1:
-/*                this.m_lenEdge1.graphics.beginFill(0x00FFFF);
-                this.m_lenEdge1.graphics.drawRect(lenDispPtsRect.m_lenEdge1DispRect.m_left,lenDispPtsRect.m_lenEdge1DispRect.m_top,lenDispPtsRect.m_lenEdge1DispRect.m_width,lenDispPtsRect.m_lenEdge1DispRect.m_height);
-                this.m_lenEdge1.graphics.endFill();*/
-/*                this.m_lenEdge1Canvas.x = lenDispPtsRect.m_lenEdge1DispRect.m_left;
-                this.m_lenEdge1Canvas.y = lenDispPtsRect.m_lenEdge1DispRect.m_top;
-                this.m_lenEdge1Canvas.graphics.beginFill(0x00FFFF);
-                this.m_lenEdge1Canvas.graphics.drawRect(0,0,lenDispPtsRect.m_lenEdge1DispRect.m_width,lenDispPtsRect.m_lenEdge1DispRect.m_height);
-                this.m_lenEdge1Canvas.graphics.endFill();*/
 
                 //Draw questioner:
                 var tmpFontSize = this.m_UIPresenter.getLenQuestionerFontSize();
@@ -498,16 +445,7 @@ namespace eyelen4 {
                 this.m_lenQuestioner.y = lenDispPtsRect.m_lenQuestionerDispPt.m_y;
                 this.m_lenQuestioner.size = tmpFontSize;
 
-                //Draw edge2:
-/*                this.m_lenEdge2.graphics.beginFill(0x00FFDD);
-                this.m_lenEdge2.graphics.drawRect(lenDispPtsRect.m_lenEdge2DispRect.m_left , lenDispPtsRect.m_lenEdge2DispRect.m_top , lenDispPtsRect.m_lenEdge2DispRect.m_width , lenDispPtsRect.m_lenEdge2DispRect.m_height);
-                this.m_lenEdge2.graphics.endFill();*/
-/*                this.m_lenEdge2Canvas.x = lenDispPtsRect.m_lenEdge2DispRect.m_left;
-                this.m_lenEdge2Canvas.y = lenDispPtsRect.m_lenEdge2DispRect.m_top;
-                this.m_lenEdge2Canvas.graphics.beginFill(0x00FFDD);
-                this.m_lenEdge2Canvas.graphics.drawRect(0 , 0 , lenDispPtsRect.m_lenEdge2DispRect.m_width , lenDispPtsRect.m_lenEdge2DispRect.m_height);
-                this.m_lenEdge2Canvas.graphics.endFill();*/
-
+                //Draw two edges:
                 this.m_lenEdgeCanvas.x = lenDispPtsRect.m_lenEdge1DispRect.m_left;
                 this.m_lenEdgeCanvas.y = lenDispPtsRect.m_lenEdge1DispRect.m_top;
                 this.m_lenEdgeCanvas.graphics.beginFill(0x00FFFF);
@@ -520,6 +458,7 @@ namespace eyelen4 {
 
             }
         }
+
         /*
         * 在屏幕显示一个长度。图片也会一起显示。
         */ 
@@ -561,7 +500,6 @@ namespace eyelen4 {
             this.m_bgUnderTop.y = 0;
             this.m_bgUnderTop.width = this.m_wm.getWinWidth();
             this.m_bgUnderTop.height = this.m_wm.getTopHeight();
-    //        this.m_bgUnderTop.graphics.beginFill(0x888888);
             this.m_bgUnderTop.graphics.beginFill(0x00FF00);
             this.m_bgUnderTop.graphics.drawRect(0,0,this.m_bgUnderTop.width,this.m_bgUnderTop.height);
             this.m_bgUnderTop.graphics.endFill();
@@ -581,20 +519,12 @@ namespace eyelen4 {
             this.m_imgOriWidth = 160;
 
             this.m_lenView = new egret.DisplayObjectContainer();
-//            this.m_lenEdge1 = new egret.Shape();
-//            this.m_lenEdge1Canvas = new egret.Shape(); //因为createTop里其它地方要用，所以不放在createMid。
-//            this.m_lenEdge2 = new egret.Shape();
-//            this.m_lenEdge2Canvas = new egret.Shape();
             this.m_lenEdgeCanvas = new egret.Shape();
             this.m_lenQuestioner = new egret.TextField();
             this.m_lenQuestioner.textColor = 0xFF0000;
             this.m_lenQuestioner.size = 36;
             this.m_lenQuestioner.text = "?";
 
-//            this.midArea.midCanvasGrp.addChild(this.m_lenEdge1);
-//            this.midArea.midCanvasGrp.addChild(this.m_lenEdge1Canvas);
-//            this.midArea.midCanvasGrp.addChild(this.m_lenEdge2);
-//            this.midArea.midCanvasGrp.addChild(this.m_lenEdge2Canvas);
             this.midArea.midCanvasGrp.addChild(this.m_lenEdgeCanvas);
             this.midArea.midCanvasGrp.addChild(this.m_lenQuestioner);
 
@@ -662,9 +592,6 @@ namespace eyelen4 {
 
             this.midArea.imgFromFile.fillMode = egret.BitmapFillMode.SCALE;
             this.midArea.imgGrp.x = 0;
-//            this.midArea.imgGrp.y = midVisibleY();
-/*            this.midArea.imgGrp.width = 160;
-            this.midArea.imgGrp.height = 160;*/
 
             this.createTop();
             this.createMid();
@@ -680,7 +607,6 @@ namespace eyelen4 {
             this.finalScoreDlg.addEventListener(CFinalScoreDlgEvent.EVT_REPLAY_BTN_TAP,this.replayBtnTouched,this);
 
     //Add touch events:
-
             this.initCmpLenDlg();
 
     //OK to start and show first len.

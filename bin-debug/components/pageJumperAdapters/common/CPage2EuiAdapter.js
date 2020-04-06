@@ -19,14 +19,17 @@ var CPage2EuiAdapter = (function (_super) {
     function CPage2EuiAdapter() {
         return _super.call(this) || this;
     }
+    //显式调用较少。
     CPage2EuiAdapter.prototype.show = function () {
         _super.prototype.show.call(this);
         this.m_adaptee.visible = true;
     };
+    //切换到本页时触发。为某一界面编写专用Page类时可重载。
     CPage2EuiAdapter.prototype.showOnFront = function () {
         _super.prototype.showOnFront.call(this);
         this.m_adaptee.visible = true;
     };
+    //离开本页时也会触发。为某一界面编写专用Page类时可重载。
     CPage2EuiAdapter.prototype.hide = function () {
         _super.prototype.hide.call(this);
         this.m_adaptee.visible = false;

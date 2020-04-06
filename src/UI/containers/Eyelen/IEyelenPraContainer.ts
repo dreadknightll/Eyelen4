@@ -1,7 +1,5 @@
 /**
- *
- * @author 
- *
+ * /src/UI/containers/Eyelen/IEyelenPraContainer.ts
  */
 interface IEyelenPraContainer extends IUIContainer{
     setPraScene(ps:IEyelenPraScene):void;

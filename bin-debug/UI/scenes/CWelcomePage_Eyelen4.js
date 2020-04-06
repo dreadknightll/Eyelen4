@@ -1,7 +1,12 @@
+/****************************************************
+ * /src/UI/scenes/CWelcomePage_Eyelen4.ts
+ *
+ * 用于实现切换页面时启用/禁止开始练习按钮等操作。
+ *
+ ****************************************************/
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
-//此类用于实现切换页面时启用/禁止开始练习按钮等操作。
 var CWelcomePage_Eyelen4 = (function () {
     function CWelcomePage_Eyelen4() {
         this.m_commonPage = new gdeint.CPage();
@@ -10,6 +15,9 @@ var CWelcomePage_Eyelen4 = (function () {
         this.m_commonPage.show();
         this.m_scene.visible = true;
     };
+    /*
+    *   离开此页面或其它隐藏操作时触发。
+    */
     CWelcomePage_Eyelen4.prototype.hide = function () {
         this.m_commonPage.hide();
         this.m_scene.visible = false;
@@ -17,6 +25,9 @@ var CWelcomePage_Eyelen4 = (function () {
     CWelcomePage_Eyelen4.prototype.isVisible = function () {
         return this.m_scene.visible;
     };
+    /*
+    *   切换到此页面时触发。
+    */
     CWelcomePage_Eyelen4.prototype.showOnFront = function () {
         this.m_commonPage.showOnFront();
         this.show();

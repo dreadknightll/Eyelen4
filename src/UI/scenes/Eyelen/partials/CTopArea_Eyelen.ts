@@ -1,8 +1,9 @@
 /**
  *
+ * /src/UI/scenes/Eyelen/partials/CTopArea_Eyelen.ts
  * 练习场景顶部区域。
  * 
- * 请勿修改 scale/x/y，而要通过 setTrueWidth/setTrueHeight 。
+ * 请勿外部修改 scale/x/y，而要通过 setTrueWidth/setTrueHeight 。
  *
  */
 
@@ -12,29 +13,22 @@ namespace eyelen4 {
         public constructor() {
             super();
 
-    //        this.m_bgBack = new egret.Shape();
             this.m_bgFront = new egret.Shape();
             this.m_topButtonBg = new egret.Shape();
 
             this.m_evtSwitchBtnTap = new CTopAreaEvent_Eyelen(CTopAreaEvent_Eyelen.EVT_SWITCHBTN_TAP);
         }
 
-        private topScreen: eui.Image;
-        public progressView: CProgressView;
-        public scoreView: CScoreView;
-    //    public bgBackGrp: eui.Group;
+        private topScreen: eui.Image; // 幕布图片。
+        public progressView: CProgressView; // 练习进度。
+        public scoreView: CScoreView; // 得分。
         public bgFrontGrp: eui.Group;
         public switchBtnBgGrp: eui.Group;
-        public switchBtn: eui.Image;
-        public thumbUI:CThumbUI;
-    /*    public thumb:eui.Image;
-        public thumbQuestioner:eui.Label;
-        public thumbSel: eui.Image;
-        public thumbCover: eui.Rect;*/
+        public switchBtn: eui.Image; // 展开/收起按钮。
+        public thumbUI:CThumbUI; // 缩略图。
         
         public m_evtSwitchBtnTap:CTopAreaEvent_Eyelen;
 
-    //    public m_bgBack: egret.Shape;
         public m_bgFront: egret.Shape;
 
         // Under 480 horizontal resolution.
@@ -59,14 +53,6 @@ namespace eyelen4 {
             if(this.height < this.m_trueHeight) {
                 this.height = this.m_trueHeight;
             }
-
-    //Bg color:
-    /*        this.m_bgBack.width = this.m_trueWidth;
-            this.m_bgBack.height = this.m_trueHeight;
-            this.m_bgBack.graphics.beginFill(0x33EE99);
-
-            this.m_bgBack.graphics.drawRect(0,0,this.m_bgBack.width,this.m_bgBack.height);
-            this.m_bgBack.graphics.endFill();*/
 
             this.m_bgFront.width = this.s_bgFrontWidth / 480 * this.m_trueWidth;
             this.m_bgFront.height = this.s_bgFrontHeight / 180 * this.m_trueHeight;
@@ -107,7 +93,6 @@ namespace eyelen4 {
 
             this.bgFrontGrp.left = 25 / 480*this.m_trueWidth;
 
-    //        this.bgBackGrp.addChild(this.m_bgBack);
             this.bgFrontGrp.addChild(bgFrontRectBg);
             this.bgFrontGrp.addChild(bgFrontRectLeft);
             this.bgFrontGrp.addChild(bgFrontRectBottomRight);
@@ -122,7 +107,6 @@ namespace eyelen4 {
             this.switchBtnBgGrp.left = this.switchBtn.left;
             this.switchBtnBgGrp.top = this.switchBtn.top;
     //Thumb area:
-    //        this.thumbUI.left = 400;
     //      No action here! decided in CPraEasyScene because renderFilter required!
 
         }
