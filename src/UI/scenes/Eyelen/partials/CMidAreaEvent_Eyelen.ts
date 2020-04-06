@@ -1,7 +1,5 @@
 /**
- *
- * @author 
- *
+ * /src/UI/scenes/Eyelen/partials/CMidAreaEvent_Eyelen.ts
  */
 class CMidAreaEvent_Eyelen extends egret.Event {
     public constructor(type: string,bulle: boolean = false,cancel: boolean = false) {

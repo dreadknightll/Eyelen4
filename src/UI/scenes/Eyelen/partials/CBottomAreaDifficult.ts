@@ -1,3 +1,6 @@
+/*
+ * /src/UI/scenes/Eyelen/partials/CBottomAreaDifficult.ts
+ */
 namespace eyelen4 {
 	export class CBottomAreaDifficult extends eui.Component {
 		public constructor() {
@@ -7,7 +10,7 @@ namespace eyelen4 {
 		public backBtn:eui.Button;
 		public caliBtn:eui.Button;
 		public menuGroup:eui.Group;
-		public lenInputer:CLenInputerDifficult;
+		public lenInputer:CLenInputerDifficult; //长度输入控件。
 
 		private m2_cc:boolean = false;
 		private m_trueWidth:number = 480;
@@ -46,7 +49,6 @@ namespace eyelen4 {
 	//		adjust the size of the buttons
 			var scale:number;
 			scale = 0.32 * this.m_trueHeight/this.backBtn.height;
-	//		this.scaleX = scale;
 			this.menuGroup.scaleY = scale;
 			this.menuGroup.scaleX = scale;
 		}

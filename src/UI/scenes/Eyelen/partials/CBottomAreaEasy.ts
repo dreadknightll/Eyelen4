@@ -1,3 +1,7 @@
+/*
+ * /src/UI/scenes/Eyelen/partials/CBottomAreaEasy.ts
+ * 简单难度底部区域。
+*/
 namespace eyelen4 {
 	export class CBottomAreaEasy extends eui.Component {
 		public constructor() {
@@ -6,8 +10,8 @@ namespace eyelen4 {
 
 		public backBtn:eui.Button;
 		public caliBtn:eui.Button;
-		public menuGroup:eui.Button;
-		public lenInputer:CLenInputerEasy;
+		public menuGroup:eui.Group;
+		public lenInputer:CLenInputerEasy; // 长度输入控件。
 
 		private m2_cc:boolean = false;
 		private m_trueWidth:number = 480;
@@ -46,7 +50,6 @@ namespace eyelen4 {
 	//		adjust the size of the buttons
 			var scale:number;
 			scale = 0.32 * this.m_trueHeight/this.backBtn.height;
-	//		this.scaleX = scale;
 			this.menuGroup.scaleY = scale;
 			this.menuGroup.scaleX = scale;
 		}

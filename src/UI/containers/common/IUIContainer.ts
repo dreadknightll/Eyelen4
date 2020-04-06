@@ -1,17 +1,14 @@
 /**
- *
- * @author 
- *
+ * /src/UI/containers/common/IUIContainer.ts
  */
 interface IUIContainer extends INotiParent,gdeint.IHidable {
-    //未指定UI的数据类型，未定义横竖校准框。
+    //本接口未固定Scene的数据类型。
 
     setResLoader(r:IResFetcher):any;
     setAlertDlg(ad:IAlertDlgPlugin):void;
     setConfirmDlg(cd:IConfirmDlgPlugin):void;
     setPreloaderUI(pUI:IPreloaderUI):void;
 
-//    getDlgLayer():egret.DisplayObjectContainer;
     getDlgLayer():IDiv;
 
     _getResLoader():IResFetcher;

@@ -1,4 +1,4 @@
-// src/UI/scenes/Eyelen/CPraEasyScene.ts
+// /src/UI/scenes/Eyelen/CPraEasyScene.ts
 /**
  *
  * 简单难度练习画面场景。

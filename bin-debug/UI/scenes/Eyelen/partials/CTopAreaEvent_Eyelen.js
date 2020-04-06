@@ -9,9 +9,7 @@ for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
 /**
- *
- * @author
- *
+ * /src/UI/scenes/Eyelen/partials/CTopAreaEvent_Eyelen.ts
  */
 var CTopAreaEvent_Eyelen = (function (_super) {
     __extends(CTopAreaEvent_Eyelen, _super);

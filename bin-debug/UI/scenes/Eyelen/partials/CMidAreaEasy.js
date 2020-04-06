@@ -9,6 +9,7 @@ for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
 /**
+ * /src/UI/scenes/Eyelen/partials/CMidAreaEasy.ts
  *
  * 练习场景中部区域。
  *
@@ -26,7 +27,7 @@ var eyelen4;
             _this.s_horSpace = 80;
             _this.s_verSpace = 80;
             _this.m2_cc = false;
-            _this.m_imgCircler = new gdeint.CSquareCircler();
+            _this.m_imgCircler = new gdeint.CSquareCircler(); // 控制练习图片可拖动范围的模型。
             _this.m_bg = new egret.Shape();
             _this.m2_imgTchStartPoint = new gdeint.CPoint();
             _this.m2_imgStartPoint = new gdeint.CPoint();
@@ -41,31 +42,18 @@ var eyelen4;
             this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
             this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMove, this);
             this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEnd, this);
-            /*            if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-                            console.log("Children created:MidAreaEasy!");
-                            this.imgFromFile.visible = false;
-                            this.randomGraph.visible = true;
-                            this.m_randomGraphShape = genRandomGraphic(1024,720);
-                            this.m_randomGraphShape.visible = true;
-                            this.randomGraph.addChild(this.m_randomGraphShape);
-                        }*/
-            //        this.maxWidth = 480; Not work.
             var rect = new egret.Rectangle();
             rect.x = 0;
             rect.y = 0;
             if (0 == this.m_trueWidth) {
-                //                rect.width = 480;
                 rect.width = 720;
             }
             else {
                 rect.width = this.m_trueWidth;
             }
-            //            rect.height = 2000;
             rect.height = 3000;
-            this.mask = rect;
+            this.mask = rect; //超出范围的内容不显示。
             this.midBgGrp.addChild(this.m_bg);
-            //	    this.midCanvasGrp.addChild(this.m_midCanvas);
-            //            if(!(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE)) {
             if (!(S_NO_IMG_MODE)) {
                 this.imgFromFile.touchEnabled = true;
                 this.imgFromFile.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
@@ -82,6 +70,7 @@ var eyelen4;
             this.m_bg.graphics.drawRect(0, 0, this.m_bg.width, this.m_bg.height);
             this.m_bg.graphics.endFill();
         };
+        //根据场景设置调整可拖动范围。
         CMidAreaEasy.prototype.readjustCircler = function () {
             //Use dispWidth.
             var circlerRect = new gdeint.CRect();
@@ -109,6 +98,7 @@ var eyelen4;
             inpPos.m_y = -this.midContentGroup.y;
             this.m_imgCircler.setInpPos(inpPos);
         };
+        // 练习图片开始拖动时触发。
         CMidAreaEasy.prototype.touchBegin = function (evt) {
             this.m2_imgTchStartPoint.m_x = evt.stageX;
             this.m2_imgTchStartPoint.m_y = evt.stageY;
@@ -129,77 +119,18 @@ var eyelen4;
                     newPt.m_x = newX;
                     newPt.m_y = newY;
                     this.m_imgCircler.setInpPos(newPt);
-                    /*
-                    if(newX > this.s_horSpace
-                        && newX+this.imgFromFile.width > this.getTrueWidth()+this.s_horSpace)
-                    {
-                        var gap1:number=0,gap2:number=0;
-                        gap1 = newX - this.s_horSpace;
-                        gap2 = newX+this.imgFromFile.width - (this.getTrueWidth()+this.s_horSpace);
-                        if(gap1 > gap2) {
-                            newX = -(this.imgFromFile.width - (this.getTrueWidth()+this.s_horSpace));
-                        }
-                        else {
-                            newX = this.s_horSpace;
-                        }
-                    }
-
-                    if(newX < -(this.imgFromFile.width + this.s_horSpace - this.getTrueWidth())
-                        && newX < -this.s_horSpace)
-                    {
-                        var gap1:number=0,gap2:number=0;
-                        gap1 = newX + this.imgFromFile.width + this.s_horSpace - this.getTrueWidth();
-                        gap2 = newX + this.s_horSpace;
-                        if(gap1<gap2) {
-                            newX = -this.s_horSpace;
-                        }
-                        else {
-                            newX = -(this.imgFromFile.width + this.s_horSpace - this.getTrueWidth());
-                        }
-                    }
-
-                    if(newY > this.s_verSpace
-                        && newY+this.imgFromFile.height-this.getTrueHeight()>this.s_verSpace)
-                    {
-                        var gap1:number=0,gap2:number=0;
-                        gap1 = newY - this.s_verSpace;
-                        gap2 = newY+this.imgFromFile.height-this.getTrueHeight()-this.s_verSpace;
-                        if(gap1>gap2) {
-                            newY = -(this.imgFromFile.height-this.getTrueHeight()-this.s_verSpace);
-                        }
-                        else {
-                            newY = this.s_verSpace;
-                        }
-                    }
-
-                    if(newY < -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight())
-                        && newY < -this.s_verSpace)
-                    {
-                        var gap1:number=0,gap2:number=0;
-                        gap1 = newY+this.imgFromFile.height + this.s_verSpace - this.getTrueHeight();
-                        gap2 = this.s_verSpace;
-                        if(gap1<gap2) {
-                            newY = -this.s_verSpace;
-                        }
-                        else {
-                            newY = -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight());
-                        }
-                    }
-                    */
                     var newPtFinal = new gdeint.CPoint();
-                    newPtFinal = this.m_imgCircler.getOutpPos();
+                    newPtFinal = this.m_imgCircler.getOutpPos(); // InpPos未超出范围，则OutpPos==InpPos；若超出范围，则OutpPos把练习图片控制在范围内。
                     newX = newPtFinal.m_x;
                     newY = newPtFinal.m_y;
-                    console.log("NewY:" + newY + ",BottomYImg:" + (newY + this.imgFromFile.height) + ",BottomYCircler:" + this.getTrueHeight()); //Correct!
                     this.midContentGroup.x = newX;
                     this.midContentGroup.y = newY;
                     var pt;
                     pt = new gdeint.CPoint();
                     pt.m_x = -this.midContentGroup.x;
                     pt.m_y = -this.midContentGroup.y + this.m_visibleStartY;
-                    //pt:[-newX , -newY+this.visibleStartY]
                     this.m_UIPresenter.inpImgSelPt(pt);
-                    this.dispatchEvent(this.m_evtImgDragEnd); // No parmameter passed. Calculate inside this func!!
+                    this.dispatchEvent(this.m_evtImgDragEnd); // 把事件通知PraScene进行相关处理。目前DragMove和DragEnd处理内容相同。
                 }
                 else if (evt.target == this.m_randomGraphShape) {
                     console.log("Moving randomGraph!");
@@ -213,63 +144,6 @@ var eyelen4;
                     newPt.m_x = newX;
                     newPt.m_y = newY;
                     this.m_imgCircler.setInpPos(newPt);
-                    /*
-                                        if(newX > this.s_horSpace
-                                            && newX+graphShowWidth > this.getTrueWidth()+this.s_horSpace)
-                                        {
-                                            var gap1:number=0,gap2:number=0;
-                                            gap1 = newX - this.s_horSpace;
-                                            gap2 = newX+graphShowWidth - (this.getTrueWidth()+this.s_horSpace);
-                                            if(gap1 > gap2) {
-                                                newX = -(graphShowWidth - (this.getTrueWidth()+this.s_horSpace));
-                                            }
-                                            else {
-                                                newX = this.s_horSpace;
-                                            }
-                                        }
-                    
-                                        if(newX < -(graphShowWidth + this.s_horSpace - this.getTrueWidth())
-                                            && newX < -this.s_horSpace)
-                                        {
-                                            var gap1:number=0,gap2:number=0;
-                                            gap1 = newX + graphShowWidth + this.s_horSpace - this.getTrueWidth();
-                                            gap2 = newX + this.s_horSpace;
-                                            if(gap1<gap2) {
-                                                newX = -this.s_horSpace;
-                                            }
-                                            else {
-                                                newX = -(graphShowWidth + this.s_horSpace - this.getTrueWidth());
-                                            }
-                                        }
-                    
-                                        if(newY > this.s_verSpace
-                                            && newY+this.m_randomGraphShape.height-this.getTrueHeight()>this.s_verSpace)
-                                        {
-                                            var gap1:number=0,gap2:number=0;
-                                            gap1 = newY - this.s_verSpace;
-                                            gap2 = newY+this.m_randomGraphShape.height-this.getTrueHeight()-this.s_verSpace;
-                                            if(gap1>gap2) {
-                                                newY = -(this.m_randomGraphShape.height-this.getTrueHeight()-this.s_verSpace);
-                                            }
-                                            else {
-                                                newY = this.s_verSpace;
-                                            }
-                                        }
-                    
-                                        if(newY < -(this.m_randomGraphShape.height + this.s_verSpace - this.getTrueHeight())
-                                            && newY < -this.s_verSpace)
-                                        {
-                                            var gap1:number=0,gap2:number=0;
-                                            gap1 = newY+this.m_randomGraphShape.height + this.s_verSpace - this.getTrueHeight();
-                                            gap2 = this.s_verSpace;
-                                            if(gap1<gap2) {
-                                                newY = -this.s_verSpace;
-                                            }
-                                            else {
-                                                newY = -(this.m_randomGraphShape.height + this.s_verSpace - this.getTrueHeight());
-                                            }
-                                        }
-                    */
                     var newPtFinal = new gdeint.CPoint();
                     newPtFinal = this.m_imgCircler.getOutpPos();
                     newX = newPtFinal.m_x;

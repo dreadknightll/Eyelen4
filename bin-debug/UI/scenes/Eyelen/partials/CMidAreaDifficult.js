@@ -9,7 +9,7 @@ for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
 /**
- *
+ * src/UI/scenes/Eyelen/partials/CMidAreaDifficult.ts
  * 练习场景中部区域。
  *
  */
@@ -35,7 +35,6 @@ var eyelen4;
             return _this;
         }
         CMidAreaDifficult.prototype.childrenCreated = function () {
-            //        this.maxWidth = 480; Not work.
             this.randomGraph.addChild(this.m_randomGraphShape);
             var rect = new egret.Rectangle();
             rect.x = 0;
@@ -49,11 +48,6 @@ var eyelen4;
             rect.height = 3000;
             this.mask = rect;
             this.midBgGrp.addChild(this.m_bg);
-            /*            this.imgGrp.touchEnabled = true;
-                        this.imgGrp.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchBegin,this);
-                        this.imgGrp.addEventListener(egret.TouchEvent.TOUCH_MOVE,this.touchMove,this);
-                        this.imgGrp.addEventListener(egret.TouchEvent.TOUCH_END,this.touchEnd,this);*/
-            //            if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
             if (S_NO_IMG_MODE) {
                 this.m_randomGraphShape.touchEnabled = true;
                 this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
@@ -85,10 +79,10 @@ var eyelen4;
                 rect.width = this.m_trueWidth;
             }
             rect.height = 3000;
-            this.mask = rect;
+            this.mask = rect; // 超出显示范围部分不显示。
         };
         CMidAreaDifficult.prototype.readjustCircler = function () {
-            //Use dispWidth.
+            // 宽度使用校准后的。
             var circlerRect = new gdeint.CRect();
             circlerRect.m_left = 0;
             circlerRect.m_top = this.m_visibleStartY;
@@ -135,64 +129,9 @@ var eyelen4;
                     inpPos.m_y = newY;
                     this.m_imgCircler.setInpPos(inpPos);
                     var outPos;
-                    outPos = this.m_imgCircler.getOutpPos();
+                    outPos = this.m_imgCircler.getOutpPos(); // 若超出可拖动范围，则限制移动。
                     newX = outPos.m_x;
                     newY = outPos.m_y;
-                    /*                    if(newX > this.s_horSpace
-                                            && newX+this.imgFromFile.width > this.getTrueWidth()+this.s_horSpace)
-                                        {
-                                            var gap1:number=0,gap2:number=0;
-                                            gap1 = newX - this.s_horSpace;
-                                            gap2 = newX+this.imgFromFile.width - (this.getTrueWidth()+this.s_horSpace);
-                                            if(gap1 > gap2) {
-                                                newX = -(this.imgFromFile.width - (this.getTrueWidth()+this.s_horSpace));
-                                            }
-                                            else {
-                                                newX = this.s_horSpace;
-                                            }
-                                        }
-                    
-                                        if(newX < -(this.imgFromFile.width + this.s_horSpace - this.getTrueWidth())
-                                            && newX < -this.s_horSpace)
-                                        {
-                                            var gap1:number=0,gap2:number=0;
-                                            gap1 = newX + this.imgFromFile.width + this.s_horSpace - this.getTrueWidth();
-                                            gap2 = newX + this.s_horSpace;
-                                            if(gap1<gap2) {
-                                                newX = -this.s_horSpace;
-                                            }
-                                            else {
-                                                newX = -(this.imgFromFile.width + this.s_horSpace - this.getTrueWidth());
-                                            }
-                                        }
-                    
-                                        if(newY > this.s_verSpace
-                                            && newY+this.imgFromFile.height-this.getTrueHeight()>this.s_verSpace)
-                                        {
-                                            var gap1:number=0,gap2:number=0;
-                                            gap1 = newY - this.s_verSpace;
-                                            gap2 = newY+this.imgFromFile.height-this.getTrueHeight()-this.s_verSpace;
-                                            if(gap1>gap2) {
-                                                newY = -(this.imgFromFile.height-this.getTrueHeight()-this.s_verSpace);
-                                            }
-                                            else {
-                                                newY = this.s_verSpace;
-                                            }
-                                        }
-                    
-                                        if(newY < -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight())
-                                            && newY < -this.s_verSpace)
-                                        {
-                                            var gap1:number=0,gap2:number=0;
-                                            gap1 = newY+this.imgFromFile.height + this.s_verSpace - this.getTrueHeight();
-                                            gap2 = this.s_verSpace;
-                                            if(gap1<gap2) {
-                                                newY = -this.s_verSpace;
-                                            }
-                                            else {
-                                                newY = -(this.imgFromFile.height + this.s_verSpace - this.getTrueHeight());
-                                            }
-                                        }*/
                     this.midContentGroup.x = newX;
                     this.midContentGroup.y = newY;
                     var pt;
@@ -200,7 +139,7 @@ var eyelen4;
                     pt.m_x = -this.midContentGroup.x;
                     pt.m_y = -this.midContentGroup.y + this.m_visibleStartY;
                     this.m_UIPresenter.inpImgSelPt(pt);
-                    this.dispatchEvent(this.m_evtImgDragEnd); // No parmameter passed. Calculate inside this func!!
+                    this.dispatchEvent(this.m_evtImgDragEnd); // 通知PraScene进行有关处理。目前DragMove和DragEnd进行的处理相同。
                 }
                 else if (evt.target == this.m_randomGraphShape) {
                     var dx, dy, newX, newY;
@@ -289,7 +228,6 @@ var eyelen4;
         };
         CMidAreaDifficult.prototype.getTrueWidth = function () {
             return this.m_trueWidth;
-            //        return 480;
         };
         CMidAreaDifficult.prototype.setTrueHeight = function (th) {
             this.m_trueHeight = th;
