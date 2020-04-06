@@ -1,9 +1,9 @@
 /*
+ * /src/components/lenCheckers/CLenCheckerDifficult.ts
  * 长度比较器。比较用户长度和正确长度，返回准确度评定。
  */
 class CLenCheckerDifficult implements ILenCheckerDifficult {
     private m_correOriLen:number;
-//    private m_correHor:boolean;
     private m_inputDispLen:number;
     private m_renderFilter:gdeint.IRenderFilterWithCa;
 

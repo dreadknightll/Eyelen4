@@ -1,8 +1,12 @@
+/*
+ * /src/components/lenCheckers/CLenCheckerEasy.ts
+ * 把 用户输入的格数*每格宽度 与 正确的长度 作比较（需要考虑校准），并返回得分。
+*/
 class CLenCheckerEasy implements ILenCheckerEasy {
-    private m_correOriLen;
-    private m_gridDispWidth:number;
-    private m_gridCnt:number;
-    private m_renderFilter:gdeint.IRenderFilterWithCa;
+    private m_correOriLen; // 正确长度（校准前）。
+    private m_gridDispWidth:number; // 每格长度（校准后）。
+    private m_gridCnt:number; // 格数。
+    private m_renderFilter:gdeint.IRenderFilterWithCa; // 带校准的渲染过滤器。
 
     constructor() {
         this.m_renderFilter = new CEyelen3ERenderFilter();
