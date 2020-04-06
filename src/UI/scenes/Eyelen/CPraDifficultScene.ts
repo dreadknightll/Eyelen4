@@ -249,8 +249,8 @@ namespace eyelen4 {
             this.topArea.progressView.setProgress(curPro);
         }
 
+        //重新开始练习。
         private replayBtnTouched():void {
-            //        start next pra      
             this.finalScoreDlg.visible = false;
             this.bottomArea.lenInputer.unlock();
             this.bottomArea.lenInputer.clearLen();
@@ -262,6 +262,7 @@ namespace eyelen4 {
             g_praDifficultContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
         }
 
+        // 开始新一轮练习。
         public startNewPra(): void {
             this.m_pm.startPra();
             if(this.m2_isFirstPra) {
@@ -507,8 +508,8 @@ namespace eyelen4 {
             this.topArea.scoreView.x = this.m_bgUnderTop.x + this.m_bgUnderTop.width - s_topRightWidth + 5;
             this.topArea.scoreView.y = this.m_bgUnderTop.y + s_topRightHeight1 + 3;
 
-            this.topArea.progressView.x = this.m_bgUnderTop.x + this.m_bgUnderTop.width - s_topRightWidth + 5;//35;
-            this.topArea.progressView.y = s_topRightHeight1 / 2 - 35;//10;
+            this.topArea.progressView.x = this.m_bgUnderTop.x + this.m_bgUnderTop.width - s_topRightWidth + 5;
+            this.topArea.progressView.y = s_topRightHeight1 / 2 - 35;
 
             this.topArea.setTrueWidth(this.m_winWidth);
             this.topArea.setTrueHeight(this.m_wm.getTopHeight2());
@@ -678,7 +679,7 @@ namespace eyelen4 {
         */ 
         private onTipBalloon2Close(evt:egret.Event) {
             this.enabled = true;
-            this.recoverNotiLayerBg();//make ruler dark again for other disable scene actions.
+            this.recoverNotiLayerBg();
             this.m_notiLayer.visible = false;
         }
 
