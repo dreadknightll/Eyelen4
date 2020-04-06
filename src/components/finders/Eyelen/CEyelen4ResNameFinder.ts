@@ -1,8 +1,12 @@
+/*
+ * /src/components/finders/Eyelen/CEyelen4ResNameFinder.ts
+ * 使用本寻找器可通过文件名、编号等获取资源名。
+*/
 class CEyelen4ResNameFinder implements IEyelen4ResNameFinder {
 	public constructor() {
 	}
 
-	private m_inpStr:string; // 输入的文件名。
+	private m_inpStr:string; // 输入的文件名、资源名或编号等。
 
 	public setInp(inp:string) {
 		//inp eg: 88 , "4" , "pic002.json" , "img_001.gif" , "img_001_gif"
