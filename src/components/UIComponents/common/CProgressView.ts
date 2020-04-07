@@ -1,7 +1,6 @@
 /**
- *
- * 练习进度条。
- *
+ * /src/components/UIComponents/common/CProgressView.ts
+ * 进度显示控件。
  */
 namespace eyelen4 {
     export class CProgressView extends eui.Component {
@@ -26,17 +25,18 @@ namespace eyelen4 {
             }
         }
 
-        private progressCells: eui.Group;
-        private m_progressCellsArr: Array<egret.Bitmap>;
-        private m_progressCellContainer: egret.DisplayObjectContainer;
-        private s_cellWidth: number = 20;
-        private s_cellHeight: number = 18;
-        private m_progress:number;
+        private progressCells: eui.Group; // 进度格子。
+        private m_progressCellsArr: Array<egret.Bitmap>; // 每个格子的图案（已进行/未进行/其它）。
+        private m_progressCellContainer: egret.DisplayObjectContainer; // 边框。
+        private s_cellWidth: number = 20; // 格子宽度。
+        private s_cellHeight: number = 18; //格子高度。
+        private m_progress:number; // 进度（0-10）。
 
         public childrenCreated(): void {
             this.progressCells.addChild(this.m_progressCellContainer);
         }
 
+        // 显示参数所指的进度。
         public setProgress(progress:number)
         {
             //progress range:0~10

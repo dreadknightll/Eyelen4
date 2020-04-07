@@ -1,5 +1,6 @@
 /**
  *
+ * /src/components/UIComponents/common/CFinalScoreDlg.ts
  * 最终得分显示对话框。 
  *
  */
@@ -25,10 +26,10 @@ namespace eyelen4 {
 
         private bgGrp:eui.Group;
         private score:eui.Label;
-        private stars: eui.Group;
+        private stars: eui.Group; // 组里含三个星星。
         private replayBtn: eui.Button;
         private m_bg:egret.Shape;
-        private m_starsArr:Array<egret.Bitmap>;
+        private m_starsArr:Array<egret.Bitmap>; // 星星。
         private m_starsContainer:egret.DisplayObjectContainer;
         private m_replayEvt:CFinalScoreDlgEvent;
 

@@ -1,5 +1,6 @@
 /**
  *
+ * /src/components/UIComponents/Eyelen/CGridCmpLenDlg.ts
  * 长度比较对话框格子版。简单难度用。
  * 本控件只直接显示用户填入的数据。不进行横竖校准等计算。
  * 
@@ -15,7 +16,6 @@ namespace eyelen4 {
         private correLenRect: eui.Rect;
         private userLenIcon: eui.Image;
         private userLenGrp:eui.Group;
-    //    private userLen: egret.DisplayObjectContainer;
         private scoreFlags: eui.Group;
 
         ////////////////////////////////////////////////////////////////////////
@@ -29,7 +29,6 @@ namespace eyelen4 {
         private m_flagsArr: Array<egret.Bitmap>; // 旗子列表。
         private m_flagsContainer: egret.DisplayObjectContainer; // 旗子容器。
 
-    //    private m_correLenShape: egret.Shape; // 正确长度画板。
         private m_userGridWidth:number = 30;
         private m_userLenGridsArr: Array<egret.Bitmap>; // // 用户输入长度的格子集合。
         private m_userLenGroup: egret.DisplayObjectContainer; // 用户输入长度的组合。
@@ -155,9 +154,7 @@ namespace eyelen4 {
             this._setUserGridCnt(this.m2_tmpUserGridCnt);
 
             this.scoreFlags.addChild(this.m_flagsContainer);
-    //        this.userLen = this.m_userLenGroup;
             this.userLenGrp.addChild(this.m_userLenGroup);
-    //        this.correLen = this.m_correLenShape;
         }
 
         /*
@@ -180,10 +177,6 @@ namespace eyelen4 {
         */ 
         private _setCorreLen(v: number): void {
             if(!isNaN(v)) {
-    /*            this.m_correLenShape.graphics.clear();
-                this.m_correLenShape.graphics.beginFill(0x55CCAA);
-                this.m_correLenShape.graphics.drawRect(0,0,v,this.correLen.height);
-                this.m_correLenShape.graphics.endFill();*/
                 this.correLenRect.width = v;
             }
         }

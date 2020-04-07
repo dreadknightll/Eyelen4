@@ -1,12 +1,13 @@
 /**
  *
+ * /src/components/UIComponents/common/CScoreFlagRect.ts
  * 数字点阵转换器。用于把数字转换成点阵。程序中把得分以三行 旗子/点/叉 方式输出就要用到本转换器。 
  *
  */
 
 class CScoreFlagRect implements IScoreFlagRect {
-    private m_value1 = 0;
-    private m_value2 = 0;
+    private m_value1 = 0; //Flag count.
+    private m_value2 = 0; //Cross count.
 
 	public constructor() {
 	}

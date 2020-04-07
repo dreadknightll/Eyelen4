@@ -19,14 +19,6 @@ class CEyelen4PraDifficultPresenter implements IEyelen4PraDifficultPresenter {
         this.m_renderFilter = new CNoChangeRenderFilter();
         
         this.m_lenDispPtsRects = new CLenPtsRects();
-/*        this.m_lenEdge1DispRect = new gdeint.CRect();
-        this.m_lenQuestionerDispPt = new gdeint.CPoint();
-        this.m_lenQuestionerFontSize = -1;
-        this.m_lenEdge2DispRect = new gdeint.CRect();*/
-/*        this.m_angleVertexPt = new CPoint();
-        this.m_angleVertexDispPt = new CPoint();
-        this.m_angleEdge1DispPt = new CPoint();
-        this.m_angleEdge2DispPt = new CPoint();*/
 	}
 
 	//顶部区域相关常量：
@@ -281,54 +273,12 @@ class CEyelen4PraDifficultPresenter implements IEyelen4PraDifficultPresenter {
      * 根据 m_len 刷新当前长度相关的几个区域和坐标变量等。
      */ 
     private refreshLenPtsRects():void {
-/*            private m_lenEdge1DispRect:CRect;
-    private m_lenQuestionerDispPt:CPoint;
-    private m_lenQuestionerFontSize:number;
-    private m_lenEdge2DispRect:CRect;*/
+
         if(!this.m_len) {
             return;
         }
 
         this.m_lenDispPtsRects = this.calcuLenPtsRects(this.m_len);
-
-/*        //Edge1:
-        if(this.m_len.m_isHor) {
-            this.m_lenEdge1DispRect.m_left = this.m_renderFilter.xOConv(this.m_len.m_x) - 5;
-            this.m_lenEdge1DispRect.m_top = this.m_len.m_y - 30;
-            this.m_lenEdge1DispRect.m_width = 5;
-            this.m_lenEdge1DispRect.m_height = 60;
-        }
-        else {
-            this.m_lenEdge1DispRect.m_left = this.m_renderFilter.xOConv(this.m_len.m_x) - 30;
-            this.m_lenEdge1DispRect.m_top = this.m_len.m_y - 5;
-            this.m_lenEdge1DispRect.m_width = 60;
-            this.m_lenEdge1DispRect.m_height = 5;
-        }
-
-        //Edge2:
-        if(this.m_len.m_isHor) {
-            this.m_lenEdge2DispRect.m_left = this.m_renderFilter.xOConv(this.m_len.m_x + this.m_len.m_length);
-            this.m_lenEdge2DispRect.m_top = this.m_len.m_y;
-            this.m_lenEdge2DispRect.m_width = 5;
-            this.m_lenEdge2DispRect.m_height = 60;
-        }
-        else {
-            this.m_lenEdge2DispRect.m_left = this.m_renderFilter.xOConv(this.m_len.m_x) - 30;
-            this.m_lenEdge2DispRect.m_top = this.m_len.m_y + this.m_len.m_length;
-            this.m_lenEdge2DispRect.m_width = 60;
-            this.m_lenEdge2DispRect.m_height = 5;
-        }
-
-        //Questioner:
-        if(this.m_len.m_isHor) {
-            this.m_lenQuestionerDispPt.m_x = this.m_renderFilter.xOConv(this.m_len.m_x) + this.m_renderFilter.xOConv(this.m_len.m_length / 2) - 10;
-            this.m_lenQuestionerDispPt.m_y = this.m_len.m_y - 20;
-        }
-        else {
-            this.m_lenQuestionerDispPt.m_x = this.m_renderFilter.xOConv(this.m_len.m_x) - 10;
-            this.m_lenQuestionerDispPt.m_y = this.m_len.m_y + this.m_len.m_length / 2 - 20;
-        }
-        this.m_lenQuestionerFontSize = 36;*/
 
     }
 
@@ -615,14 +565,11 @@ class CEyelen4PraDifficultPresenter implements IEyelen4PraDifficultPresenter {
         var ret:gdeint.CRect;
         this.m_itm.setImgWidth(this.m_renderFilter.xOConv(this.m_imgWidth));
 
-//        var thRect:CRect;
-//        thRect = this.getThumbRect();
-
         var tsr = this.m_itm.getThSelRect();
 
         ret = new gdeint.CRect();
-        ret.m_left = /*thRect.m_left +*/ tsr.m_left;
-        ret.m_top = /*thRect.m_top +*/ tsr.m_top;
+        ret.m_left = tsr.m_left;
+        ret.m_top = tsr.m_top;
         ret.m_width = tsr.m_width;
         ret.m_height = tsr.m_height;
 
@@ -639,15 +586,14 @@ class CEyelen4PraDifficultPresenter implements IEyelen4PraDifficultPresenter {
 
         var ret:gdeint.CPoint;
         var lenPt: gdeint.CPoint;
-//        lenPt = this.m_itm.ip2Tp(this.m_renderFilter.ptOConv(this.m_lenQuestionerDispPt));
         var QDPCenter:gdeint.CPoint = new gdeint.CPoint();
         QDPCenter.m_x = this.m_lenDispPtsRects.m_lenQuestionerDispPt.m_x+16;
         QDPCenter.m_y = this.m_lenDispPtsRects.m_lenQuestionerDispPt.m_y+24;
         lenPt = this.m_itm.ip2Tp(QDPCenter);
 
         ret = new gdeint.CPoint();
-        ret.m_x = /*thRect.m_left + */lenPt.m_x/* - 8*/;
-        ret.m_y = /*thRect.m_top + */lenPt.m_y/* - 12*/;
+        ret.m_x = lenPt.m_x/* - 8*/;
+        ret.m_y = lenPt.m_y/* - 12*/;
 
         return ret;
     }

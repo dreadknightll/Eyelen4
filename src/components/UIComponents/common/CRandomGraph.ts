@@ -1,4 +1,7 @@
-
+/*
+ * /src/components/UIComponents/common/CRandomGraph.ts
+ * 随机练习图形。
+ */
 namespace gdeint {
     export class CRandomGraph extends eui.Component {
 
@@ -17,8 +20,8 @@ namespace gdeint {
 
 		}
 
-		public m_shapes:Array<egret.Shape>;
-		public m_seed:number = 0;
+		public m_shapes:Array<egret.Shape>; // 构成图形的子图形。
+		public m_seed:number = 0; // 当前图形的对应的种子。
 
 		private genFromSeed(seed:number) {
 			this.m_seed = seed;

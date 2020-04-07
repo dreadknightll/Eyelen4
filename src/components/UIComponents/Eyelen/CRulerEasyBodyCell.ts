@@ -1,5 +1,6 @@
 /**
  *
+ * /src/components/UIComponents/Eyelen/CRulerEasyBodyCell.ts
  * 简单难度尺带的格子。
  *
  */

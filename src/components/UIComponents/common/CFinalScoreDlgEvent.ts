@@ -1,7 +1,6 @@
 /**
- *
+ * /src/components/UIComponents/common/CFinalScoreDlgEvent.ts
  * 最终得分显示对话框事件。 
- *
  */
 class CFinalScoreDlgEvent extends egret.Event {
     public constructor(type: string,bulle: boolean = false,cancel: boolean = false) {

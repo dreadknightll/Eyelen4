@@ -1,5 +1,6 @@
 /**
- *
+ * /src/components/UIComponents/Eyelen/CCmpLenDlg.ts
+ * 
  * 长度比较对话框控件。困难难度用。
  * 本控件只直接显示用户填入的数据。不进行横竖校准等计算。
  *
