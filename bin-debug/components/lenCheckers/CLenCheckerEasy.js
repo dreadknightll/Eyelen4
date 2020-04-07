@@ -1,6 +1,10 @@
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
+/*
+ * /src/components/lenCheckers/CLenCheckerEasy.ts
+ * 把 用户输入的格数*每格宽度 与 正确的长度 作比较（需要考虑校准），并返回得分。
+*/
 var CLenCheckerEasy = (function () {
     function CLenCheckerEasy() {
         this.m_renderFilter = new CEyelen3ERenderFilter();

@@ -2,6 +2,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
 /*
+ * /src/components/lenCheckers/CLenCheckerDifficult.ts
  * 长度比较器。比较用户长度和正确长度，返回准确度评定。
  */
 var CLenCheckerDifficult = (function () {

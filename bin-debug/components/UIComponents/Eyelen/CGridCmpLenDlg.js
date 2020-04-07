@@ -10,6 +10,7 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 /**
  *
+ * /src/components/UIComponents/Eyelen/CGridCmpLenDlg.ts
  * 长度比较对话框格子版。简单难度用。
  * 本控件只直接显示用户填入的数据。不进行横竖校准等计算。
  *
@@ -20,7 +21,6 @@ var eyelen4;
         __extends(CGridCmpLenDlg, _super);
         function CGridCmpLenDlg() {
             var _this = _super.call(this) || this;
-            //    private m_correLenShape: egret.Shape; // 正确长度画板。
             _this.m_userGridWidth = 30;
             _this.m_loadedGridCnt = 0; // 已加载的格子个数。若需要显示更多格子，则加载后增加此变量的值。
             _this.m2_cc = false; // 子界面元素是否已创建。
@@ -120,9 +120,7 @@ var eyelen4;
             this._setCorreLen(this.m2_tmpCorreLen);
             this._setUserGridCnt(this.m2_tmpUserGridCnt);
             this.scoreFlags.addChild(this.m_flagsContainer);
-            //        this.userLen = this.m_userLenGroup;
             this.userLenGrp.addChild(this.m_userLenGroup);
-            //        this.correLen = this.m_correLenShape;
         };
         /*
         * 设置得分。请勿直接调用本函数。应当调用 setScore函数。
@@ -142,10 +140,6 @@ var eyelen4;
         */
         CGridCmpLenDlg.prototype._setCorreLen = function (v) {
             if (!isNaN(v)) {
-                /*            this.m_correLenShape.graphics.clear();
-                            this.m_correLenShape.graphics.beginFill(0x55CCAA);
-                            this.m_correLenShape.graphics.drawRect(0,0,v,this.correLen.height);
-                            this.m_correLenShape.graphics.endFill();*/
                 this.correLenRect.width = v;
             }
         };

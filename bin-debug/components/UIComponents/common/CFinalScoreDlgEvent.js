@@ -9,9 +9,8 @@ for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
 /**
- *
+ * /src/components/UIComponents/common/CFinalScoreDlgEvent.ts
  * 最终得分显示对话框事件。
- *
  */
 var CFinalScoreDlgEvent = (function (_super) {
     __extends(CFinalScoreDlgEvent, _super);

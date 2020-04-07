@@ -10,6 +10,7 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 /**
  *
+ * /src/components/UIComponents/Eyelen/CRulerEasyBodyCell.ts
  * 简单难度尺带的格子。
  *
  */

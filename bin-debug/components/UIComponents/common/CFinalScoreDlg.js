@@ -10,6 +10,7 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 /**
  *
+ * /src/components/UIComponents/common/CFinalScoreDlg.ts
  * 最终得分显示对话框。
  *
  */

@@ -2,6 +2,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
 /**
+ * /src/components/renderFilters/Eyelen/CNoChangeRenderFilter.ts
  *
  * 1、定义不做任何改变的RenderFilter。
  * 2、作为RenderFilter的基类简化代码。

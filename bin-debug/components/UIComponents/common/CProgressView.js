@@ -9,9 +9,8 @@ for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
 /**
- *
- * 练习进度条。
- *
+ * /src/components/UIComponents/common/CProgressView.ts
+ * 进度显示控件。
  */
 var eyelen4;
 (function (eyelen4) {
@@ -19,8 +18,8 @@ var eyelen4;
         __extends(CProgressView, _super);
         function CProgressView() {
             var _this = _super.call(this) || this;
-            _this.s_cellWidth = 20;
-            _this.s_cellHeight = 18;
+            _this.s_cellWidth = 20; // 格子宽度。
+            _this.s_cellHeight = 18; //格子高度。
             var i;
             _this.m_progressCellsArr = new Array();
             _this.m_progressCellContainer = new egret.DisplayObjectContainer();
@@ -39,6 +38,7 @@ var eyelen4;
         CProgressView.prototype.childrenCreated = function () {
             this.progressCells.addChild(this.m_progressCellContainer);
         };
+        // 显示参数所指的进度。
         CProgressView.prototype.setProgress = function (progress) {
             //progress range:0~10
             this.m_progress = progress;

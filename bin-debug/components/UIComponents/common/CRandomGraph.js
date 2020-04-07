@@ -8,13 +8,17 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
+/*
+ * /src/components/UIComponents/common/CRandomGraph.ts
+ * 随机练习图形。
+ */
 var gdeint;
 (function (gdeint) {
     var CRandomGraph = (function (_super) {
         __extends(CRandomGraph, _super);
         function CRandomGraph() {
             var _this = _super.call(this) || this;
-            _this.m_seed = 0;
+            _this.m_seed = 0; // 当前图形的对应的种子。
             _this.width = 1024;
             _this.height = 720;
             // 尽可能用一个shape完成。

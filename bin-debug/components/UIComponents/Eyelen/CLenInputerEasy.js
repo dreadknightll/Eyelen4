@@ -1,8 +1,3 @@
-/**
- *
- * 简单难度的长度输入控件。用户通过选择格子数量来确定要输入的长度。
- *
- */
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
@@ -13,7 +8,12 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-//var g_caRat:number = 1; //To del later
+/**
+ *
+ * /src/components/UIComponents/Eyelen/CLenInputerEasy.ts
+ * 简单难度的长度输入控件。用户通过选择格子数量来确定要输入的长度。
+ *
+ */
 var eyelen4;
 (function (eyelen4) {
     var CLenInputerEasy = (function (_super) {

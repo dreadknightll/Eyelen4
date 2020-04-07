@@ -10,7 +10,7 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 /**
  *
- * /src/components/CScoreView.ts
+ * /src/components/UIComponents/common/CScoreView.ts
  * 练习得分显示（含数字和图示）。
  *
  */

@@ -10,6 +10,7 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 /**
  *
+ * /src/components/UIComponents/Eyelen/CLenInputerDifficult.ts
  * 困难难度下的长度输入控件。让用户拉动卷尺输入长度。
  * 本卷尺控件由尺盒、尺带、拉环三部分组成。用户拉动拉环进行目测结果输入。
  *
@@ -26,40 +27,8 @@ var eyelen4;
             this.m_firstDraged = false;
             this.okBtn.enabled = false;
             this.m_dragerBaseX = this.ruler_head.x + this.ruler_head.width;
-            /*        var bgObj: egret.Shape;
-                    bgObj = new egret.Shape();
-                    this.bg.source = bgObj;
-                    bgObj.graphics.beginFill(0x77BBFF);
-                    bgObj.graphics.drawRect(0,0,this.bg.width,this.bg.height);
-                    bgObj.graphics.endFill();*/
             this.m_rulerBodyShape = new egret.Shape();
             this.ruler_body.addChild(this.m_rulerBodyShape);
-            //        headShape
-            /*
-                    var dragerShape: egret.DisplayObjectContainer;
-                    var innerBmp: egret.Bitmap;
-                    var innerBg: egret.Shape; // The size of it determines the dragable area.
-        
-                    dragerShape = new egret.DisplayObjectContainer();
-                    innerBmp = new egret.Bitmap();
-                    innerBg = new egret.Shape();
-        
-                    innerBmp.texture = RES.getRes("ruler_drager_png");
-                    innerBmp.width = 60;
-                    innerBmp.height = 80;
-        
-                    innerBg.graphics.beginFill(0x000000,0);
-                    innerBg.graphics.drawRect(0,0,90,80);
-                    innerBg.graphics.endFill();
-        
-                    dragerShape.addChild(innerBg);
-                    dragerShape.addChild(innerBmp);
-                    dragerShape.width = 200;
-        
-                    this.drager = dragerShape;
-        
-                    this.drager.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.onStartDrag,this);
-                    */
             this.drager.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onStartDrag, this);
             this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveOnStage, this);
             this.addEventListener(egret.TouchEvent.TOUCH_END, this.onTchEndOnStage, this);
