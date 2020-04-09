@@ -8,8 +8,8 @@ function Basic_CaliPresenter() {
     this.m_initA1 = 0;
     this.m_initA2 = 0;
     this.m_locked = false;
-    this.m_a1 = 0;
-    this.m_a2 = 0;
+    this.m_a1 = 0; // 输入通道1。
+    this.m_a2 = 0; // 输入通道2（现处于非使用状态）。
     this.m_a1Set = false;
     this.m_a2Set = false;
     this.m_a2Enabled = false;
