@@ -71,8 +71,9 @@ var eyelen4;
             this.midArea.setVisibleStartY(this.m_wm.getTopHeight2() - this.m_wm.getTopHeight1());
             this.m_bgUnderTop = new egret.Shape();
             this.bgUnderTopGrp.addChild(this.m_bgUnderTop);
-            this.bottomArea.backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backBtnTap, this);
+            //            this.bottomArea.backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.backBtnTap , this);
             this.bottomArea.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCaliBtn, this);
+            this.bottomArea.menuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onMenuBtn, this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOKButtonTap, this);
             this.shutdownClock.setTimer(g_shutdownTimer); // 关联全局计时器以显示时间。
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClockTap, this);
@@ -593,6 +594,20 @@ var eyelen4;
         CPraEasyScene.prototype.onImgDragEnd = function (evt) {
             this.readjustThumbSel();
         };
+        // 处理外部投递到此类的消息。
+        CPraEasyScene.prototype.sendMsg = function (msgType, msgObj) {
+            var retObj = null;
+            /*
+                msgType表（CPraEasyScene)：
+                    onCaliDlgClose
+            
+            */
+            if ("getOnCaliDlgCloseFunc" == msgType) {
+                console.log("getOnCaliDlgCloseFunc via send message!");
+                retObj = this.onCaliDlgClose;
+            }
+            return retObj;
+        };
         /*
         * 横竖校准对话框确定退出时调用。
         */
@@ -611,6 +626,12 @@ var eyelen4;
         */
         CPraEasyScene.prototype.onCaliBtn = function (evt) {
             this.m_parentContainer.showCaliDlg(this.onCaliDlgClose);
+        };
+        /*
+        * 显示横竖校准对话框。
+        */
+        CPraEasyScene.prototype.onMenuBtn = function (evt) {
+            this.m_parentContainer.showPraMenu();
         };
         /*
             获取父 container。

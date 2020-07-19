@@ -121,7 +121,11 @@ var CCommonEyelenPraScene = (function (_super) {
         this.m_notiLayerBg.graphics.drawRect(0, 0, g_winWidth, g_winHeight);
         this.m_notiLayerBg.graphics.endFill();
     };
+    CCommonEyelenPraScene.prototype.sendMsg = function (msgType, msgObj) {
+        console.log("Error! sendMsg in super classes called as not implemented in sub class!");
+        return null;
+    };
     return CCommonEyelenPraScene;
 }(eui.Component));
-__reflect(CCommonEyelenPraScene.prototype, "CCommonEyelenPraScene", ["IEyelenPraScene", "IScene", "gdeint.IHidable", "INotiParent", "IContainerPlugin"]);
+__reflect(CCommonEyelenPraScene.prototype, "CCommonEyelenPraScene", ["IEyelenPraScene", "IScene", "gdeint.IHidable", "INotiParent", "IContainerPlugin", "IWithMsgHandling"]);
 //# sourceMappingURL=CCommonEyelenPraScene.js.map

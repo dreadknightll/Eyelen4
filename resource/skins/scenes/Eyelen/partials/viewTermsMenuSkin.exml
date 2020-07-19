@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="viewTermsMenu" width="300" height="350" xmlns:e="http://ns.egret.com/eui" xmlns:eyelen4="eyelen4.*">
+	<e:Rect width="100%" height="100%" fillColor="0x7788FF" strokeWeight="2" />
+	<e:Button id="closeBtn" label="X" x="238" y="8" anchorOffsetX="0" width="29" anchorOffsetY="0" height="35.5" scaleX="2" scaleY="2"/>
+	<e:Button id="viewUserProBtn" label="用户协议" x="50" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="50" scaleX="2" scaleY="2"/>
+	<e:Button id="viewPriPoliBtn" label="隐私政策" x="50" y="200" anchorOffsetX="0" width="100" anchorOffsetY="0" height="50" scaleX="2" scaleY="2"/>
+
+	<eyelen4:CUserProPanel id="userProPanel" width="400" height="640" x="-50" y="-200" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
+	<eyelen4:CPrivacyPolicyPanel id="priPoliPanel" width="400" height="640" x="-50" y="-200" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
+
+</e:Skin>

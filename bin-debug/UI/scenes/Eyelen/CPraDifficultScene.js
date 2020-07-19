@@ -72,8 +72,9 @@ var eyelen4;
             this.bgUnderTopGrp.addChild(this.m_bgUnderTop);
             this.midArea.m_UIPresenter = this.m_UIPresenter;
             this.midArea.setVisibleStartY(this.m_wm.getTopHeight2() - this.m_wm.getTopHeight1());
-            this.bottomArea.backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backBtnTap, this);
+            //            this.bottomArea.backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.backBtnTap , this);
             this.bottomArea.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCaliBtn, this);
+            this.bottomArea.menuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onMenuBtn, this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOKButtonTap, this);
             this.m2_cc = true;
             this.shutdownClock.setTimer(g_shutdownTimer);
@@ -572,6 +573,20 @@ var eyelen4;
         CPraDifficultScene.prototype.onImgDragEnd = function (evt) {
             this.readjustThumbSel();
         };
+        // 处理外部投递到此类的消息。
+        CPraDifficultScene.prototype.sendMsg = function (msgType, msgObj) {
+            var retObj = null;
+            /*
+                msgType表（CPraEasyScene)：
+                    onCaliDlgClose
+            
+            */
+            if ("getOnCaliDlgCloseFunc" == msgType) {
+                console.log("getOnCaliDlgCloseFunc via send message!");
+                retObj = this.onCaliDlgClose;
+            }
+            return retObj;
+        };
         /*
         * 横竖校准对话框确定退出时调用。
         */
@@ -587,6 +602,12 @@ var eyelen4;
         */
         CPraDifficultScene.prototype.onCaliBtn = function (evt) {
             this.m_parentContainer.showCaliDlg(this.onCaliDlgClose);
+        };
+        /*
+        * 显示横竖校准对话框。
+        */
+        CPraDifficultScene.prototype.onMenuBtn = function (evt) {
+            this.m_parentContainer.showPraMenu();
         };
         /*
             获取父 container。

@@ -49,4 +49,4 @@ var gdeint;
     gdeint.CShutdownClock = CShutdownClock;
     __reflect(CShutdownClock.prototype, "gdeint.CShutdownClock");
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CShutdownClock.js.map
+//# sourceMappingURL=CShutDownClock.js.map

@@ -99,13 +99,11 @@ namespace eyelen4 {
 		}
 
 		public setImgSrc(s:string) {
-			console.log("Setting img src!");
 			this.setNoImgMode(false);
 			this.imgThumb.source = s;
 		}
 
 		public setShape(shp:gdeint.CRandomGraph) {
-			console.log("Setting shape!");
 			this.setNoImgMode(true);
 			this.m_randomGraphShape.copyFrom(shp , false);
 /*			this.m_randomGraphShape.scaleX = this.getThumbWidth() / 1024;

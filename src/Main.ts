@@ -192,7 +192,7 @@ class Main extends eui.UILayer {
 
             await RES.loadGroup("eint", 0, loadingView2); //eint资源组有宜英通用的图片音乐等资源。
             await RES.loadGroup("preload", 0, loadingView2); //preload资源组为系统默认资源组。未人工分类的资源都在这里。资源较多。
-            await loadingView2.touch2C(); //资源加载完以后“触摸屏幕继续”。使用Promise控制。
+//            await loadingView2.touch2C(); //资源加载完以后“触摸屏幕继续”。使用Promise控制。
             this.stage.removeChild(loadingView2); //加载界面用完必须尽快移除。否则安卓Native下很可能会黑屏。
         }
         catch (e) {
@@ -273,6 +273,11 @@ class Main extends eui.UILayer {
         cd.hide();
         g_praEasyContainer.setCaliDlg(cd);
 
+        var pm:gdeint.CPraMenu = new gdeint.CPraMenu();
+        pm.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
+        pm.hide();
+        g_praEasyContainer.setPraMenu(pm);
+
         g_praDifficultContainer = new CEyelenPraContainer();
         if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
             g_praDifficultContainer.m_NoImgMode = true;
@@ -304,6 +309,11 @@ class Main extends eui.UILayer {
         cd2.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         cd2.hide();
         g_praDifficultContainer.setCaliDlg(cd2);
+
+        var pm2:gdeint.CPraMenu = new gdeint.CPraMenu();
+        pm2.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
+        pm2.hide();
+        g_praDifficultContainer.setPraMenu(pm2);
 
         g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
         g_mainMenu = new eyelen4.CMainMenu();

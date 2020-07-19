@@ -7,8 +7,10 @@ namespace eyelen4 {
 			super();
 		}
 
-		public backBtn:eui.Button;
+//		public backBtn:eui.Button;
 		public caliBtn:eui.Button;
+		public menuBtn:gdeint.CMenuBtn;
+
 		public menuGroup:eui.Group;
 		public lenInputer:CLenInputerDifficult; //长度输入控件。
 
@@ -48,7 +50,7 @@ namespace eyelen4 {
 			this.menuGroup.y = this.m_trueHeight * 0.6;
 	//		adjust the size of the buttons
 			var scale:number;
-			scale = 0.32 * this.m_trueHeight/this.backBtn.height;
+			scale = 0.32 * this.m_trueHeight/this.caliBtn.height;
 			this.menuGroup.scaleY = scale;
 			this.menuGroup.scaleX = scale;
 		}

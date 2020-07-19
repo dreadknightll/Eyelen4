@@ -121,8 +121,9 @@ namespace eyelen4 {
             this.m_bgUnderTop = new egret.Shape();
             this.bgUnderTopGrp.addChild(this.m_bgUnderTop);
 
-            this.bottomArea.backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.backBtnTap , this);
+//            this.bottomArea.backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.backBtnTap , this);
             this.bottomArea.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onCaliBtn , this);
+            this.bottomArea.menuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onMenuBtn , this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onOKButtonTap , this);
 
             this.shutdownClock.setTimer(g_shutdownTimer); // 关联全局计时器以显示时间。
@@ -146,6 +147,7 @@ namespace eyelen4 {
         public getCurPicTag():number {
             return this.m_curPicTag;
         }
+
 
         /*
         * 初始化长度比较对话框。
@@ -792,6 +794,22 @@ namespace eyelen4 {
             this.readjustThumbSel();
         }
 
+        // 处理外部投递到此类的消息。
+        public sendMsg(msgType:string , msgObj:any):any {
+            var retObj:any = null;
+/*
+    msgType表（CPraEasyScene)：
+        onCaliDlgClose
+
+*/
+
+            if("getOnCaliDlgCloseFunc" == msgType) {
+                console.log("getOnCaliDlgCloseFunc via send message!");
+                retObj = this.onCaliDlgClose;
+            }
+            return retObj;
+        }
+
         /*
         * 横竖校准对话框确定退出时调用。
         */ 
@@ -812,6 +830,13 @@ namespace eyelen4 {
         */ 
         private onCaliBtn(evt: egret.TouchEvent):void {
             this.m_parentContainer.showCaliDlg(this.onCaliDlgClose);
+        }
+
+        /*
+        * 显示横竖校准对话框。
+        */ 
+        private onMenuBtn(evt: egret.TouchEvent):void {
+            this.m_parentContainer.showPraMenu();
         }
 
         /*

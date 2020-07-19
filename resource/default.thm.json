@@ -45,7 +45,10 @@
 		"eyelen4.CPrivacyPolicyPanel": "resource/skins/components/common/privacyPolicyPanelSkin.exml",
 		"eyelen4.CHorverCheckPanel": "resource/skins/components/common/horverCheckPanelSkin.exml",
 		"eyelen4.CHelpPanel": "resource/skins/components/common/helpPanelSkin.exml",
-		"gdeint.CShutdownScr": "resource/skins/components/common/shutdownScrSkin.exml"
+		"gdeint.CShutdownScr": "resource/skins/components/common/shutdownScrSkin.exml",
+		"gdeint.CMenuBtn": "resource/skins/components/common/menuBtn.exml",
+		"gdeint.CPraMenu": "resource/skins/scenes/Eyelen/partials/praMenuSkin.exml",
+		"gdeint.CViewTermsMenu": "resource/skins/scenes/Eyelen/partials/viewTermsMenuSkin.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -75,6 +78,7 @@
 		"resource/skins/components/common/finalScoreDlgSkin.exml",
 		"resource/skins/components/common/helpPanelSkin.exml",
 		"resource/skins/components/common/horverCheckPanelSkin.exml",
+		"resource/skins/components/common/menuBtn.exml",
 		"resource/skins/components/common/preloaderUISkin.exml",
 		"resource/skins/components/common/privacyPanelSkin.exml",
 		"resource/skins/components/common/privacyPolicyPanelSkin.exml",
@@ -94,7 +98,9 @@
 		"resource/skins/scenes/Eyelen/partials/bottomAreaDifficultSkin.exml",
 		"resource/skins/scenes/Eyelen/partials/bottomAreaEasySkin.exml",
 		"resource/skins/scenes/Eyelen/partials/midAreaSkin.exml",
+		"resource/skins/scenes/Eyelen/partials/praMenuSkin.exml",
 		"resource/skins/scenes/Eyelen/partials/topAreaSkin.exml",
+		"resource/skins/scenes/Eyelen/partials/viewTermsMenuSkin.exml",
 		"resource/skins/scenes/Eyelen/praDifficultScene.exml",
 		"resource/skins/scenes/Eyelen/praEasyScene.exml",
 		"resource/skins/scenes/Eyelen/welcomeSceneEyelen4.exml"

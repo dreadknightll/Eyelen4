@@ -147,4 +147,9 @@ class CCommonEyelenPraScene extends eui.Component implements IEyelenPraScene,INo
         this.m_notiLayerBg.graphics.endFill();
     }
 
+    public sendMsg(msgType:string , msgObj:any):any {
+        console.log("Error! sendMsg in super classes called as not implemented in sub class!");
+        return null;
+    }
+
 }

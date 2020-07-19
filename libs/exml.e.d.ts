@@ -66,6 +66,8 @@ declare class helpPanelSkin extends eui.Skin{
 }
 declare class horverCheckPanelSkin extends eui.Skin{
 }
+declare class menuBtn extends eui.Skin{
+}
 declare class noBtnSkin extends eui.Skin{
 }
 declare class preloaderUISkin extends eui.Skin{
@@ -110,7 +112,11 @@ declare class bottomAreaEasySkin extends eui.Skin{
 }
 declare class midAreaSkin extends eui.Skin{
 }
+declare class praMenuSkin extends eui.Skin{
+}
 declare class topAreaSkin extends eui.Skin{
+}
+declare class viewTermsMenu extends eui.Skin{
 }
 declare class praDifficultSceneSkin extends eui.Skin{
 }

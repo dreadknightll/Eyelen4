@@ -1,29 +1,33 @@
 declare namespace gdeint {
-    interface IRenderFilter {
-        xOConv(x: number): number;
-        xIConv(x: number): number;
-        yOConv(y: number): number;
-        yIConv(y: number): number;
-        ptOConv(pt: gdeint.CPoint): gdeint.CPoint;
-        ptIConv(pt: gdeint.CPoint): gdeint.CPoint;
+    interface IRectRenderFilter extends IRenderFilter {
+        rectOConv(rect: gdeint.CRect): gdeint.CRect;
+        rectIConv(rect: gdeint.CRect): gdeint.CRect;
     }
 }
 declare namespace gdeint {
-    class CSquareCircler {
+    class CSquareCircler implements ICircler {
         private m_circlerRect;
-        private m_inpItemRect;
+        private m_itemRect;
         private m_pullGapHor;
         private m_pullGapVer;
         private m_pushGapHor;
         private m_pushGapVer;
-        setCirclerRect(r: CRect): void;
-        setItemRect(r: CRect): void;
-        setPullGapHor(gap: number): void;
-        setPullGapVer(gap: number): void;
-        setPushGapHor(gap: number): void;
-        setPushGapVer(gap: number): void;
-        setInpPos(inpPos: CPoint): void;
+        constructor();
+        setInpPos(p: CPoint): void;
         getOutpPos(): CPoint;
+        setCirclerRect(r: CRect): void;
+        setPullGapHor(pgh: number): void;
+        setPullGapVer(pgv: number): void;
+        setPushGapHor(val: number): void;
+        setPushGapVer(val: number): void;
+        setItemRect(r: CRect): void;
+    }
+}
+declare namespace gdeint {
+    interface IHidable {
+        show(): void;
+        hide(): void;
+        isVisible(): boolean;
     }
 }
 declare namespace gdeint {
@@ -97,16 +101,19 @@ declare namespace gdeint {
     }
 }
 declare namespace gdeint {
-    interface IRectRenderFilter extends IRenderFilter {
-        rectOConv(rect: gdeint.CRect): gdeint.CRect;
-        rectIConv(rect: gdeint.CRect): gdeint.CRect;
+    interface ICircler {
+        setInpPos(p: CPoint): void;
+        getOutpPos(): CPoint;
     }
 }
 declare namespace gdeint {
-    interface IHidable {
-        show(): void;
-        hide(): void;
-        isVisible(): boolean;
+    interface IRenderFilter {
+        xOConv(x: number): number;
+        xIConv(x: number): number;
+        yOConv(y: number): number;
+        yIConv(y: number): number;
+        ptOConv(pt: gdeint.CPoint): gdeint.CPoint;
+        ptIConv(pt: gdeint.CPoint): gdeint.CPoint;
     }
 }
 declare namespace gdeint {
@@ -147,9 +154,9 @@ declare namespace gdeint {
     function randomNums(maxNum: any, cnt: any): any;
     function randomNums_ts(maxNum: number, cnt: number): Array<number>;
     function tailContain(str1: any, str2: any): boolean;
-    function seconds2MinSec(seconds: number): string;
     function objectSize(the_object: any): number;
     function objectValues(the_object: any): string;
+    function seconds2MinSec(secs: number): string;
 }
 declare namespace gdeint {
     /**
@@ -160,6 +167,7 @@ declare namespace gdeint {
     class CPoint {
         m_x: number;
         m_y: number;
+        constructor();
         toNumArr(): Array<number>;
     }
 }

@@ -24,6 +24,8 @@ var CEyelenPraContainer = (function (_super) {
         _this.m_renderFilter = new CEyelen3ERenderFilter();
         _this.m_renderFilter.setCaRat(1);
         return _this;
+        //        this.m_praMenu = new gdeint.CPraMenu();
+        //        this.m_praMenu._setParentContainer(this);
     }
     CEyelenPraContainer.prototype.setResNameFinder = function (rnf) {
         this.m_resNameFinder = rnf;
@@ -50,6 +52,10 @@ var CEyelenPraContainer = (function (_super) {
         this.m_caliDlg = d;
         this.m_caliDlg._setParentContainer(this);
     };
+    CEyelenPraContainer.prototype.setPraMenu = function (m) {
+        this.m_praMenu = m;
+        this.m_praMenu._setParentContainer(this);
+    };
     CEyelenPraContainer.prototype.setRenderFilter = function (rf) {
         this.m_renderFilter = rf;
     };
@@ -74,6 +80,9 @@ var CEyelenPraContainer = (function (_super) {
     };
     CEyelenPraContainer.prototype._getCaliDlg = function () {
         return this.m_caliDlg;
+    };
+    CEyelenPraContainer.prototype._getPraMenu = function () {
+        return this.m_praMenu;
     };
     CEyelenPraContainer.prototype._getRenderFilter = function () {
         return this.m_renderFilter;
@@ -111,6 +120,12 @@ var CEyelenPraContainer = (function (_super) {
         var caliDlg = this._getCaliDlg();
         caliDlg._setCloseListener(listener);
         caliDlg.show();
+    };
+    CEyelenPraContainer.prototype.showPraMenu = function () {
+        console.log("OK1!");
+        var praMenu = this._getPraMenu();
+        console.log("praMenu got!");
+        praMenu.show();
     };
     /*
         开始一轮新的练习。
@@ -249,6 +264,10 @@ var CEyelenPraContainer = (function (_super) {
         this.m_praScene.startNewPra();
         this._getPraScene().show();
     };
+    CEyelenPraContainer.prototype.sendMsgToScene = function (msgType, msgObj) {
+        var retObj = null;
+        return this.m_praScene.sendMsg(msgType, msgObj);
+    };
     CEyelenPraContainer.prototype._quitPra = function () {
     };
     CEyelenPraContainer.prototype.setQuitHandler = function (func) {
@@ -261,6 +280,7 @@ var CEyelenPraContainer = (function (_super) {
         ret[0] = (this._getAlertDlg());
         ret[1] = this._getConfirmDlg();
         ret[2] = this.m_caliDlg;
+        ret[4] = this.m_praMenu;
         ret[3] = this.m_preloaderUI;
         return ret;
     };

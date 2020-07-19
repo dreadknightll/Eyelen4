@@ -89,12 +89,10 @@ var eyelen4;
             }
         };
         CThumbUI.prototype.setImgSrc = function (s) {
-            console.log("Setting img src!");
             this.setNoImgMode(false);
             this.imgThumb.source = s;
         };
         CThumbUI.prototype.setShape = function (shp) {
-            console.log("Setting shape!");
             this.setNoImgMode(true);
             this.m_randomGraphShape.copyFrom(shp, false);
             /*			this.m_randomGraphShape.scaleX = this.getThumbWidth() / 1024;

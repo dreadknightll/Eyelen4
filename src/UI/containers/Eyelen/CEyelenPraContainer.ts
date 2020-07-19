@@ -12,6 +12,9 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
 
         this.m_renderFilter = new CEyelen3ERenderFilter();
         this.m_renderFilter.setCaRat(1);
+
+//        this.m_praMenu = new gdeint.CPraMenu();
+//        this.m_praMenu._setParentContainer(this);
 	}
 
     public m_NoImgMode:boolean = false;
@@ -48,6 +51,11 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
         this.m_caliDlg._setParentContainer(this);
     }
 
+    public setPraMenu(m:gdeint.CPraMenu): void {
+        this.m_praMenu = m;
+        this.m_praMenu._setParentContainer(this);
+    }
+
     public setRenderFilter(rf: IEyelen3ERenderFilter): void {
         this.m_renderFilter = rf;
     }
@@ -79,6 +87,10 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
 
     public _getCaliDlg(): ICaliDlg {
         return this.m_caliDlg;
+    }
+
+    public _getPraMenu(): gdeint.CPraMenu {
+        return this.m_praMenu;
     }
 
     public _getRenderFilter(): IEyelen3ERenderFilter {
@@ -123,6 +135,15 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
         caliDlg._setCloseListener(listener);
         caliDlg.show();
     }
+
+
+    public showPraMenu():void {
+        console.log("OK1!");
+        var praMenu = this._getPraMenu();
+        console.log("praMenu got!");
+        praMenu.show();
+    }
+
 
     /*
         开始一轮新的练习。
@@ -302,6 +323,13 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
         this._getPraScene().show();
     }
 
+
+    public sendMsgToScene(msgType:string , msgObj:any):any {
+        var retObj:any = null;
+
+        return this.m_praScene.sendMsg(msgType , msgObj);
+    }
+
     public _quitPra(): void {
     }
 
@@ -311,6 +339,7 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
     private m_seledPicTagArr: Array<number>; //练习用到的角度。
     private m_praScene: IEyelenPraScene;
     private m_caliDlg: ICaliDlgPlugin;
+    private m_praMenu: gdeint.CPraMenu;
     private m_renderFilter: IEyelen3ERenderFilter;
 
     /*
@@ -321,6 +350,7 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
         ret[0] = <IContainerPlugin>(this._getAlertDlg());
         ret[1] = this._getConfirmDlg();
         ret[2] = this.m_caliDlg;
+        ret[4] = this.m_praMenu;
         ret[3] = this.m_preloaderUI;
         return ret;
     }
@@ -343,4 +373,5 @@ class CEyelenPraContainer extends CUIContainer implements IEyelenPraContainer,IN
     public getVisibleStates():Array<boolean> {
         return this.m_visibilityTempArrThis;
     }
+
 }

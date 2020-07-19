@@ -36,7 +36,7 @@
 
 		<e:Group x="5" y="170" anchorOffsetX="0" width="448" anchorOffsetY="0" height="66">
 			<e:Rect width="450" height="60"  anchorOffsetX="0" fillColor="0xefd5d5"/>
-			<e:Button id="startBtn" label="开始练习" x="176.33" y="6" touchEnabled="true" enabled="false"/>
+			<e:Button id="startBtn" label="开始使用" x="176.33" y="6" touchEnabled="true" enabled="false"/>
 			<e:Label text="4 GO！"  y="12" x="12" bold="true" size="36" />
 		</e:Group>
 	</e:Group>

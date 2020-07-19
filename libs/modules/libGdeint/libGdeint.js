@@ -1,10 +1,6 @@
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
-// TypeScript file
-/*
-    控制物体移动范围可借助Circler。
-*/
 var gdeint;
 (function (gdeint) {
     var CSquareCircler = (function () {
@@ -14,95 +10,83 @@ var gdeint;
             this.m_pushGapHor = 0;
             this.m_pushGapVer = 0;
         }
-        CSquareCircler.prototype.setCirclerRect = function (r) {
-            this.m_circlerRect = r;
-        };
-        CSquareCircler.prototype.setItemRect = function (r) {
-            this.m_inpItemRect = r;
-        };
-        CSquareCircler.prototype.setPullGapHor = function (gap) {
-            this.m_pullGapHor = gap;
-        };
-        CSquareCircler.prototype.setPullGapVer = function (gap) {
-            this.m_pullGapVer = gap;
-        };
-        CSquareCircler.prototype.setPushGapHor = function (gap) {
-            this.m_pushGapHor = gap;
-        };
-        CSquareCircler.prototype.setPushGapVer = function (gap) {
-            this.m_pushGapVer = gap;
-        };
-        CSquareCircler.prototype.setInpPos = function (inpPos) {
-            this.m_inpItemRect.m_left = inpPos.m_x;
-            this.m_inpItemRect.m_top = inpPos.m_y;
+        CSquareCircler.prototype.setInpPos = function (p) {
+            this.m_itemRect.m_left = p.m_x;
+            this.m_itemRect.m_top = p.m_y;
         };
         CSquareCircler.prototype.getOutpPos = function () {
             var ret = new gdeint.CPoint();
-            ret.m_x = 0;
-            ret.m_y = 0;
-            if (this.m_inpItemRect.m_width < this.m_circlerRect.m_width) {
-                var leftLimit, rightLimit;
-                leftLimit = this.m_circlerRect.m_left - this.m_pushGapHor;
-                rightLimit = this.m_circlerRect.m_left + this.m_circlerRect.m_width + this.m_pushGapHor;
-                if (this.m_inpItemRect.m_left < leftLimit) {
-                    ret.m_x = leftLimit;
+            if (this.m_itemRect.m_width > this.m_circlerRect.m_width) {
+                if (this.m_itemRect.m_left > this.m_circlerRect.m_left + this.m_pullGapHor) {
+                    ret.m_x = this.m_circlerRect.m_left + this.m_pullGapHor;
                 }
-                else if (this.m_inpItemRect.m_left + this.m_inpItemRect.m_width > rightLimit) {
-                    ret.m_x = rightLimit - this.m_inpItemRect.m_width;
+                else if (this.m_itemRect.m_left + this.m_itemRect.m_width <
+                    this.m_circlerRect.m_left + this.m_circlerRect.m_width - this.m_pullGapHor) {
+                    ret.m_x = this.m_circlerRect.m_left + this.m_circlerRect.m_width - this.m_pullGapHor - this.m_itemRect.m_width;
                 }
                 else {
-                    ret.m_x = this.m_inpItemRect.m_left;
-                    ret.m_y = this.m_inpItemRect.m_top;
+                    ret.m_x = this.m_itemRect.m_left;
                 }
             }
             else {
-                var leftLimit, rightLimit;
-                leftLimit = this.m_circlerRect.m_left + this.m_circlerRect.m_width - this.m_pullGapHor - this.m_inpItemRect.m_width;
-                rightLimit = this.m_circlerRect.m_left + this.m_pullGapHor;
-                if (this.m_inpItemRect.m_left < leftLimit) {
-                    ret.m_x = leftLimit;
+                if (this.m_itemRect.m_left < this.m_circlerRect.m_left - this.m_pushGapHor) {
+                    ret.m_x = this.m_circlerRect.m_left - this.m_pushGapHor;
                 }
-                else if (this.m_inpItemRect.m_left > rightLimit) {
-                    ret.m_x = rightLimit;
+                else if (this.m_itemRect.m_left + this.m_itemRect.m_width >
+                    this.m_circlerRect.m_left + this.m_circlerRect.m_width + this.m_pushGapHor) {
+                    ret.m_x = this.m_circlerRect.m_left + this.m_circlerRect.m_width + this.m_pushGapHor - this.m_itemRect.m_width;
                 }
                 else {
-                    ret.m_x = this.m_inpItemRect.m_left;
+                    ret.m_x = this.m_itemRect.m_left;
                 }
             }
-            if (this.m_inpItemRect.m_height > this.m_circlerRect.m_height) {
-                var upLimit, downLimit;
-                upLimit = this.m_circlerRect.m_top + this.m_circlerRect.m_height - this.m_pullGapVer - this.m_inpItemRect.m_height;
-                downLimit = this.m_circlerRect.m_top + this.m_pullGapVer;
-                if (this.m_inpItemRect.m_top < upLimit) {
-                    ret.m_y = upLimit;
+            if (this.m_itemRect.m_height > this.m_circlerRect.m_height) {
+                if (this.m_itemRect.m_top > this.m_circlerRect.m_top + this.m_pullGapVer) {
+                    ret.m_y = this.m_circlerRect.m_top + this.m_pullGapVer;
                 }
-                else if (this.m_inpItemRect.m_top > downLimit) {
-                    ret.m_y = downLimit;
+                else if (this.m_itemRect.m_top + this.m_itemRect.m_height <
+                    this.m_circlerRect.m_top + this.m_circlerRect.m_height - this.m_pullGapVer) {
+                    ret.m_y = this.m_circlerRect.m_top + this.m_circlerRect.m_height - this.m_pullGapVer - this.m_itemRect.m_height;
                 }
                 else {
-                    ret.m_y = this.m_inpItemRect.m_top;
+                    ret.m_y = this.m_itemRect.m_top;
                 }
             }
             else {
-                var topLimit, bottomLimit;
-                topLimit = this.m_circlerRect.m_top - this.m_pushGapVer;
-                bottomLimit = this.m_circlerRect.m_top + this.m_circlerRect.m_height + this.m_pushGapVer;
-                if (this.m_inpItemRect.m_top < topLimit) {
-                    ret.m_y = topLimit;
+                if (this.m_itemRect.m_top < this.m_circlerRect.m_top - this.m_pushGapVer) {
+                    ret.m_y = this.m_circlerRect.m_top - this.m_pushGapVer;
                 }
-                else if (this.m_inpItemRect.m_top + this.m_inpItemRect.m_height > bottomLimit) {
-                    ret.m_y = bottomLimit - this.m_inpItemRect.m_height;
+                else if (this.m_itemRect.m_top + this.m_itemRect.m_height > this.m_circlerRect.m_top + this.m_circlerRect.m_height + this.m_pushGapVer) {
+                    ret.m_y = this.m_circlerRect.m_top + this.m_circlerRect.m_height + this.m_pushGapVer - this.m_itemRect.m_height;
                 }
                 else {
-                    ret.m_y = this.m_inpItemRect.m_top;
+                    ret.m_y = this.m_itemRect.m_top;
                 }
             }
             return ret;
         };
+        CSquareCircler.prototype.setCirclerRect = function (r) {
+            this.m_circlerRect = r;
+        };
+        CSquareCircler.prototype.setPullGapHor = function (pgh) {
+            this.m_pullGapHor = pgh;
+        };
+        CSquareCircler.prototype.setPullGapVer = function (pgv) {
+            this.m_pullGapVer = pgv;
+        };
+        CSquareCircler.prototype.setPushGapHor = function (val) {
+            this.m_pushGapHor = val;
+        };
+        CSquareCircler.prototype.setPushGapVer = function (val) {
+            this.m_pushGapVer = val;
+        };
+        CSquareCircler.prototype.setItemRect = function (r) {
+            this.m_itemRect = r;
+        };
         return CSquareCircler;
     }());
     gdeint.CSquareCircler = CSquareCircler;
-    __reflect(CSquareCircler.prototype, "gdeint.CSquareCircler");
+    __reflect(CSquareCircler.prototype, "gdeint.CSquareCircler", ["gdeint.ICircler"]);
 })(gdeint || (gdeint = {}));
 /*
  *  /src/classes/imgThumbModel/ImgThumbModelV2.ts
@@ -435,29 +419,6 @@ var gdeint;
         return false;
     }
     gdeint.tailContain = tailContain;
-    function seconds2MinSec(seconds) {
-        var ret;
-        ret = "00:00";
-        var minPart, secPart;
-        secPart = seconds % 60;
-        minPart = Math.floor(seconds / 60);
-        var strMinPart, strSecPart;
-        if (minPart < 10) {
-            strMinPart = "0" + minPart;
-        }
-        else {
-            strMinPart = "" + minPart;
-        }
-        if (secPart < 10) {
-            strSecPart = "0" + secPart;
-        }
-        else {
-            strSecPart = "" + secPart;
-        }
-        ret = strMinPart + ":" + strSecPart;
-        return ret;
-    }
-    gdeint.seconds2MinSec = seconds2MinSec;
     // 对Date的扩展，将 Date 转化为指定格式的String   
     // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，   
     // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)   
@@ -482,8 +443,8 @@ var gdeint;
         return fmt;
     };
     /*
-     * 函数杂烩（通用函数）。
-     */
+    * 函数杂烩（通用函数）。
+    */
     function objectSize(the_object) {
         /* function to validate the existence of each key in the object to get the number of valid keys. */
         var object_size = 0;
@@ -509,6 +470,26 @@ var gdeint;
         return ret;
     }
     gdeint.objectValues = objectValues;
+    function seconds2MinSec(secs) {
+        var ret;
+        var minPart = Math.floor(secs / 60);
+        var secPart = secs % 60;
+        if (minPart < 10) {
+            ret = "0" + minPart;
+        }
+        else {
+            ret = "" + minPart;
+        }
+        ret += ":";
+        if (secPart < 10) {
+            ret += ("0" + secPart);
+        }
+        else {
+            ret += ("" + secPart);
+        }
+        return ret;
+    }
+    gdeint.seconds2MinSec = seconds2MinSec;
 })(gdeint || (gdeint = {}));
 var gdeint;
 (function (gdeint) {
@@ -520,12 +501,6 @@ var gdeint;
     var CPoint = (function () {
         function CPoint() {
         }
-        /*        public static fromArr(arr:Array<number>):CPoint {
-                    var ret;
-                    ret.m_x = arr[0];
-                    ret.m_y = arr[1];
-                    return ret;
-                }*/
         CPoint.prototype.toNumArr = function () {
             return [this.m_x, this.m_y];
         };
