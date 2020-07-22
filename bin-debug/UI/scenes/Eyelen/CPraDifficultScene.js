@@ -596,6 +596,7 @@ var eyelen4;
                 this.m_UIPresenter.updateFromPM();
                 this.syncWithUIPresenter();
             }
+            this.m_parentContainer.showPraMenu();
         };
         /*
         * 显示横竖校准对话框。

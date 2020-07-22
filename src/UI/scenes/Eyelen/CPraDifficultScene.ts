@@ -795,6 +795,7 @@ namespace eyelen4 {
                 this.m_UIPresenter.updateFromPM();
                 this.syncWithUIPresenter();
             }
+            this.m_parentContainer.showPraMenu();
         }
 
         /*
