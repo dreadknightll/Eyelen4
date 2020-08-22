@@ -34,6 +34,8 @@ var g_console: egret.TextField = new egret.TextField(); // 调试终端。
 var g_winWidth: number; // 保存舞台宽度。
 var g_winHeight: number; // 保存舞台高度。
 
+var g_isSndOn:boolean = true; // 声音是否开启。
+
 var s_topSpaceHeight: number = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
 
 if(S_BUILD_FOR == S_NATIVE_ANDROID) {

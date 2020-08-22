@@ -108,7 +108,9 @@ var eyelen4;
         * 触摸“下一长度”按钮后触发。
         */
         CPraDifficultScene.prototype.onNextButtonTap = function (evt) {
-            playBtnSnd();
+            if (g_isSndOn) {
+                playBtnSnd();
+            }
             this.hideCmpLenDlg();
             var p;
             p = this.m_pm.getCmplProgress();
@@ -161,7 +163,9 @@ var eyelen4;
         * “确定”按钮点击后触发。提交用户输入的长度。
         */
         CPraDifficultScene.prototype.onOKButtonTap = function (evt) {
-            playBtnSnd();
+            if (g_isSndOn) {
+                playBtnSnd();
+            }
             this.m_UIPresenter.setUserLen(this.bottomArea.lenInputer.getLen());
             this.m_UIPresenter.submitLen();
             this.showCmpLenDlg();
@@ -513,7 +517,9 @@ var eyelen4;
         * 顶部按钮触摸后触发。
         */
         CPraDifficultScene.prototype.onTopBtnTab = function (evt) {
-            playBtnSnd();
+            if (g_isSndOn) {
+                playBtnSnd();
+            }
             if (this.m_topOpen) {
                 this.m_topOpen = false;
                 this.m_wm.hideTop();

@@ -70,6 +70,7 @@ var S_NO_IMG_MODE = false; // 无图模式开关。开启后练习材料不显�
 var g_console = new egret.TextField(); // 调试终端。
 var g_winWidth; // 保存舞台宽度。
 var g_winHeight; // 保存舞台高度。
+var g_isSndOn = true; // 声音是否开启。
 var s_topSpaceHeight = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
 if (S_BUILD_FOR == S_NATIVE_ANDROID) {
     s_topSpaceHeight = 0;

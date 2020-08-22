@@ -45,7 +45,9 @@ var eyelen4;
             this.m_firstDraged = true;
             this.okBtn.enabled = true;
             this.m_tchPosX = evt.localX;
-            playBtnSnd();
+            if (g_isSndOn) {
+                playBtnSnd();
+            }
         };
         /*
         * 画尺带。
@@ -77,7 +79,9 @@ var eyelen4;
         */
         CLenInputerDifficult.prototype.onTchEndOnStage = function (evt) {
             if (this.m_isDraging) {
-                playBtnSnd();
+                if (g_isSndOn) {
+                    playBtnSnd();
+                }
             }
             this.m_isDraging = false;
         };

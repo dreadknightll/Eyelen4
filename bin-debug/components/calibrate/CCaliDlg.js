@@ -144,7 +144,9 @@ var eyelen4;
         CCaliDlg.prototype.onCaliImgBtnTap = function (evt) {
             this.m_caliImgTag = this.m_caliImgTag % 3 + 1;
             this.caliImg.source = "square" + this.m_caliImgTag + "_png";
-            playBtnSnd();
+            if (g_isSndOn) {
+                playBtnSnd();
+            }
         };
         /*
         * 点击确定按钮时触发。

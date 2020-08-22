@@ -64,7 +64,9 @@ namespace eyelen4 {
             this.okBtn.enabled = true;
             this.m_tchPosX = evt.localX;
 
-            playBtnSnd();
+            if(g_isSndOn) {
+                playBtnSnd();
+            }
         }
 
         /*
@@ -108,7 +110,9 @@ namespace eyelen4 {
         {
             if(this.m_isDraging)
             {
-                playBtnSnd();            
+                if(g_isSndOn) {
+                    playBtnSnd();  
+                }          
             }
             this.m_isDraging = false;
 

@@ -167,7 +167,9 @@ namespace eyelen4 {
         * 触摸“下一长度”按钮后触发。
         */ 
         private onNextButtonTap(evt: egret.TouchEvent) {
-            playBtnSnd();
+            if(g_isSndOn) {
+                playBtnSnd();
+            }
 
             this.hideCmpLenDlg();
 
@@ -235,7 +237,9 @@ namespace eyelen4 {
         */ 
         private onOKButtonTap(evt: egret.TouchEvent) {
 
-            playBtnSnd();
+            if(g_isSndOn) {
+                playBtnSnd();
+            }
 
             this.m_UIPresenter.setUserLen(this.bottomArea.lenInputer.getLen());
             this.m_UIPresenter.submitLen();
@@ -689,7 +693,9 @@ namespace eyelen4 {
         * 顶部按钮触摸后触发。
         */ 
         private onTopBtnTab(evt: egret.Event) {
-            playBtnSnd();
+            if(g_isSndOn) {
+                playBtnSnd();
+            }
 
             if(this.m_topOpen) //Already open,close it.
             {

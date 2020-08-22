@@ -123,7 +123,9 @@ namespace eyelen4 {
                 return;
             }
 
-            playBtnSnd();
+            if(g_isSndOn) {
+                playBtnSnd();
+            }
 
             this.m_userGridCnt = cellEndTag+1;
             var i;

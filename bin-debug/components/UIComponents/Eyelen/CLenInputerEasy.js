@@ -93,7 +93,9 @@ var eyelen4;
             if (cellEndTag >= this.m_totalGridCnt) {
                 return;
             }
-            playBtnSnd();
+            if (g_isSndOn) {
+                playBtnSnd();
+            }
             this.m_userGridCnt = cellEndTag + 1;
             var i;
             for (i = 0; i < cellEndTag; ++i) {
