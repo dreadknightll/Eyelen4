@@ -372,6 +372,16 @@ var Main = (function (_super) {
         g_shutdownScr.height = this.stage.stageHeight;
         g_sceneLayer.addChild(g_shutdownScr);
         g_sceneLayer.addChild(g_console);
+        egret.ExternalInterface.addCallback("ret_fetchIsSndOn", function (msg) {
+            console.log("ret_fetchIsSndOn,msg:" + msg);
+            if ("1" == msg) {
+                g_isSndOn = true;
+            }
+            else if ("0" == msg) {
+                g_isSndOn = false;
+            }
+            //else do not change g_isSndOn.
+        });
     };
     Main.prototype.autoShutdown = function () {
         if (g_shutdownTimer.currentCount >= 1200) {

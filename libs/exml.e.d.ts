@@ -60,6 +60,8 @@ declare class copyrightPanelSkin_v2 extends eui.Skin{
 }
 declare class cpyTextPanelSkin extends eui.Skin{
 }
+declare class privacyPanelSkin extends eui.Skin{
+}
 declare class finalScoreDlgSkin extends eui.Skin{
 }
 declare class helpPanelSkin extends eui.Skin{
@@ -71,8 +73,6 @@ declare class menuBtn extends eui.Skin{
 declare class noBtnSkin extends eui.Skin{
 }
 declare class preloaderUISkin extends eui.Skin{
-}
-declare class privacyPanelSkin extends eui.Skin{
 }
 declare class privacyPanelSkin_V2 extends eui.Skin{
 }
@@ -113,6 +113,8 @@ declare class bottomAreaEasySkin extends eui.Skin{
 declare class midAreaSkin extends eui.Skin{
 }
 declare class praMenuSkin extends eui.Skin{
+}
+declare class sndConfMenu extends eui.Skin{
 }
 declare class topAreaSkin extends eui.Skin{
 }

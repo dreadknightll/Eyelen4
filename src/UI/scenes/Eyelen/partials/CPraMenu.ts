@@ -7,10 +7,12 @@ namespace gdeint {
         public closeBtn: eyelen4.CCloseBtn;
         public caliBtn:eui.Button;
         public helpBtn:eui.Button;
+        public sndConfBtn:eui.Button;
         public viewTermsBtn:eui.Button;
         public quitPraBtn: eui.Button;
 
         private helpPanel:eyelen4.CHelpPanel;
+        private sndConfMenu:CSndConfMenu;
 		private viewTermsMenu:CViewTermsMenu;
 
 		m_parentContainer:IEyelenPraContainer;
@@ -18,8 +20,12 @@ namespace gdeint {
         private m_menuListener:(string , boolean)=>void;
 
 		public childrenCreated() {
+
+            this.sndConfMenu.fetchData(); // 从存储获取设置值到声音设置对话框。
+
             this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onClose,this);
             this.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onCaliBtn , this);
+            this.sndConfBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onSndConfBtn , this);
             this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onHelpBtn , this);
             this.viewTermsBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onViewTermsBtn , this);
             this.quitPraBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onQuitPra,this);
@@ -73,6 +79,13 @@ namespace gdeint {
 
         private onCaliBtn():void {
             this.onMenu("Calibrate");
+        }
+
+        private onSndConfBtn():void {
+            console.log("Showing SndConfMenu!");
+
+            this.sndConfMenu.show(); // 不能直接设置visible，因为需要读取当前设置。
+            this.onMenu("SndConf");
         }
 
         private onHelpBtn():void {

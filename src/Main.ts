@@ -376,6 +376,20 @@ class Main extends eui.UILayer {
         g_sceneLayer.addChild(g_shutdownScr);
 
         g_sceneLayer.addChild(g_console);
+
+
+        egret.ExternalInterface.addCallback("ret_fetchIsSndOn" , function(msg) {
+            console.log("ret_fetchIsSndOn,msg:"+msg);
+            if("1"==msg) {
+                g_isSndOn = true;
+            }
+            else if("0"==msg) {
+                g_isSndOn = false;
+            }
+            //else do not change g_isSndOn.
+
+        });
+
     }
 
     public autoShutdown() {

@@ -3,10 +3,12 @@
 <e:Rect width="100%" height="100%" fillColor="0x7788FF" strokeWeight="2"/>
 	<e:Button id="closeBtn" label="X" x="288" y="8" anchorOffsetX="0" width="29" anchorOffsetY="0" height="35.5" scaleX="2" scaleY="2"/>
 	<e:Button id="caliBtn" label="横竖校准" x="75" y="120" anchorOffsetX="0" width="100" anchorOffsetY="0" height="50" scaleX="2" scaleY="2"/>
-    <e:Button label="声音设置" x="75" y="220" anchorOffsetX="0" width="100" height="50" scaleX="2" scaleY="2" enabled="false"/>
+    <e:Button id="sndConfBtn" label="声音设置" x="75" y="220" anchorOffsetX="0" width="100" height="50" scaleX="2" scaleY="2" />
     <e:Button id="helpBtn" label="使用指引" x="75" y="320" anchorOffsetX="0" width="100" height="50" scaleX="2" scaleY="2"/>
 	<e:Button id="viewTermsBtn" label="查看条款" x="75" y="420" anchorOffsetX="0" width="100" anchorOffsetY="0" height="50" scaleX="2" scaleY="2"/>
 	<e:Button id="quitPraBtn" label="退出练习" x="75" y="520" anchorOffsetX="0" width="100" anchorOffsetY="0" height="50" scaleX="2" scaleY="2"/>
+
+	<gdeint:CSndConfMenu id="sndConfMenu" x="25" y="120" visible="false"/>
 	<eyelen4:CHelpPanel id="helpPanel" width="400" height="640" x="-25" y="-50" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
 	<gdeint:CViewTermsMenu id="viewTermsMenu" x="25" y="120" visible="false"/>
 </e:Skin>

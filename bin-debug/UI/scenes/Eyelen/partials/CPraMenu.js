@@ -16,8 +16,10 @@ var gdeint;
             return _super.call(this) || this;
         }
         CPraMenu.prototype.childrenCreated = function () {
+            this.sndConfMenu.fetchData(); // 从存储获取设置值到声音设置对话框。
             this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClose, this);
             this.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCaliBtn, this);
+            this.sndConfBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSndConfBtn, this);
             this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onHelpBtn, this);
             this.viewTermsBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onViewTermsBtn, this);
             this.quitPraBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onQuitPra, this);
@@ -59,6 +61,11 @@ var gdeint;
         };
         CPraMenu.prototype.onCaliBtn = function () {
             this.onMenu("Calibrate");
+        };
+        CPraMenu.prototype.onSndConfBtn = function () {
+            console.log("Showing SndConfMenu!");
+            this.sndConfMenu.show(); // 不能直接设置visible，因为需要读取当前设置。
+            this.onMenu("SndConf");
         };
         CPraMenu.prototype.onHelpBtn = function () {
             this.helpPanel.visible = true;
