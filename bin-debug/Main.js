@@ -77,11 +77,13 @@ if (S_BUILD_FOR == S_NATIVE_ANDROID) {
 }
 var g_scenePos; // 此处gdeint为libGdeint使用的命名空间。
 var g_scale = 1; // 有些元素需要根据实际分辨率确定大小、位置等信息，因此需要保存此变量。好处：舞台分辨率提高了也无重新设计exml等界面。
-var g_praDifficultScene; // 困难难度练习场景。
 var g_praEasyScene; // 简单难度练习场景。
+var g_praDiffProScene; // 困难难度专业模式练习场景。
+var g_praDifficultScene; // 困难难度传统模式练习场景。
 var g_resCache = {}; // 用于缓存远程获取的数据。目前主要用在微信版。
 var g_resLoader; //资源读取器。用于通过资源名读取已加载到缓存的资源。可灵活选择从本地读取还是通过网络读取。可供显示容器使用。
 var g_praEasyContainer; //简单难度显示容器。该容器除了包含练习场景，还可注入各式各样的提示框、功能对话框等插件。此设计便于代码测试和重用。
+var g_praDiffProContainer; //困难难度专业模式显示容器。
 var g_praDifficultContainer; //困难难度显示容器。
 var g_welcomeScene; // 欢迎屏幕画面。含用户协议、隐私政策、指引等入口。
 var g_shutdownScr; // 为了眼睛健康，使用时间超过20分钟后练习自动停止并显示为此画面。
@@ -252,19 +254,34 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createScene = function () {
+        g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
+        g_sceneLayer.addChild(g_welcomeScene);
+        g_welcomeScene.scaleX = g_scale;
+        g_welcomeScene.scaleY = g_scale; //scaleX、scaleY保持相等，确保横竖检验功能正常。
+        g_welcomeScene.x = g_scenePos.m_x;
+        g_welcomeScene.y = g_scenePos.m_y;
+        g_shutdownScr = new gdeint.CShutdownScr();
+        g_mainMenu = new eyelen4.CMainMenu();
+        g_mainMenu.setTrueWidth(this.stage.stageWidth);
+        g_mainMenu.setTrueHeight(this.stage.stageHeight);
+        g_mainMenu.visible = false;
+        g_mainMenu.width = this.stage.stageWidth;
+        g_mainMenu.height = this.stage.stageHeight;
+        g_sceneLayer.addChild(g_mainMenu);
         g_praEasyScene = new eyelen4.CPraEasyScene();
+        g_praDifficultScene = new eyelen4.CPraDifficultScene();
+        g_praDiffProScene = new eyelen4.CPraDiffProScene();
         if (S_NO_IMG_MODE) {
             g_praEasyScene.m_NoImgMode = true;
+            g_praDifficultScene.m_NoImgMode = true;
+            g_praDiffProScene.m_NoImgMode = true;
         }
         g_dlgLayerContainer.addChild(g_praEasyScene.getDlgLayer().toEgretDispObjContainer());
         g_notiLayerContainer.addChild(g_praEasyScene.getNotiLayer().toEgretDispObjContainer());
-        g_praDifficultScene = new eyelen4.CPraDifficultScene();
-        g_shutdownScr = new gdeint.CShutdownScr();
-        if (S_NO_IMG_MODE) {
-            g_praDifficultScene.m_NoImgMode = true;
-        }
         g_dlgLayerContainer.addChild(g_praDifficultScene.getDlgLayer().toEgretDispObjContainer());
         g_notiLayerContainer.addChild(g_praDifficultScene.getNotiLayer().toEgretDispObjContainer());
+        g_dlgLayerContainer.addChild(g_praDiffProScene.getDlgLayer().toEgretDispObjContainer());
+        g_notiLayerContainer.addChild(g_praDiffProScene.getNotiLayer().toEgretDispObjContainer());
         g_praEasyContainer = new CEyelenPraContainer();
         if (S_NO_IMG_MODE) {
             g_praEasyContainer.m_NoImgMode = true;
@@ -286,7 +303,7 @@ var Main = (function (_super) {
         g_praEasyContainer.setConfirmDlg(cp);
         var pui = new eyelen4.CPreloaderUI();
         pui.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
-        g_praEasyContainer.setPreloaderUI(pui);
+        pui.hide();
         g_sceneLayer.addChild(pui);
         g_praEasyContainer.setPreloaderUI(pui);
         var cd = new eyelen4.CCaliDlg();
@@ -327,16 +344,36 @@ var Main = (function (_super) {
         pm2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         pm2.hide();
         g_praDifficultContainer.setPraMenu(pm2);
-        g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
-        g_mainMenu = new eyelen4.CMainMenu();
-        g_mainMenu.setTrueWidth(this.stage.stageWidth);
-        g_mainMenu.setTrueHeight(this.stage.stageHeight);
-        g_mainMenu.visible = false;
-        g_sceneLayer.addChild(g_welcomeScene);
-        g_welcomeScene.scaleX = g_scale;
-        g_welcomeScene.scaleY = g_scale; //scaleX、scaleY保持相等，确保横竖检验功能正常。
-        g_welcomeScene.x = g_scenePos.m_x;
-        g_welcomeScene.y = g_scenePos.m_y;
+        g_praDiffProContainer = new CEyelenPraContainer();
+        if (S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
+            g_praDiffProContainer.m_NoImgMode = true;
+        }
+        g_praDiffProContainer.setResLoader(g_resLoader);
+        if (S_BUILD_FOR == S_WECHAT) {
+            if (!S_NO_IMG_MODE) {
+                g_praDiffProContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
+            }
+        }
+        g_praDiffProContainer.setPraScene(g_praDiffProScene);
+        var cad2 = new gdeint.CAlertPanel();
+        cad2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        g_praDiffProContainer.setAlertDlg(cad2);
+        var cp2 = new gdeint.CConfirmPanel();
+        cp2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        g_praDiffProContainer.setConfirmDlg(cp2);
+        var pui3 = new eyelen4.CPreloaderUI();
+        pui3.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        pui3.hide();
+        g_sceneLayer.addChild(pui3);
+        g_praDiffProContainer.setPreloaderUI(pui3);
+        var cd2 = new eyelen4.CCaliDlg();
+        cd2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        cd2.hide();
+        g_praDiffProContainer.setCaliDlg(cd2);
+        var pm2 = new gdeint.CPraMenu();
+        pm2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        pm2.hide();
+        g_praDiffProContainer.setPraMenu(pm2);
         // 一个Page对应一个Scene。
         // 根据需处理事件的差异，部分页面要专门定义Page子类，Container页面有可能需要定义各自的Adapter转成Page，其余页面使用统一的Adapter由eui.Component转Page即可。
         var welcomePage = new CWelcomePage_Eyelen4();
@@ -347,6 +384,8 @@ var Main = (function (_super) {
         praEasyContainerAdapter.m_adaptee = g_praEasyContainer;
         var praDifficultContainerAdapter = new CPage2EyelenPraContainerAdapter();
         praDifficultContainerAdapter.m_adaptee = g_praDifficultContainer;
+        var praDiffProContainerAdapter = new CPage2EyelenPraContainerAdapter();
+        praDiffProContainerAdapter.m_adaptee = g_praDiffProContainer;
         var shutdownPageAdapter = new CPage2EuiAdapter();
         shutdownPageAdapter.m_adaptee = g_shutdownScr;
         // 把以上场景添加到页面跳转器，方便跳转。
@@ -354,24 +393,25 @@ var Main = (function (_super) {
         g_pageJumper.setPage("MainMenu", mainMenuSceneAdapter);
         g_pageJumper.setPage("PraEasyScene", praEasyContainerAdapter);
         g_pageJumper.setPage("PraDifficultScene", praDifficultContainerAdapter);
+        g_pageJumper.setPage("PraDiffProScene", praDiffProContainerAdapter);
         g_pageJumper.setPage("ShutdownScr", shutdownPageAdapter);
-        g_praDifficultScene.setWinWidth(g_winWidth);
-        g_praDifficultScene.setWinHeight(g_winHeight);
-        g_praDifficultScene.hide();
-        g_sceneLayer.addChild(g_praDifficultScene); // 把场景添加到场景显示层。
-        g_praEasyScene.setWinWidth(g_winWidth);
-        g_praEasyScene.setWinHeight(g_winHeight);
-        g_praEasyScene.hide();
-        g_sceneLayer.addChild(g_praEasyScene);
-        g_mainMenu.visible = false;
-        g_mainMenu.width = this.stage.stageWidth;
-        g_mainMenu.height = this.stage.stageHeight;
-        g_sceneLayer.addChild(g_mainMenu);
         g_shutdownScr.visible = false;
         g_shutdownScr.width = this.stage.stageWidth;
         g_shutdownScr.height = this.stage.stageHeight;
         g_sceneLayer.addChild(g_shutdownScr);
         g_sceneLayer.addChild(g_console);
+        g_praEasyScene.setWinWidth(g_winWidth);
+        g_praEasyScene.setWinHeight(g_winHeight);
+        g_praEasyScene.hide();
+        g_sceneLayer.addChild(g_praEasyScene);
+        g_praDifficultScene.setWinWidth(g_winWidth);
+        g_praDifficultScene.setWinHeight(g_winHeight);
+        g_praDifficultScene.hide();
+        g_sceneLayer.addChild(g_praDifficultScene); // 把场景添加到场景显示层。
+        g_praDiffProScene.setWinWidth(g_winWidth);
+        g_praDiffProScene.setWinHeight(g_winHeight);
+        g_praDiffProScene.hide();
+        g_sceneLayer.addChild(g_praDiffProScene); // 把场景添加到场景显示层。
         egret.ExternalInterface.addCallback("ret_fetchIsSndOn", function (msg) {
             console.log("ret_fetchIsSndOn,msg:" + msg);
             if ("1" == msg) {

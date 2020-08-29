@@ -32,6 +32,7 @@ var eyelen4;
             this.startEasyBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startEasy, this);
             this.startDifficultBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startDifficult, this);
             this.startDifficultBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startDifficult, this);
+            this.startDiffProBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startDiffPro, this);
             this.m2_cc = true;
             this.rearrangeUI();
         };
@@ -85,7 +86,7 @@ var eyelen4;
             g_level = 2;
         };
         /*
-        * 开始困难练习。
+        * 开始困难传统模式练习。
         */
         CMainMenu.prototype.startDifficult = function () {
             g_level = 3;
@@ -93,6 +94,17 @@ var eyelen4;
             //        先显示翻页动画 （未完成）
             g_praDifficultContainer.saveVisibleStates();
             g_pageJumper.gotoPage("PraDifficultScene", null);
+            this.m_startTimer.stop();
+        };
+        /*
+        * 开始困难专业模式练习。
+        */
+        CMainMenu.prototype.startDiffPro = function () {
+            g_level = 2; // 循序渐进练习顺序是简单、困难（专业）、困难（传统）。
+            g_praDiffProContainer.startNewPra();
+            //        先显示翻页动画 （未完成）
+            g_praDiffProContainer.saveVisibleStates();
+            g_pageJumper.gotoPage("PraDiffProScene", null);
             this.m_startTimer.stop();
         };
         /*

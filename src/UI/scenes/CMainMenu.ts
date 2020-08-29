@@ -9,6 +9,7 @@ namespace eyelen4 {
         export class CMainMenu extends eui.Panel {
                 public startDifficultBtn1: eui.Button; // 触摸左边的文字或右边的按钮均能进入练习。因此是两个按钮。
                 public startDifficultBtn2: eui.Button; // 开始困难练习按钮。
+                public startDiffProBtn:eui.Button;
                 public startEasyBtn1: eui.Button;
                 public startEasyBtn2: eui.Button; // 开始简单练习按钮。
                 private menuGrp:eui.Group;
@@ -32,6 +33,7 @@ namespace eyelen4 {
 
                         this.startDifficultBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startDifficult,this);
                         this.startDifficultBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startDifficult,this);
+                        this.startDiffProBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.startDiffPro , this);
 
                         this.m2_cc = true;
                         this.rearrangeUI();
@@ -97,7 +99,7 @@ namespace eyelen4 {
                 }
 
                 /*
-                * 开始困难练习。
+                * 开始困难传统模式练习。
                 */ 
                 public startDifficult():void {
                         g_level = 3;
@@ -106,6 +108,20 @@ namespace eyelen4 {
                 //        先显示翻页动画 （未完成）
                         g_praDifficultContainer.saveVisibleStates();
                         g_pageJumper.gotoPage("PraDifficultScene",null);
+
+                        this.m_startTimer.stop();
+                }
+
+                /*
+                * 开始困难专业模式练习。
+                */ 
+                public startDiffPro():void {
+                        g_level = 2; // 循序渐进练习顺序是简单、困难（专业）、困难（传统）。
+                        g_praDiffProContainer.startNewPra();
+
+                //        先显示翻页动画 （未完成）
+                        g_praDiffProContainer.saveVisibleStates();
+                        g_pageJumper.gotoPage("PraDiffProScene",null);
 
                         this.m_startTimer.stop();
                 }

@@ -130,6 +130,7 @@
 		"bin-debug/UI/scenes/common/IWithMsgHandling.js",
 		"bin-debug/components/calibrate/Basic_CaliPresenter.js",
 		"bin-debug/UI/scenes/Eyelen/CPraDifficultScene.js",
+		"bin-debug/UI/scenes/Eyelen/CPraDiffProScene.js",
 		"bin-debug/UI/scenes/Eyelen/CPraEasyScene.js",
 		"bin-debug/UI/scenes/Eyelen/IEyelenPraScene.js",
 		"bin-debug/UI/scenes/Eyelen/partials/CBottomAreaDifficult.js",

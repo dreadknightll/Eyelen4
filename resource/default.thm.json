@@ -36,6 +36,7 @@
 		"eyelen4.CBottomAreaEasy": "resource/skins/scenes/Eyelen/partials/bottomAreaEasySkin.exml",
 		"eyelen4.CBottomAreaDifficult": "resource/skins/scenes/Eyelen/partials/bottomAreaDifficultSkin.exml",
 		"eyelen4.CPraDifficultScene": "resource/skins/scenes/Eyelen/praDifficultScene.exml",
+		"eyelen4.CPraDiffProScene": "resource/skins/scenes/Eyelen/praDiffProScene.exml",
 		"eyelen4.CPraEasyScene": "resource/skins/scenes/Eyelen/praEasyScene.exml",
 		"eyelen4.CWelcomeScene_Eyelen4": "resource/skins/scenes/Eyelen/welcomeSceneEyelen4.exml",
 		"eyelen4.CCopyrightPanel_V2": "resource/skins/components/common/copyrightPanelSkin_V2.exml",
@@ -103,6 +104,7 @@
 		"resource/skins/scenes/Eyelen/partials/topAreaSkin.exml",
 		"resource/skins/scenes/Eyelen/partials/viewTermsMenuSkin.exml",
 		"resource/skins/scenes/Eyelen/praDifficultScene.exml",
+		"resource/skins/scenes/Eyelen/praDiffProScene.exml",
 		"resource/skins/scenes/Eyelen/praEasyScene.exml",
 		"resource/skins/scenes/Eyelen/welcomeSceneEyelen4.exml"
 	],
