@@ -188,6 +188,7 @@ var eyelen4;
         };
         // 开始新一轮练习。
         CPraDiffProScene.prototype.startNewPra = function () {
+            console.log("Starting diffPro!");
             this.m_pm.startPra();
             if (this.m2_isFirstPra) {
                 this.m2_isFirstPra = false;

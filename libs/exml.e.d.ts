@@ -78,6 +78,8 @@ declare class privacyPanelSkin_V2 extends eui.Skin{
 }
 declare class progressViewSkin extends eui.Skin{
 }
+declare class proProgressViewSkin extends eui.Skin{
+}
 declare class replayButtonSkin extends eui.Skin{
 }
 declare class scoreViewSkin extends eui.Skin{
@@ -114,13 +116,15 @@ declare class midAreaSkin extends eui.Skin{
 }
 declare class praMenuSkin extends eui.Skin{
 }
-declare class sndConfMenu extends eui.Skin{
-}
 declare class topAreaSkin extends eui.Skin{
+}
+declare class sndConfMenu extends eui.Skin{
 }
 declare class viewTermsMenu extends eui.Skin{
 }
 declare class praDifficultSceneSkin extends eui.Skin{
+}
+declare class praDiffProSceneSkin extends eui.Skin{
 }
 declare class praEasySceneSkin extends eui.Skin{
 }

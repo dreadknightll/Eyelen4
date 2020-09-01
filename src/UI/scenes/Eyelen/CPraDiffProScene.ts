@@ -28,7 +28,7 @@ namespace eyelen4 {
     export class CPraDiffProScene extends CCommonEyelenPraScene{
         public topAreaGroup:eui.Group;
         private bgUnderTopGrp:eui.Group;
-        public topArea:eyelen4.CTopArea_Eyelen;
+        public topArea:eyelen4.CProTopArea_Eyelen;
         public midAreaGroup:eui.Group;
         public midArea:eyelen4.CMidAreaDifficult;
         public bottomAreaGroup:eui.Group;
@@ -270,6 +270,7 @@ namespace eyelen4 {
 
         // 开始新一轮练习。
         public startNewPra(): void {
+            console.log("Starting diffPro!");
             this.m_pm.startPra();
             if(this.m2_isFirstPra) {
                 this.m2_isFirstPra = false;

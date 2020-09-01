@@ -54,7 +54,7 @@ var g_resCache:{[index:string]:CHTTPSResStru} = {}; // 用于缓存远程获取�
 var g_resLoader:IResFetcher; //资源读取器。用于通过资源名读取已加载到缓存的资源。可灵活选择从本地读取还是通过网络读取。可供显示容器使用。
 
 var g_praEasyContainer:CEyelenPraContainer; //简单难度显示容器。该容器除了包含练习场景，还可注入各式各样的提示框、功能对话框等插件。此设计便于代码测试和重用。
-var g_praDiffProContainer:CEyelenPraContainer; //困难难度专业模式显示容器。
+var g_praDiffProContainer:CEyelenProPraContainer; //困难难度专业模式显示容器。
 var g_praDifficultContainer:CEyelenPraContainer; //困难难度显示容器。
 
 var g_welcomeScene:eyelen4.CWelcomeScene_Eyelen4; // 欢迎屏幕画面。含用户协议、隐私政策、指引等入口。
@@ -336,7 +336,7 @@ class Main extends eui.UILayer {
         g_praDifficultContainer.setPraMenu(pm2);
 
 
-        g_praDiffProContainer = new CEyelenPraContainer();
+        g_praDiffProContainer = new CEyelenProPraContainer();
         if(S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
             g_praDiffProContainer.m_NoImgMode = true;
         }
