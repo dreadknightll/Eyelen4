@@ -104,6 +104,9 @@ var eyelen4;
             this.m_cmpLenDlg.onNextBtnEvent(egret.TouchEvent.TOUCH_TAP, this.onNextButtonTap, this);
             this.addChild(this.m_cmpLenDlg);
         };
+        CPraDiffProScene.prototype.savScore = function () {
+            egret.ExternalInterface.call("savScore", "55");
+        };
         /*
         * 触摸“下一长度”按钮后触发。
         */
@@ -132,6 +135,7 @@ var eyelen4;
                     this.finalScoreDlg.setStars(0);
                     this._getParentContainer().showAlert("成绩很差哟！\n别灰心，继续努力！！", this.onFailurePanelClose);
                 }
+                this.savScore();
             }
             else {
                 this.m_UIPresenter.nextLen();

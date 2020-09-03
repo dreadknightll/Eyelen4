@@ -13,6 +13,7 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
         this.m_renderFilter = new CEyelen3ERenderFilter();
         this.m_renderFilter.setCaRat(1);
 
+
 //        this.m_praMenu = new gdeint.CPraMenu();
 //        this.m_praMenu._setParentContainer(this);
 	}
@@ -20,6 +21,9 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
     public m_NoImgMode:boolean = false;
 
     private m_resNameFinder:IEyelen4ResNameFinder; // 用来把文件名、资源名、URL相互转换。
+
+    private m_retryLensArr:Array<CLen>;
+
     public setResNameFinder(rnf:IEyelen4ResNameFinder) {
         this.m_resNameFinder = rnf;
     }
@@ -144,6 +148,40 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
         praMenu.show();
     }
 
+    private fetchRetryLens():void {
+        this.m_retryLensArr = new Array<CLen>();
+
+        var len1:CLen = new CLen();
+        len1.m_className = "CLen";
+        len1.m_x = 10;
+        len1.m_y = 20;
+        len1.m_isHor = true;
+        len1.m_length = 300;
+        len1.m_imgPath = "img_001.gif";
+        len1.m2_imgResName = "img_001_gif";
+
+        var len2:CLen = new CLen();
+        len2.m_className = "CLen";
+        len2.m_x = 110;
+        len2.m_y = 220;
+        len2.m_isHor = false;
+        len2.m_length = 240;
+        len2.m_imgPath = "img_002.png";
+        len2.m2_imgResName = "img_002_png";
+
+        var len3:CLen = new CLen();
+        len3.m_className = "CLen";
+        len3.m_x = 40;
+        len3.m_y = 300;
+        len3.m_isHor = true;
+        len3.m_length = 80;
+        len3.m_imgPath = "img_003.gif";
+        len3.m2_imgResName = "img_003_gif";
+
+        this.m_retryLensArr.push(len1);
+        this.m_retryLensArr.push(len2);
+        this.m_retryLensArr.push(len3);
+    }
 
     /*
         开始一轮新的练习。
@@ -155,20 +193,34 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
         var preloaderUI:IPreloaderUI = this._getPreloaderUI();
 
         preloaderUI.show();
-        preloaderUI.setCompleteListener(this.onPicXMLLoadComplete,this);
+        preloaderUI.setCompleteListener(this.onPicJSONLoadComplete,this);
 
         var picXMLTask:gdeint.CPreloadTask = new gdeint.CPreloadTask();//创建任务对象。
         var resListPicXML:Array<gdeint.ResStruct> = new Array<gdeint.ResStruct>();
+
+
+
+        this.fetchRetryLens();
+
+        var j:number;
+        for(j=0;j<this.m_retryLensArr.length;++j) {
+            resListPicXML[j] = new gdeint.ResStruct();
+            this.m_resNameFinder.setInp(this.m_retryLensArr[j].m2_imgResName);
+            resListPicXML[j].m_resName = this.m_resNameFinder.getResult();
+            resListPicXML[j].m_givenSize = 500;
+
+        }
+
 
         this.m_seledPicTagArr = gdeint.randomNums_ts(18,4); //从18张图片材料中随机选4张进行练习。
 
         var i:number;
         for(i=0;i<this.m_seledPicTagArr.length;++i) {
-            resListPicXML[i] = new gdeint.ResStruct();
+            resListPicXML[i+3] = new gdeint.ResStruct();
             this.m_resNameFinder.setInp(this.m_seledPicTagArr[i].toString());
-            resListPicXML[i].m_resName = this.m_resNameFinder.getResult();
+            resListPicXML[i+3].m_resName = this.m_resNameFinder.getResult();
 
-            resListPicXML[i].m_givenSize = 500;
+            resListPicXML[i+3].m_givenSize = 500;
         }
 
         picXMLTask.m_resList = resListPicXML;
@@ -189,10 +241,17 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
     /*
      * 练习所需资源加载完成时触发。
      */ 
-    private onPicXMLLoadComplete(/*evt: CPIPreloaderEvent*/): void {
+    private onPicJSONLoadComplete(/*evt: CPIPreloaderEvent*/): void {
         var tmpLens:Array<CLen> = new Array<CLen>();
 
-            var curTag;
+        var curTag;
+
+            for(curTag = 0;curTag < 3;++curTag) {
+//                console.log("JSON str:"+this.m_retryLensArr[curTag].toJSONStr());
+//                tmpLens.push(CLen.fromJsonStr(this.m_retryLensArr[i].toJSONStr()));
+                tmpLens.push(this.m_retryLensArr[curTag]);
+            }
+
             for(curTag = 0;curTag < this.m_seledPicTagArr.length;++curTag)
             {
                 var strResName: string;
@@ -262,6 +321,7 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
                 }
                 tmpLens2.push(fixedLen);
             }
+
             this.m_praScene.setLenArr(tmpLens2);
         }
         else {

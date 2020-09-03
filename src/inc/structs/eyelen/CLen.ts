@@ -27,4 +27,16 @@ class CLen
         ret.m_className = className;
         return ret;
     }
+
+    static fromJsonStr(str:string):CLen {
+        var ret:CLen = null;
+        return ret;
+    }
+
+    public toJSONStr():string {
+        var ret:string = "";
+        ret = JSON.stringify(this);
+
+        return ret;
+    }
 };

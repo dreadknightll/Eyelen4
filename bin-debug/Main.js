@@ -344,7 +344,7 @@ var Main = (function (_super) {
         pm2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         pm2.hide();
         g_praDifficultContainer.setPraMenu(pm2);
-        g_praDiffProContainer = new CEyelenPraContainer();
+        g_praDiffProContainer = new CEyelenProPraContainer();
         if (S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
             g_praDiffProContainer.m_NoImgMode = true;
         }

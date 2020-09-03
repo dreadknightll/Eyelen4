@@ -24,6 +24,15 @@ var CLen = (function () {
         ret.m_className = className;
         return ret;
     };
+    CLen.fromJsonStr = function (str) {
+        var ret = null;
+        return ret;
+    };
+    CLen.prototype.toJSONStr = function () {
+        var ret = "";
+        ret = JSON.stringify(this);
+        return ret;
+    };
     return CLen;
 }());
 __reflect(CLen.prototype, "CLen");
