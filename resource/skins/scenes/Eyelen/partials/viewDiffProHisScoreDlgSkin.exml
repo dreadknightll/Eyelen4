@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="viewDiffProHisScoreDlgSkin" width="400" height="400" xmlns:e="http://ns.egret.com/eui">
+	<e:Rect width="100%" height="100%" x="0" y="0" fillColor="0xc8fc67"/>
+
+
+	<e:Scroller x="10" y="30" height="419">
+		<e:viewport>
+			<e:Group>
+				<e:Label id="scoreLabel" text="" x="10" y="5" size="24" textColor="0x000000" anchorOffsetX="0" width="270" anchorOffsetY="0" height="3200"/>
+			</e:Group>
+		</e:viewport>
+	</e:Scroller>
+	<e:Button id="closeBtn" label="X" x="305" y="8" anchorOffsetX="0" width="29" anchorOffsetY="0" height="35.5" scaleX="2" scaleY="2"/>
+
+</e:Skin>

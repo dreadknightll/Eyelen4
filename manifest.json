@@ -34,7 +34,7 @@
 		"bin-debug/components/lenCheckers/ILenCheckerEasy.js",
 		"bin-debug/components/lenCheckers/ILenCheckerWithCa.js",
 		"bin-debug/components/lenCheckers/IPlainLenChecker.js",
-		"bin-debug/components/notifications/CAlertPanel.js",
+		"bin-debug/components/notifications/CAlertPanel_v2.js",
 		"bin-debug/components/notifications/CAlertPanelEvent.js",
 		"bin-debug/components/notifications/CBalloonTip.js",
 		"bin-debug/components/notifications/CBalloonTipEvent.js",
@@ -145,6 +145,7 @@
 		"bin-debug/UI/scenes/Eyelen/partials/CSndConfMenu.js",
 		"bin-debug/UI/scenes/Eyelen/partials/CTopArea_Eyelen.js",
 		"bin-debug/UI/scenes/Eyelen/partials/CTopAreaEvent_Eyelen.js",
+		"bin-debug/UI/scenes/Eyelen/partials/CViewDiffProHisScoreDlg.js",
 		"bin-debug/UI/scenes/Eyelen/partials/CViewTermsMenu.js",
 		"bin-debug/UI/scenes/other/LoadingUI_Eint_V3.js",
 		"bin-debug/UI/scenes/other/LoadingUI_NoUI.js"

@@ -94,7 +94,7 @@ namespace eyelen4 {
 
         private onProgressListener(): void // 因为由大多数数据由父类处理所以参数简单。
         {
-            this.cmplPropor.text = this.m_noUIPreloaderUI.m_proporFinished + "%";
+            this.cmplPropor.text = this.m_noUIPreloaderUI.m_proporFinished.toFixed(2) + "%";
         }
 
         private cmplPropor:eui.Label;

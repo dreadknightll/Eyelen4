@@ -90,6 +90,12 @@ var eyelen4;
         CPraDiffProScene.prototype.setLenArr = function (la) {
             this.m_pm.setLenArr(la);
         };
+        CPraDiffProScene.prototype.recMis = function (len) {
+            egret.ExternalInterface.call("recMis", JSON.stringify(len));
+        };
+        CPraDiffProScene.prototype.decMisDeviation = function (len) {
+            egret.ExternalInterface.call("decMisDeviation", JSON.stringify(len));
+        };
         CPraDiffProScene.prototype.getCurPicTag = function () {
             return this.m_curPicTag;
         };
@@ -105,7 +111,7 @@ var eyelen4;
             this.addChild(this.m_cmpLenDlg);
         };
         CPraDiffProScene.prototype.savScore = function () {
-            egret.ExternalInterface.call("savScore", "55");
+            egret.ExternalInterface.call("savScore", this.m_pm.getCurScore().toString());
         };
         /*
         * 触摸“下一长度”按钮后触发。
@@ -158,7 +164,7 @@ var eyelen4;
             this.m_cmpLenDlg.setCorreLen(this.m_pm.getCurLen().m_length * this.m_UIPresenter.getRenderFilter()._getCaRat());
             this.m_cmpLenDlg.setUserLen(this.m_UIPresenter.m_userLen);
             this.m_cmpLenDlg.visible = true;
-            var curLen = this.m_pm.getCurLen();
+            //            var curLen = this.m_pm.getCurLen();
         };
         CPraDiffProScene.prototype.hideCmpLenDlg = function () {
             this.m_cmpLenDlg.visible = false;
@@ -172,6 +178,12 @@ var eyelen4;
             }
             this.m_UIPresenter.setUserLen(this.bottomArea.lenInputer.getLen());
             this.m_UIPresenter.submitLen();
+            if (this.m_UIPresenter.m_curRank <= 1) {
+                this.recMis(this.m_pm.getCurLen());
+            }
+            else {
+                this.decMisDeviation(this.m_pm.getCurLen());
+            }
             this.showCmpLenDlg();
             this.bottomArea.lenInputer.lock();
             var r = this.m_pm.getLastLenRank();
@@ -196,6 +208,7 @@ var eyelen4;
             this.m_pm.startPra();
             if (this.m2_isFirstPra) {
                 this.m2_isFirstPra = false;
+                console.log("OK2");
                 this.createScene();
             }
             else {
@@ -453,6 +466,7 @@ var eyelen4;
             this.createTop();
             this.createMid();
             this.createBottom();
+            console.log("OK3");
             this.midArea.addEventListener(CMidAreaEvent_Eyelen.EVT_IMG_DRAGMOVE, this.onImgDragMove, this);
             this.midArea.addEventListener(CMidAreaEvent_Eyelen.EVT_IMG_DRAGEND, this.onImgDragEnd, this);
             this.addChild(this.m_topSpace);
@@ -648,9 +662,19 @@ var eyelen4;
         CPraDiffProScene.prototype.createBottomMenu = function () {
         };
         /*
+        * 重置场景各元素状态以便进行新一轮练习。
+        */
+        CPraDiffProScene.prototype.resetSceneElems = function () {
+            this.m_cmpLenDlg.visible = false;
+            this.finalScoreDlg.visible = false;
+            this.bottomArea.lenInputer.unlock();
+            this.bottomArea.lenInputer.clearLen();
+        };
+        /*
         * 刷新场景。通常新练习开始时，资源加载完成后调用。
         */
         CPraDiffProScene.prototype.refreshScene = function () {
+            this.resetSceneElems();
             //        1、Reset Img content & location
             this.showLen(this.m_pm.getCurLen());
             if (this.m_NoImgMode) {

@@ -849,10 +849,23 @@ namespace eyelen4 {
         private createBottomMenu(): void {
         }
 
+
+        /*
+        * 重置场景各元素状态以便进行新一轮练习。
+        */
+        public resetSceneElems():void {
+            this.m_cmpLenDlg.visible = false;
+            this.finalScoreDlg.visible = false;
+            this.bottomArea.lenInputer.unlock();
+            this.bottomArea.lenInputer.clearLen();
+
+        }
+
         /*
         * 刷新场景。通常新练习开始时，资源加载完成后调用。 
         */ 
         public refreshScene():void {
+            this.resetSceneElems();
 
             //        1、Reset Img content & location
             this.showLen(this.m_pm.getCurLen());
@@ -961,5 +974,6 @@ namespace eyelen4 {
             this.readjustThumbSel();
 
         }
+
     }
 }

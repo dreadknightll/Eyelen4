@@ -7,12 +7,18 @@
 
 namespace eyelen4 {
         export class CMainMenu extends eui.Panel {
-                public startDifficultBtn1: eui.Button; // 触摸左边的文字或右边的按钮均能进入练习。因此是两个按钮。
+//                public startDifficultBtn1: eui.Button; // 触摸左边的文字或右边的按钮均能进入练习。因此是两个按钮。
                 public startDifficultBtn2: eui.Button; // 开始困难练习按钮。
                 public startDiffProBtn:eui.Button;
-                public startEasyBtn1: eui.Button;
+                public viewDiffProHisScoreBtn: eui.Button;
+                public viewDiffProHisScoreDlg: CViewDiffProHisScoreDlg;
+                public diffProHelpBtn:eui.Button;
+
+//                public startEasyBtn1: eui.Button;
                 public startEasyBtn2: eui.Button; // 开始简单练习按钮。
+                public printMisRecBtn:eui.Button;
                 private menuGrp:eui.Group;
+                private alertDlg:gdeint.CAlertPanel_v2;
 
                 public m_startTimer: egret.Timer; // 自动开始定时器。
 
@@ -24,19 +30,24 @@ namespace eyelen4 {
                         super();
 
                         this.m_startTimer = new egret.Timer(5000,1); // 5秒内不选择则自动进入困难练习。
-                        this.m_startTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.startDifficult,this);
+//                        this.m_startTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.startDifficult,this);
                 }
 
                 public childrenCreated() {
-                        this.startEasyBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startEasy,this);
+//                        this.startEasyBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startEasy,this);
                         this.startEasyBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startEasy,this);
 
-                        this.startDifficultBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startDifficult,this);
+//                        this.startDifficultBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startDifficult,this);
                         this.startDifficultBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startDifficult,this);
                         this.startDiffProBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.startDiffPro , this);
+                        this.viewDiffProHisScoreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onViewDiffProHisScoreBtn , this);
+//                        this.printMisRecBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onPrintMisRecBtn , this);
+                        this.diffProHelpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onDiffProHelpBtn , this);
 
                         this.m2_cc = true;
                         this.rearrangeUI();
+
+
                 }
 
                 //定义了一些函数使内容居中。
@@ -126,10 +137,28 @@ namespace eyelen4 {
                         this.m_startTimer.stop();
                 }
 
+                public onViewDiffProHisScoreBtn():void {
+                        egret.ExternalInterface.call("fetchDiffProHisScore" , "");
+                        this.viewDiffProHisScoreDlg.show();
+                }
+
+                public onDiffProHelpBtn():void {
+                        console.log("Showing diffProHelp!");
+                        this.alertDlg.setContent("专业模式：对错题有针对性，大幅度提高训练效果。");
+                        this.alertDlg.showDlg();
+//                        this.alertDlg.show();
+                }
+
+                public onPrintMisRecBtn():void {
+                       egret.ExternalInterface.call("printMisRec" , "");
+                }
+
+
                 /*
                 * 回到欢迎屏幕。
                 */ 
                 public goBack():void {
                 }
+
         }
 }

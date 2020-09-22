@@ -86,7 +86,7 @@ var eyelen4;
             this.cmplPropor.text = "0.0%";
         };
         CPreloaderUI.prototype.onProgressListener = function () {
-            this.cmplPropor.text = this.m_noUIPreloaderUI.m_proporFinished + "%";
+            this.cmplPropor.text = this.m_noUIPreloaderUI.m_proporFinished.toFixed(2) + "%";
         };
         CPreloaderUI.prototype.show = function () {
             this.visible = true;

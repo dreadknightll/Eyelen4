@@ -24,15 +24,18 @@ var eyelen4;
             _this.m_trueHeight = 744;
             _this.m2_cc = false;
             _this.m_startTimer = new egret.Timer(5000, 1); // 5秒内不选择则自动进入困难练习。
-            _this.m_startTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, _this.startDifficult, _this);
             return _this;
+            //                        this.m_startTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.startDifficult,this);
         }
         CMainMenu.prototype.childrenCreated = function () {
-            this.startEasyBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startEasy, this);
+            //                        this.startEasyBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startEasy,this);
             this.startEasyBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startEasy, this);
-            this.startDifficultBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startDifficult, this);
+            //                        this.startDifficultBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startDifficult,this);
             this.startDifficultBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startDifficult, this);
             this.startDiffProBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startDiffPro, this);
+            this.viewDiffProHisScoreBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onViewDiffProHisScoreBtn, this);
+            //                        this.printMisRecBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onPrintMisRecBtn , this);
+            this.diffProHelpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onDiffProHelpBtn, this);
             this.m2_cc = true;
             this.rearrangeUI();
         };
@@ -106,6 +109,19 @@ var eyelen4;
             g_praDiffProContainer.saveVisibleStates();
             g_pageJumper.gotoPage("PraDiffProScene", null);
             this.m_startTimer.stop();
+        };
+        CMainMenu.prototype.onViewDiffProHisScoreBtn = function () {
+            egret.ExternalInterface.call("fetchDiffProHisScore", "");
+            this.viewDiffProHisScoreDlg.show();
+        };
+        CMainMenu.prototype.onDiffProHelpBtn = function () {
+            console.log("Showing diffProHelp!");
+            this.alertDlg.setContent("专业模式：对错题有针对性，大幅度提高训练效果。");
+            this.alertDlg.showDlg();
+            //                        this.alertDlg.show();
+        };
+        CMainMenu.prototype.onPrintMisRecBtn = function () {
+            egret.ExternalInterface.call("printMisRec", "");
         };
         /*
         * 回到欢迎屏幕。

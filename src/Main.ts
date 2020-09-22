@@ -72,6 +72,11 @@ var g_pageJumper:gdeint.CPageJumper; // 页面跳转器。在libGdeint里实现�
 
 var g_shutdownTimer:egret.Timer; // 为了眼睛健康，20分钟后自动停止。
 
+var g2_tmpScoresJSONObj;
+var g2_tmpRetryLensJSONStr:string;
+
+var g2_tmpWaitingForRetFromNative = false;
+
 class Main extends eui.UILayer {
 
     public constructor () {
@@ -273,7 +278,7 @@ class Main extends eui.UILayer {
 
         g_praEasyContainer.setPraScene(g_praEasyScene);
 
-        var cad:gdeint.CAlertPanel = new gdeint.CAlertPanel();
+        var cad:gdeint.CAlertPanel_v2 = new gdeint.CAlertPanel_v2();
         cad.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale); // 把主场景的位置和尺寸告诉警告框插件，让其可以自行计算警告框的位置和尺寸。
         g_praEasyContainer.setAlertDlg(cad); // 提示框的创建在Container类以外，这样可以灵活改用各种风格的提示框。
 
@@ -311,7 +316,7 @@ class Main extends eui.UILayer {
 
         g_praDifficultContainer.setPraScene(g_praDifficultScene);
 
-        var cad2:gdeint.CAlertPanel = new gdeint.CAlertPanel();
+        var cad2:gdeint.CAlertPanel_v2 = new gdeint.CAlertPanel_v2();
         cad2.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         g_praDifficultContainer.setAlertDlg(cad2);
 
@@ -349,7 +354,7 @@ class Main extends eui.UILayer {
 
         g_praDiffProContainer.setPraScene(g_praDiffProScene);
 
-        var cad2:gdeint.CAlertPanel = new gdeint.CAlertPanel();
+        var cad2:gdeint.CAlertPanel_v2 = new gdeint.CAlertPanel_v2();
         cad2.setSceneRect(g_scenePos.m_x , g_scenePos.m_y , 480*g_scale , 800*g_scale);
         g_praDiffProContainer.setAlertDlg(cad2);
 
@@ -446,6 +451,23 @@ class Main extends eui.UILayer {
                 g_isSndOn = false;
             }
             //else do not change g_isSndOn.
+
+        });
+
+        egret.ExternalInterface.addCallback("ret_fetchDiffProHisScore" , function(msg) {
+            console.log("ret_fetchDiffProHisScore:"+msg);
+
+            g2_tmpScoresJSONObj = JSON.parse(msg);
+            console.log("g2_tmpScoresJSONObj set!");
+            console.log( "Size is "+g2_tmpScoresJSONObj.Scores.length);
+
+        });
+
+        egret.ExternalInterface.addCallback("ret_fetchRetryLens" , function(msg) {
+
+            g2_tmpRetryLensJSONStr = msg;
+            console.log("RetryLens sent to ts:"+g2_tmpRetryLensJSONStr);
+            g2_tmpWaitingForRetFromNative = false;
 
         });
 

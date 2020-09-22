@@ -95,6 +95,9 @@ var g_notiLayerContainer = new egret.DisplayObjectContainer(); // 提示图层�
 var g_level = 0; // 当前练习的难度。0：未知。1：简单。2：中等。3：困难。
 var g_pageJumper; // 页面跳转器。在libGdeint里实现。用一个页面跳转器把上面的页面串起来。
 var g_shutdownTimer; // 为了眼睛健康，20分钟后自动停止。
+var g2_tmpScoresJSONObj;
+var g2_tmpRetryLensJSONStr;
+var g2_tmpWaitingForRetFromNative = false;
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
@@ -295,7 +298,7 @@ var Main = (function (_super) {
         else {
         }
         g_praEasyContainer.setPraScene(g_praEasyScene);
-        var cad = new gdeint.CAlertPanel();
+        var cad = new gdeint.CAlertPanel_v2();
         cad.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale); // 把主场景的位置和尺寸告诉警告框插件，让其可以自行计算警告框的位置和尺寸。
         g_praEasyContainer.setAlertDlg(cad); // 提示框的创建在Container类以外，这样可以灵活改用各种风格的提示框。
         var cp = new gdeint.CConfirmPanel();
@@ -325,7 +328,7 @@ var Main = (function (_super) {
             }
         }
         g_praDifficultContainer.setPraScene(g_praDifficultScene);
-        var cad2 = new gdeint.CAlertPanel();
+        var cad2 = new gdeint.CAlertPanel_v2();
         cad2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         g_praDifficultContainer.setAlertDlg(cad2);
         var cp2 = new gdeint.CConfirmPanel();
@@ -355,7 +358,7 @@ var Main = (function (_super) {
             }
         }
         g_praDiffProContainer.setPraScene(g_praDiffProScene);
-        var cad2 = new gdeint.CAlertPanel();
+        var cad2 = new gdeint.CAlertPanel_v2();
         cad2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
         g_praDiffProContainer.setAlertDlg(cad2);
         var cp2 = new gdeint.CConfirmPanel();
@@ -421,6 +424,17 @@ var Main = (function (_super) {
                 g_isSndOn = false;
             }
             //else do not change g_isSndOn.
+        });
+        egret.ExternalInterface.addCallback("ret_fetchDiffProHisScore", function (msg) {
+            console.log("ret_fetchDiffProHisScore:" + msg);
+            g2_tmpScoresJSONObj = JSON.parse(msg);
+            console.log("g2_tmpScoresJSONObj set!");
+            console.log("Size is " + g2_tmpScoresJSONObj.Scores.length);
+        });
+        egret.ExternalInterface.addCallback("ret_fetchRetryLens", function (msg) {
+            g2_tmpRetryLensJSONStr = msg;
+            console.log("RetryLens sent to ts:" + g2_tmpRetryLensJSONStr);
+            g2_tmpWaitingForRetFromNative = false;
         });
     };
     Main.prototype.autoShutdown = function () {

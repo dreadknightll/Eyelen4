@@ -146,6 +146,14 @@ namespace eyelen4 {
             this.m_pm.setLenArr(la);
         }
 
+        public recMis(len:CLen) {
+            egret.ExternalInterface.call("recMis" , JSON.stringify(len));
+        }
+
+        public decMisDeviation(len:CLen) {
+            egret.ExternalInterface.call("decMisDeviation" , JSON.stringify(len));
+        }
+
         public getCurPicTag():number {
             return this.m_curPicTag;
         }
@@ -164,7 +172,7 @@ namespace eyelen4 {
         }
         
         private savScore():void {
-			egret.ExternalInterface.call("savScore","55");
+			egret.ExternalInterface.call("savScore",this.m_pm.getCurScore().toString());
         }
 
 
@@ -231,7 +239,7 @@ namespace eyelen4 {
 
             this.m_cmpLenDlg.visible = true;
 
-            var curLen = this.m_pm.getCurLen();
+//            var curLen = this.m_pm.getCurLen();
 
         }
 
@@ -250,8 +258,16 @@ namespace eyelen4 {
 
             this.m_UIPresenter.setUserLen(this.bottomArea.lenInputer.getLen());
             this.m_UIPresenter.submitLen();
+
+            if(this.m_UIPresenter.m_curRank <= 1) {
+                this.recMis(this.m_pm.getCurLen());
+            }else {
+                this.decMisDeviation(this.m_pm.getCurLen());
+            }
+
                 
             this.showCmpLenDlg();
+            
             this.bottomArea.lenInputer.lock();
 
             var r = this.m_pm.getLastLenRank();
@@ -282,6 +298,7 @@ namespace eyelen4 {
             if(this.m2_isFirstPra) {
                 this.m2_isFirstPra = false;
 
+                console.log("OK2");
                 this.createScene();
             }
             else {
@@ -612,6 +629,8 @@ namespace eyelen4 {
             this.createMid();
             this.createBottom();
 
+            console.log("OK3");
+
             this.midArea.addEventListener(CMidAreaEvent_Eyelen.EVT_IMG_DRAGMOVE,this.onImgDragMove,this);
             this.midArea.addEventListener(CMidAreaEvent_Eyelen.EVT_IMG_DRAGEND,this.onImgDragEnd,this);
 
@@ -857,10 +876,24 @@ namespace eyelen4 {
         private createBottomMenu(): void {
         }
 
+
+        /*
+        * 重置场景各元素状态以便进行新一轮练习。
+        */
+        public resetSceneElems():void {
+            this.m_cmpLenDlg.visible = false;
+            this.finalScoreDlg.visible = false;
+            this.bottomArea.lenInputer.unlock();
+            this.bottomArea.lenInputer.clearLen();
+
+        }
+
         /*
         * 刷新场景。通常新练习开始时，资源加载完成后调用。 
         */ 
         public refreshScene():void {
+
+            this.resetSceneElems();
 
             //        1、Reset Img content & location
             this.showLen(this.m_pm.getCurLen());
@@ -969,5 +1002,6 @@ namespace eyelen4 {
             this.readjustThumbSel();
 
         }
+
     }
 }

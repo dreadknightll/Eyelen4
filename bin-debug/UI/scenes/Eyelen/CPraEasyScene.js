@@ -38,6 +38,7 @@ var eyelen4;
         /////////////////////////////////////////////////////////////////////////////
         function CPraEasyScene() {
             var _this = _super.call(this) || this;
+            _this.m2_cc = false;
             _this.x = 0;
             _this.y = 0;
             _this.m_topOpen = true;
@@ -77,6 +78,7 @@ var eyelen4;
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOKButtonTap, this);
             this.shutdownClock.setTimer(g_shutdownTimer); // 关联全局计时器以显示时间。
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClockTap, this);
+            this.m2_cc = true;
         };
         CPraEasyScene.prototype._setParentContainer = function (c) {
             // 设置父容器，以使用各种提示框等。
@@ -655,9 +657,7 @@ var eyelen4;
         CPraEasyScene.prototype.onBack2MainMenuConfirm = function (param) {
             var ret = param;
             if (ret) {
-                this.finalScoreDlg.visible = false;
-                this.bottomArea.lenInputer.unlock();
-                this.bottomArea.lenInputer.clearLen();
+                this.resetSceneElems();
                 g_pageJumper.gotoPage("WelcomeScene", null);
             }
             else {
@@ -669,10 +669,20 @@ var eyelen4;
         CPraEasyScene.prototype.createBottomMenu = function () {
         };
         /*
+        * 重置场景各元素状态以便进行新一轮练习。
+        */
+        CPraEasyScene.prototype.resetSceneElems = function () {
+            this.m_cmpLenDlg.visible = false;
+            this.finalScoreDlg.visible = false;
+            this.bottomArea.lenInputer.unlock();
+            this.bottomArea.lenInputer.clearLen();
+        };
+        /*
         * 刷新场景。通常新练习开始时，资源加载完成后调用。
         */
         CPraEasyScene.prototype.refreshScene = function () {
             //        1、Reset Img content & location
+            this.resetSceneElems();
             this.showLen(this.m_pm.getCurLen());
             if (this.m_NoImgMode) {
                 this.m_UIPresenter.setImgWidth(1024);

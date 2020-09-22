@@ -50,17 +50,19 @@ declare module skins{
 	class VSliderSkin extends eui.Skin{
 	}
 }
-declare class alertPanelSkin extends eui.Skin{
+declare class alertPanelSkin_v2 extends eui.Skin{
+}
+declare class balloonTipSkin extends eui.Skin{
 }
 declare class caliDlgSkin extends eui.Skin{
 }
 declare class closeBtnSkin extends eui.Skin{
 }
+declare class confirmPanelSkin extends eui.Skin{
+}
 declare class copyrightPanelSkin_v2 extends eui.Skin{
 }
 declare class cpyTextPanelSkin extends eui.Skin{
-}
-declare class privacyPanelSkin extends eui.Skin{
 }
 declare class finalScoreDlgSkin extends eui.Skin{
 }
@@ -119,6 +121,8 @@ declare class praMenuSkin extends eui.Skin{
 declare class topAreaSkin extends eui.Skin{
 }
 declare class sndConfMenu extends eui.Skin{
+}
+declare class viewDiffProHisScoreDlgSkin extends eui.Skin{
 }
 declare class viewTermsMenu extends eui.Skin{
 }

@@ -148,8 +148,23 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
         praMenu.show();
     }
 
-    private fetchRetryLens():void {
+    private m2_fetchRetryLensNextAct:Function;
+    private fn2_fetchRetryLens(nextAct:Function):void {
+
+        egret.ExternalInterface.call("fetchRetryLens","");
+
+        this.m2_fetchRetryLensNextAct  = nextAct;
+
+        var nextStepTimer:egret.Timer = new egret.Timer(200 , 1);
+        nextStepTimer.addEventListener(egret.TimerEvent.TIMER , this.fetchRetryLens_step2 , this);
+        nextStepTimer.start();
+    }
+
+    private fetchRetryLens_step2():void {
+
         this.m_retryLensArr = new Array<CLen>();
+
+        // 无错误长度或错误长度不足时，前三个长度使用以下默认长度：
 
         var len1:CLen = new CLen();
         len1.m_className = "CLen";
@@ -178,36 +193,102 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
         len3.m_imgPath = "img_003.gif";
         len3.m2_imgResName = "img_003_gif";
 
+        g2_tmpWaitingForRetFromNative = true;
+        /* 返回结果调整后示例：
+            {
+                "RetryLens":
+                [
+                    {
+                        "m_className":"CLen","m_x":10,"m_y":20,"m_isHor":true,"m_length":300,"m_imgPath":"img_001.gif","m2_imgResName":"img_001_gif"
+                    },
+                    {
+                        "m_className":"CLen","m_x":110,"m_y":220,"m_isHor":false,"m_length":240,"m_imgPath":"img_002.png","m2_imgResName":"img_002_png"
+                    }
+                ]
+            }
+        */
+
+        console.log("OK2");
+
+        console.log("Parsing:"+g2_tmpRetryLensJSONStr);
+        var lenArrObj = JSON.parse(g2_tmpRetryLensJSONStr);
+
+            console.log("OK2.5");
+
+        var tmpLen1Obj , tmpLen2Obj;
+        if(lenArrObj.RetryLens.length > 0) {
+
+            tmpLen1Obj = lenArrObj.RetryLens[0];
+            console.log("OK3");
+
+            len1.m_className = tmpLen1Obj.m_className;
+            len1.m_x = tmpLen1Obj.m_x;
+            len1.m_y = tmpLen1Obj.m_y;
+            len1.m_isHor = tmpLen1Obj.m_isHor;
+            len1.m_length = tmpLen1Obj.m_length;
+            len1.m_imgPath = tmpLen1Obj.m_imgPath;
+            len1.m2_imgResName = tmpLen1Obj.m2_imgResName;
+
+            len3.m_className = tmpLen1Obj.m_className;
+            len3.m_x = tmpLen1Obj.m_x;
+            len3.m_y = tmpLen1Obj.m_y;
+            len3.m_isHor = tmpLen1Obj.m_isHor;
+            len3.m_length = tmpLen1Obj.m_length;
+            len3.m_imgPath = tmpLen1Obj.m_imgPath;
+            len3.m2_imgResName = tmpLen1Obj.m2_imgResName;
+        }
+            console.log("OK4");
+
+        if(lenArrObj.RetryLens.length > 1) {
+            tmpLen2Obj = lenArrObj.RetryLens[1];
+            len2.m_className = tmpLen2Obj.m_className;
+            len2.m_x = tmpLen2Obj.m_x;
+            len2.m_y = tmpLen2Obj.m_y;
+            len2.m_isHor = tmpLen2Obj.m_isHor;
+            len2.m_length = tmpLen2Obj.m_length;
+            len2.m_imgPath = tmpLen2Obj.m_imgPath;
+            len2.m2_imgResName = tmpLen2Obj.m2_imgResName;
+        }
+
         this.m_retryLensArr.push(len1);
         this.m_retryLensArr.push(len2);
         this.m_retryLensArr.push(len3);
+        console.log("OK5");
+
+        this.m2_fetchRetryLensNextAct.apply(this);
     }
 
     /*
         开始一轮新的练习。
     */
     public startNewPra(): void {
+        console.log("OK0");
+
+        this.fn2_fetchRetryLens(this.startNewPra_step2);
+    }
+
+    public startNewPra_step2():void {
+        console.log("Successfully jumped to startNewPra_step2!");
         this._getPraScene().hide();
 
 //显示资源预加载界面并加载练习所需资源：
         var preloaderUI:IPreloaderUI = this._getPreloaderUI();
 
         preloaderUI.show();
+
         preloaderUI.setCompleteListener(this.onPicJSONLoadComplete,this);
 
-        var picXMLTask:gdeint.CPreloadTask = new gdeint.CPreloadTask();//创建任务对象。
-        var resListPicXML:Array<gdeint.ResStruct> = new Array<gdeint.ResStruct>();
+        var picJSONTask:gdeint.CPreloadTask = new gdeint.CPreloadTask();//创建任务对象。
+        var resListPicJSON:Array<gdeint.ResStruct> = new Array<gdeint.ResStruct>();
 
-
-
-        this.fetchRetryLens();
+        console.log("OK0.3");
 
         var j:number;
         for(j=0;j<this.m_retryLensArr.length;++j) {
-            resListPicXML[j] = new gdeint.ResStruct();
+            resListPicJSON[j] = new gdeint.ResStruct();
             this.m_resNameFinder.setInp(this.m_retryLensArr[j].m2_imgResName);
-            resListPicXML[j].m_resName = this.m_resNameFinder.getResult();
-            resListPicXML[j].m_givenSize = 500;
+            resListPicJSON[j].m_resName = this.m_resNameFinder.getResult();
+            resListPicJSON[j].m_givenSize = 500;
 
         }
 
@@ -216,22 +297,22 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
 
         var i:number;
         for(i=0;i<this.m_seledPicTagArr.length;++i) {
-            resListPicXML[i+3] = new gdeint.ResStruct();
+            resListPicJSON[i+3] = new gdeint.ResStruct();
             this.m_resNameFinder.setInp(this.m_seledPicTagArr[i].toString());
-            resListPicXML[i+3].m_resName = this.m_resNameFinder.getResult();
+            resListPicJSON[i+3].m_resName = this.m_resNameFinder.getResult();
 
-            resListPicXML[i+3].m_givenSize = 500;
+            resListPicJSON[i+3].m_givenSize = 500;
         }
 
-        picXMLTask.m_resList = resListPicXML;
+        picJSONTask.m_resList = resListPicJSON;
         if(this.m_NoImgMode) {
-            picXMLTask.m_proportion = 101;
+            picJSONTask.m_proportion = 101;
         }
         else {
-            picXMLTask.m_proportion = 30;
+            picJSONTask.m_proportion = 30;
         }
-        picXMLTask.m_taskName = "picXMLs";
-        preloaderUI.addTask(picXMLTask);
+        picJSONTask.m_taskName = "picXMLs";
+        preloaderUI.addTask(picJSONTask);
         preloaderUI.setNoTaskLeft(true); // 表示需加载的资源已全部添加到列表。
 
         preloaderUI.startPreload();
@@ -379,6 +460,7 @@ class CEyelenProPraContainer extends CUIContainer implements IEyelenPraContainer
         this.m_preloaderUI.clearProgress();
         this._getPreloaderUI().hide();
 
+        console.log("OK1");
         this.m_praScene.startNewPra();
         this._getPraScene().show();
     }

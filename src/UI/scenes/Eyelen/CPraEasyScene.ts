@@ -67,6 +67,8 @@ namespace eyelen4 {
         private m_cmpLenDlg: CGridCmpLenDlg; // 长度比较对话框。
         private finalScoreDlg:CFinalScoreDlg; // 最终得分显示框。
 
+        private m2_cc:boolean = false;
+
         /////////////////////////////////////////////////////////////////////////////
 
         public constructor() {
@@ -128,6 +130,8 @@ namespace eyelen4 {
 
             this.shutdownClock.setTimer(g_shutdownTimer); // 关联全局计时器以显示时间。
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onClockTap , this);
+
+            this.m2_cc = true;
         }
 
         public _setParentContainer(c:IEyelenPraContainer):void {
@@ -864,10 +868,7 @@ namespace eyelen4 {
         private onBack2MainMenuConfirm(param:any): void {
             var ret:boolean = <boolean>param;
             if(ret) {
-                this.finalScoreDlg.visible = false;
-                this.bottomArea.lenInputer.unlock();
-                this.bottomArea.lenInputer.clearLen();
-
+                this.resetSceneElems();
                 g_pageJumper.gotoPage("WelcomeScene" , null);
             }
             else {
@@ -881,11 +882,24 @@ namespace eyelen4 {
         }
 
         /*
-        * 刷新场景。通常新练习开始时，资源加载完成后调用。 
+        * 重置场景各元素状态以便进行新一轮练习。
+        */
+        public resetSceneElems():void {
+            this.m_cmpLenDlg.visible = false;
+            this.finalScoreDlg.visible = false;
+            this.bottomArea.lenInputer.unlock();
+            this.bottomArea.lenInputer.clearLen();
+
+        }
+
+        /*
+        * 刷新场景。通常新练习开始时，资源加载完成后调用。
         */ 
         public refreshScene():void {
 
             //        1、Reset Img content & location
+            this.resetSceneElems();
+
             this.showLen(this.m_pm.getCurLen());
 
             if(this.m_NoImgMode) {
@@ -983,5 +997,6 @@ namespace eyelen4 {
             this.readjustThumbSel();
 
         }
+
     }
 }

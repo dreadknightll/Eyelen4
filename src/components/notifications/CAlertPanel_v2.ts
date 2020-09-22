@@ -5,7 +5,7 @@
 ************************************************************/
 
 namespace gdeint {
-    export class CAlertPanel extends eui.Panel implements IAlertDlg,IContainerPlugin {
+    export class CAlertPanel_v2 extends eui.Panel implements IAlertDlg,IContainerPlugin {
 
         private m_parent:INotiParent;
         private m_parentContainer:IUIContainer;
@@ -52,10 +52,15 @@ namespace gdeint {
             显示警告框。
         */
         public showDlg():void {
-            this.getParent().getNotiLayer().addChild(CDispObj2EgretDOAdapter.from(this));
-            this.getParent().getNotiLayer().show();
-            this.visible = true;
-            this.getParent().disableForNoti();
+            if(this.getParent()) {
+                this.getParent().getNotiLayer().addChild(CDispObj2EgretDOAdapter.from(this));
+                this.getParent().getNotiLayer().show();
+                this.visible = true;
+                this.getParent().disableForNoti();
+            }
+            else {
+                this.show();
+            }
         }
 
 
@@ -88,11 +93,17 @@ namespace gdeint {
 
         private onCloseBtn(evt:egret.TouchEvent): void {
             this.visible = false;
-            this.getParent().getNotiLayer().hide();//.visible = false;
-            this.getParent().applyFunc(this.m_closeListener,null);
-            this.getParent().resumeAfterNoti();
+
+            if(this.getParent()) {
+                this.getParent().getNotiLayer().hide();
+                this.getParent().applyFunc(this.m_closeListener,null);
+                this.getParent().resumeAfterNoti();
+            }
         }
 
+        /*
+            注：要利用警告框提示信息时应调用showDlg()，而不是show()。
+        */
         public show():void {
             this.visible = true;
         }
