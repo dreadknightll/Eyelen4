@@ -13,6 +13,7 @@
 		<e:Button id="startDiffProBtn" label="进入" x="239" y="336" anchorOffsetX="0" width="100"/>
 		<e:Button id="viewDiffProHisScoreBtn" label="练习日志" x="239" y="399"/>
 		<e:Label text="专业模式\n（开放中）" x="126.5" y="348.5" textColor="0x000000" size="24" textAlign="center"/>
+		<e:Label id="aao" text="（仅限安卓app版）" x="131.5" y="412" textColor="0x000000" size="24" textAlign="center"/>
 		<e:Label text="传统模式" x="133.5" y="519" textColor="0x000000" size="24"/>
 		<eyelen4:CViewDiffProHisScoreDlg id="viewDiffProHisScoreDlg" visible="false" />
 		<e:Image id="diffProHelpBtn" width="32.5" height="32.5" x="166.25" y="401.25" source="helpQuestioner_png" anchorOffsetX="0" anchorOffsetY="0"/>

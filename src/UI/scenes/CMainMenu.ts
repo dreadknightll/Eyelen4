@@ -13,9 +13,10 @@ namespace eyelen4 {
                 public viewDiffProHisScoreBtn: eui.Button;
                 public viewDiffProHisScoreDlg: CViewDiffProHisScoreDlg;
                 public diffProHelpBtn:eui.Button;
+                public aao:eui.Label;
 
 //                public startEasyBtn1: eui.Button;
-                public startEasyBtn2: eui.Button; // 开始简单练习按钮。
+                public startEasyBtn2: eui.Button; // 开始简单练习按钮。1
                 public printMisRecBtn:eui.Button;
                 private menuGrp:eui.Group;
                 private alertDlg:gdeint.CAlertPanel_v2;
@@ -34,6 +35,21 @@ namespace eyelen4 {
                 }
 
                 public childrenCreated() {
+
+                        if(S_BUILD_FOR == S_NATIVE_ANDROID) {
+                                this.aao.visible = false;
+                                this.startDiffProBtn.visible = true;
+                                this.diffProHelpBtn.visible = true;
+                                this.viewDiffProHisScoreBtn.visible = true;
+
+                        }
+                        else {
+                                this.aao.visible = true;
+                                this.startDiffProBtn.visible = false;
+                                this.diffProHelpBtn.visible = false;
+                                this.viewDiffProHisScoreBtn.visible = false;
+                        }
+                        
 //                        this.startEasyBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startEasy,this);
                         this.startEasyBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startEasy,this);
 

@@ -7,7 +7,7 @@
 	<e:Scroller x="17" y="96" height="419">
 		<e:viewport>
 			<e:Group>
-				<e:Label id="contentLabel" text="" x="10" y="5" size="24" textColor="0x000000" anchorOffsetX="0" width="339" anchorOffsetY="0" height="800"/>
+				<e:Label id="contentLabel" text="" x="10" y="5" size="24" textColor="0x000000" anchorOffsetX="0" width="339" anchorOffsetY="0" height="1000"/>
 			</e:Group>
 		</e:viewport>
 	</e:Scroller>

@@ -28,6 +28,18 @@ var eyelen4;
             //                        this.m_startTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.startDifficult,this);
         }
         CMainMenu.prototype.childrenCreated = function () {
+            if (S_BUILD_FOR == S_NATIVE_ANDROID) {
+                this.aao.visible = false;
+                this.startDiffProBtn.visible = true;
+                this.diffProHelpBtn.visible = true;
+                this.viewDiffProHisScoreBtn.visible = true;
+            }
+            else {
+                this.aao.visible = true;
+                this.startDiffProBtn.visible = false;
+                this.diffProHelpBtn.visible = false;
+                this.viewDiffProHisScoreBtn.visible = false;
+            }
             //                        this.startEasyBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startEasy,this);
             this.startEasyBtn2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startEasy, this);
             //                        this.startDifficultBtn1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startDifficult,this);
