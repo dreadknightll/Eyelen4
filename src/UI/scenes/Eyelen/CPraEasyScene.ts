@@ -81,7 +81,7 @@ namespace eyelen4 {
 
             this.m_wm = new CEyelen4WinModel();
 
-            this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
+            this.m_wm.setTopSpaceHeight(g_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
             this.m_wm.setTopHeight2(190);
 

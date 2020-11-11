@@ -18,6 +18,7 @@ var gdeint;
         CPraMenu.prototype.childrenCreated = function () {
             this.sndConfMenu.fetchData(); // 从存储获取设置值到声音设置对话框。
             this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClose, this);
+            this.adjustTopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onAdjustTopBtn, this);
             this.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCaliBtn, this);
             this.sndConfBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSndConfBtn, this);
             this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onHelpBtn, this);
@@ -59,6 +60,10 @@ var gdeint;
             argArr[0] = false;
             this._getParentContainer().applyFunc(this.m_closeListener, argArr);
         };
+        CPraMenu.prototype.onAdjustTopBtn = function () {
+            this.onMenu("AdjustTop");
+            this.adjustTopDlg.visible = true;
+        };
         CPraMenu.prototype.onCaliBtn = function () {
             this.onMenu("Calibrate");
         };
@@ -75,6 +80,11 @@ var gdeint;
             this.onMenu("ViewTerms");
         };
         CPraMenu.prototype.onMenu = function (menuClicked) {
+            if ("AdjustTop" == menuClicked) {
+                console.log("onMenu Adjusting top!");
+                console.log("Now top space is:" + g_topSpaceHeight);
+                //                gdeint.CAdjustTop 
+            }
             if ("Calibrate" == menuClicked) {
                 //                this.m_parentContainer.showCaliDlg(this.onCaliDlgClose);
                 this.m_parentContainer.showCaliDlg(this.m_parentContainer.sendMsgToScene("getOnCaliDlgCloseFunc", null));

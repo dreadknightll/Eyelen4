@@ -110,6 +110,8 @@ declare class praOKBtnSkin extends eui.Skin{
 }
 declare class mainMenuSceneSkin extends eui.Skin{
 }
+declare class adjustTopDlgSkin extends eui.Skin{
+}
 declare class bottomAreaDifficultSkin extends eui.Skin{
 }
 declare class bottomAreaEasySkin extends eui.Skin{

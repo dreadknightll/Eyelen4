@@ -5,6 +5,7 @@ namespace gdeint {
 		}
 
         public closeBtn: eyelen4.CCloseBtn;
+        public adjustTopBtn: eui.Button;
         public caliBtn:eui.Button;
         public helpBtn:eui.Button;
         public sndConfBtn:eui.Button;
@@ -14,6 +15,7 @@ namespace gdeint {
         private helpPanel:eyelen4.CHelpPanel;
         private sndConfMenu:CSndConfMenu;
 		private viewTermsMenu:CViewTermsMenu;
+        private adjustTopDlg:gdeint.CAdjustTopDlg;
 
 		m_parentContainer:IEyelenPraContainer;
         private m_closeListener:(boolean)=>void;
@@ -24,6 +26,8 @@ namespace gdeint {
             this.sndConfMenu.fetchData(); // 从存储获取设置值到声音设置对话框。
 
             this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onClose,this);
+
+            this.adjustTopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onAdjustTopBtn , this);
             this.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onCaliBtn , this);
             this.sndConfBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onSndConfBtn , this);
             this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onHelpBtn , this);
@@ -77,6 +81,11 @@ namespace gdeint {
             this._getParentContainer().applyFunc(this.m_closeListener,argArr);
         }
 
+        private onAdjustTopBtn():void {
+            this.onMenu("AdjustTop");
+            this.adjustTopDlg.visible = true;
+        }
+
         private onCaliBtn():void {
             this.onMenu("Calibrate");
         }
@@ -98,7 +107,12 @@ namespace gdeint {
         }
 
         public onMenu(menuClicked:string):void {
-
+            if("AdjustTop" == menuClicked) {
+                console.log("onMenu Adjusting top!");
+                console.log("Now top space is:"+ g_topSpaceHeight);
+//                gdeint.CAdjustTop 
+                
+            }
             if("Calibrate" == menuClicked) {
 //                this.m_parentContainer.showCaliDlg(this.onCaliDlgClose);
                 this.m_parentContainer.showCaliDlg(this.m_parentContainer.sendMsgToScene("getOnCaliDlgCloseFunc" , null));

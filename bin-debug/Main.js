@@ -64,17 +64,15 @@ var S_NATIVE_ANDROID = 2;
 var S_NATIVE_IOS = 3;
 var S_NATIVE_WP = 4;
 var S_WECHAT = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
-var S_BUILD_FOR = S_NATIVE_ANDROID;
+var S_BUILD_FOR = S_WEB;
 //Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
 var S_NO_IMG_MODE = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
 var g_console = new egret.TextField(); // 调试终端。
 var g_winWidth; // 保存舞台宽度。
 var g_winHeight; // 保存舞台高度。
 var g_isSndOn = true; // 声音是否开启。
-var s_topSpaceHeight = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
-if (S_BUILD_FOR == S_NATIVE_ANDROID) {
-    s_topSpaceHeight = 0;
-}
+var s_defaultTopSpaceHeight = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
+var g_topSpaceHeight = s_defaultTopSpaceHeight;
 var g_scenePos; // 此处gdeint为libGdeint使用的命名空间。
 var g_scale = 1; // 有些元素需要根据实际分辨率确定大小、位置等信息，因此需要保存此变量。好处：舞台分辨率提高了也无重新设计exml等界面。
 var g_praEasyScene; // 简单难度练习场景。

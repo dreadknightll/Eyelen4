@@ -52,7 +52,8 @@
 		"gdeint.CMenuBtn": "resource/skins/components/common/menuBtn.exml",
 		"gdeint.CPraMenu": "resource/skins/scenes/Eyelen/partials/praMenuSkin.exml",
 		"gdeint.CViewTermsMenu": "resource/skins/scenes/Eyelen/partials/viewTermsMenuSkin.exml",
-		"gdeint.CSndConfMenu": "resource/skins/scenes/Eyelen/partials/sndConfMenuSkin.exml"
+		"gdeint.CSndConfMenu": "resource/skins/scenes/Eyelen/partials/sndConfMenuSkin.exml",
+		"gdeint.CAdjustTopDlg": "resource/skins/scenes/Eyelen/partials/adjustTopDlgSkin.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -99,6 +100,7 @@
 		"resource/skins/components/eyelen/praOKBtnSkin.exml",
 		"resource/skins/components/eyelen/lenInputerEasySkin.exml",
 		"resource/skins/scenes/Eyelen/mainMenuSceneSkin.exml",
+		"resource/skins/scenes/Eyelen/partials/adjustTopDlgSkin.exml",
 		"resource/skins/scenes/Eyelen/partials/bottomAreaDifficultSkin.exml",
 		"resource/skins/scenes/Eyelen/partials/bottomAreaEasySkin.exml",
 		"resource/skins/scenes/Eyelen/partials/midAreaSkin.exml",

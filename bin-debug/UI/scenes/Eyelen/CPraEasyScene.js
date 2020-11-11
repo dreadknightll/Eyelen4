@@ -43,7 +43,7 @@ var eyelen4;
             _this.y = 0;
             _this.m_topOpen = true;
             _this.m_wm = new CEyelen4WinModel();
-            _this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
+            _this.m_wm.setTopSpaceHeight(g_topSpaceHeight);
             _this.m_wm.setTopHeight1(30);
             _this.m_wm.setTopHeight2(190);
             _this.m_wm.showTop();

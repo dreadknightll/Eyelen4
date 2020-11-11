@@ -43,7 +43,7 @@ var eyelen4;
             _this.y = 0;
             _this.m_topOpen = true;
             _this.m_wm = new CEyelen4WinModel(); // 此模型用于计算画面各区域的位置大小等数据。
-            _this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
+            _this.m_wm.setTopSpaceHeight(g_topSpaceHeight);
             _this.m_wm.setTopHeight1(30);
             _this.m_wm.setTopHeight2(190);
             _this.m_wm.showTop();

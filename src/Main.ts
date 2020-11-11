@@ -23,7 +23,7 @@ const S_NATIVE_IOS:number = 3;
 const S_NATIVE_WP:number = 4;
 const S_WECHAT:number = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
 
-const S_BUILD_FOR:number = S_NATIVE_ANDROID;
+const S_BUILD_FOR:number = S_WEB;
 
 //Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
 const S_NO_IMG_MODE:boolean = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
@@ -36,11 +36,8 @@ var g_winHeight: number; // 保存舞台高度。
 
 var g_isSndOn:boolean = true; // 声音是否开启。
 
-var s_topSpaceHeight: number = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
-
-if(S_BUILD_FOR == S_NATIVE_ANDROID) {
-    s_topSpaceHeight = 0;
-}
+var s_defaultTopSpaceHeight: number = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
+var g_topSpaceHeight:number = s_defaultTopSpaceHeight;
 
 var g_scenePos:gdeint.CPoint; // 此处gdeint为libGdeint使用的命名空间。
 var g_scale:number = 1; // 有些元素需要根据实际分辨率确定大小、位置等信息，因此需要保存此变量。好处：舞台分辨率提高了也无重新设计exml等界面。

@@ -81,7 +81,7 @@ namespace eyelen4 {
 
             this.m_wm = new CEyelen4WinModel(); // 此模型用于计算画面各区域的位置大小等数据。
 
-            this.m_wm.setTopSpaceHeight(s_topSpaceHeight);
+            this.m_wm.setTopSpaceHeight(g_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
             this.m_wm.setTopHeight2(190);
             this.m_wm.showTop();
