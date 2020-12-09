@@ -20,6 +20,8 @@ var CTopSpace_Eyelen = (function (_super) {
     __extends(CTopSpace_Eyelen, _super);
     function CTopSpace_Eyelen() {
         var _this = _super.call(this) || this;
+        _this.m_width = 300;
+        _this.m_height = 200;
         _this.m_space = new egret.Shape();
         _this.m_space.x = 0;
         _this.m_space.y = 0;
@@ -30,6 +32,8 @@ var CTopSpace_Eyelen = (function (_super) {
         this.m_color = clr;
     };
     CTopSpace_Eyelen.prototype.draw = function () {
+        this.m_space.width = this.m_width;
+        this.m_space.height = this.m_height;
         this.m_space.graphics.clear();
         this.m_space.graphics.beginFill(this.m_color);
         this.m_space.graphics.drawRect(0, 0, this.width, this.height);

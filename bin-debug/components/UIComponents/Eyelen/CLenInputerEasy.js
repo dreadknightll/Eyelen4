@@ -22,7 +22,7 @@ var eyelen4;
             var _this = _super.call(this) || this;
             _this.m_gridWidth = 30;
             _this.m_loadedCellCnt = 0; //已加载的格子个数。
-            _this.m_totalGridCnt = 12;
+            _this.m_totalGridCnt = 15;
             _this.m_rulerBodyCellContainer = new egret.DisplayObjectContainer();
             _this.m_cells = new Array();
             _this.drawEmptyCells(_this.m_totalGridCnt);

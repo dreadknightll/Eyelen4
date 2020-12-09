@@ -62,7 +62,6 @@ var gdeint;
         };
         CPraMenu.prototype.onAdjustTopBtn = function () {
             this.onMenu("AdjustTop");
-            this.adjustTopDlg.visible = true;
         };
         CPraMenu.prototype.onCaliBtn = function () {
             this.onMenu("Calibrate");
@@ -84,6 +83,8 @@ var gdeint;
                 console.log("onMenu Adjusting top!");
                 console.log("Now top space is:" + g_topSpaceHeight);
                 //                gdeint.CAdjustTop 
+                this.adjustTopDlg.topSpaceInp.text = g_topSpaceHeight.toString();
+                this.adjustTopDlg.visible = true;
             }
             if ("Calibrate" == menuClicked) {
                 //                this.m_parentContainer.showCaliDlg(this.onCaliDlgClose);

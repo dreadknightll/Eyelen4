@@ -23,7 +23,7 @@ const S_NATIVE_IOS:number = 3;
 const S_NATIVE_WP:number = 4;
 const S_WECHAT:number = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
 
-const S_BUILD_FOR:number = S_WEB;
+const S_BUILD_FOR:number = S_NATIVE_ANDROID;
 
 //Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
 const S_NO_IMG_MODE:boolean = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。

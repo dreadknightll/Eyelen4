@@ -29,7 +29,7 @@ namespace eyelen4 {
         private m_cells: Array<CRulerEasyBodyCell>;
         private m_loadedCellCnt:number = 0; //已加载的格子个数。
 
-        private m_totalGridCnt:number = 12;
+        private m_totalGridCnt:number = 15;
         private m_userGridCnt:number;
 
         public constructor() {

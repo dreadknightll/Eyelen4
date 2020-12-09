@@ -17,6 +17,9 @@ class CTopSpace_Eyelen extends egret.DisplayObjectContainer{
 	private m_space:egret.Shape;
 	private m_color:number;
 
+	public m_width = 300;
+	public m_height = 200;
+
 	public setColor(clr:number):void
 	{
     	this.m_color = clr;
@@ -24,6 +27,8 @@ class CTopSpace_Eyelen extends egret.DisplayObjectContainer{
 
 	public draw():void
 	{
+		this.m_space.width = this.m_width;
+		this.m_space.height = this.m_height;
       this.m_space.graphics.clear();
     	this.m_space.graphics.beginFill(this.m_color);
     	this.m_space.graphics.drawRect(0,0,this.width,this.height);

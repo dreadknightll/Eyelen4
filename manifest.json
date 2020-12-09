@@ -135,7 +135,7 @@
 		"bin-debug/UI/scenes/Eyelen/CPraDiffProScene.js",
 		"bin-debug/UI/scenes/Eyelen/CPraEasyScene.js",
 		"bin-debug/UI/scenes/Eyelen/IEyelenPraScene.js",
-		"bin-debug/UI/scenes/Eyelen/partials/CAdjustTop.js",
+		"bin-debug/UI/scenes/Eyelen/partials/CAdjustTopDlg.js",
 		"bin-debug/UI/scenes/Eyelen/partials/CBottomAreaDifficult.js",
 		"bin-debug/UI/scenes/Eyelen/partials/CBottomAreaEasy.js",
 		"bin-debug/UI/scenes/Eyelen/partials/CMidAreaDifficult.js",

@@ -286,7 +286,7 @@ namespace eyelen4 {
                 this.createScene();
             }
             else {
-                this.refreshScene();
+                this.resetScene();
             }
         }
 
@@ -524,7 +524,8 @@ namespace eyelen4 {
             tmpSelTp.m_y = evt.m_tchY - this.m_UIPresenter.getThumbSelRect().m_height / 2;
 
             this.m_UIPresenter.inpThSelPt(tmpSelTp);
-            this.syncWithUIPresenter();
+//            this.syncWithUIPresenter();
+            this.refreshScene();
         }
 
         /*
@@ -643,7 +644,8 @@ namespace eyelen4 {
     //OK to start and show first len. （对于无图模式此处代码未必正确）
             var firstLen:CLen = this.m_pm.getCurLen();
             this.m_UIPresenter.showLen(firstLen);
-            this.syncWithUIPresenter();
+//            this.syncWithUIPresenter();
+            this.refreshScene();
             this.showInitInstrus();
 
         }
@@ -830,8 +832,9 @@ namespace eyelen4 {
                 var newGridWidth:number = this.m_UIPresenter.getRenderFilter().xOConv(30);
                 this.bottomArea.lenInputer.setGridWidth(newGridWidth);
                 this.m_pm.setGridDispWidth(newGridWidth);
-                this.m_UIPresenter.updateFromPM();
-                this.syncWithUIPresenter();
+//                this.m_UIPresenter.updateFromPM();
+//                this.syncWithUIPresenter();
+                this.refreshScene();
             }
             this.m_parentContainer.showPraMenu();
         }
@@ -882,23 +885,39 @@ namespace eyelen4 {
         }
 
         /*
-        * 重置场景各元素状态以便进行新一轮练习。
+        * 重置场景各元素状态。
         */
-        public resetSceneElems():void {
+        public refreshSceneElems():void {
+            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.setColor(0xFF0000);
+            this.m_topSpace.redraw();
+
+            this.topAreaGroup.y = this.m_wm.getTopY();
+            this.topArea.setTrueHeight(this.m_wm.getTopHeight());
+            this.midAreaGroup.y = this.m_wm.getMidY();
+            this.midArea.setTrueHeight(this.m_wm.getMidHeight());
+            this.bottomAreaGroup.y = this.m_wm.getBottomY();
+            this.bottomArea.setTrueHeight(this.m_wm.getBottomHeight());
+
             this.m_cmpLenDlg.visible = false;
             this.finalScoreDlg.visible = false;
             this.bottomArea.lenInputer.unlock();
             this.bottomArea.lenInputer.clearLen();
 
+
+
+        }
+
+        public resetSceneElems():void {
+            this.refreshSceneElems();
         }
 
         /*
-        * 刷新场景。通常新练习开始时，资源加载完成后调用。
+        * 重置场景。通常新练习开始时，资源加载完成后调用。
         */ 
-        public refreshScene():void {
-
+        public resetScene():void {
             //        1、Reset Img content & location
-            this.resetSceneElems();
+            this.refreshSceneElems();
 
             this.showLen(this.m_pm.getCurLen());
 
@@ -937,12 +956,101 @@ namespace eyelen4 {
             this.m_UIPresenter.m_userGCnt = 0;
 
             this.showInitInstrus();
+
         }
 
+        // 根据数据模型对象的内容刷新画面。需要createScene后才能正常调用。
+        public refreshScene():void 
+        {
+            //数据源：m_pm、m_UIPresenter、m_wm
+
+            {
+                // 根据数据源：m_pm、m_wm 更新 m_UIPresenter。本大括号里不得对数据源进行修改！
+
+                this.m_UIPresenter.updateFromPM();
+                this.m_UIPresenter.inpImgSelWidth(this.m_wm.getWinWidth() /this.m_UIPresenter.getRenderFilter()._getCaRat());
+                this.m_UIPresenter.inpImgSelHeight(this.m_wm.getMidVisibleHeight());
+
+            }
+
+            // 本函数里此后代码不得对数据源进行修改：
+            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.setColor(0xFF0000);
+            this.m_topSpace.redraw();
+
+            this.topAreaGroup.y = this.m_wm.getTopY();
+            this.topArea.setTrueHeight(this.m_wm.getTopHeight());
+            this.midAreaGroup.y = this.m_wm.getMidY();
+            this.midArea.setTrueHeight(this.m_wm.getMidHeight());
+            this.bottomAreaGroup.y = this.m_wm.getBottomY();
+            this.bottomArea.setTrueHeight(this.m_wm.getBottomHeight());
+
+            this.m_cmpLenDlg.visible = false;
+            this.finalScoreDlg.visible = false;
+            this.bottomArea.lenInputer.unlock();
+            this.bottomArea.lenInputer.clearLen();
+
+
+
+            // Img
+            this.midArea.readjustCircler();
+            var imgRect: gdeint.CRect;
+            imgRect = this.m_UIPresenter.getImgRect();
+            if(!this.m_NoImgMode) {
+                this.midArea.imgFromFile.width = imgRect.m_width;
+                this.midArea.imgFromFile.height = imgRect.m_height;
+            }
+            else {
+                this.midArea.m_randomGraphShape.resize(imgRect.m_width , imgRect.m_height);
+            }
+            var tmpLen:CLen;
+            tmpLen = this.m_UIPresenter.getLen();
+            if(tmpLen && null != tmpLen) {
+                if(!this.m_NoImgMode) {
+                    this.showImg(tmpLen.m2_imgResName);
+                }
+                else {
+//                    this.showRandomGraph();
+                }
+            }
+
+            var inpPos:gdeint.CPoint = new gdeint.CPoint();
+            inpPos.m_x = this.m_UIPresenter.getImgRect().m_left;
+            inpPos.m_y = this.m_UIPresenter.getImgRect().m_top;
+            this.midArea.m_imgCircler.setInpPos(inpPos);
+            var inpPosFinal:gdeint.CPoint = this.midArea.m_imgCircler.getOutpPos();
+            this.midArea.midContentGroup.x = inpPosFinal.m_x;
+            this.midArea.midContentGroup.y = inpPosFinal.m_y;
+            console.log("inpPosFinal:["+inpPosFinal.m_x+","+inpPosFinal.m_y+"]");
+
+            var newImgSelPt:gdeint.CPoint = new gdeint.CPoint();
+            newImgSelPt.m_x = -inpPosFinal.m_x;
+            newImgSelPt.m_y = -inpPosFinal.m_y + this.midArea.m_visibleStartY;
+            this.midArea.m_UIPresenter.inpImgSelPt(newImgSelPt);
+
+
+            this.showLen(this.m_pm.getCurLen());
+
+            var tmpSelRect = new gdeint.CRect();
+
+            tmpSelRect.m_left = 0;
+            tmpSelRect.m_top = 0;
+            tmpSelRect.m_width = this.m_wm.getWinWidth() /this.m_UIPresenter.getRenderFilter()._getCaRat();
+            tmpSelRect.m_height = this.m_wm.getMidHeight();
+
+            //reset thumb & thumbSel
+            this.readjustThumb();
+            this.readjustThumbSel();
+
+            //        2、Progress bar and score to 0
+            this.topArea.progressView.setProgress(0);
+            this.topArea.scoreView.clearScore();
+
+        }
 
         /*
-        * 与presenter进行同步，把presenter里最新数据应用到场景。
-        */ 
+        * 与presenter进行同步，把presenter里最新数据应用到场景。（即将作废，由refreshScene取代）
+        */ /*
         public syncWithUIPresenter() : void {
 
             // Img
@@ -996,7 +1104,7 @@ namespace eyelen4 {
             // ThumbSel
             this.readjustThumbSel();
 
-        }
+        }*/
 
     }
 }

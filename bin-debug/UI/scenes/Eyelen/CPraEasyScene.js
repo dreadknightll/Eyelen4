@@ -200,7 +200,7 @@ var eyelen4;
                 this.createScene();
             }
             else {
-                this.refreshScene();
+                this.resetScene();
             }
         };
         /*
@@ -385,7 +385,8 @@ var eyelen4;
             tmpSelTp.m_x = evt.m_tchX - this.m_UIPresenter.getThumbSelRect().m_width / 2;
             tmpSelTp.m_y = evt.m_tchY - this.m_UIPresenter.getThumbSelRect().m_height / 2;
             this.m_UIPresenter.inpThSelPt(tmpSelTp);
-            this.syncWithUIPresenter();
+            //            this.syncWithUIPresenter();
+            this.refreshScene();
         };
         /*
         * 创建顶部区域。
@@ -478,7 +479,8 @@ var eyelen4;
             //OK to start and show first len. （对于无图模式此处代码未必正确）
             var firstLen = this.m_pm.getCurLen();
             this.m_UIPresenter.showLen(firstLen);
-            this.syncWithUIPresenter();
+            //            this.syncWithUIPresenter();
+            this.refreshScene();
             this.showInitInstrus();
         };
         /*
@@ -625,8 +627,9 @@ var eyelen4;
                 var newGridWidth = this.m_UIPresenter.getRenderFilter().xOConv(30);
                 this.bottomArea.lenInputer.setGridWidth(newGridWidth);
                 this.m_pm.setGridDispWidth(newGridWidth);
-                this.m_UIPresenter.updateFromPM();
-                this.syncWithUIPresenter();
+                //                this.m_UIPresenter.updateFromPM();
+                //                this.syncWithUIPresenter();
+                this.refreshScene();
             }
             this.m_parentContainer.showPraMenu();
         };
@@ -669,20 +672,32 @@ var eyelen4;
         CPraEasyScene.prototype.createBottomMenu = function () {
         };
         /*
-        * 重置场景各元素状态以便进行新一轮练习。
+        * 重置场景各元素状态。
         */
-        CPraEasyScene.prototype.resetSceneElems = function () {
+        CPraEasyScene.prototype.refreshSceneElems = function () {
+            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.setColor(0xFF0000);
+            this.m_topSpace.redraw();
+            this.topAreaGroup.y = this.m_wm.getTopY();
+            this.topArea.setTrueHeight(this.m_wm.getTopHeight());
+            this.midAreaGroup.y = this.m_wm.getMidY();
+            this.midArea.setTrueHeight(this.m_wm.getMidHeight());
+            this.bottomAreaGroup.y = this.m_wm.getBottomY();
+            this.bottomArea.setTrueHeight(this.m_wm.getBottomHeight());
             this.m_cmpLenDlg.visible = false;
             this.finalScoreDlg.visible = false;
             this.bottomArea.lenInputer.unlock();
             this.bottomArea.lenInputer.clearLen();
         };
+        CPraEasyScene.prototype.resetSceneElems = function () {
+            this.refreshSceneElems();
+        };
         /*
-        * 刷新场景。通常新练习开始时，资源加载完成后调用。
+        * 重置场景。通常新练习开始时，资源加载完成后调用。
         */
-        CPraEasyScene.prototype.refreshScene = function () {
+        CPraEasyScene.prototype.resetScene = function () {
             //        1、Reset Img content & location
-            this.resetSceneElems();
+            this.refreshSceneElems();
             this.showLen(this.m_pm.getCurLen());
             if (this.m_NoImgMode) {
                 this.m_UIPresenter.setImgWidth(1024);
@@ -713,10 +728,29 @@ var eyelen4;
             this.m_UIPresenter.m_userGCnt = 0;
             this.showInitInstrus();
         };
-        /*
-        * 与presenter进行同步，把presenter里最新数据应用到场景。
-        */
-        CPraEasyScene.prototype.syncWithUIPresenter = function () {
+        // 根据数据模型对象的内容刷新画面。需要createScene后才能正常调用。
+        CPraEasyScene.prototype.refreshScene = function () {
+            //数据源：m_pm、m_UIPresenter、m_wm
+            {
+                // 根据数据源：m_pm、m_wm 更新 m_UIPresenter。本大括号里不得对数据源进行修改！
+                this.m_UIPresenter.updateFromPM();
+                this.m_UIPresenter.inpImgSelWidth(this.m_wm.getWinWidth() / this.m_UIPresenter.getRenderFilter()._getCaRat());
+                this.m_UIPresenter.inpImgSelHeight(this.m_wm.getMidVisibleHeight());
+            }
+            // 本函数里此后代码不得对数据源进行修改：
+            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.setColor(0xFF0000);
+            this.m_topSpace.redraw();
+            this.topAreaGroup.y = this.m_wm.getTopY();
+            this.topArea.setTrueHeight(this.m_wm.getTopHeight());
+            this.midAreaGroup.y = this.m_wm.getMidY();
+            this.midArea.setTrueHeight(this.m_wm.getMidHeight());
+            this.bottomAreaGroup.y = this.m_wm.getBottomY();
+            this.bottomArea.setTrueHeight(this.m_wm.getBottomHeight());
+            this.m_cmpLenDlg.visible = false;
+            this.finalScoreDlg.visible = false;
+            this.bottomArea.lenInputer.unlock();
+            this.bottomArea.lenInputer.clearLen();
             // Img
             this.midArea.readjustCircler();
             var imgRect;
@@ -750,17 +784,18 @@ var eyelen4;
             newImgSelPt.m_x = -inpPosFinal.m_x;
             newImgSelPt.m_y = -inpPosFinal.m_y + this.midArea.m_visibleStartY;
             this.midArea.m_UIPresenter.inpImgSelPt(newImgSelPt);
-            // Len
-            this._showLen(tmpLen);
-            // Thumb
+            this.showLen(this.m_pm.getCurLen());
+            var tmpSelRect = new gdeint.CRect();
+            tmpSelRect.m_left = 0;
+            tmpSelRect.m_top = 0;
+            tmpSelRect.m_width = this.m_wm.getWinWidth() / this.m_UIPresenter.getRenderFilter()._getCaRat();
+            tmpSelRect.m_height = this.m_wm.getMidHeight();
+            //reset thumb & thumbSel
             this.readjustThumb();
-            // ThumbQuestioner
-            var questionerPt;
-            questionerPt = this.m_UIPresenter.getThumbQuestionerDispPt();
-            this.topArea.thumbUI.thumbQuestioner.x = questionerPt.m_x - 8;
-            this.topArea.thumbUI.thumbQuestioner.y = questionerPt.m_y - 11;
-            // ThumbSel
             this.readjustThumbSel();
+            //        2、Progress bar and score to 0
+            this.topArea.progressView.setProgress(0);
+            this.topArea.scoreView.clearScore();
         };
         return CPraEasyScene;
     }(CCommonEyelenPraScene));

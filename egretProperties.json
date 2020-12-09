@@ -26,7 +26,7 @@
     },
     {
       "name": "libGdeint",
-      "path": "/System/Volumes/Data/Volumes/Macintosh HD - 数据/src/gdeint/libGdeint/libGdeint"
+      "path": "../../../libGdeint/libGdeint"
     }
   ],
   "targets": {
@@ -38,5 +38,11 @@
       "appname": "长度目测训练4",
       "packagename": "Eyelen3"
     }
+  },
+  "eui": {
+    "exmlRoot": [
+      "resource/eui_skins",
+      "resource/skins"
+    ]
   }
 }

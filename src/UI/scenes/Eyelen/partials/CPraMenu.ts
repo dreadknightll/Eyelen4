@@ -83,7 +83,6 @@ namespace gdeint {
 
         private onAdjustTopBtn():void {
             this.onMenu("AdjustTop");
-            this.adjustTopDlg.visible = true;
         }
 
         private onCaliBtn():void {
@@ -111,6 +110,9 @@ namespace gdeint {
                 console.log("onMenu Adjusting top!");
                 console.log("Now top space is:"+ g_topSpaceHeight);
 //                gdeint.CAdjustTop 
+            this.adjustTopDlg.topSpaceInp.text = g_topSpaceHeight.toString();
+            this.adjustTopDlg.visible = true;
+
                 
             }
             if("Calibrate" == menuClicked) {

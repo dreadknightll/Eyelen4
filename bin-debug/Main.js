@@ -64,7 +64,7 @@ var S_NATIVE_ANDROID = 2;
 var S_NATIVE_IOS = 3;
 var S_NATIVE_WP = 4;
 var S_WECHAT = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
-var S_BUILD_FOR = S_WEB;
+var S_BUILD_FOR = S_NATIVE_ANDROID;
 //Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
 var S_NO_IMG_MODE = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
 var g_console = new egret.TextField(); // 调试终端。
