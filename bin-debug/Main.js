@@ -434,6 +434,24 @@ var Main = (function (_super) {
             console.log("RetryLens sent to ts:" + g2_tmpRetryLensJSONStr);
             g2_tmpWaitingForRetFromNative = false;
         });
+        egret.ExternalInterface.addCallback("ret_fetchTopSpaceHeight", function (msg) {
+            var tmpTopSpaceHeight = parseInt(msg);
+            if (!isNaN(tmpTopSpaceHeight)) {
+                g_topSpaceHeight = tmpTopSpaceHeight;
+            }
+            g_praEasyScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+            g_praDiffProScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+            g_praDifficultScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+            if (g_praEasyScene.m_created) {
+                g_praEasyScene.refreshScene();
+            }
+            if (g_praDiffProScene.m_created) {
+                g_praDiffProScene.refreshScene();
+            }
+            if (g_praDifficultScene.m_created) {
+                g_praDifficultScene.refreshScene();
+            }
+        });
     };
     Main.prototype.autoShutdown = function () {
         if (g_shutdownTimer.currentCount >= 1200) {

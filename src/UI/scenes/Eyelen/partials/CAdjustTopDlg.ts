@@ -50,6 +50,12 @@ namespace gdeint {
 			if(g_praDifficultScene.m_created) {
 				g_praDifficultScene.refreshScene();
 			}
+
+			if(S_BUILD_FOR == S_NATIVE_ANDROID)
+			{
+				egret.ExternalInterface.call("storeTopSpaceHeight",g_topSpaceHeight.toString());
+			}
+
 			console.log("Apply finished!");
 		}
 

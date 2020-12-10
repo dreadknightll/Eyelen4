@@ -31,10 +31,8 @@ var gdeint;
             var tmpTH = parseInt(this.topSpaceInp.text);
             if (tmpTH < 0)
                 tmpTH = 0;
-            else if (tmpTH > 800)
-                tmpTH = 800;
-            /*			else if(tmpTH > 200)
-                            tmpTH = 200;*/
+            else if (tmpTH > 200)
+                tmpTH = 200;
             g_topSpaceHeight = tmpTH;
             console.log("New topspace height(num):" + g_topSpaceHeight);
             g_praEasyScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
@@ -48,6 +46,9 @@ var gdeint;
             }
             if (g_praDifficultScene.m_created) {
                 g_praDifficultScene.refreshScene();
+            }
+            if (S_BUILD_FOR == S_NATIVE_ANDROID) {
+                egret.ExternalInterface.call("storeTopSpaceHeight", g_topSpaceHeight.toString());
             }
             console.log("Apply finished!");
         };

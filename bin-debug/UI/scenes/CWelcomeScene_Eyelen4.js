@@ -79,6 +79,9 @@ var eyelen4;
             this.userProRead.addEventListener(eui.UIEvent.CHANGE, this.onReadyCBCheck, this);
             this.priPoliRead.addEventListener(eui.UIEvent.CHANGE, this.onReadyCBCheck, this);
             this.horverChecked.addEventListener(eui.UIEvent.CHANGE, this.onReadyCBCheck, this);
+            if (S_BUILD_FOR == S_NATIVE_ANDROID) {
+                egret.ExternalInterface.call("fetchTopSpaceHeight", "");
+            }
             this.m_cc = true;
         };
         CWelcomeScene_Eyelen4.prototype.onReadyCBCheck = function () {

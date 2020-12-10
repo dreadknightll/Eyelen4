@@ -118,6 +118,10 @@ namespace eyelen4 {
             this.priPoliRead.addEventListener(eui.UIEvent.CHANGE , this.onReadyCBCheck , this);
             this.horverChecked.addEventListener(eui.UIEvent.CHANGE , this.onReadyCBCheck , this);
 
+            if(S_BUILD_FOR == S_NATIVE_ANDROID) {
+                egret.ExternalInterface.call("fetchTopSpaceHeight" , "");
+            }
+
             this.m_cc = true;
         }
 

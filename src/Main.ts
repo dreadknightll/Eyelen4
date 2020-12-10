@@ -468,6 +468,28 @@ class Main extends eui.UILayer {
 
         });
 
+        egret.ExternalInterface.addCallback("ret_fetchTopSpaceHeight" , function(msg) {
+            var tmpTopSpaceHeight = parseInt(msg);
+            if(!isNaN(tmpTopSpaceHeight)) {
+                g_topSpaceHeight = tmpTopSpaceHeight;
+            }
+			g_praEasyScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+			g_praDiffProScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+			g_praDifficultScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+
+			if(g_praEasyScene.m_created) {
+				g_praEasyScene.refreshScene();
+			}
+
+			if(g_praDiffProScene.m_created) {
+				g_praDiffProScene.refreshScene();
+			}
+
+			if(g_praDifficultScene.m_created) {
+				g_praDifficultScene.refreshScene();
+			}
+        });
+
     }
 
     public autoShutdown() {
