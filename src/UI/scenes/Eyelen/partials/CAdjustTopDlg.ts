@@ -26,10 +26,30 @@ namespace gdeint {
 
 		public onApplyBtn():void {
 			console.log("Applying new topspace!");
-			g_topSpaceHeight = parseInt(this.topSpaceInp.text);
+			var tmpTH:number = parseInt(this.topSpaceInp.text);
+			if(tmpTH < 0)
+				tmpTH = 0;
+			else if(tmpTH > 200)
+				tmpTH = 200;
+
+			g_topSpaceHeight = tmpTH;
+
 			console.log("New topspace height(num):"+g_topSpaceHeight);
 			g_praEasyScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
-			g_praEasyScene.refreshScene();
+			g_praDiffProScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+			g_praDifficultScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+
+			if(g_praEasyScene.m_created) {
+				g_praEasyScene.refreshScene();
+			}
+
+			if(g_praDiffProScene.m_created) {
+				g_praDiffProScene.refreshScene();
+			}
+
+			if(g_praDifficultScene.m_created) {
+				g_praDifficultScene.refreshScene();
+			}
 			console.log("Apply finished!");
 		}
 

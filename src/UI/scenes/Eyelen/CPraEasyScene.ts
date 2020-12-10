@@ -889,7 +889,7 @@ namespace eyelen4 {
         */
         public refreshSceneElems():void {
             this.m_topSpace.height = g_topSpaceHeight;
-            this.m_topSpace.setColor(0xFF0000);
+            this.m_topSpace.setColor(0xDDDDDD);
             this.m_topSpace.redraw();
 
             this.topAreaGroup.y = this.m_wm.getTopY();
@@ -975,7 +975,7 @@ namespace eyelen4 {
 
             // 本函数里此后代码不得对数据源进行修改：
             this.m_topSpace.height = g_topSpaceHeight;
-            this.m_topSpace.setColor(0xFF0000);
+            this.m_topSpace.setColor(0xDDDDDD);
             this.m_topSpace.redraw();
 
             this.topAreaGroup.y = this.m_wm.getTopY();

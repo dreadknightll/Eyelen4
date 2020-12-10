@@ -194,7 +194,7 @@ var eyelen4;
                 this.createScene();
             }
             else {
-                this.refreshScene();
+                this.recreateScene();
             }
         };
         /*
@@ -365,7 +365,7 @@ var eyelen4;
             tmpSelTp.m_x = evt.m_tchX - this.m_UIPresenter.getThumbSelRect().m_width / 2;
             tmpSelTp.m_y = evt.m_tchY - this.m_UIPresenter.getThumbSelRect().m_height / 2;
             this.m_UIPresenter.inpThSelPt(tmpSelTp);
-            this.syncWithUIPresenter();
+            this.refreshScene();
         };
         /*
         * 创建顶部区域。
@@ -600,7 +600,7 @@ var eyelen4;
             if (dlgResult) {
                 this.m_UIPresenter.setCaRat(this._getParentContainer().getCaRat());
                 this.m_UIPresenter.updateFromPM();
-                this.syncWithUIPresenter();
+                this.refreshScene();
             }
             this.m_parentContainer.showPraMenu();
         };
@@ -654,7 +654,7 @@ var eyelen4;
         /*
         * 刷新场景。通常新练习开始时，资源加载完成后调用。
         */
-        CPraDifficultScene.prototype.refreshScene = function () {
+        CPraDifficultScene.prototype.recreateScene = function () {
             this.resetSceneElems();
             //        1、Reset Img content & location
             this.showLen(this.m_pm.getCurLen());
@@ -689,10 +689,15 @@ var eyelen4;
             this.showInitInstrus();
             this.bottomArea.lenInputer.unlock();
         };
-        /*
-        * 与presenter进行同步，把presenter里最新数据应用到场景。不应更改presenter的内容，目前问题严重。
-        */
-        CPraDifficultScene.prototype.syncWithUIPresenter = function () {
+        CPraDifficultScene.prototype.refreshScene = function () {
+            //数据源：m_pm、m_wm、m_UIPresenter。
+            {
+                //本大括号内代码根据 m_pm、m_wm更新 m_UIPresenter。不得对 m_pm、m_wm进行修改。
+                this.m_UIPresenter.updateFromPM();
+                this.m_UIPresenter.inpImgSelWidth(this.m_wm.getWinWidth() / this.m_UIPresenter.getRenderFilter()._getCaRat());
+                this.m_UIPresenter.inpImgSelHeight(this.m_wm.getMidVisibleHeight());
+            }
+            // 本函数内此后代码不得对数据源进行修改！
             // Img
             this.midArea.readjustCircler();
             var imgRect;
@@ -731,6 +736,15 @@ var eyelen4;
             this.midArea.m_UIPresenter.inpImgSelPt(newImgSelPt);
             // Len
             this._showLen(tmpLen);
+            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.setColor(0xDDDDDD);
+            this.m_topSpace.redraw();
+            this.topAreaGroup.y = this.m_wm.getTopY();
+            this.topArea.setTrueHeight(this.m_wm.getTopHeight());
+            this.midAreaGroup.y = this.m_wm.getMidY();
+            this.midArea.setTrueHeight(this.m_wm.getMidHeight());
+            this.bottomAreaGroup.y = this.m_wm.getBottomY();
+            this.bottomArea.setTrueHeight(this.m_wm.getBottomHeight());
             // Thumb
             this.readjustThumb();
             // ThumbQuestioner

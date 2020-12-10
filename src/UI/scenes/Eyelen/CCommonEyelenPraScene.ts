@@ -28,6 +28,8 @@ class CCommonEyelenPraScene extends eui.Component implements IEyelenPraScene,INo
     public m_NoImgMode:boolean = false;
     protected m_curImgResName:string;
 
+    public m_created:boolean = false; //场景是否已完成初始创建。
+
     /*
      * 正常情况下很多函数应当调用子类的同名函数。若本类的本函数被调用，则表明子类实现有误。
      */ 
@@ -57,6 +59,7 @@ class CCommonEyelenPraScene extends eui.Component implements IEyelenPraScene,INo
         this.m_scrMask.width = this.m_winWidth; 
         this.m_scrMask.height = this.m_winHeight;
         this.mask = this.m_scrMask;
+        this.m_created = true;
     }
 
     public getPM(): ILenPraMachine {

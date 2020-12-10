@@ -19,6 +19,7 @@ var CCommonEyelenPraScene = (function (_super) {
     function CCommonEyelenPraScene() {
         var _this = _super.call(this) || this;
         _this.m_NoImgMode = false;
+        _this.m_created = false; //场景是否已完成初始创建。
         _this.m_scrMask = new egret.Rectangle();
         _this.m_dlgLayer = new egret.DisplayObjectContainer();
         _this.m_notiLayer = new egret.DisplayObjectContainer();
@@ -52,6 +53,7 @@ var CCommonEyelenPraScene = (function (_super) {
         this.m_scrMask.width = this.m_winWidth;
         this.m_scrMask.height = this.m_winHeight;
         this.mask = this.m_scrMask;
+        this.m_created = true;
     };
     CCommonEyelenPraScene.prototype.getPM = function () {
         return null;
