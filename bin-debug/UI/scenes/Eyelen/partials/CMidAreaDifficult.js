@@ -48,7 +48,7 @@ var eyelen4;
             rect.height = 3000;
             this.mask = rect;
             this.midBgGrp.addChild(this.m_bg);
-            if (S_NO_IMG_MODE) {
+            if (CGlobals.S_NO_IMG_MODE) {
                 this.m_randomGraphShape.touchEnabled = true;
                 this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
                 this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMove, this);
@@ -94,7 +94,7 @@ var eyelen4;
             this.m_imgCircler.setPushGapHor(this.s_horSpace);
             this.m_imgCircler.setPushGapVer(this.s_verSpace);
             var imgRect = new gdeint.CRect();
-            if (S_NO_IMG_MODE) {
+            if (CGlobals.S_NO_IMG_MODE) {
                 imgRect.m_width = this.randomGraph.width;
                 imgRect.m_height = this.randomGraph.height;
             }
@@ -241,4 +241,3 @@ var eyelen4;
     eyelen4.CMidAreaDifficult = CMidAreaDifficult;
     __reflect(CMidAreaDifficult.prototype, "eyelen4.CMidAreaDifficult");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CMidAreaDifficult.js.map

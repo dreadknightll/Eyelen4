@@ -35,4 +35,3 @@ var eyelen4;
     eyelen4.CViewDiffProHisScoreDlg = CViewDiffProHisScoreDlg;
     __reflect(CViewDiffProHisScoreDlg.prototype, "eyelen4.CViewDiffProHisScoreDlg");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CViewDiffProHisScoreDlg.js.map

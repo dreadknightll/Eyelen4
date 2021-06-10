@@ -16,14 +16,14 @@ namespace gdeint {
 		}
 
 		public show() {
-			this.sndOnSwitch.$setSelected(g_isSndOn);
+			this.sndOnSwitch.$setSelected(CGlobals.g_isSndOn);
 			this.visible = true;
 		}
 
 		public savData():void {
 			var strSndOn:string = "";
-			g_isSndOn = this.sndOnSwitch.selected;
-			if(g_isSndOn) {
+			CGlobals.g_isSndOn = this.sndOnSwitch.selected;
+			if(CGlobals.g_isSndOn) {
 				strSndOn = "1";
 			}
 			else {

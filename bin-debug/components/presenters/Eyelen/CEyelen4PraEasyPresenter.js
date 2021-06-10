@@ -520,4 +520,3 @@ var CEyelen4PraEasyPresenter = (function () {
     return CEyelen4PraEasyPresenter;
 }());
 __reflect(CEyelen4PraEasyPresenter.prototype, "CEyelen4PraEasyPresenter", ["IEyelen4PraEasyPresenter", "IPraPresenter", "IBindableWithPM", "IPresenterWithThumb", "IPresenterWithCa"]);
-//# sourceMappingURL=CEyelen4PraEasyPresenter.js.map

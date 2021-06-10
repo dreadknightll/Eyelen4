@@ -6,7 +6,7 @@ var CNetResLoaderWithEgret = (function () {
     }
     CNetResLoaderWithEgret.prototype.getRes = function (resName) {
         var resStru;
-        resStru = g_resCache[resName];
+        resStru = CGlobals.g_resCache[resName];
         if (resStru.m_isInCache) {
             return resStru.m_resCache;
         }
@@ -17,4 +17,3 @@ var CNetResLoaderWithEgret = (function () {
     return CNetResLoaderWithEgret;
 }());
 __reflect(CNetResLoaderWithEgret.prototype, "CNetResLoaderWithEgret", ["IResWithEgret", "IResFetcher"]);
-//# sourceMappingURL=CNetResLoaderWithEgret.js.map

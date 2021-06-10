@@ -96,4 +96,3 @@ var CEyelen4WinModel = (function () {
     return CEyelen4WinModel;
 }());
 __reflect(CEyelen4WinModel.prototype, "CEyelen4WinModel", ["IEyelen4WinModel", "ITMBWinModel", "IWinModel"]);
-//# sourceMappingURL=CEyelen4WinModel.js.map

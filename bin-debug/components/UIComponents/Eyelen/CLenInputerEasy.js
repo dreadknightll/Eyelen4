@@ -93,7 +93,7 @@ var eyelen4;
             if (cellEndTag >= this.m_totalGridCnt) {
                 return;
             }
-            if (g_isSndOn) {
+            if (CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
             this.m_userGridCnt = cellEndTag + 1;
@@ -168,4 +168,3 @@ var eyelen4;
     eyelen4.CLenInputerEasy = CLenInputerEasy;
     __reflect(CLenInputerEasy.prototype, "eyelen4.CLenInputerEasy");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CLenInputerEasy.js.map

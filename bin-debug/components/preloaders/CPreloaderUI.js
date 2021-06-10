@@ -102,4 +102,3 @@ var eyelen4;
     eyelen4.CPreloaderUI = CPreloaderUI;
     __reflect(CPreloaderUI.prototype, "eyelen4.CPreloaderUI", ["IPreloaderUI", "IContainerPlugin", "gdeint.IHidable"]);
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CPreloaderUI.js.map

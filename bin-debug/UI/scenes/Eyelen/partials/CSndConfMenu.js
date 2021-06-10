@@ -20,13 +20,13 @@ var gdeint;
             egret.ExternalInterface.call("fetchIsSndOn", "");
         };
         CSndConfMenu.prototype.show = function () {
-            this.sndOnSwitch.$setSelected(g_isSndOn);
+            this.sndOnSwitch.$setSelected(CGlobals.g_isSndOn);
             this.visible = true;
         };
         CSndConfMenu.prototype.savData = function () {
             var strSndOn = "";
-            g_isSndOn = this.sndOnSwitch.selected;
-            if (g_isSndOn) {
+            CGlobals.g_isSndOn = this.sndOnSwitch.selected;
+            if (CGlobals.g_isSndOn) {
                 strSndOn = "1";
             }
             else {
@@ -52,4 +52,3 @@ var gdeint;
     gdeint.CSndConfMenu = CSndConfMenu;
     __reflect(CSndConfMenu.prototype, "gdeint.CSndConfMenu");
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CSndConfMenu.js.map

@@ -81,7 +81,7 @@ namespace eyelen4 {
 
             this.m_wm = new CEyelen4WinModel();
 
-            this.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+            this.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
             this.m_wm.setTopHeight2(190);
 
@@ -128,7 +128,7 @@ namespace eyelen4 {
             this.bottomArea.menuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onMenuBtn , this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onOKButtonTap , this);
 
-            this.shutdownClock.setTimer(g_shutdownTimer); // 关联全局计时器以显示时间。
+            this.shutdownClock.setTimer(CGlobals.g_shutdownTimer); // 关联全局计时器以显示时间。
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onClockTap , this);
 
             this.m2_cc = true;
@@ -173,7 +173,7 @@ namespace eyelen4 {
         * 触摸“下一长度”按钮后触发。
         */ 
         private onNextButtonTap(evt: egret.TouchEvent) {
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
 
@@ -247,7 +247,7 @@ namespace eyelen4 {
         */ 
         private onOKButtonTap(evt: egret.TouchEvent) {
 
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
 
@@ -275,7 +275,7 @@ namespace eyelen4 {
         }
 
         private onClockTap():void {
-            g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
+            CGlobals.g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
         }
 
         public startNewPra(): void {
@@ -658,13 +658,13 @@ namespace eyelen4 {
         {
             this.prepareTipBalloons();
 
-            var balloonX:number = g_scenePos.m_x + 65*g_scale;
-            var balloonY:number = g_scenePos.m_y + /*190**/230*g_scale; 
+            var balloonX:number = CGlobals.g_scenePos.m_x + 65*CGlobals.g_scale;
+            var balloonY:number = CGlobals.g_scenePos.m_y + /*190**/230*CGlobals.g_scale; 
 
             this.m_tipBalloon1.x = balloonX * 0.9;
             this.m_tipBalloon1.y = balloonY;
-            this.m_tipBalloon1.scaleX = g_scale;
-            this.m_tipBalloon1.scaleY = g_scale;
+            this.m_tipBalloon1.scaleX = CGlobals.g_scale;
+            this.m_tipBalloon1.scaleY = CGlobals.g_scale;
             this.m_tipBalloon1.title = "提示";
             this.m_tipBalloon1.setContent("请目测图上“？”处显示的长度，并点击格子输入您目测的结果。");
             this.m_tipBalloon1.visible = true;
@@ -673,8 +673,8 @@ namespace eyelen4 {
 
             this.m_tipBalloon2.x = balloonX * 1.1;
             this.m_tipBalloon2.y = balloonY;
-            this.m_tipBalloon2.scaleX = g_scale;
-            this.m_tipBalloon2.scaleY = g_scale;
+            this.m_tipBalloon2.scaleX = CGlobals.g_scale;
+            this.m_tipBalloon2.scaleY = CGlobals.g_scale;
             this.m_tipBalloon2.title = "提示";
             this.m_tipBalloon2.setContent("请目测图上“？”处显示的\n长度并点击格子输入您目测的结果。");
             this.m_tipBalloon2.visible = false; //隐藏气球2以防两个重叠显示。
@@ -718,7 +718,7 @@ namespace eyelen4 {
         * 顶部按钮触摸后触发。
         */ 
         private onTopBtnTab(evt: egret.Event) {
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
 
@@ -872,7 +872,7 @@ namespace eyelen4 {
             var ret:boolean = <boolean>param;
             if(ret) {
                 this.resetSceneElems();
-                g_pageJumper.gotoPage("WelcomeScene" , null);
+                CGlobals.g_pageJumper.gotoPage("WelcomeScene" , null);
             }
             else {
             }
@@ -888,7 +888,7 @@ namespace eyelen4 {
         * 重置场景各元素状态。
         */
         public refreshSceneElems():void {
-            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.height = CGlobals.g_topSpaceHeight;
             this.m_topSpace.setColor(0xDDDDDD);
             this.m_topSpace.redraw();
 
@@ -974,7 +974,7 @@ namespace eyelen4 {
             }
 
             // 本函数里此后代码不得对数据源进行修改：
-            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.height = CGlobals.g_topSpaceHeight;
             this.m_topSpace.setColor(0xDDDDDD);
             this.m_topSpace.redraw();
 

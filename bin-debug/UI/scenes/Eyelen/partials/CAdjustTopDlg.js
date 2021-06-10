@@ -33,22 +33,22 @@ var gdeint;
                 tmpTH = 0;
             else if (tmpTH > 200)
                 tmpTH = 200;
-            g_topSpaceHeight = tmpTH;
-            console.log("New topspace height(num):" + g_topSpaceHeight);
-            g_praEasyScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
-            g_praDiffProScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
-            g_praDifficultScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
-            if (g_praEasyScene.m_created) {
-                g_praEasyScene.refreshScene();
+            CGlobals.g_topSpaceHeight = tmpTH;
+            console.log("New topspace height(num):" + CGlobals.g_topSpaceHeight);
+            CGlobals.g_praEasyScene.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
+            CGlobals.g_praDiffProScene.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
+            CGlobals.g_praDifficultScene.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
+            if (CGlobals.g_praEasyScene.m_created) {
+                CGlobals.g_praEasyScene.refreshScene();
             }
-            if (g_praDiffProScene.m_created) {
-                g_praDiffProScene.refreshScene();
+            if (CGlobals.g_praDiffProScene.m_created) {
+                CGlobals.g_praDiffProScene.refreshScene();
             }
-            if (g_praDifficultScene.m_created) {
-                g_praDifficultScene.refreshScene();
+            if (CGlobals.g_praDifficultScene.m_created) {
+                CGlobals.g_praDifficultScene.refreshScene();
             }
-            if (S_BUILD_FOR == S_NATIVE_ANDROID) {
-                egret.ExternalInterface.call("storeTopSpaceHeight", g_topSpaceHeight.toString());
+            if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
+                egret.ExternalInterface.call("storeTopSpaceHeight", CGlobals.g_topSpaceHeight.toString());
             }
             console.log("Apply finished!");
         };
@@ -60,4 +60,3 @@ var gdeint;
     gdeint.CAdjustTopDlg = CAdjustTopDlg;
     __reflect(CAdjustTopDlg.prototype, "gdeint.CAdjustTopDlg");
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CAdjustTopDlg.js.map

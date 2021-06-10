@@ -59,43 +59,32 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
  * Main类为程序入口类。
  *
 **************************************************/
-var S_WEB = 1;
-var S_NATIVE_ANDROID = 2;
-var S_NATIVE_IOS = 3;
-var S_NATIVE_WP = 4;
-var S_WECHAT = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
-var S_BUILD_FOR = S_NATIVE_ANDROID;
-//Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
-var S_NO_IMG_MODE = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
-var g_console = new egret.TextField(); // 调试终端。
-var g_winWidth; // 保存舞台宽度。
-var g_winHeight; // 保存舞台高度。
-var g_isSndOn = true; // 声音是否开启。
-var s_defaultTopSpaceHeight = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
-var g_topSpaceHeight = s_defaultTopSpaceHeight;
-var g_scenePos; // 此处gdeint为libGdeint使用的命名空间。
-var g_scale = 1; // 有些元素需要根据实际分辨率确定大小、位置等信息，因此需要保存此变量。好处：舞台分辨率提高了也无重新设计exml等界面。
-var g_praEasyScene; // 简单难度练习场景。
-var g_praDiffProScene; // 困难难度专业模式练习场景。
-var g_praDifficultScene; // 困难难度传统模式练习场景。
-var g_resCache = {}; // 用于缓存远程获取的数据。目前主要用在微信版。
-var g_resLoader; //资源读取器。用于通过资源名读取已加载到缓存的资源。可灵活选择从本地读取还是通过网络读取。可供显示容器使用。
-var g_praEasyContainer; //简单难度显示容器。该容器除了包含练习场景，还可注入各式各样的提示框、功能对话框等插件。此设计便于代码测试和重用。
-var g_praDiffProContainer; //困难难度专业模式显示容器。
-var g_praDifficultContainer; //困难难度显示容器。
-var g_welcomeScene; // 欢迎屏幕画面。含用户协议、隐私政策、指引等入口。
-var g_shutdownScr; // 为了眼睛健康，使用时间超过20分钟后练习自动停止并显示为此画面。
-var g_mainMenu; // 主菜单画面。难度选择。
-//画面采用分层设计。不同类型的元素应显示在不同的图层上，以维持合理的前后顺序。
-var g_sceneLayer = new egret.DisplayObjectContainer(); // 场景图层。
-var g_dlgLayerContainer = new egret.DisplayObjectContainer(); // 对话框图层。
-var g_notiLayerContainer = new egret.DisplayObjectContainer(); // 提示图层。
-var g_level = 0; // 当前练习的难度。0：未知。1：简单。2：中等。3：困难。
-var g_pageJumper; // 页面跳转器。在libGdeint里实现。用一个页面跳转器把上面的页面串起来。
-var g_shutdownTimer; // 为了眼睛健康，20分钟后自动停止。
-var g2_tmpScoresJSONObj;
-var g2_tmpRetryLensJSONStr;
-var g2_tmpWaitingForRetFromNative = false;
+var CGlobals = (function () {
+    function CGlobals() {
+    }
+    //需要将全局变量封装到类里，否则发布到一些平台（例如新版的AndroidNative）后会被解析成window.g_???，从而引起错误。
+    CGlobals.S_WEB = 1;
+    CGlobals.S_NATIVE_ANDROID = 2;
+    CGlobals.S_NATIVE_IOS = 3;
+    CGlobals.S_NATIVE_WP = 4;
+    CGlobals.S_WECHAT = 5; // 发布成微信小游戏。另须移除项目里的resoure/pics目录。否则体积太大。
+    CGlobals.S_BUILD_FOR = CGlobals.S_NATIVE_ANDROID;
+    //Android、iOS的无图模式尚未通过调试，只能使用图片模式！！
+    CGlobals.S_NO_IMG_MODE = false; // 无图模式开关。开启后练习材料不显示图片而是显示简单图形，以节省资源。通常用于微信版。无图模式下Pic从本地读取，且不使用img。
+    CGlobals.g_isSndOn = true; // 声音是否开启。
+    CGlobals.s_defaultTopSpaceHeight = 0; // 顶部空白条的高度。默认：0，iOS：0或25。横竖校准等调试时可考虑增加到300。
+    CGlobals.g_topSpaceHeight = CGlobals.s_defaultTopSpaceHeight;
+    CGlobals.g_scale = 1; // 有些元素需要根据实际分辨率确定大小、位置等信息，因此需要保存此变量。好处：舞台分辨率提高了也无重新设计exml等界面。
+    CGlobals.g_resCache = {}; // 用于缓存远程获取的数据。目前主要用在微信版。
+    //画面采用分层设计。不同类型的元素应显示在不同的图层上，以维持合理的前后顺序。
+    CGlobals.g_sceneLayer = new egret.DisplayObjectContainer(); // 场景图层。
+    CGlobals.g_dlgLayerContainer = new egret.DisplayObjectContainer(); // 对话框图层。
+    CGlobals.g_notiLayerContainer = new egret.DisplayObjectContainer(); // 提示图层。
+    CGlobals.g_level = 0; // 当前练习的难度。0：未知。1：简单。2：中等。3：困难。
+    CGlobals.g2_tmpWaitingForRetFromNative = false;
+    return CGlobals;
+}());
+__reflect(CGlobals.prototype, "CGlobals");
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
@@ -103,40 +92,34 @@ var Main = (function (_super) {
         //但由于此时页面元素尚未准备好，页面元素相关的操作须转到createChildren里进行。
         var _this = _super.call(this) || this;
         // 初始化一些全局变量：
-        g_scenePos = new gdeint.CPoint();
-        g_console.size = 24;
-        g_console.x = 80;
-        g_console.y = 60;
-        g_console.width = 600;
-        g_console.height = 800;
-        g_console.textColor = 0xFF0000;
-        g_pageJumper = new gdeint.CPageJumper();
+        CGlobals.g_scenePos = new gdeint.CPoint();
+        CGlobals.g_pageJumper = new gdeint.CPageJumper();
         return _this;
     }
     Main.prototype.createChildren = function () {
         _super.prototype.createChildren.call(this);
-        g_shutdownTimer = new egret.Timer(1000, 0); // 这里用无限次。实际时间在listener里控制。
-        g_shutdownTimer.addEventListener(egret.TimerEvent.TIMER, this.autoShutdown, this);
+        CGlobals.g_shutdownTimer = new egret.Timer(1000, 0); // 这里用无限次。实际时间在listener里控制。
+        CGlobals.g_shutdownTimer.addEventListener(egret.TimerEvent.TIMER, this.autoShutdown, this);
         //获取舞台宽度和高度：
-        g_winWidth = this.stage.stageWidth;
-        g_winHeight = this.stage.stageHeight;
+        CGlobals.g_winWidth = this.stage.stageWidth;
+        CGlobals.g_winHeight = this.stage.stageHeight;
         //计算适配屏幕应采用的图形缩放比例和起始显示坐标。新版白鹭引擎下可考虑去掉：
-        var scaleX = g_winWidth / 480; // 界面设计使用尺寸：480*800。
-        var scaleY = g_winHeight / 800;
+        var scaleX = CGlobals.g_winWidth / 480; // 界面设计使用尺寸：480*800。
+        var scaleY = CGlobals.g_winHeight / 800;
         if (scaleX < scaleY) {
-            g_scale = scaleX;
-            g_scenePos.m_x = 0;
-            g_scenePos.m_y = (g_winHeight - 800 * g_scale) / 2; //宽占满，高居中。
+            CGlobals.g_scale = scaleX;
+            CGlobals.g_scenePos.m_x = 0;
+            CGlobals.g_scenePos.m_y = (CGlobals.g_winHeight - 800 * CGlobals.g_scale) / 2; //宽占满，高居中。
         }
         else {
-            g_scale = scaleY;
-            g_scenePos.m_x = (g_winWidth - 480 * g_scale) / 2; //宽居中，高占满。
-            g_scenePos.m_y = 0;
+            CGlobals.g_scale = scaleY;
+            CGlobals.g_scenePos.m_x = (CGlobals.g_winWidth - 480 * CGlobals.g_scale) / 2; //宽居中，高占满。
+            CGlobals.g_scenePos.m_y = 0;
         }
         //把三个核心自定义图层添加到舞台：
-        this.addChild(g_sceneLayer);
-        this.addChild(g_dlgLayerContainer);
-        this.addChild(g_notiLayerContainer);
+        this.addChild(CGlobals.g_sceneLayer);
+        this.addChild(CGlobals.g_dlgLayerContainer);
+        this.addChild(CGlobals.g_notiLayerContainer);
         egret.lifecycle.addLifecycleListener(function (context) {
             // custom lifecycle plugin
         });
@@ -185,28 +168,28 @@ var Main = (function (_super) {
                         return [4 /*yield*/, RES.loadConfig("resource/default.res.json", "resource/")];
                     case 1:
                         _a.sent();
-                        if (!(S_BUILD_FOR == S_WECHAT)) return [3 /*break*/, 5];
-                        if (!S_NO_IMG_MODE) return [3 /*break*/, 3];
+                        if (!(CGlobals.S_BUILD_FOR == CGlobals.S_WECHAT)) return [3 /*break*/, 5];
+                        if (!CGlobals.S_NO_IMG_MODE) return [3 /*break*/, 3];
                         return [4 /*yield*/, RES.loadConfig("resource/picRes_NoImg.res.json", "resource/")];
                     case 2:
                         _a.sent();
-                        g_resLoader = new CEgretDefaultResLoader();
+                        CGlobals.g_resLoader = new CEgretDefaultResLoader();
                         return [3 /*break*/, 4];
                     case 3:
-                        g_resLoader = new CNetResLoaderWithEgret();
+                        CGlobals.g_resLoader = new CNetResLoaderWithEgret();
                         _a.label = 4;
                     case 4: return [3 /*break*/, 9];
                     case 5:
-                        if (!S_NO_IMG_MODE) return [3 /*break*/, 7];
+                        if (!CGlobals.S_NO_IMG_MODE) return [3 /*break*/, 7];
                         return [4 /*yield*/, RES.loadConfig("resource/picRes_NoImg.res.json", "resource/")];
                     case 6:
                         _a.sent();
-                        g_resLoader = new CEgretDefaultResLoader();
+                        CGlobals.g_resLoader = new CEgretDefaultResLoader();
                         return [3 /*break*/, 9];
                     case 7: return [4 /*yield*/, RES.loadConfig("resource/picRes_WebGL.res.json", "resource/")];
                     case 8:
                         _a.sent();
-                        g_resLoader = new CEgretDefaultResLoader();
+                        CGlobals.g_resLoader = new CEgretDefaultResLoader();
                         _a.label = 9;
                     case 9: return [4 /*yield*/, this.loadTheme()];
                     case 10:
@@ -217,7 +200,7 @@ var Main = (function (_super) {
                         loadingView1.visible = false;
                         this.stage.removeChild(loadingView1);
                         loadingView2 = new LoadingUI_Eint_V3();
-                        loadingView2.setWinSize(g_winWidth, g_winHeight);
+                        loadingView2.setWinSize(CGlobals.g_winWidth, CGlobals.g_winHeight);
                         loadingView2.create();
                         this.stage.addChild(loadingView2);
                         loadingView2.visible = true;
@@ -255,210 +238,209 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createScene = function () {
-        g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
-        g_sceneLayer.addChild(g_welcomeScene);
-        g_welcomeScene.scaleX = g_scale;
-        g_welcomeScene.scaleY = g_scale; //scaleX、scaleY保持相等，确保横竖检验功能正常。
-        g_welcomeScene.x = g_scenePos.m_x;
-        g_welcomeScene.y = g_scenePos.m_y;
-        g_shutdownScr = new gdeint.CShutdownScr();
-        g_mainMenu = new eyelen4.CMainMenu();
-        g_mainMenu.setTrueWidth(this.stage.stageWidth);
-        g_mainMenu.setTrueHeight(this.stage.stageHeight);
-        g_mainMenu.visible = false;
-        g_mainMenu.width = this.stage.stageWidth;
-        g_mainMenu.height = this.stage.stageHeight;
-        g_sceneLayer.addChild(g_mainMenu);
-        g_praEasyScene = new eyelen4.CPraEasyScene();
-        g_praDifficultScene = new eyelen4.CPraDifficultScene();
-        g_praDiffProScene = new eyelen4.CPraDiffProScene();
-        if (S_NO_IMG_MODE) {
-            g_praEasyScene.m_NoImgMode = true;
-            g_praDifficultScene.m_NoImgMode = true;
-            g_praDiffProScene.m_NoImgMode = true;
+        CGlobals.g_welcomeScene = new eyelen4.CWelcomeScene_Eyelen4();
+        CGlobals.g_sceneLayer.addChild(CGlobals.g_welcomeScene);
+        CGlobals.g_welcomeScene.scaleX = CGlobals.g_scale;
+        CGlobals.g_welcomeScene.scaleY = CGlobals.g_scale; //scaleX、scaleY保持相等，确保横竖检验功能正常。
+        CGlobals.g_welcomeScene.x = CGlobals.g_scenePos.m_x;
+        CGlobals.g_welcomeScene.y = CGlobals.g_scenePos.m_y;
+        CGlobals.g_shutdownScr = new gdeint.CShutdownScr();
+        CGlobals.g_mainMenu = new eyelen4.CMainMenu();
+        CGlobals.g_mainMenu.setTrueWidth(this.stage.stageWidth);
+        CGlobals.g_mainMenu.setTrueHeight(this.stage.stageHeight);
+        CGlobals.g_mainMenu.visible = false;
+        CGlobals.g_mainMenu.width = this.stage.stageWidth;
+        CGlobals.g_mainMenu.height = this.stage.stageHeight;
+        CGlobals.g_sceneLayer.addChild(CGlobals.g_mainMenu);
+        CGlobals.g_praEasyScene = new eyelen4.CPraEasyScene();
+        CGlobals.g_praDifficultScene = new eyelen4.CPraDifficultScene();
+        CGlobals.g_praDiffProScene = new eyelen4.CPraDiffProScene();
+        if (CGlobals.S_NO_IMG_MODE) {
+            CGlobals.g_praEasyScene.m_NoImgMode = true;
+            CGlobals.g_praDifficultScene.m_NoImgMode = true;
+            CGlobals.g_praDiffProScene.m_NoImgMode = true;
         }
-        g_dlgLayerContainer.addChild(g_praEasyScene.getDlgLayer().toEgretDispObjContainer());
-        g_notiLayerContainer.addChild(g_praEasyScene.getNotiLayer().toEgretDispObjContainer());
-        g_dlgLayerContainer.addChild(g_praDifficultScene.getDlgLayer().toEgretDispObjContainer());
-        g_notiLayerContainer.addChild(g_praDifficultScene.getNotiLayer().toEgretDispObjContainer());
-        g_dlgLayerContainer.addChild(g_praDiffProScene.getDlgLayer().toEgretDispObjContainer());
-        g_notiLayerContainer.addChild(g_praDiffProScene.getNotiLayer().toEgretDispObjContainer());
-        g_praEasyContainer = new CEyelenPraContainer();
-        if (S_NO_IMG_MODE) {
-            g_praEasyContainer.m_NoImgMode = true;
+        CGlobals.g_dlgLayerContainer.addChild(CGlobals.g_praEasyScene.getDlgLayer().toEgretDispObjContainer());
+        CGlobals.g_notiLayerContainer.addChild(CGlobals.g_praEasyScene.getNotiLayer().toEgretDispObjContainer());
+        CGlobals.g_dlgLayerContainer.addChild(CGlobals.g_praDifficultScene.getDlgLayer().toEgretDispObjContainer());
+        CGlobals.g_notiLayerContainer.addChild(CGlobals.g_praDifficultScene.getNotiLayer().toEgretDispObjContainer());
+        CGlobals.g_dlgLayerContainer.addChild(CGlobals.g_praDiffProScene.getDlgLayer().toEgretDispObjContainer());
+        CGlobals.g_notiLayerContainer.addChild(CGlobals.g_praDiffProScene.getNotiLayer().toEgretDispObjContainer());
+        CGlobals.g_praEasyContainer = new CEyelenPraContainer();
+        if (CGlobals.S_NO_IMG_MODE) {
+            CGlobals.g_praEasyContainer.m_NoImgMode = true;
         }
-        g_praEasyContainer.setResLoader(g_resLoader); // 显示容器里包含一个资源加载器，随时加载资源。
-        if (S_BUILD_FOR == S_WECHAT) {
-            if (!S_NO_IMG_MODE) {
-                g_praEasyContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
+        CGlobals.g_praEasyContainer.setResLoader(CGlobals.g_resLoader); // 显示容器里包含一个资源加载器，随时加载资源。
+        if (CGlobals.S_BUILD_FOR == CGlobals.S_WECHAT) {
+            if (!CGlobals.S_NO_IMG_MODE) {
+                CGlobals.g_praEasyContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
             }
         }
         else {
         }
-        g_praEasyContainer.setPraScene(g_praEasyScene);
+        CGlobals.g_praEasyContainer.setPraScene(CGlobals.g_praEasyScene);
         var cad = new gdeint.CAlertPanel_v2();
-        cad.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale); // 把主场景的位置和尺寸告诉警告框插件，让其可以自行计算警告框的位置和尺寸。
-        g_praEasyContainer.setAlertDlg(cad); // 提示框的创建在Container类以外，这样可以灵活改用各种风格的提示框。
+        cad.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale); // 把主场景的位置和尺寸告诉警告框插件，让其可以自行计算警告框的位置和尺寸。
+        CGlobals.g_praEasyContainer.setAlertDlg(cad); // 提示框的创建在Container类以外，这样可以灵活改用各种风格的提示框。
         var cp = new gdeint.CConfirmPanel();
-        cp.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
-        g_praEasyContainer.setConfirmDlg(cp);
+        cp.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
+        CGlobals.g_praEasyContainer.setConfirmDlg(cp);
         var pui = new eyelen4.CPreloaderUI();
-        pui.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        pui.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         pui.hide();
-        g_sceneLayer.addChild(pui);
-        g_praEasyContainer.setPreloaderUI(pui);
+        CGlobals.g_sceneLayer.addChild(pui);
+        CGlobals.g_praEasyContainer.setPreloaderUI(pui);
         var cd = new eyelen4.CCaliDlg();
-        cd.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        cd.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         cd.hide();
-        g_praEasyContainer.setCaliDlg(cd);
+        CGlobals.g_praEasyContainer.setCaliDlg(cd);
         var pm = new gdeint.CPraMenu();
-        pm.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        pm.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         pm.hide();
-        g_praEasyContainer.setPraMenu(pm);
-        g_praDifficultContainer = new CEyelenPraContainer();
-        if (S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-            g_praDifficultContainer.m_NoImgMode = true;
+        CGlobals.g_praEasyContainer.setPraMenu(pm);
+        CGlobals.g_praDifficultContainer = new CEyelenPraContainer();
+        if (CGlobals.S_BUILD_FOR == CGlobals.S_WECHAT && CGlobals.S_NO_IMG_MODE) {
+            CGlobals.g_praDifficultContainer.m_NoImgMode = true;
         }
-        g_praDifficultContainer.setResLoader(g_resLoader);
-        if (S_BUILD_FOR == S_WECHAT) {
-            if (!S_NO_IMG_MODE) {
-                g_praDifficultContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
+        CGlobals.g_praDifficultContainer.setResLoader(CGlobals.g_resLoader);
+        if (CGlobals.S_BUILD_FOR == CGlobals.S_WECHAT) {
+            if (!CGlobals.S_NO_IMG_MODE) {
+                CGlobals.g_praDifficultContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
             }
         }
-        g_praDifficultContainer.setPraScene(g_praDifficultScene);
+        CGlobals.g_praDifficultContainer.setPraScene(CGlobals.g_praDifficultScene);
         var cad2 = new gdeint.CAlertPanel_v2();
-        cad2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
-        g_praDifficultContainer.setAlertDlg(cad2);
+        cad2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
+        CGlobals.g_praDifficultContainer.setAlertDlg(cad2);
         var cp2 = new gdeint.CConfirmPanel();
-        cp2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
-        g_praDifficultContainer.setConfirmDlg(cp2);
+        cp2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
+        CGlobals.g_praDifficultContainer.setConfirmDlg(cp2);
         var pui2 = new eyelen4.CPreloaderUI();
-        pui2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        pui2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         pui2.hide();
-        g_sceneLayer.addChild(pui2);
-        g_praDifficultContainer.setPreloaderUI(pui2);
+        CGlobals.g_sceneLayer.addChild(pui2);
+        CGlobals.g_praDifficultContainer.setPreloaderUI(pui2);
         var cd2 = new eyelen4.CCaliDlg();
-        cd2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        cd2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         cd2.hide();
-        g_praDifficultContainer.setCaliDlg(cd2);
+        CGlobals.g_praDifficultContainer.setCaliDlg(cd2);
         var pm2 = new gdeint.CPraMenu();
-        pm2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        pm2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         pm2.hide();
-        g_praDifficultContainer.setPraMenu(pm2);
-        g_praDiffProContainer = new CEyelenProPraContainer();
-        if (S_BUILD_FOR == S_WECHAT && S_NO_IMG_MODE) {
-            g_praDiffProContainer.m_NoImgMode = true;
+        CGlobals.g_praDifficultContainer.setPraMenu(pm2);
+        CGlobals.g_praDiffProContainer = new CEyelenProPraContainer();
+        if (CGlobals.S_BUILD_FOR == CGlobals.S_WECHAT && CGlobals.S_NO_IMG_MODE) {
+            CGlobals.g_praDiffProContainer.m_NoImgMode = true;
         }
-        g_praDiffProContainer.setResLoader(g_resLoader);
-        if (S_BUILD_FOR == S_WECHAT) {
-            if (!S_NO_IMG_MODE) {
-                g_praDiffProContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
+        CGlobals.g_praDiffProContainer.setResLoader(CGlobals.g_resLoader);
+        if (CGlobals.S_BUILD_FOR == CGlobals.S_WECHAT) {
+            if (!CGlobals.S_NO_IMG_MODE) {
+                CGlobals.g_praDiffProContainer.setResNameFinder(new CEyelen4HTTPSResUrlFinder());
             }
         }
-        g_praDiffProContainer.setPraScene(g_praDiffProScene);
+        CGlobals.g_praDiffProContainer.setPraScene(CGlobals.g_praDiffProScene);
         var cad2 = new gdeint.CAlertPanel_v2();
-        cad2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
-        g_praDiffProContainer.setAlertDlg(cad2);
+        cad2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
+        CGlobals.g_praDiffProContainer.setAlertDlg(cad2);
         var cp2 = new gdeint.CConfirmPanel();
-        cp2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
-        g_praDiffProContainer.setConfirmDlg(cp2);
+        cp2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
+        CGlobals.g_praDiffProContainer.setConfirmDlg(cp2);
         var pui3 = new eyelen4.CPreloaderUI();
-        pui3.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        pui3.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         pui3.hide();
-        g_sceneLayer.addChild(pui3);
-        g_praDiffProContainer.setPreloaderUI(pui3);
+        CGlobals.g_sceneLayer.addChild(pui3);
+        CGlobals.g_praDiffProContainer.setPreloaderUI(pui3);
         var cd2 = new eyelen4.CCaliDlg();
-        cd2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        cd2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         cd2.hide();
-        g_praDiffProContainer.setCaliDlg(cd2);
+        CGlobals.g_praDiffProContainer.setCaliDlg(cd2);
         var pm2 = new gdeint.CPraMenu();
-        pm2.setSceneRect(g_scenePos.m_x, g_scenePos.m_y, 480 * g_scale, 800 * g_scale);
+        pm2.setSceneRect(CGlobals.g_scenePos.m_x, CGlobals.g_scenePos.m_y, 480 * CGlobals.g_scale, 800 * CGlobals.g_scale);
         pm2.hide();
-        g_praDiffProContainer.setPraMenu(pm2);
+        CGlobals.g_praDiffProContainer.setPraMenu(pm2);
         // 一个Page对应一个Scene。
         // 根据需处理事件的差异，部分页面要专门定义Page子类，Container页面有可能需要定义各自的Adapter转成Page，其余页面使用统一的Adapter由eui.Component转Page即可。
         var welcomePage = new CWelcomePage_Eyelen4();
-        welcomePage.m_scene = g_welcomeScene;
+        welcomePage.m_scene = CGlobals.g_welcomeScene;
         var mainMenuSceneAdapter = new CPage2EuiAdapter();
-        mainMenuSceneAdapter.m_adaptee = g_mainMenu;
+        mainMenuSceneAdapter.m_adaptee = CGlobals.g_mainMenu;
         var praEasyContainerAdapter = new CPage2EyelenPraContainerAdapter();
-        praEasyContainerAdapter.m_adaptee = g_praEasyContainer;
+        praEasyContainerAdapter.m_adaptee = CGlobals.g_praEasyContainer;
         var praDifficultContainerAdapter = new CPage2EyelenPraContainerAdapter();
-        praDifficultContainerAdapter.m_adaptee = g_praDifficultContainer;
+        praDifficultContainerAdapter.m_adaptee = CGlobals.g_praDifficultContainer;
         var praDiffProContainerAdapter = new CPage2EyelenPraContainerAdapter();
-        praDiffProContainerAdapter.m_adaptee = g_praDiffProContainer;
+        praDiffProContainerAdapter.m_adaptee = CGlobals.g_praDiffProContainer;
         var shutdownPageAdapter = new CPage2EuiAdapter();
-        shutdownPageAdapter.m_adaptee = g_shutdownScr;
+        shutdownPageAdapter.m_adaptee = CGlobals.g_shutdownScr;
         // 把以上场景添加到页面跳转器，方便跳转。
-        g_pageJumper.setPage("WelcomeScene", welcomePage);
-        g_pageJumper.setPage("MainMenu", mainMenuSceneAdapter);
-        g_pageJumper.setPage("PraEasyScene", praEasyContainerAdapter);
-        g_pageJumper.setPage("PraDifficultScene", praDifficultContainerAdapter);
-        g_pageJumper.setPage("PraDiffProScene", praDiffProContainerAdapter);
-        g_pageJumper.setPage("ShutdownScr", shutdownPageAdapter);
-        g_shutdownScr.visible = false;
-        g_shutdownScr.width = this.stage.stageWidth;
-        g_shutdownScr.height = this.stage.stageHeight;
-        g_sceneLayer.addChild(g_shutdownScr);
-        g_sceneLayer.addChild(g_console);
-        g_praEasyScene.setWinWidth(g_winWidth);
-        g_praEasyScene.setWinHeight(g_winHeight);
-        g_praEasyScene.hide();
-        g_sceneLayer.addChild(g_praEasyScene);
-        g_praDifficultScene.setWinWidth(g_winWidth);
-        g_praDifficultScene.setWinHeight(g_winHeight);
-        g_praDifficultScene.hide();
-        g_sceneLayer.addChild(g_praDifficultScene); // 把场景添加到场景显示层。
-        g_praDiffProScene.setWinWidth(g_winWidth);
-        g_praDiffProScene.setWinHeight(g_winHeight);
-        g_praDiffProScene.hide();
-        g_sceneLayer.addChild(g_praDiffProScene); // 把场景添加到场景显示层。
+        CGlobals.g_pageJumper.setPage("WelcomeScene", welcomePage);
+        CGlobals.g_pageJumper.setPage("MainMenu", mainMenuSceneAdapter);
+        CGlobals.g_pageJumper.setPage("PraEasyScene", praEasyContainerAdapter);
+        CGlobals.g_pageJumper.setPage("PraDifficultScene", praDifficultContainerAdapter);
+        CGlobals.g_pageJumper.setPage("PraDiffProScene", praDiffProContainerAdapter);
+        CGlobals.g_pageJumper.setPage("ShutdownScr", shutdownPageAdapter);
+        CGlobals.g_shutdownScr.visible = false;
+        CGlobals.g_shutdownScr.width = this.stage.stageWidth;
+        CGlobals.g_shutdownScr.height = this.stage.stageHeight;
+        CGlobals.g_sceneLayer.addChild(CGlobals.g_shutdownScr);
+        //        g_sceneLayer.addChild(CGlobals.g_console);
+        CGlobals.g_praEasyScene.setWinWidth(CGlobals.g_winWidth);
+        CGlobals.g_praEasyScene.setWinHeight(CGlobals.g_winHeight);
+        CGlobals.g_praEasyScene.hide();
+        CGlobals.g_sceneLayer.addChild(CGlobals.g_praEasyScene);
+        CGlobals.g_praDifficultScene.setWinWidth(CGlobals.g_winWidth);
+        CGlobals.g_praDifficultScene.setWinHeight(CGlobals.g_winHeight);
+        CGlobals.g_praDifficultScene.hide();
+        CGlobals.g_sceneLayer.addChild(CGlobals.g_praDifficultScene); // 把场景添加到场景显示层。
+        CGlobals.g_praDiffProScene.setWinWidth(CGlobals.g_winWidth);
+        CGlobals.g_praDiffProScene.setWinHeight(CGlobals.g_winHeight);
+        CGlobals.g_praDiffProScene.hide();
+        CGlobals.g_sceneLayer.addChild(CGlobals.g_praDiffProScene); // 把场景添加到场景显示层。
         egret.ExternalInterface.addCallback("ret_fetchIsSndOn", function (msg) {
             console.log("ret_fetchIsSndOn,msg:" + msg);
             if ("1" == msg) {
-                g_isSndOn = true;
+                CGlobals.g_isSndOn = true;
             }
             else if ("0" == msg) {
-                g_isSndOn = false;
+                CGlobals.g_isSndOn = false;
             }
             //else do not change g_isSndOn.
         });
         egret.ExternalInterface.addCallback("ret_fetchDiffProHisScore", function (msg) {
             console.log("ret_fetchDiffProHisScore:" + msg);
-            g2_tmpScoresJSONObj = JSON.parse(msg);
+            CGlobals.g2_tmpScoresJSONObj = JSON.parse(msg);
             console.log("g2_tmpScoresJSONObj set!");
-            console.log("Size is " + g2_tmpScoresJSONObj.Scores.length);
+            console.log("Size is " + CGlobals.g2_tmpScoresJSONObj.Scores.length);
         });
         egret.ExternalInterface.addCallback("ret_fetchRetryLens", function (msg) {
-            g2_tmpRetryLensJSONStr = msg;
-            console.log("RetryLens sent to ts:" + g2_tmpRetryLensJSONStr);
-            g2_tmpWaitingForRetFromNative = false;
+            CGlobals.g2_tmpRetryLensJSONStr = msg;
+            console.log("RetryLens sent to ts:" + CGlobals.g2_tmpRetryLensJSONStr);
+            CGlobals.g2_tmpWaitingForRetFromNative = false;
         });
         egret.ExternalInterface.addCallback("ret_fetchTopSpaceHeight", function (msg) {
             var tmpTopSpaceHeight = parseInt(msg);
             if (!isNaN(tmpTopSpaceHeight)) {
-                g_topSpaceHeight = tmpTopSpaceHeight;
+                CGlobals.g_topSpaceHeight = tmpTopSpaceHeight;
             }
-            g_praEasyScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
-            g_praDiffProScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
-            g_praDifficultScene.m_wm.setTopSpaceHeight(g_topSpaceHeight);
-            if (g_praEasyScene.m_created) {
-                g_praEasyScene.refreshScene();
+            CGlobals.g_praEasyScene.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
+            CGlobals.g_praDiffProScene.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
+            CGlobals.g_praDifficultScene.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
+            if (CGlobals.g_praEasyScene.m_created) {
+                CGlobals.g_praEasyScene.refreshScene();
             }
-            if (g_praDiffProScene.m_created) {
-                g_praDiffProScene.refreshScene();
+            if (CGlobals.g_praDiffProScene.m_created) {
+                CGlobals.g_praDiffProScene.refreshScene();
             }
-            if (g_praDifficultScene.m_created) {
-                g_praDifficultScene.refreshScene();
+            if (CGlobals.g_praDifficultScene.m_created) {
+                CGlobals.g_praDifficultScene.refreshScene();
             }
         });
     };
     Main.prototype.autoShutdown = function () {
-        if (g_shutdownTimer.currentCount >= 1200) {
-            g_pageJumper.gotoPage("ShutdownScr", null);
+        if (CGlobals.g_shutdownTimer.currentCount >= 1200) {
+            CGlobals.g_pageJumper.gotoPage("ShutdownScr", null);
         }
     };
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
-//# sourceMappingURL=Main.js.map

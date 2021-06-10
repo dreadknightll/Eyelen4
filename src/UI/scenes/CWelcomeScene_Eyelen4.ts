@@ -47,7 +47,7 @@ namespace eyelen4 {
         public childrenCreated():void
         {
             this.shutdownClock.setFontSize(18);
-            this.shutdownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.setTimer(CGlobals.g_shutdownTimer);
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onClockTap , this);
 
         //填写超链接文本流：
@@ -118,7 +118,7 @@ namespace eyelen4 {
             this.priPoliRead.addEventListener(eui.UIEvent.CHANGE , this.onReadyCBCheck , this);
             this.horverChecked.addEventListener(eui.UIEvent.CHANGE , this.onReadyCBCheck , this);
 
-            if(S_BUILD_FOR == S_NATIVE_ANDROID) {
+            if(CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
                 egret.ExternalInterface.call("fetchTopSpaceHeight" , "");
             }
 
@@ -151,12 +151,12 @@ namespace eyelen4 {
     //        先显示翻页动画 （未完成）
             this.startBtn.visible = false;
 
-            g_pageJumper.gotoPage("MainMenu",null);
-            g_mainMenu.run();
+            CGlobals.g_pageJumper.gotoPage("MainMenu",null);
+            CGlobals.g_mainMenu.run();
         }
 
         private onClockTap():void {
-            g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
+            CGlobals.g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
         }
     }
 }

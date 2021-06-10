@@ -20,22 +20,21 @@ var CLenInputerBase = (function (_super) {
         return _super.call(this) || this;
     }
     CLenInputerBase.prototype.setWidth = function (wid) {
-        g_console.text += "Error!!Abstract class's func called!!'\n";
+        //        g_console.text += "Error!!Abstract class's func called!!'\n";
     };
     CLenInputerBase.prototype.getLen = function () {
-        g_console.text += "Error!!Abstract class's func called!!'\n";
+        //        g_console.text += "Error!!Abstract class's func called!!'\n";
         return 0;
     };
     CLenInputerBase.prototype.clearLen = function () {
-        g_console.text += "Error!!Abstract class's func called!!'\n";
+        //        g_console.text += "Error!!Abstract class's func called!!'\n";
     };
     CLenInputerBase.prototype.lock = function () {
-        g_console.text += "Error!!Abstract class's func called!!'\n";
+        //        g_console.text += "Error!!Abstract class's func called!!'\n";
     };
     CLenInputerBase.prototype.unlock = function () {
-        g_console.text += "Error!!Abstract class's func called!!'\n";
+        //        g_console.text += "Error!!Abstract class's func called!!'\n";
     };
     return CLenInputerBase;
 }(eui.Component));
 __reflect(CLenInputerBase.prototype, "CLenInputerBase");
-//# sourceMappingURL=CLenInputerBase.js.map

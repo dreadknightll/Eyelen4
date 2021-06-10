@@ -26,7 +26,7 @@ function playBtnSnd_iOS() {
 }
 
 function playBtnSnd() {
-    if(S_BUILD_FOR == S_NATIVE_IOS) {
+    if(CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_IOS) {
         playBtnSnd_iOS();
     }
     else {

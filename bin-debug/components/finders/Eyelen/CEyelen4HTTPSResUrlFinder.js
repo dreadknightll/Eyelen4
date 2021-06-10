@@ -59,4 +59,3 @@ var CEyelen4HTTPSResUrlFinder = (function () {
     return CEyelen4HTTPSResUrlFinder;
 }());
 __reflect(CEyelen4HTTPSResUrlFinder.prototype, "CEyelen4HTTPSResUrlFinder", ["IEyelen4ResNameFinder", "IFinder"]);
-//# sourceMappingURL=CEyelen4HTTPSResUrlFinder.js.map

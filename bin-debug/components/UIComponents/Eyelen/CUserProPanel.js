@@ -87,4 +87,3 @@ var eyelen4;
     eyelen4.CUserProPanel = CUserProPanel;
     __reflect(CUserProPanel.prototype, "eyelen4.CUserProPanel");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CUserProPanel.js.map

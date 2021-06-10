@@ -23,4 +23,3 @@ var CCaliCloseBtn = (function (_super) {
     return CCaliCloseBtn;
 }(eui.Button));
 __reflect(CCaliCloseBtn.prototype, "CCaliCloseBtn");
-//# sourceMappingURL=CCaliCloseBtn.js.map

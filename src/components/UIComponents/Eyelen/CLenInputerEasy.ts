@@ -123,7 +123,7 @@ namespace eyelen4 {
                 return;
             }
 
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
 

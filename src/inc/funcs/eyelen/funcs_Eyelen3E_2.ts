@@ -4,7 +4,7 @@
 
 function getCurScene():IEyelenPraScene
 {
-    switch(g_level)
+    switch(CGlobals.g_level)
     {
         case 0:
             return null;
@@ -19,8 +19,8 @@ function getCurScene():IEyelenPraScene
 //            break;
             
         case 3:
-            return g_praDifficultScene;
+            return CGlobals.g_praDifficultScene;
 //            break;
     }
-    return g_praDifficultScene;
+    return CGlobals.g_praDifficultScene;
 }

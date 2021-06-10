@@ -45,7 +45,7 @@ var eyelen4;
             this.m_firstDraged = true;
             this.okBtn.enabled = true;
             this.m_tchPosX = evt.localX;
-            if (g_isSndOn) {
+            if (CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
         };
@@ -79,7 +79,7 @@ var eyelen4;
         */
         CLenInputerDifficult.prototype.onTchEndOnStage = function (evt) {
             if (this.m_isDraging) {
-                if (g_isSndOn) {
+                if (CGlobals.g_isSndOn) {
                     playBtnSnd();
                 }
             }
@@ -133,4 +133,3 @@ var eyelen4;
     eyelen4.CLenInputerDifficult = CLenInputerDifficult;
     __reflect(CLenInputerDifficult.prototype, "eyelen4.CLenInputerDifficult");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CLenInputerDifficult.js.map

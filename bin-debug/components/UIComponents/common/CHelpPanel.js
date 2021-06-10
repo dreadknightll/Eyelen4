@@ -56,10 +56,10 @@ var eyelen4;
             return _this;
         }
         CHelpPanel.prototype.childrenCreated = function () {
-            if (S_BUILD_FOR == S_NATIVE_ANDROID) {
+            if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
                 this.contentLabel.text = this.s_PriText_Android;
             }
-            else if (S_BUILD_FOR == S_NATIVE_IOS) {
+            else if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_IOS) {
                 this.contentLabel.text = this.s_PriText_iOS;
             }
             else {
@@ -75,4 +75,3 @@ var eyelen4;
     eyelen4.CHelpPanel = CHelpPanel;
     __reflect(CHelpPanel.prototype, "eyelen4.CHelpPanel");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CHelpPanel.js.map

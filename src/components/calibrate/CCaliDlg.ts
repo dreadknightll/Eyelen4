@@ -205,7 +205,7 @@ namespace eyelen4 {
         {
             this.m_caliImgTag = this.m_caliImgTag%3 + 1;
             this.caliImg.source = "square" + this.m_caliImgTag + "_png";
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
         }

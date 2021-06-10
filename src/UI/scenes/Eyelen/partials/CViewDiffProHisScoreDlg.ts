@@ -12,11 +12,11 @@ namespace eyelen4 {
 		}
 
 		public show() {
-			console.log("ScoreJSONObjSize():"+g2_tmpScoresJSONObj.size);
+			console.log("ScoreJSONObjSize():"+CGlobals.g2_tmpScoresJSONObj.size);
 			this.scoreLabel.text = "";
 			var i;
-			for(i=0;i<g2_tmpScoresJSONObj.Scores.length;++i) {
-				this.scoreLabel.text += (g2_tmpScoresJSONObj.Scores[i].Score+"分 于"+g2_tmpScoresJSONObj.Scores[i].PraDateTime+"\n\n");
+			for(i=0;i<CGlobals.g2_tmpScoresJSONObj.Scores.length;++i) {
+				this.scoreLabel.text += (CGlobals.g2_tmpScoresJSONObj.Scores[i].Score+"分 于"+CGlobals.g2_tmpScoresJSONObj.Scores[i].PraDateTime+"\n\n");
 			}
 			this.visible = true;
 		}

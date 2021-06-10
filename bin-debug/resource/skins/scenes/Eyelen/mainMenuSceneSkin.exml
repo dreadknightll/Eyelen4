@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="mainMenuSceneSkin" width="400" height="744" xmlns:e="http://ns.egret.com/eui" xmlns:gdeint="gdeint.*" xmlns:eyelen4="eyelen4.*" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect x="0" y="-1" width="100%" height="100%" fillColor="0x88DD99" />
+	<e:Group id="menuGrp" x="21" y="36" width="359" anchorOffsetY="0" height="665" anchorOffsetX="0">
+		<e:Rect width="220" height="96" x="124" y="482" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x9e9df2"/>
+		<e:Rect width="220" height="171" x="123" y="303" anchorOffsetX="0" anchorOffsetY="0" fillColor="0xdba097"/>
+		<e:Label id="startEasyBtn1" text="简单" textColor="0x000000" size="48" x="16.5" y="108"/>
+		<e:Button id="startEasyBtn2" label="进入" x="187" y="105"/>
+		<e:Label text="中等" textColor="0x000000" size="56" y="328" x="61" visible="false"/>
+		<e:Button label="未开放" y="331" x="86" visible="false"/>
+		<e:Label id="startDifficultBtn1" text="困难" textColor="0x000000" size="48" x="16.5" y="408"/>
+		<e:Button id="startDifficultBtn2" label="进入" x="239" y="506" anchorOffsetX="0" width="100"/>
+		<e:Button id="startDiffProBtn" label="进入" x="239" y="336" anchorOffsetX="0" width="100"/>
+		<e:Button id="viewDiffProHisScoreBtn" label="练习日志" x="239" y="399"/>
+		<e:Label text="专业模式\n（开放中）" x="126.5" y="348.5" textColor="0x000000" size="24" textAlign="center"/>
+		<e:Label id="aao" text="（仅限安卓app版）" x="131.5" y="412" textColor="0x000000" size="24" textAlign="center"/>
+		<e:Label text="传统模式" x="133.5" y="519" textColor="0x000000" size="24"/>
+		<eyelen4:CViewDiffProHisScoreDlg id="viewDiffProHisScoreDlg" visible="false" />
+		<e:Image id="diffProHelpBtn" width="32.5" height="32.5" x="166.25" y="401.25" source="helpQuestioner_png" anchorOffsetX="0" anchorOffsetY="0"/>
+		<gdeint:CAlertPanel_v2 id="alertDlg" x="20" y="100" />
+	</e:Group>
+</e:Skin>

@@ -24,4 +24,3 @@ var CDiv2EgretDispOCAdapter = (function () {
     return CDiv2EgretDispOCAdapter;
 }());
 __reflect(CDiv2EgretDispOCAdapter.prototype, "CDiv2EgretDispOCAdapter", ["IDivWithEgret", "IDiv", "IDispObj"]);
-//# sourceMappingURL=CDiv2EgretDispOCAdapter.js.map

@@ -40,4 +40,3 @@ var CWelcomePage_Eyelen4 = (function () {
     return CWelcomePage_Eyelen4;
 }());
 __reflect(CWelcomePage_Eyelen4.prototype, "CWelcomePage_Eyelen4", ["gdeint.IPage", "gdeint.IHidable"]);
-//# sourceMappingURL=CWelcomePage_Eyelen4.js.map

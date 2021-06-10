@@ -81,7 +81,7 @@ namespace eyelen4 {
 
             this.m_wm = new CEyelen4WinModel(); // 此模型用于计算画面各区域的位置大小等数据。
 
-            this.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+            this.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
             this.m_wm.setTopHeight1(30);
             this.m_wm.setTopHeight2(190);
             this.m_wm.showTop();
@@ -129,7 +129,7 @@ namespace eyelen4 {
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onOKButtonTap , this);
 
             this.m2_cc = true;
-            this.shutdownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.setTimer(CGlobals.g_shutdownTimer);
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP , this.onClockTap , this);
         }
 
@@ -167,7 +167,7 @@ namespace eyelen4 {
         * 触摸“下一长度”按钮后触发。
         */ 
         private onNextButtonTap(evt: egret.TouchEvent) {
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
 
@@ -237,7 +237,7 @@ namespace eyelen4 {
         */ 
         private onOKButtonTap(evt: egret.TouchEvent) {
 
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
 
@@ -265,7 +265,7 @@ namespace eyelen4 {
         }
 
         private onClockTap():void {
-            g_praDifficultContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
+            CGlobals.g_praDifficultContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。" , null);
         }
 
         // 开始新一轮练习。
@@ -635,13 +635,13 @@ namespace eyelen4 {
         {
             this.prepareTipBalloons();
 
-            var balloonX:number = g_scenePos.m_x + 65*g_scale;
-            var balloonY:number = g_scenePos.m_y + /*190**/230*g_scale; 
+            var balloonX:number = CGlobals.g_scenePos.m_x + 65*CGlobals.g_scale;
+            var balloonY:number = CGlobals.g_scenePos.m_y + /*190**/230*CGlobals.g_scale; 
 
             this.m_tipBalloon1.x = balloonX * 0.9;
             this.m_tipBalloon1.y = balloonY;
-            this.m_tipBalloon1.scaleX = g_scale;
-            this.m_tipBalloon1.scaleY = g_scale;
+            this.m_tipBalloon1.scaleX = CGlobals.g_scale;
+            this.m_tipBalloon1.scaleY = CGlobals.g_scale;
             this.m_tipBalloon1.title = "提示";
             this.m_tipBalloon1.setContent("请目测图上“？”处显示的长度，并拖动拉尺输入您目测的结果。");
             this.m_tipBalloon1.visible = true;
@@ -650,8 +650,8 @@ namespace eyelen4 {
 
             this.m_tipBalloon2.x = balloonX * 1.1;
             this.m_tipBalloon2.y = balloonY;
-            this.m_tipBalloon2.scaleX = g_scale;
-            this.m_tipBalloon2.scaleY = g_scale;
+            this.m_tipBalloon2.scaleX = CGlobals.g_scale;
+            this.m_tipBalloon2.scaleY = CGlobals.g_scale;
             this.m_tipBalloon2.title = "提示";
             this.m_tipBalloon2.setContent("请目测图上“？”处显示的\n长度并拖动拉尺输入您目测的结果。");
             this.m_tipBalloon2.visible = false; //隐藏2以防两个重叠显示。
@@ -693,7 +693,7 @@ namespace eyelen4 {
         * 顶部按钮触摸后触发。
         */ 
         private onTopBtnTab(evt: egret.Event) {
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
 
@@ -837,7 +837,7 @@ namespace eyelen4 {
             var ret:boolean = <boolean>param;
             if(ret) {
                 this.finalScoreDlg.visible = false;
-                g_pageJumper.gotoPage("WelcomeScene" , null);
+                CGlobals.g_pageJumper.gotoPage("WelcomeScene" , null);
             }
             else {
             }
@@ -966,7 +966,7 @@ namespace eyelen4 {
             // Len
             this._showLen(tmpLen);
 
-            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.height = CGlobals.g_topSpaceHeight;
             this.m_topSpace.setColor(0xDDDDDD);
             this.m_topSpace.redraw();
 

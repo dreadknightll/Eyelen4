@@ -43,4 +43,3 @@ var eyelen4;
     eyelen4.CCpyTextPanel = CCpyTextPanel;
     __reflect(CCpyTextPanel.prototype, "eyelen4.CCpyTextPanel");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CCpyTextPanel.js.map

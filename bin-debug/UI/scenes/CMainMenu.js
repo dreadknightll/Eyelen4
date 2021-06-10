@@ -28,7 +28,7 @@ var eyelen4;
             //                        this.m_startTimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.startDifficult,this);
         }
         CMainMenu.prototype.childrenCreated = function () {
-            if (S_BUILD_FOR == S_NATIVE_ANDROID) {
+            if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
                 this.aao.visible = false;
                 this.startDiffProBtn.visible = true;
                 this.diffProHelpBtn.visible = true;
@@ -83,43 +83,43 @@ var eyelen4;
         };
         CMainMenu.prototype.run = function () {
             this.m_startTimer.start();
-            g_shutdownTimer.start();
+            CGlobals.g_shutdownTimer.start();
         };
         /*
         * 开始简单练习。
         */
         CMainMenu.prototype.startEasy = function () {
-            g_level = 1;
-            g_praEasyContainer.startNewPra(); // 切换画面前先启动练习。
+            CGlobals.g_level = 1;
+            CGlobals.g_praEasyContainer.startNewPra(); // 切换画面前先启动练习。
             //        先显示翻页动画 （未完成）
-            g_praEasyContainer.saveVisibleStates();
-            g_pageJumper.gotoPage("PraEasyScene", null); // 使用页面跳转器换页。非常方便。
+            CGlobals.g_praEasyContainer.saveVisibleStates();
+            CGlobals.g_pageJumper.gotoPage("PraEasyScene", null); // 使用页面跳转器换页。非常方便。
             this.m_startTimer.stop();
         };
         CMainMenu.prototype.startNormal = function () {
             //目前没有中等难度。
-            g_level = 2;
+            CGlobals.g_level = 2;
         };
         /*
         * 开始困难传统模式练习。
         */
         CMainMenu.prototype.startDifficult = function () {
-            g_level = 3;
-            g_praDifficultContainer.startNewPra();
+            CGlobals.g_level = 3;
+            CGlobals.g_praDifficultContainer.startNewPra();
             //        先显示翻页动画 （未完成）
-            g_praDifficultContainer.saveVisibleStates();
-            g_pageJumper.gotoPage("PraDifficultScene", null);
+            CGlobals.g_praDifficultContainer.saveVisibleStates();
+            CGlobals.g_pageJumper.gotoPage("PraDifficultScene", null);
             this.m_startTimer.stop();
         };
         /*
         * 开始困难专业模式练习。
         */
         CMainMenu.prototype.startDiffPro = function () {
-            g_level = 2; // 循序渐进练习顺序是简单、困难（专业）、困难（传统）。
-            g_praDiffProContainer.startNewPra();
+            CGlobals.g_level = 2; // 循序渐进练习顺序是简单、困难（专业）、困难（传统）。
+            CGlobals.g_praDiffProContainer.startNewPra();
             //        先显示翻页动画 （未完成）
-            g_praDiffProContainer.saveVisibleStates();
-            g_pageJumper.gotoPage("PraDiffProScene", null);
+            CGlobals.g_praDiffProContainer.saveVisibleStates();
+            CGlobals.g_pageJumper.gotoPage("PraDiffProScene", null);
             this.m_startTimer.stop();
         };
         CMainMenu.prototype.onViewDiffProHisScoreBtn = function () {
@@ -145,4 +145,3 @@ var eyelen4;
     eyelen4.CMainMenu = CMainMenu;
     __reflect(CMainMenu.prototype, "eyelen4.CMainMenu");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CMainMenu.js.map

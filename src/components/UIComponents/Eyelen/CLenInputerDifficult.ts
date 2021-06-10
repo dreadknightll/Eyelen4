@@ -64,7 +64,7 @@ namespace eyelen4 {
             this.okBtn.enabled = true;
             this.m_tchPosX = evt.localX;
 
-            if(g_isSndOn) {
+            if(CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
         }
@@ -110,7 +110,7 @@ namespace eyelen4 {
         {
             if(this.m_isDraging)
             {
-                if(g_isSndOn) {
+                if(CGlobals.g_isSndOn) {
                     playBtnSnd();  
                 }          
             }

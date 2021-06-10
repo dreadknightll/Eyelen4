@@ -34,4 +34,3 @@ var gdeint;
     gdeint.CViewTermsMenu = CViewTermsMenu;
     __reflect(CViewTermsMenu.prototype, "gdeint.CViewTermsMenu");
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CViewTermsMenu.js.map

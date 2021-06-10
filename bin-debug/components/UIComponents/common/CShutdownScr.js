@@ -22,4 +22,3 @@ var gdeint;
     gdeint.CShutdownScr = CShutdownScr;
     __reflect(CShutdownScr.prototype, "gdeint.CShutdownScr");
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CShutdownScr.js.map

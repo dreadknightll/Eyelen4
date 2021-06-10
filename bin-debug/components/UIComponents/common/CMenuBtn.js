@@ -20,4 +20,3 @@ var gdeint;
     gdeint.CMenuBtn = CMenuBtn;
     __reflect(CMenuBtn.prototype, "gdeint.CMenuBtn");
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CMenuBtn.js.map

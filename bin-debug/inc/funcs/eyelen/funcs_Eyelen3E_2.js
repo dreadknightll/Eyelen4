@@ -13,8 +13,7 @@ function getCurScene() {
             return null;
         //            break;
         case 3:
-            return g_praDifficultScene;
+            return CGlobals.g_praDifficultScene;
     }
-    return g_praDifficultScene;
+    return CGlobals.g_praDifficultScene;
 }
-//# sourceMappingURL=funcs_Eyelen3E_2.js.map

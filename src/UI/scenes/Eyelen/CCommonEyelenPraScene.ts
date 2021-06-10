@@ -134,10 +134,10 @@ class CCommonEyelenPraScene extends eui.Component implements IEyelenPraScene,INo
         this.m_notiLayerBg.graphics.clear();
 
         this.m_notiLayerBg.graphics.beginFill(0xaaaaaa,0.6);
-        this.m_notiLayerBg.graphics.drawRect(0,0,g_winWidth,r.m_top);
+        this.m_notiLayerBg.graphics.drawRect(0,0,CGlobals.g_winWidth,r.m_top);
         this.m_notiLayerBg.graphics.drawRect(0,r.m_top,r.m_left,r.m_height);
-        this.m_notiLayerBg.graphics.drawRect(r.m_left+r.m_width,r.m_top,g_winWidth-(r.m_left+r.m_width),r.m_height);
-        this.m_notiLayerBg.graphics.drawRect(0,r.m_top+r.m_height,g_winWidth,g_winHeight-(r.m_top+r.m_height));
+        this.m_notiLayerBg.graphics.drawRect(r.m_left+r.m_width,r.m_top,CGlobals.g_winWidth-(r.m_left+r.m_width),r.m_height);
+        this.m_notiLayerBg.graphics.drawRect(0,r.m_top+r.m_height,CGlobals.g_winWidth,CGlobals.g_winHeight-(r.m_top+r.m_height));
         this.m_notiLayerBg.graphics.endFill();
 
     }
@@ -146,7 +146,7 @@ class CCommonEyelenPraScene extends eui.Component implements IEyelenPraScene,INo
         // 让提示显示时场景背景复原（不是背景不变灰），供下次提示用（不是供没提示时）。
         this.m_notiLayerBg.graphics.clear();
         this.m_notiLayerBg.graphics.beginFill(0xaaaaaa,0.4);
-        this.m_notiLayerBg.graphics.drawRect(0,0,g_winWidth,g_winHeight);
+        this.m_notiLayerBg.graphics.drawRect(0,0,CGlobals.g_winWidth,CGlobals.g_winHeight);
         this.m_notiLayerBg.graphics.endFill();
     }
 

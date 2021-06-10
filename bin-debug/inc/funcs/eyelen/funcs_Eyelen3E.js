@@ -32,4 +32,3 @@ function getHTTPSImgURLByPicTag(picTag) {
 function getImgResNameByFileName(fileName) {
     return fileName.substr(0, 7);
 }
-//# sourceMappingURL=funcs_Eyelen3E.js.map

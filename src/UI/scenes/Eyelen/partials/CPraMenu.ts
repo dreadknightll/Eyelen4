@@ -108,9 +108,9 @@ namespace gdeint {
         public onMenu(menuClicked:string):void {
             if("AdjustTop" == menuClicked) {
                 console.log("onMenu Adjusting top!");
-                console.log("Now top space is:"+ g_topSpaceHeight);
+                console.log("Now top space is:"+ CGlobals.g_topSpaceHeight);
 //                gdeint.CAdjustTop 
-            this.adjustTopDlg.topSpaceInp.text = g_topSpaceHeight.toString();
+            this.adjustTopDlg.topSpaceInp.text = CGlobals.g_topSpaceHeight.toString();
             this.adjustTopDlg.visible = true;
 
                 
@@ -132,7 +132,7 @@ namespace gdeint {
             var ret:boolean = <boolean>param;
 
             if(ret) {
-                g_pageJumper.gotoPage("WelcomeScene" , null);
+                CGlobals.g_pageJumper.gotoPage("WelcomeScene" , null);
             }
             else {
             }

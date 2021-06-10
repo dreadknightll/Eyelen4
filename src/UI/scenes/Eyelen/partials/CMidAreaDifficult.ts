@@ -63,7 +63,7 @@ namespace eyelen4 {
 
             this.midBgGrp.addChild(this.m_bg);
 
-            if(S_NO_IMG_MODE) {
+            if(CGlobals.S_NO_IMG_MODE) {
                 this.m_randomGraphShape.touchEnabled = true;
                 this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchBegin,this);
                 this.m_randomGraphShape.addEventListener(egret.TouchEvent.TOUCH_MOVE,this.touchMove,this);
@@ -118,7 +118,7 @@ namespace eyelen4 {
             this.m_imgCircler.setPushGapHor(this.s_horSpace);
             this.m_imgCircler.setPushGapVer(this.s_verSpace);
             var imgRect:gdeint.CRect = new gdeint.CRect();
-            if(S_NO_IMG_MODE) {
+            if(CGlobals.S_NO_IMG_MODE) {
                 imgRect.m_width = this.randomGraph.width;
                 imgRect.m_height = this.randomGraph.height;
             }

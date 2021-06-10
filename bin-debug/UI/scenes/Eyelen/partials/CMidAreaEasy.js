@@ -54,7 +54,7 @@ var eyelen4;
             rect.height = 3000;
             this.mask = rect; //超出范围的内容不显示。
             this.midBgGrp.addChild(this.m_bg);
-            if (!(S_NO_IMG_MODE)) {
+            if (!(CGlobals.S_NO_IMG_MODE)) {
                 this.imgFromFile.touchEnabled = true;
                 this.imgFromFile.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBegin, this);
                 this.imgFromFile.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMove, this);
@@ -84,7 +84,7 @@ var eyelen4;
             this.m_imgCircler.setPushGapHor(this.s_horSpace);
             this.m_imgCircler.setPushGapVer(this.s_verSpace);
             var imgRect = new gdeint.CRect();
-            if (S_NO_IMG_MODE) {
+            if (CGlobals.S_NO_IMG_MODE) {
                 imgRect.m_width = this.randomGraph.width;
                 imgRect.m_height = this.randomGraph.height;
             }
@@ -211,4 +211,3 @@ var eyelen4;
     eyelen4.CMidAreaEasy = CMidAreaEasy;
     __reflect(CMidAreaEasy.prototype, "eyelen4.CMidAreaEasy");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CMidAreaEasy.js.map

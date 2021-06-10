@@ -9,10 +9,10 @@ module eyelen4 {
 
 		public childrenCreated() {
 
-			if(S_BUILD_FOR == S_NATIVE_ANDROID) {
+			if(CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
 				this.contentLabel.text = this.s_PriText_Android;
 			}
-			else if(S_BUILD_FOR == S_NATIVE_IOS) {
+			else if(CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_IOS) {
 				this.contentLabel.text = this.s_PriText_iOS;
 			}
 			else {

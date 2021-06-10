@@ -43,7 +43,7 @@ var eyelen4;
             _this.y = 0;
             _this.m_topOpen = true;
             _this.m_wm = new CEyelen4WinModel(); // 此模型用于计算画面各区域的位置大小等数据。
-            _this.m_wm.setTopSpaceHeight(g_topSpaceHeight);
+            _this.m_wm.setTopSpaceHeight(CGlobals.g_topSpaceHeight);
             _this.m_wm.setTopHeight1(30);
             _this.m_wm.setTopHeight2(190);
             _this.m_wm.showTop();
@@ -117,7 +117,7 @@ var eyelen4;
         * 触摸“下一长度”按钮后触发。
         */
         CPraDiffProScene.prototype.onNextButtonTap = function (evt) {
-            if (g_isSndOn) {
+            if (CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
             this.hideCmpLenDlg();
@@ -173,7 +173,7 @@ var eyelen4;
         * “确定”按钮点击后触发。提交用户输入的长度。
         */
         CPraDiffProScene.prototype.onOKButtonTap = function (evt) {
-            if (g_isSndOn) {
+            if (CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
             this.m_UIPresenter.setUserLen(this.bottomArea.lenInputer.getLen());
@@ -200,7 +200,7 @@ var eyelen4;
             this.getParentContainer().startNewPra();
         };
         CPraDiffProScene.prototype.onClockTap = function () {
-            g_praDifficultContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。", null);
+            CGlobals.g_praDifficultContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。", null);
         };
         // 开始新一轮练习。
         CPraDiffProScene.prototype.startNewPra = function () {
@@ -488,20 +488,20 @@ var eyelen4;
         */
         CPraDiffProScene.prototype.showInitInstrus = function () {
             this.prepareTipBalloons();
-            var balloonX = g_scenePos.m_x + 65 * g_scale;
-            var balloonY = g_scenePos.m_y + 230 * g_scale;
+            var balloonX = CGlobals.g_scenePos.m_x + 65 * CGlobals.g_scale;
+            var balloonY = CGlobals.g_scenePos.m_y + 230 * CGlobals.g_scale;
             this.m_tipBalloon1.x = balloonX * 0.9;
             this.m_tipBalloon1.y = balloonY;
-            this.m_tipBalloon1.scaleX = g_scale;
-            this.m_tipBalloon1.scaleY = g_scale;
+            this.m_tipBalloon1.scaleX = CGlobals.g_scale;
+            this.m_tipBalloon1.scaleY = CGlobals.g_scale;
             this.m_tipBalloon1.title = "提示";
             this.m_tipBalloon1.setContent("请目测图上“？”处显示的长度，并拖动拉尺输入您目测的结果。");
             this.m_tipBalloon1.visible = true;
             this.disableScene();
             this.m_tipBalloon2.x = balloonX * 1.1;
             this.m_tipBalloon2.y = balloonY;
-            this.m_tipBalloon2.scaleX = g_scale;
-            this.m_tipBalloon2.scaleY = g_scale;
+            this.m_tipBalloon2.scaleX = CGlobals.g_scale;
+            this.m_tipBalloon2.scaleY = CGlobals.g_scale;
             this.m_tipBalloon2.title = "提示";
             this.m_tipBalloon2.setContent("请目测图上“？”处显示的\n长度并拖动拉尺输入您目测的结果。");
             this.m_tipBalloon2.visible = false; //隐藏2以防两个重叠显示。
@@ -537,7 +537,7 @@ var eyelen4;
         * 顶部按钮触摸后触发。
         */
         CPraDiffProScene.prototype.onTopBtnTab = function (evt) {
-            if (g_isSndOn) {
+            if (CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
             if (this.m_topOpen) {
@@ -719,7 +719,7 @@ var eyelen4;
                 this.m_UIPresenter.inpImgSelHeight(this.m_wm.getMidVisibleHeight());
             }
             //本函数此后代码不得对数据源进行修改！
-            this.m_topSpace.height = g_topSpaceHeight;
+            this.m_topSpace.height = CGlobals.g_topSpaceHeight;
             this.m_topSpace.setColor(0xDDDDDD);
             this.m_topSpace.redraw();
             this.topAreaGroup.y = this.m_wm.getTopY();
@@ -785,4 +785,3 @@ var eyelen4;
     eyelen4.CPraDiffProScene = CPraDiffProScene;
     __reflect(CPraDiffProScene.prototype, "eyelen4.CPraDiffProScene");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CPraDiffProScene.js.map

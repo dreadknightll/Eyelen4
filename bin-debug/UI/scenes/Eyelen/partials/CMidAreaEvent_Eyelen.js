@@ -23,4 +23,3 @@ var CMidAreaEvent_Eyelen = (function (_super) {
     return CMidAreaEvent_Eyelen;
 }(egret.Event));
 __reflect(CMidAreaEvent_Eyelen.prototype, "CMidAreaEvent_Eyelen");
-//# sourceMappingURL=CMidAreaEvent_Eyelen.js.map

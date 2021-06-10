@@ -1,0 +1,15 @@
+{
+	"initial": [
+		"js/egret.js",
+		"js/egret.web.js",
+		"js/eui.js",
+		"js/assetsmanager.js",
+		"js/game.js",
+		"js/tween.js",
+		"js/promise.js",
+		"js/libGdeint.js"
+	],
+	"game": [
+		"js/main.js"
+	]
+}

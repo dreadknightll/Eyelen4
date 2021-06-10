@@ -1,6 +1,6 @@
 {
-  "engineVersion": "5.2.33",
-  "compilerVersion": "5.2.33",
+  "engineVersion": "5.4.1",
+  "compilerVersion": "5.4.1",
   "template": {},
   "target": {
     "current": "web"
@@ -44,5 +44,8 @@
       "resource/eui_skins",
       "resource/skins"
     ]
+  },
+  "vivo": {
+    "usePlugin": true
   }
 }

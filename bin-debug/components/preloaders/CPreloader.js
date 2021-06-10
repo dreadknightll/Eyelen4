@@ -71,16 +71,16 @@ var CPreloader = (function () {
         else {
             ++this.m2_HTTPSStartPreloadTag;
             var url = this.m2_httpsResList[tag];
-            g_resCache[url] = new CHTTPSResStru();
-            g_resCache[url].setUrl(url);
+            CGlobals.g_resCache[url] = new CHTTPSResStru();
+            CGlobals.g_resCache[url].setUrl(url);
             if (url.indexOf("img") > 0 || url.indexOf("getImgCrossDomain.php") > 0) {
-                g_resCache[url].setResType(RES.ResourceItem.TYPE_IMAGE);
+                CGlobals.g_resCache[url].setResType(RES.ResourceItem.TYPE_IMAGE);
             }
             else if (url.indexOf("pic") > 0 || url.indexOf("getPicCrossDomain.php") > 0) {
-                g_resCache[url].setResType(RES.ResourceItem.TYPE_JSON);
+                CGlobals.g_resCache[url].setResType(RES.ResourceItem.TYPE_JSON);
             }
-            g_resCache[url].setOnPreloadCmpl(this.onHttpsResLoadComplete, this);
-            g_resCache[url].preload();
+            CGlobals.g_resCache[url].setOnPreloadCmpl(this.onHttpsResLoadComplete, this);
+            CGlobals.g_resCache[url].preload();
         }
     };
     CPreloader.prototype.preload = function () {
@@ -170,4 +170,3 @@ var CPreloader = (function () {
     return CPreloader;
 }());
 __reflect(CPreloader.prototype, "CPreloader", ["IPreloader"]);
-//# sourceMappingURL=CPreloader.js.map

@@ -81,9 +81,9 @@ var gdeint;
         CPraMenu.prototype.onMenu = function (menuClicked) {
             if ("AdjustTop" == menuClicked) {
                 console.log("onMenu Adjusting top!");
-                console.log("Now top space is:" + g_topSpaceHeight);
+                console.log("Now top space is:" + CGlobals.g_topSpaceHeight);
                 //                gdeint.CAdjustTop 
-                this.adjustTopDlg.topSpaceInp.text = g_topSpaceHeight.toString();
+                this.adjustTopDlg.topSpaceInp.text = CGlobals.g_topSpaceHeight.toString();
                 this.adjustTopDlg.visible = true;
             }
             if ("Calibrate" == menuClicked) {
@@ -109,4 +109,3 @@ var gdeint;
     gdeint.CPraMenu = CPraMenu;
     __reflect(CPraMenu.prototype, "gdeint.CPraMenu", ["IContainerPlugin", "gdeint.IHidable"]);
 })(gdeint || (gdeint = {}));
-//# sourceMappingURL=CPraMenu.js.map

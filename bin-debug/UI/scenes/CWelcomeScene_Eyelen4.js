@@ -79,7 +79,7 @@ var eyelen4;
             this.userProRead.addEventListener(eui.UIEvent.CHANGE, this.onReadyCBCheck, this);
             this.priPoliRead.addEventListener(eui.UIEvent.CHANGE, this.onReadyCBCheck, this);
             this.horverChecked.addEventListener(eui.UIEvent.CHANGE, this.onReadyCBCheck, this);
-            if (S_BUILD_FOR == S_NATIVE_ANDROID) {
+            if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
                 egret.ExternalInterface.call("fetchTopSpaceHeight", "");
             }
             this.m_cc = true;
@@ -105,14 +105,13 @@ var eyelen4;
             //        先显示翻页动画 （未完成）
             this.startBtn.visible = false;
             g_pageJumper.gotoPage("MainMenu", null);
-            g_mainMenu.run();
+            CGlobals.g_mainMenu.run();
         };
         CWelcomeScene_Eyelen4.prototype.onClockTap = function () {
-            g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。", null);
+            CGlobals.g_praEasyContainer.showAlert("为了您的健康，每次使用20分钟后自动停止。", null);
         };
         return CWelcomeScene_Eyelen4;
     }(eui.Component));
     eyelen4.CWelcomeScene_Eyelen4 = CWelcomeScene_Eyelen4;
     __reflect(CWelcomeScene_Eyelen4.prototype, "eyelen4.CWelcomeScene_Eyelen4");
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CWelcomeScene_Eyelen4.js.map

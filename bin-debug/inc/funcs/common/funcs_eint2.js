@@ -19,11 +19,10 @@ function playBtnSnd_iOS() {
     g2_sndChls[0] = g2_sndObjs[g2_curSndTag].play(0, 1);
 }
 function playBtnSnd() {
-    if (S_BUILD_FOR == S_NATIVE_IOS) {
+    if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_IOS) {
         playBtnSnd_iOS();
     }
     else {
         playBtnSnd_default();
     }
 }
-//# sourceMappingURL=funcs_eint2.js.map

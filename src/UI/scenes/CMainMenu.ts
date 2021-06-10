@@ -36,7 +36,7 @@ namespace eyelen4 {
 
                 public childrenCreated() {
 
-                        if(S_BUILD_FOR == S_NATIVE_ANDROID) {
+                        if(CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
                                 this.aao.visible = false;
                                 this.startDiffProBtn.visible = true;
                                 this.diffProHelpBtn.visible = true;
@@ -104,37 +104,37 @@ namespace eyelen4 {
                 public run():void {
                         this.m_startTimer.start();
 
-                        g_shutdownTimer.start();
+                        CGlobals.g_shutdownTimer.start();
                 }
 
                 /*
                 * 开始简单练习。
                 */ 
                 public startEasy():void {
-                        g_level = 1;
-                        g_praEasyContainer.startNewPra(); // 切换画面前先启动练习。
+                        CGlobals.g_level = 1;
+                        CGlobals.g_praEasyContainer.startNewPra(); // 切换画面前先启动练习。
 
                 //        先显示翻页动画 （未完成）
-                        g_praEasyContainer.saveVisibleStates();
-                        g_pageJumper.gotoPage("PraEasyScene",null); // 使用页面跳转器换页。非常方便。
+                        CGlobals.g_praEasyContainer.saveVisibleStates();
+                        CGlobals.g_pageJumper.gotoPage("PraEasyScene",null); // 使用页面跳转器换页。非常方便。
                         this.m_startTimer.stop();
                 }
 
                 public startNormal():void {
                 //目前没有中等难度。
-                        g_level = 2;
+                        CGlobals.g_level = 2;
                 }
 
                 /*
                 * 开始困难传统模式练习。
                 */ 
                 public startDifficult():void {
-                        g_level = 3;
-                        g_praDifficultContainer.startNewPra();
+                        CGlobals.g_level = 3;
+                        CGlobals.g_praDifficultContainer.startNewPra();
 
                 //        先显示翻页动画 （未完成）
-                        g_praDifficultContainer.saveVisibleStates();
-                        g_pageJumper.gotoPage("PraDifficultScene",null);
+                        CGlobals.g_praDifficultContainer.saveVisibleStates();
+                        CGlobals.g_pageJumper.gotoPage("PraDifficultScene",null);
 
                         this.m_startTimer.stop();
                 }
@@ -143,12 +143,12 @@ namespace eyelen4 {
                 * 开始困难专业模式练习。
                 */ 
                 public startDiffPro():void {
-                        g_level = 2; // 循序渐进练习顺序是简单、困难（专业）、困难（传统）。
-                        g_praDiffProContainer.startNewPra();
+                        CGlobals.g_level = 2; // 循序渐进练习顺序是简单、困难（专业）、困难（传统）。
+                        CGlobals.g_praDiffProContainer.startNewPra();
 
                 //        先显示翻页动画 （未完成）
-                        g_praDiffProContainer.saveVisibleStates();
-                        g_pageJumper.gotoPage("PraDiffProScene",null);
+                        CGlobals.g_praDiffProContainer.saveVisibleStates();
+                        CGlobals.g_pageJumper.gotoPage("PraDiffProScene",null);
 
                         this.m_startTimer.stop();
                 }

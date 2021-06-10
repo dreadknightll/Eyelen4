@@ -144,7 +144,7 @@ var eyelen4;
         CCaliDlg.prototype.onCaliImgBtnTap = function (evt) {
             this.m_caliImgTag = this.m_caliImgTag % 3 + 1;
             this.caliImg.source = "square" + this.m_caliImgTag + "_png";
-            if (g_isSndOn) {
+            if (CGlobals.g_isSndOn) {
                 playBtnSnd();
             }
         };
@@ -293,4 +293,3 @@ var eyelen4;
     eyelen4.CCaliDlg = CCaliDlg;
     __reflect(CCaliDlg.prototype, "eyelen4.CCaliDlg", ["ICaliDlgPlugin", "ICaliDlg", "gdeint.IHidable", "IContainerPlugin"]);
 })(eyelen4 || (eyelen4 = {}));
-//# sourceMappingURL=CCaliDlg.js.map

@@ -111,4 +111,3 @@ var CNoUIPreloaderUI = (function () {
     return CNoUIPreloaderUI;
 }());
 __reflect(CNoUIPreloaderUI.prototype, "CNoUIPreloaderUI", ["IPreloaderUI", "IContainerPlugin", "gdeint.IHidable"]);
-//# sourceMappingURL=CNoUIPreloaderUI.js.map

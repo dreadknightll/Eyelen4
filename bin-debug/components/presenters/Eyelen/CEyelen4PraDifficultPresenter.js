@@ -487,4 +487,3 @@ var CEyelen4PraDifficultPresenter = (function () {
     return CEyelen4PraDifficultPresenter;
 }());
 __reflect(CEyelen4PraDifficultPresenter.prototype, "CEyelen4PraDifficultPresenter", ["IEyelen4PraDifficultPresenter", "IPraPresenter", "IBindableWithPM", "IPresenterWithThumb", "IPresenterWithCa"]);
-//# sourceMappingURL=CEyelen4PraDifficultPresenter.js.map
