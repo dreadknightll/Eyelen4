@@ -2,7 +2,7 @@
  * 函数杂烩（尺眼通3加强版专用函数）。
  */
 function getCurScene() {
-    switch (g_level) {
+    switch (CGlobals.g_level) {
         case 0:
             return null;
         case 1:

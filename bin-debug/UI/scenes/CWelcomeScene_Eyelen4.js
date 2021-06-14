@@ -32,7 +32,7 @@ var eyelen4;
         };
         CWelcomeScene_Eyelen4.prototype.childrenCreated = function () {
             this.shutdownClock.setFontSize(18);
-            this.shutdownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.setTimer(CGlobals.g_shutdownTimer);
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClockTap, this);
             //填写超链接文本流：
             //1、用户协议：
@@ -104,7 +104,7 @@ var eyelen4;
         CWelcomeScene_Eyelen4.prototype.onStartPra = function (evt) {
             //        先显示翻页动画 （未完成）
             this.startBtn.visible = false;
-            g_pageJumper.gotoPage("MainMenu", null);
+            CGlobals.g_pageJumper.gotoPage("MainMenu", null);
             CGlobals.g_mainMenu.run();
         };
         CWelcomeScene_Eyelen4.prototype.onClockTap = function () {

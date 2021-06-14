@@ -76,7 +76,7 @@ var eyelen4;
             this.bottomArea.caliBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCaliBtn, this);
             this.bottomArea.menuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onMenuBtn, this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOKButtonTap, this);
-            this.shutdownClock.setTimer(g_shutdownTimer); // 关联全局计时器以显示时间。
+            this.shutdownClock.setTimer(CGlobals.g_shutdownTimer); // 关联全局计时器以显示时间。
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClockTap, this);
             this.m2_cc = true;
         };
@@ -661,7 +661,7 @@ var eyelen4;
             var ret = param;
             if (ret) {
                 this.resetSceneElems();
-                g_pageJumper.gotoPage("WelcomeScene", null);
+                CGlobals.g_pageJumper.gotoPage("WelcomeScene", null);
             }
             else {
             }

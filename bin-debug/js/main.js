@@ -417,6 +417,7 @@ __webpack_require__("./src/UI/scenes/other/LoadingUI_Eint_V3.ts");
 __webpack_require__("./src/UI/scenes/other/LoadingUI_NoUI.ts");
 __webpack_require__("./src/components/UIComponents/Eyelen/CCmpLenDlg.ts");
 __webpack_require__("./src/components/UIComponents/Eyelen/CGridCmpLenDlg.ts");
+__webpack_require__("./src/components/UIComponents/Eyelen/CHelpPanel.ts");
 __webpack_require__("./src/components/UIComponents/Eyelen/CLenInputerBase.ts");
 __webpack_require__("./src/components/UIComponents/Eyelen/CLenInputerDifficult.ts");
 __webpack_require__("./src/components/UIComponents/Eyelen/CLenInputerEasy.ts");
@@ -429,7 +430,6 @@ __webpack_require__("./src/components/UIComponents/common/CCopyrightPanel_V2.ts"
 __webpack_require__("./src/components/UIComponents/common/CCpyTextPanel.ts");
 __webpack_require__("./src/components/UIComponents/common/CFinalScoreDlg.ts");
 __webpack_require__("./src/components/UIComponents/common/CFinalScoreDlgEvent.ts");
-__webpack_require__("./src/components/UIComponents/common/CHelpPanel.ts");
 __webpack_require__("./src/components/UIComponents/common/CHorverCheckPanel.ts");
 __webpack_require__("./src/components/UIComponents/common/CProProgressView.ts");
 __webpack_require__("./src/components/UIComponents/common/CProgressView.ts");
@@ -6584,6 +6584,90 @@ window["eyelen4"] = eyelen4;
 
 /***/ }),
 
+/***/ "./src/components/UIComponents/Eyelen/CHelpPanel.ts":
+/***/ (function(module, exports) {
+
+var eyelen4 = window['eyelen4']; 
+var eyelen4;
+(function (eyelen4) {
+    var CHelpPanel = /** @class */ (function (_super) {
+        __extends(CHelpPanel, _super);
+        function CHelpPanel() {
+            var _this = _super.call(this) || this;
+            _this.s_PriText_Android = "\n\
+一、适宜用户：\n\
+　　本产品适合8-60岁身体、精神均健康者使用。\n\
+　　少年儿童建议在文化水平良好者指导下使用，以减少使用风险和法律纠纷。\n\
+　　老幼病残、孕妇不宜使用。禁止作医疗用途。\n\
+　　本产品旨在提升能力，不宜作竞赛用途。\n\
+\n\
+二、系统权限说明（Android）：\n\
+　　需要使用修改当前设置权限让内容正确显示（修改分辨率、语言、字体等）。\n\
+　　若app安装在外置存储卡，可能需要存储访问权限进行app内数据读写。若app安装在内部存储，则无需存储访问权限，禁止即可。\n\
+　　白鹭SDK会获取已安装包名列表作统计用，在部分设备会申请读取已安装应用列表权限。允许该权限一般不会损害用户利益，禁止该权限也不会影响app正常运行。\n\
+　　不需要其它权限，如：完全的互联网访问、读取本机识别码、通讯录访问、读取位置信息等。如有申请，禁止即可。\n\
+　　建议在权限管理中禁用除修改当前设置、存储访问外的所有权限。\n\
+　　本app不会向用户索取私人信息。\n\
+\n\
+三、技术参数（名词解释见宜英训练网：www.gdeint.cn）：\n\
+　　长度目测准确度提升度：人均120KLL\n\
+　　长度目测准确度提升广度：75%\n\
+　　评估方法：凭感觉粗略估算。\n\
+　　教案误差：平均2%\n\
+\n\
+\n\
+(更新于2021-06-16)\n\
+				";
+            _this.s_PriText_iOS = "\n\
+				一、适宜用户：\n\
+					本产品适合8-60岁身体、精神均健康者使用。\n\
+					少年儿童建议在文化水平良好者指导下使用，以减少使用风险和法律纠纷。\n\
+					老幼病残、孕妇不宜使用。禁止作医疗用途。\n\
+					本产品旨在提升能力，不宜作竞赛用途。\n\
+				\n\
+				二、系统权限说明（iOS）：\n\
+			    不需要使用相册、相机、位置信息等权限。如有申请，禁止即可。\n\
+			    建议在权限管理中禁用所有权限。\n\
+			    本app不会向用户索取私人信息。\n\
+				\n\
+				(更新于2020-02-25)\n\
+				";
+            _this.s_PriText_Other = "\n\
+				适宜用户：\n\
+					本产品适合8-60岁身体、精神均健康者使用。\n\
+					少年儿童建议在文化水平良好者指导下使用，以减少使用风险和法律纠纷。\n\
+					老幼病残、孕妇不宜使用。禁止作医疗用途。\n\
+					本产品旨在提升能力，不宜作竞赛用途。\n\
+				\n\
+				(更新于2020-10-04)\n\
+				";
+            return _this;
+        }
+        CHelpPanel.prototype.childrenCreated = function () {
+            if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
+                this.contentLabel.text = this.s_PriText_Android;
+            }
+            else if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_IOS) {
+                this.contentLabel.text = this.s_PriText_iOS;
+            }
+            else {
+                this.contentLabel.text = this.s_PriText_Other;
+            }
+            this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCloseBtnTap, this);
+        };
+        CHelpPanel.prototype.onCloseBtnTap = function (e) {
+            this.visible = false;
+        };
+        return CHelpPanel;
+    }(eui.Component));
+    eyelen4.CHelpPanel = CHelpPanel;
+    __reflect(CHelpPanel.prototype,"eyelen4.CHelpPanel",[]); 
+})(eyelen4 || (eyelen4 = {}));
+window["eyelen4"] = eyelen4;
+
+
+/***/ }),
+
 /***/ "./src/components/UIComponents/Eyelen/CLenInputerBase.ts":
 /***/ (function(module, exports) {
 
@@ -6970,7 +7054,7 @@ var eyelen4;
                             本app不会向用户索取私人信息。";
             */
             _this.s_PriText = "\n\
-宜英app隐私政策（2020-08-23修正，2020-08-27于尺眼通更新）\n\
+宜英app隐私政策（2021-05-06修正，2021-06-16于宜英尺眼通生效）\n\
 \n\
   本文的主要目的是和您约定我们收集哪些信息、如何收集和使用这些信息，及我们采取的信息安全措施和承诺等。我们深知用户信息保护的重要性，特此制定本政策。\n\
 \n\
@@ -6978,10 +7062,10 @@ var eyelen4;
     本政策中“个人信息”、“个人敏感信息”的定义见GB/T35273-2017。\n\
 \n\
 二、我们收集哪些信息：\n\
-    1、我们会在征得用户同意的前提下，收集用户昵称、联系方式（主要是QQ、email，也包括电话号码）。用于必要的以及用户协议规定的沟通。收集方式是为客户提供客服QQ、邮箱地址、信息反馈页面等，用户联系时便能收集到这些信息。\n\
-    2、我们可能会在征得同意的前提下收集用户的操作轨迹、设备型号、使用的其它app及服务等用于产品的改进。\n\
-    3、我们会借助第三方服务实现一些功能，如：通过百度网盘提供一些大文件的下载。会收集到用户在这些第三方厂商的账号信息。\n\
-    4、我们使用的第三方SDK可能会获取一些用户信息，如已安装包名列表。这些行为是我们难以控制的。但我们采用的SDK都是知名或有资质的，因此一般不会损害用户的利益。\n\
+    1、我们会在征得用户同意的前提下，收集用户昵称、联系方式（主要是QQ、email，也包括电话号码）。用于必要的以及用户协议规定的沟通。收集方式是为客户提供客服QQ、邮箱地址、信息反馈页面等，用户联系时便能收集到这些信息。合法用户拒绝提供仍能使用app的基本功能，但（1）无法使用客服及接收来自宜英的各种信息回复。（2）一些附加功能可能无法使用或受限。主要是涉及社交或需要向第三方提供身份信息的功能。以app内提示为准。（3）无法接收福利通知，影响用户级别和特权。（4）带来其它因沟通不便造成的影响。\n\
+    2、我们可能会在征得同意的前提下收集用户的操作轨迹、错题、设备型号等用于产品的改进。拒绝提供不会影响产品的正常使用。对于提供者我们可能会后续提供小额积分或优待。\n\
+    3、我们会借助第三方服务实现一些额外功能，如：通过百度网盘提供一些大文件的下载。会收集到用户在这些第三方厂商的账号信息。拒绝提供信息则相应操作可能无法进行。\n\
+    4、我们使用的第三方SDK可能会获取一些用户信息，如已安装包名列表。这些行为是我们难以控制的。但我们采用的SDK都是知名或有资质的，因此一般不会损害用户的利益。拒绝提供信息后果以实际所见为准。\n\
 \n\
 三、我们如何存储这些信息：\n\
     1、我们不会把用户的个人信息提供给他人，以下情况除外：\n\
@@ -7409,82 +7493,6 @@ var CFinalScoreDlgEvent = /** @class */ (function (_super) {
 }(egret.Event));
 window["CFinalScoreDlgEvent"] = CFinalScoreDlgEvent;
 __reflect(CFinalScoreDlgEvent.prototype,"CFinalScoreDlgEvent",[]); 
-
-
-/***/ }),
-
-/***/ "./src/components/UIComponents/common/CHelpPanel.ts":
-/***/ (function(module, exports) {
-
-var eyelen4 = window['eyelen4']; 
-var eyelen4;
-(function (eyelen4) {
-    var CHelpPanel = /** @class */ (function (_super) {
-        __extends(CHelpPanel, _super);
-        function CHelpPanel() {
-            var _this = _super.call(this) || this;
-            _this.s_PriText_Android = "\n\
-一、适宜用户：\n\
-	本产品适合8-60岁身体、精神均健康者使用。\n\
-	少年儿童建议在文化水平良好者指导下使用，以减少使用风险和法律纠纷。\n\
-	老幼病残、孕妇不宜使用。禁止作医疗用途。\n\
-	本产品旨在提升能力，不宜作竞赛用途。\n\
-\n\
-二、系统权限说明（Android）：\n\
-　　需要使用修改当前设置权限让内容正确显示（修改分辨率、语言、字体等）。\n\
-　　若app安装在外置存储卡，可能需要存储访问权限进行app内数据读写。若app安装在内部存储，则无需存储访问权限，禁止即可。\n\
-　　白鹭SDK会获取已安装包名列表作统计用，在部分设备会申请读取已安装应用列表权限。允许该权限一般不会损害用户利益，禁止该权限也不会影响app正常运行。\n\
-　　不需要其它权限，如：完全的互联网访问、读取本机识别码、通讯录访问、读取位置信息等。如有申请，禁止即可。\n\
-　　建议在权限管理中禁用除修改当前设置、存储访问外的所有权限。\n\
-　　本app不会向用户索取私人信息。\n\
-(更新于2020-12-14)\n\
-				";
-            _this.s_PriText_iOS = "\n\
-				一、适宜用户：\n\
-					本产品适合8-60岁身体、精神均健康者使用。\n\
-					少年儿童建议在文化水平良好者指导下使用，以减少使用风险和法律纠纷。\n\
-					老幼病残、孕妇不宜使用。禁止作医疗用途。\n\
-					本产品旨在提升能力，不宜作竞赛用途。\n\
-				\n\
-				二、系统权限说明（iOS）：\n\
-			    不需要使用相册、相机、位置信息等权限。如有申请，禁止即可。\n\
-			    建议在权限管理中禁用所有权限。\n\
-			    本app不会向用户索取私人信息。\n\
-				\n\
-				(更新于2020-02-25)\n\
-				";
-            _this.s_PriText_Other = "\n\
-				适宜用户：\n\
-					本产品适合8-60岁身体、精神均健康者使用。\n\
-					少年儿童建议在文化水平良好者指导下使用，以减少使用风险和法律纠纷。\n\
-					老幼病残、孕妇不宜使用。禁止作医疗用途。\n\
-					本产品旨在提升能力，不宜作竞赛用途。\n\
-				\n\
-				(更新于2020-10-04)\n\
-				";
-            return _this;
-        }
-        CHelpPanel.prototype.childrenCreated = function () {
-            if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_ANDROID) {
-                this.contentLabel.text = this.s_PriText_Android;
-            }
-            else if (CGlobals.S_BUILD_FOR == CGlobals.S_NATIVE_IOS) {
-                this.contentLabel.text = this.s_PriText_iOS;
-            }
-            else {
-                this.contentLabel.text = this.s_PriText_Other;
-            }
-            this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCloseBtnTap, this);
-        };
-        CHelpPanel.prototype.onCloseBtnTap = function (e) {
-            this.visible = false;
-        };
-        return CHelpPanel;
-    }(eui.Component));
-    eyelen4.CHelpPanel = CHelpPanel;
-    __reflect(CHelpPanel.prototype,"eyelen4.CHelpPanel",[]); 
-})(eyelen4 || (eyelen4 = {}));
-window["eyelen4"] = eyelen4;
 
 
 /***/ }),

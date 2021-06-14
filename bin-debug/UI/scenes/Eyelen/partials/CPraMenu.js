@@ -99,7 +99,7 @@ var gdeint;
         CPraMenu.prototype.onBack2MainMenuConfirm = function (param) {
             var ret = param;
             if (ret) {
-                g_pageJumper.gotoPage("WelcomeScene", null);
+                CGlobals.g_pageJumper.gotoPage("WelcomeScene", null);
             }
             else {
             }

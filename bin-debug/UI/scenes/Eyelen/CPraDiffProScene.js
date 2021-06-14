@@ -77,7 +77,7 @@ var eyelen4;
             this.bottomArea.menuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onMenuBtn, this);
             this.bottomArea.lenInputer.okBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onOKButtonTap, this);
             this.m2_cc = true;
-            this.shutdownClock.setTimer(g_shutdownTimer);
+            this.shutdownClock.setTimer(CGlobals.g_shutdownTimer);
             this.shutdownClock.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClockTap, this);
         };
         CPraDiffProScene.prototype._setParentContainer = function (c) {
@@ -653,7 +653,7 @@ var eyelen4;
             var ret = param;
             if (ret) {
                 this.finalScoreDlg.visible = false;
-                g_pageJumper.gotoPage("WelcomeScene", null);
+                CGlobals.g_pageJumper.gotoPage("WelcomeScene", null);
             }
             else {
             }

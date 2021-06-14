@@ -161,7 +161,7 @@ var CEyelenProPraContainer = (function (_super) {
         len3.m_length = 80;
         len3.m_imgPath = "img_003.gif";
         len3.m2_imgResName = "img_003_gif";
-        g2_tmpWaitingForRetFromNative = true;
+        CGlobals.g2_tmpWaitingForRetFromNative = true;
         /* 返回结果调整后示例：
             {
                 "RetryLens":
@@ -176,8 +176,8 @@ var CEyelenProPraContainer = (function (_super) {
             }
         */
         console.log("OK2");
-        console.log("Parsing:" + g2_tmpRetryLensJSONStr);
-        var lenArrObj = JSON.parse(g2_tmpRetryLensJSONStr);
+        console.log("Parsing:" + CGlobals.g2_tmpRetryLensJSONStr);
+        var lenArrObj = JSON.parse(CGlobals.g2_tmpRetryLensJSONStr);
         console.log("OK2.5");
         var tmpLen1Obj, tmpLen2Obj;
         if (lenArrObj.RetryLens.length > 0) {
